@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-//importo i nostri Model
+//importiamo i nostri Model
 use App\User;
 use App\View;
 use App\Message;
@@ -15,7 +15,7 @@ class Property extends Model
 {
     public function user()
     {
-        return $this->belongsTo("App\User");
+      return $this->belongsTo("App\User");
     }
 
     public function views()
@@ -30,7 +30,7 @@ class Property extends Model
 
     public function extras()
     {
-      return $this->belongsToMany("App\Extra");
+      return $this->belongsToMany("App\Extra", "property_extra");
     }
 
     public function sponsors()

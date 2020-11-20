@@ -11,6 +11,7 @@ class Extra extends Model
 {
     public function properties()
     {
-      return $this->belongsToMany("App\Property");
+      return $this->belongsToMany("App\Property", "property_extra");
+
     }
 }
