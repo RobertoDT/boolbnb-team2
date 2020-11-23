@@ -28,6 +28,11 @@ class ExtrasTableSeeder extends Seeder
 
           $newExtra->name = $extra;
 
+          $time = new DateTime('now');
+          $newtime = $time->modify('-1 year')->format('Y-m-d H:i');
+          $newExtra->created_at = $newtime;
+          $newExtra->updated_at = $newtime;
+
           $newExtra->save();
         }
     }

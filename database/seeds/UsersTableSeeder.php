@@ -26,6 +26,10 @@ class UsersTableSeeder extends Seeder
         $newUser->date_of_birth = $faker->dateTimeBetween("-80 years", "-18 years");
         $newUser->email = $faker->freeEmail();
         $newUser->password = Hash::make($faker->password());
+        $time = new DateTime('now');
+        $newtime = $time->modify('-1 year')->format('Y-m-d H:i');
+        $newUser->created_at = $newtime;
+        $newUser->updated_at = $newtime;
 
         //salvo l'oggetto
         $newUser->save();

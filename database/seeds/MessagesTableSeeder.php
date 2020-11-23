@@ -25,6 +25,9 @@ class MessagesTableSeeder extends Seeder
         $newMessage->property_id = $property->id;
         $newMessage->email = $faker->freeEmail();
         $newMessage->text = $faker->paragraphs(5, true);
+        $date = $faker->dateTimeBetween("-1 year", "now");
+        $newMessage->created_at = $date;
+        $newMessage->updated_at = $date;
 
         $newMessage->save();
       }

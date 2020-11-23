@@ -21,9 +21,10 @@ class ViewsTableSeeder extends Seeder
 
           //creo nuovo oggetto
           $newView = new View;
-
           $newView->property_id = $property->id;
-          $newView->created_at = $faker->dateTimeBetween("-1 year", "now");
+          $date = $faker->dateTimeBetween("-1 year", "now");
+          $newView->created_at = $date;
+          $newView->updated_at = $date;
 
           //salvo
           $newView->save();
