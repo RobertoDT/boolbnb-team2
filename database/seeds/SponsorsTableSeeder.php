@@ -35,9 +35,9 @@ class SponsorsTableSeeder extends Seeder
       foreach ($sponsors as $sponsor) {
         //creiamo il nuovo oggetto
         $newSponsor = new Sponsor;
-        $newSponsor->name = $sponsor->name;
-        $newSponsor->price = $sponsor->price;
-        $newSponsor->duration = $sponsor->duration;
+        $newSponsor->name = $sponsor['name'];
+        $newSponsor->price = $sponsor['price'];
+        $newSponsor->duration = $sponsor['duration'];
 
         $newSponsor->save();
       }
