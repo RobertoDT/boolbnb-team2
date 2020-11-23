@@ -38,6 +38,10 @@ class SponsorsTableSeeder extends Seeder
         $newSponsor->name = $sponsor['name'];
         $newSponsor->price = $sponsor['price'];
         $newSponsor->duration = $sponsor['duration'];
+        $time = new DateTime('now');
+        $newtime = $time->modify('-1 year')->format('Y-m-d H:i');
+        $newSponsor->created_at = $newtime;
+        $newSponsor->updated_at = $newtime;
 
         $newSponsor->save();
       }

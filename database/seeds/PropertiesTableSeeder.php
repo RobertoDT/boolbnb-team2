@@ -62,7 +62,7 @@ class PropertiesTableSeeder extends Seeder
         $newProperty->square_meters = $mq;
         $newProperty->latitude = $faker->randomFloat(6, -90, 90);
         $newProperty->longitude = $faker->randomFloat(6, -180, 180);
-        $newProperty->active = rand(0, 1);
+        $newProperty->active = rand(0, 2) == 0 ? 0 : 1;
         $time = new DateTime('now');
         $newtime = $time->modify('-1 year')->format('Y-m-d H:i');
         $newProperty->created_at = $newtime;

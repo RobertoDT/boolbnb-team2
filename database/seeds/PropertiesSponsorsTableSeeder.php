@@ -25,6 +25,7 @@ class PropertiesSponsorsTableSeeder extends Seeder
 
         //ciclo
         foreach ($properties as $property) {
+          // dd($property->property_sponsor->created_at);
           //scelgo un numero random di sponsor che avrà la proprietà
           $sponsors_number = rand(0, $count_sponsor);
           //ciclo fino a quel numero
