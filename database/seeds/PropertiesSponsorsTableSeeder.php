@@ -3,7 +3,6 @@
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Carbon\Carbon;
-use Carbon\CarbonPeriod;
 
 use App\Property;
 use App\Sponsor;
@@ -18,88 +17,57 @@ class PropertiesSponsorsTableSeeder extends Seeder
    */
   public function run(Faker $faker)
   {
-    //prendo tutte le proprietà
+    // richiedo tutte le proprietà del sito
     $properties = Property::all();
 
-    //ciclo
+    // eseguo un ciclo di ogni proprietà
     foreach ($properties as $property) {
-      //scelgo un numero random di sponsor che avrà la proprietà
-      $sponsors_qty = 8;
-      //salvo un array vuoto
-      $periods = [];
+
+      // numero di sponsor che avrà la proprietà
+      $sponsor_qty = rand(0,10);
+      // contatore
       $i = 0;
-      while ($i <= $sponsors_qty) {
-        $sponsor = Sponsor::inRandomOrder()->first();
-        $isUnique = true;
-        
-        if (empty($periods)) {
-          $created_at = $faker->dateTimeBetween("-1 year", "now");
-          $created_at = Carbon::parse($created_at);
-        } else {
-          foreach ($periods as $period) {
-            $created_at = $faker->dateTimeBetween("-1 year", "now");
-            $created_at = Carbon::parse($created_at);
-            $inArray = $created_at->between($period['created_at'], $period['end_sponsor']);          
-            if ($inArray == true) {
-              $isUnique = false;
-            }
+
+      // genero un ciclo while per ogni qty di sponsor 
+      // finche non inserisco a db un dato che non si interseca 
+      // con nessuno dei created e end_sponsor della proprieta in questione
+      while ($i <= $sponsor_qty) {
+        // genero una data faker per lo sponsor
+        $new_sponsor_dt = $faker->dateTimeBetween("-1 year", "now");
+        // $new_sponsor_dt = '2020-10-15 20:55';
+        // salvo una variabile interruttore
+        $isDouble = false;
+        // controllo se esistono valori a db
+        if (isset($property->sponsors)) {
+          // eseguo un ciclo per ogni sponsor che ha la proprietà
+          foreach ($property->sponsors as $sponsor) {
+            // prendo i valori esistenti di inizio e di fine di ogni sponsor
+            $created_at = $sponsor->pivot->created_at;
+            $end_sponsor = $sponsor->pivot->end_sponsor;
+            // salvo la nuova data in formato carbon
+            $new_dt_carbon = Carbon::parse($new_sponsor_dt);
+            // confronto i valori con la funzione between di Carbon
+            $inArray = $new_dt_carbon->between($created_at, $end_sponsor);
+            if ($inArray) {
+              $isDouble = true;
+            }            
           }
         }
-
-        if ($isUnique == true) {
-          // aggiungo le ore al created_at
-          $end_date = $created_at->addHours($sponsor->duration);
-          dd($end_date);
-          // salvo le due date nell'array 
-          $periods[] = ['created_at'=> $created_at, 'end_sponsor' => $end_date];
-          // inserisco i dati a db
-          $created_at->format('Y-m-d H:i');
-          $end_date->format('Y-m-d H:i');
+        
+        // controllo se isDouble è stato attivato in caso contrario vado a salvare il valore a db
+        if ($isDouble == false) {
+          // scelgo random uno sponsor (24,72,144);
+          $sponsor = Sponsor::inRandomOrder()->first();
+          // calcolo la data del termine dello sponsor
+          $end_new_sponsor = $new_dt_carbon->addHours($sponsor->duration)->format('Y-m-d H:i');
+          // creo la relazione e inserisco i dati created e end_sponsor
           $sponsor->properties()->attach(
             $property,
-            ['created_at' => $created_at, 'end_sponsor' => $end_date]
+            ['created_at' => $new_sponsor_dt, 'end_sponsor' => $end_new_sponsor]
           );
-          // incremento contatore
           $i++;
         }
-
       }
-
-      // for($i = 0; $i < $sponsors_qty; $i++){
-      //   //seleziono un sponsor casuale
-      //   $sponsor = Sponsor::inRandomOrder()->first();
-      //   // $new_date = false;
-
-      //   // while($new_date == false) {
-      //   //   // salvo la possibile data di creazione
-      //   //   $created_at = $faker->dateTimeBetween('-1 year', 'now');
-      //   //   // $notInArray = true;
-      //   //   foreach ($sponsor_periods as $sponsor_period) {
-      //   //     $created_at = Carbon::create($created_at->getTimestamp());
-      //   //     dd($created_at);
-      //   //     if ($created_at->between($sponsor_period['created_at'], $sponsor_period['end_sponsor'])) {
-      //   //       // $notInArray = false;
-
-      //   //     }
-      //   //   }
-
-      //     // if ($notInArray) {
-      //     //   // // trasformo in formato leggibile per Carbon
-      //     //   // $date_format = $created_at->getTimestamp();
-      //     //   // // trasformo la data in formato Carbon
-      //     //   // $date_format = Carbon::createFromTimeStamp($date_format);
-      //     //   // aggiungo la durata dello sponsor e la trasformo in formato per DB
-      //     //   $end_date = $created_at->addHours($sponsor->duration)->format('Y-m-d H:i');
-      //     //   // salvo lo sponsor nella tabella pivot e anche la colonna created_AT e l'end_date
-      //     //   $sponsor->properties()->attach(
-      //     //     $property,
-      //     //     ['created_at' => $created_at, 'end_sponsor' => $end_date]
-      //     //   );
-      //     //   // salvo nell'array i due risultati e blocco il ciclo while
-      //     //   $sponsor_periods[] = ['created_at'=> $created_at, 'end_sponsor' => $end_date];
-      //     //   $new_date = true;
-      //     // }
-      //   }
     }
   }
 }
