@@ -19,4 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//rotte protette da autenticazione
+Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function () {
+
+  Route::resource("properties", "PropertyController");
+});
+
+Route::resource("properties", "PropertyController");
+
 Route::get('/home', 'HomeController@index')->name('home');
