@@ -1,0 +1,49 @@
+header {
+    width: 100%;
+    background-color: transparent;
+    position:fixed;
+
+    .header-wrapper {
+        max-width: 75%;
+        margin:auto;
+        background-color: #ffffff;
+        opacity: 0.6;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+
+        .logo-img {
+            width: 180px;
+            height: auto;
+        }      
+    }
+}
+
+.log-in {
+    position:relative;
+    // background-color: yellow;
+
+    .links > a {
+        color: #636b6f;
+        padding: 0 25px;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .d-none {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) 
+{
+    .header-menu {
+        display: none;
+    }
+    .d-none {
+        display: block;
+    }
+}

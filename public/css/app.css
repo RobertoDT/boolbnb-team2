@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
@@ -10901,5 +10901,64 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+header {
+  width: 100%;
+  background-color: transparent;
+  position: fixed;
+}
+
+header .header-wrapper {
+  max-width: 75%;
+  margin: auto;
+  background-color: #ffffff;
+  opacity: 0.6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .header-wrapper .logo-img {
+  width: 180px;
+  height: auto;
+}
+
+.log-in {
+  position: relative;
+}
+
+.log-in .links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.log-in .d-none {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header-menu {
+    display: none;
+  }
+
+  .d-none {
+    display: block;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: green;
 }
 
