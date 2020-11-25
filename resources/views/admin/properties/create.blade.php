@@ -74,8 +74,8 @@
 
     <!-- active -->
     <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="active" name="active" value="1">
       <label class="form-check-label" for="active">Rendi subito visibile il mio appartamento</label>
+      <input type="checkbox" name="active" placeholder="active" id="active" value="1" {{old("active") == 1 ? "checked" : ""}}>
     </div>
     <!-- /active -->
 

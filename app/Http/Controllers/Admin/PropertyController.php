@@ -53,7 +53,7 @@ class PropertyController extends Controller
           "rooms_number" => "required|integer",
           "beds_number" => "required|integer",
           "bathrooms_number" => "required|integer",
-          "flat_image" => "image",
+          "flat_image" => "required|image",
           "square_meters" => "required|integer",
           "latitude" => "required|between:-90,90",
           "longitude" => "required|between:-180,180",
@@ -79,7 +79,6 @@ class PropertyController extends Controller
         if(isset($data["active"])){
           $newProperty->active = $data["active"];
         };
-
 
         //salvataggio
         $newProperty->save();
@@ -154,7 +153,11 @@ class PropertyController extends Controller
         $property->square_meters = $data["square_meters"];
         $property->latitude = $data["latitude"];
         $property->longitude = $data["longitude"];
-        $property->active = $data["active"];
+        if(isset($data["active"])){
+          $property->active = $data["active"];
+        } else {
+          $property->active = 0;
+        }
 
         //faccio l'update dei Dati
         $property->update();
