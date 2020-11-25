@@ -55,8 +55,8 @@ class PropertyController extends Controller
           "bathrooms_number" => "required|integer",
           "flat_image" => "image",
           "square_meters" => "required|integer",
-          "latitude" => "required|between:-90.90",
-          "longitude" => "required|between:-180.180",
+          "latitude" => "required|between:-90,90",
+          "longitude" => "required|between:-180,180",
           "active" => "boolean"
         ]);
 
@@ -70,12 +70,16 @@ class PropertyController extends Controller
         $newProperty->title = $data["title"];
         $newProperty->description = $data["description"];
         $newProperty->rooms_number = $data["rooms_number"];
+        $newProperty->beds_number = $data["beds_number"];
         $newProperty->bathrooms_number = $data["bathrooms_number"];
         $newProperty->flat_image = $path;
         $newProperty->square_meters = $data["square_meters"];
         $newProperty->latitude = $data["latitude"];
         $newProperty->longitude = $data["longitude"];
-        $newProperty->active = $data["active"];
+        if(isset($data["active"])){
+          $newProperty->active = $data["active"];
+        };
+
 
         //salvataggio
         $newProperty->save();
@@ -128,12 +132,11 @@ class PropertyController extends Controller
           "bathrooms_number" => "required|integer",
           "flat_image" => "image",
           "square_meters" => "required|integer",
-          "latitude" => "required|between:-90.90",
-          "longitude" => "required|between:-180.180",
+          "latitude" => "required|between:-90,90",
+          "longitude" => "required|between:-180,180",
           "active" => "boolean"
         ]);
 
-        $path = Storage::disk("public")->put("images", $data["flat_image"]);
 
         //vado a prendere quella proprietà da modificare tramite id
         $property = Property::find($id);
@@ -144,7 +147,10 @@ class PropertyController extends Controller
         $property->rooms_number = $data["rooms_number"];
         $property->beds_number = $data["beds_number"];
         $property->bathrooms_number = $data["bathrooms_number"];
-        $property->flat_image = $path;
+        if(isset($path)){
+          $path = Storage::disk("public")->put("images", $data["flat_image"]);
+          $property->flat_image = $path;
+        }
         $property->square_meters = $data["square_meters"];
         $property->latitude = $data["latitude"];
         $property->longitude = $data["longitude"];
