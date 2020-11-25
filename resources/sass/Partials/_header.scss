@@ -3,11 +3,15 @@ header {
     background-color: transparent;
     position:fixed;
 
+    .header-main-wrapper {
+        width: 100%;
+        background-color: #ffffff;
+        opacity: 0.6;
+
     .header-wrapper {
         max-width: 75%;
         margin:auto;
-        background-color: #ffffff;
-        opacity: 0.6;
+
         display: flex;
         justify-content:space-between;
         align-items: center;
@@ -18,7 +22,7 @@ header {
         }      
     }
 }
-
+}
 .log-in {
     position:relative;
     // background-color: yellow;
@@ -33,17 +37,17 @@ header {
         text-transform: uppercase;
     }
 
-    .d-none {
-        display: none;
-    }
+    // .d-none {
+    //     display: none;
+    // }
 }
 
-@media screen and (max-width: 768px) 
-{
-    .header-menu {
-        display: none;
-    }
-    .d-none {
-        display: block;
-    }
-}
+// @media screen and (max-width: 768px) 
+// {
+//     .header-menu {
+//         display: none;
+//     }
+//     .d-none {
+//         display: block;
+//     }
+// }

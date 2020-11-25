@@ -10909,17 +10909,21 @@ header {
   position: fixed;
 }
 
-header .header-wrapper {
-  max-width: 75%;
-  margin: auto;
+header .header-main-wrapper {
+  width: 100%;
   background-color: #ffffff;
   opacity: 0.6;
+}
+
+header .header-main-wrapper .header-wrapper {
+  max-width: 75%;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-header .header-wrapper .logo-img {
+header .header-main-wrapper .header-wrapper .logo-img {
   width: 180px;
   height: auto;
 }
@@ -10938,24 +10942,14 @@ header .header-wrapper .logo-img {
   text-transform: uppercase;
 }
 
-.log-in .d-none {
-  display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .header-menu {
-    display: none;
-  }
-
-  .d-none {
-    display: block;
-  }
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  position: relative;
 }
 
 body {
