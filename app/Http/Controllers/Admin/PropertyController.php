@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 //importo controller di base
 use App\Http\Controllers\Controller;
+//includo lo storage
+use Illuminate\Support\Facades\Storage;
 //importo i Model
 use App\Property;
 
@@ -46,21 +48,34 @@ class PropertyController extends Controller
 
         //validation
         $request->validate([
-          "title" => "",
-          "description" => "",
-          "rooms_number" => "",
-          "beds_number" => "",
-          "bathrooms_number" => "",
-          "square_meters" => "",
-          "latitude" => "",
-          "longitude" => "",
-          
+          "title" => "required|max:255",
+          "description" => "max:400",
+          "rooms_number" => "required|integer",
+          "beds_number" => "required|integer",
+          "bathrooms_number" => "required|integer",
+          "flat_image" => "image",
+          "square_meters" => "required|integer",
+          "latitude" => "required|between:-90.90",
+          "longitude" => "required|between:-180.180",
+          "active" => "boolean"
         ]);
 
-        // !!!!!flat_image!!!!
+        //indirizzo di salvataggio dell'immagine e creo cartella "images" dove salvo le immagini uploadate
+        $path = Storage::disk("public")->put("images", $data["flat_image"]);
 
         //creo nuovo oggetto di tipo Proprietà
         $newProperty = new Property;
+
+        $newProperty->user_id = Auth::id();
+        $newProperty->title = $data["title"];
+        $newProperty->description = $data["description"];
+        $newProperty->rooms_number = $data["rooms_number"];
+        $newProperty->bathrooms_number = $data["bathrooms_number"];
+        $newProperty->flat_image = $path;
+        $newProperty->square_meters = $data["square_meters"];
+        $newProperty->latitude = $data["latitude"];
+        $newProperty->longitude = $data["longitude"];
+        $newProperty->active = $data["active"];
 
         //salvataggio
         $newProperty->save();
@@ -89,7 +104,8 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $property = Property::find($id);
+        return view("admin.properties.edit", compact("property"));
     }
 
     /**
@@ -101,7 +117,44 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        //validazione
+        $request->validate([
+          "title" => "required|max:255",
+          "description" => "max:400",
+          "rooms_number" => "required|integer",
+          "beds_number" => "required|integer",
+          "bathrooms_number" => "required|integer",
+          "flat_image" => "image",
+          "square_meters" => "required|integer",
+          "latitude" => "required|between:-90.90",
+          "longitude" => "required|between:-180.180",
+          "active" => "boolean"
+        ]);
+
+        $path = Storage::disk("public")->put("images", $data["flat_image"]);
+
+        //vado a prendere quella proprietà da modificare tramite id
+        $property = Property::find($id);
+
+        //modifico i dati
+        $property->title = $data["title"];
+        $property->description = $data["description"];
+        $property->rooms_number = $data["rooms_number"];
+        $property->beds_number = $data["beds_number"];
+        $property->bathrooms_number = $data["bathrooms_number"];
+        $property->flat_image = $path;
+        $property->square_meters = $data["square_meters"];
+        $property->latitude = $data["latitude"];
+        $property->longitude = $data["longitude"];
+        $property->active = $data["active"];
+
+        //faccio l'update dei Dati
+        $property->update();
+
+        //redirect verso la pagina show della proprietà appena modificata
+        return redirect()->route("admin.properties.show", $property);
     }
 
     /**
@@ -112,6 +165,8 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $property = Property::find($id);
+        $property->delete();
+        return redirect()->route("admin.properties.index");
     }
 }
