@@ -6,6 +6,7 @@
 
 // Variables
 @import 'variables';
+@import 'Partials/mixin.scss';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -15,4 +16,5 @@
 @import 'Partials/_common.scss';
 
 @import 'Partials/index.scss';
+
 

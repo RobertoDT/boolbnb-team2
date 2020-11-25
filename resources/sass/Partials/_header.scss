@@ -3,12 +3,12 @@ header {
     background-color: transparent;
     position:fixed;
 
-    .header-main-wrapper {
+    .header_main_wrapper {
         width: 100%;
         background-color: #ffffff;
         opacity: 0.6;
 
-    .header-wrapper {
+    .header_wrapper {
         max-width: 75%;
         margin:auto;
 
@@ -16,14 +16,14 @@ header {
         justify-content:space-between;
         align-items: center;
 
-        .logo-img {
+        .logo_img {
             width: 180px;
             height: auto;
         }      
     }
 }
 }
-.log-in {
+.log_in {
     position:relative;
     // background-color: yellow;
 

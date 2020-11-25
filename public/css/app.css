@@ -10909,13 +10909,13 @@ header {
   position: fixed;
 }
 
-header .header-main-wrapper {
+header .header_main_wrapper {
   width: 100%;
   background-color: #ffffff;
   opacity: 0.6;
 }
 
-header .header-main-wrapper .header-wrapper {
+header .header_main_wrapper .header_wrapper {
   max-width: 75%;
   margin: auto;
   display: flex;
@@ -10923,16 +10923,16 @@ header .header-main-wrapper .header-wrapper {
   align-items: center;
 }
 
-header .header-main-wrapper .header-wrapper .logo-img {
+header .header_main_wrapper .header_wrapper .logo_img {
   width: 180px;
   height: auto;
 }
 
-.log-in {
+.log_in {
   position: relative;
 }
 
-.log-in .links > a {
+.log_in .links > a {
   color: #636b6f;
   padding: 0 25px;
   font-size: 18px;
@@ -10954,5 +10954,68 @@ body {
 
 body {
   background-color: green;
+}
+
+.container {
+  padding: 50px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul li {
+  width: 30%;
+  margin: 5px;
+  position: relative;
+}
+
+ul li .img-responsive {
+  height: 300px;
+  width: 100%;
+}
+
+ul li .img-responsive img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+ul li .overlay {
+  background-color: rgba(74, 102, 128, 0.4);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+ul li .overlay .small-container {
+  height: 100%;
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+ul li .overlay .small-container a {
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+}
+
+ul li:hover .overlay {
+  display: block;
+}
+
+ul li:hover img {
+  transform: scale(1.5, 1.5);
+  transition: 0.5s;
 }
 
