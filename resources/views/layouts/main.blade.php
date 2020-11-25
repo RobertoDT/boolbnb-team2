@@ -8,8 +8,10 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    @include('layouts.footer')
-    @yield('content')
+    @include('layouts.header')
+    <main>
+        @yield('mainContent')
+    </main>
     @include('layouts.footer')
 </body>
 </html>

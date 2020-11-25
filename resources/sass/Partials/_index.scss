@@ -13,21 +13,19 @@ body {
         flex-wrap: wrap;
 
             li {
-                width: 30%;
+                width: calc((100% / 3) - 10px);
                 margin: 5px;
                 position: relative;
-                // overflow: hidden;
-
+                
                 .img-responsive {
-                    // overflow: hidden;
                     height: 300px;
                     width: 100%;
+                    overflow: hidden;
 
 
                     img {
-                        // height: 300px;
                         width: 100%;
-                        // display:block;
+                        height: 300px;
                         object-fit: cover;
                     }
                 }
