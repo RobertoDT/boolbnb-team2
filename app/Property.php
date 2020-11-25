@@ -35,6 +35,6 @@ class Property extends Model
 
     public function sponsors()
     {
-      return $this->belongsToMany("App\Sponsor");
+      return $this->belongsToMany("App\Sponsor", "property_sponsor")->withPivot('created_at', 'end_sponsor');
     }
 }
