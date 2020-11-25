@@ -1,8 +1,20 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+//Fontawesome
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+
 // Variables
 @import 'variables';
+@import 'Partials/mixin.scss';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import 'Partials/_header.scss';
+
+@import 'Partials/_common.scss';
+
+@import 'Partials/index.scss';
+
+

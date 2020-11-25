@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
@@ -10901,5 +10901,123 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+header {
+  width: 100%;
+  background-color: transparent;
+  position: fixed;
+}
+
+header .header_main_wrapper {
+  width: 100%;
+  background-color: #ffffff;
+  opacity: 0.6;
+}
+
+header .header_main_wrapper .header_wrapper {
+  max-width: 75%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .header_main_wrapper .header_wrapper .logo_img {
+  width: 180px;
+  height: auto;
+}
+
+.log_in {
+  position: relative;
+}
+
+.log_in .links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+}
+
+body {
+  background-color: green;
+}
+
+.container {
+  padding: 50px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul li {
+  width: calc((100% / 3) - 10px);
+  margin: 5px;
+  position: relative;
+}
+
+ul li .img-responsive {
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+}
+
+ul li .img-responsive img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+ul li .overlay {
+  background-color: rgba(74, 102, 128, 0.4);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+ul li .overlay .small-container {
+  height: 100%;
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+ul li .overlay .small-container a {
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+}
+
+ul li:hover .overlay {
+  display: block;
+}
+
+ul li:hover img {
+  transform: scale(1.5, 1.5);
+  transition: 0.5s;
 }
 
