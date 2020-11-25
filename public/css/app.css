@@ -10919,10 +10919,6 @@ header #app form {
   text-align: center;
 }
 
-header #app .input_search {
-  width: 500px;
-}
-
 header #app .navbar-collapse {
   flex-grow: 0;
 }
