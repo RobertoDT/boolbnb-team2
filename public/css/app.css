@@ -11006,3 +11006,11 @@ body {
   transition: 0.5s;
 }
 
+@media screen and (max-width: 768px) {
+  header .all_properties {
+    width: 100%;
+    margin: 5px;
+    position: relative;
+  }
+}
+
