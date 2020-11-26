@@ -1,53 +1,28 @@
 header {
-    width: 100%;
-    background-color: transparent;
-    position:fixed;
+    height: 200px;
 
-    .header_main_wrapper {
-        width: 100%;
-        background-color: #ffffff;
-        opacity: 0.6;
+    #app {
+        height: 100%;
 
-    .header_wrapper {
-        max-width: 75%;
-        margin:auto;
+        nav {
+            height: 150px;
+        }
+    
+    img {
+        width: 180px;
+        height: auto;
+    }
 
-        display: flex;
-        justify-content:space-between;
-        align-items: center;
+    form {
+        text-align: center;
+    }
 
-        .logo_img {
-            width: 180px;
-            height: auto;
-        }      
+            // .input_search {
+            //     width: 500px;
+            // }
+  
+    .navbar-collapse {
+        flex-grow: 0;
     }
 }
 }
-.log_in {
-    position:relative;
-    // background-color: yellow;
-
-    .links > a {
-        color: #636b6f;
-        padding: 0 25px;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: .1rem;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-
-    // .d-none {
-    //     display: none;
-    // }
-}
-
-// @media screen and (max-width: 768px) 
-// {
-//     .header-menu {
-//         display: none;
-//     }
-//     .d-none {
-//         display: block;
-//     }
-// }
