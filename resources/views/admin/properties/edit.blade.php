@@ -77,27 +77,27 @@
       <ul>
         <li>
           <span>wi-fi</span>
-          <input type="checkbox" name="wi-fi" id="wi-fi" value="1" {{old("wi-fi") == 1 ? "checked" : ""}}>
+          <input type="checkbox" name="extra[]" id="wi-fi" value="1" {{old("wi-fi") == 1 ? "checked" : ""}}>
         </li>
         <li>
           <span>parking</span>
-          <input type="checkbox" name="parking" id="parking" value="1" {{old("parking") == 1 ? "checked" : ""}}>
+          <input type="checkbox" name="extra[]" id="parking" value="1" {{old("parking") == 1 ? "checked" : ""}}>
         </li>
         <li>
           <span>pool</span>
-          <input type="checkbox" name="pool" id="pool" value="1" {{old("pool") == 1 ? "checked" : ""}}>
+          <input type="checkbox" name="extra[]" id="pool" value="1" {{old("pool") == 1 ? "checked" : ""}}>
         </li>
         <li>
           <span>reception</span>
-          <input type="checkbox" name="reception" id="reception" value="1" {{old("reception") == 1 ? "checked" : ""}}>
+          <input type="checkbox" name="extra[]" id="reception" value="1" {{old("reception") == 1 ? "checked" : ""}}>
         </li>
         <li>
           <span>sauna</span>
-          <input type="checkbox" name="sauna" id="sauna" value="1" {{old("sauna") == 1 ? "checked" : ""}}>
+          <input type="checkbox" name="extra[]" id="sauna" value="1" {{old("sauna") == 1 ? "checked" : ""}}>
         </li>
         <li>
           <span>sea view</span>
-          <input type="checkbox" name="sea-view" id="sea-view" value="1" {{old("sea-view") == 1 ? "checked" : ""}}>
+          <input type="checkbox" name="extra[]" id="sea-view" value="1" {{old("sea-view") == 1 ? "checked" : ""}}>
         </li>
       </ul>
     </div>

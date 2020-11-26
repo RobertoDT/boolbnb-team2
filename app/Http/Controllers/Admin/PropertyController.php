@@ -34,7 +34,8 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view("admin.properties.create");
+        $extras = Extra::all();
+        return view("admin.properties.create", compact("extras"));
     }
 
     /**
@@ -84,30 +85,34 @@ class PropertyController extends Controller
         //salvataggio
         $newProperty->save();
 
-        if(isset($data["wi-fi"])){
-          $extra = Extra::find(1);
-          $newProperty->extras()->attach($extra);
-        };
-        if(isset($data["parking"])){
-          $extra = Extra::find(2);
-          $newProperty->extras()->attach($extra);
-        };
-        if(isset($data["pool"])){
-          $extra = Extra::find(3);
-          $newProperty->extras()->attach($extra);
-        };
-        if(isset($data["reception"])){
-          $extra = Extra::find(4);
-          $newProperty->extras()->attach($extra);
-        };
-        if(isset($data["sauna"])){
-          $extra = Extra::find(5);
-          $newProperty->extras()->attach($extra);
-        };
-        if(isset($data["sea-view"])){
-          $extra = Extra::find(6);
-          $newProperty->extras()->attach($extra);
-        };
+        if (count($data["extras"]) > 0) {
+          $newProperty->extras()->sync($data["extras"]);
+        }
+
+        // if(isset($data["wi-fi"])){
+        //   $extra = Extra::find(1);
+        //   $newProperty->extras()->attach($extra);
+        // };
+        // if(isset($data["parking"])){
+        //   $extra = Extra::find(2);
+        //   $newProperty->extras()->attach($extra);
+        // };
+        // if(isset($data["pool"])){
+        //   $extra = Extra::find(3);
+        //   $newProperty->extras()->attach($extra);
+        // };
+        // if(isset($data["reception"])){
+        //   $extra = Extra::find(4);
+        //   $newProperty->extras()->attach($extra);
+        // };
+        // if(isset($data["sauna"])){
+        //   $extra = Extra::find(5);
+        //   $newProperty->extras()->attach($extra);
+        // };
+        // if(isset($data["sea-view"])){
+        //   $extra = Extra::find(6);
+        //   $newProperty->extras()->attach($extra);
+        // };
 
         //redirect verso nuova pagina (show)
         return redirect()->route("admin.properties.show", $newProperty);
