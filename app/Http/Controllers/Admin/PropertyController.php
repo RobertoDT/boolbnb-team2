@@ -47,7 +47,7 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
+        // dd(empty($data));
         //validation
         $request->validate([
           "title" => "required|max:255",
@@ -85,34 +85,9 @@ class PropertyController extends Controller
         //salvataggio
         $newProperty->save();
 
-        if (count($data["extras"]) > 0) {
+        if (isset($data["extras"])) {
           $newProperty->extras()->sync($data["extras"]);
         }
-
-        // if(isset($data["wi-fi"])){
-        //   $extra = Extra::find(1);
-        //   $newProperty->extras()->attach($extra);
-        // };
-        // if(isset($data["parking"])){
-        //   $extra = Extra::find(2);
-        //   $newProperty->extras()->attach($extra);
-        // };
-        // if(isset($data["pool"])){
-        //   $extra = Extra::find(3);
-        //   $newProperty->extras()->attach($extra);
-        // };
-        // if(isset($data["reception"])){
-        //   $extra = Extra::find(4);
-        //   $newProperty->extras()->attach($extra);
-        // };
-        // if(isset($data["sauna"])){
-        //   $extra = Extra::find(5);
-        //   $newProperty->extras()->attach($extra);
-        // };
-        // if(isset($data["sea-view"])){
-        //   $extra = Extra::find(6);
-        //   $newProperty->extras()->attach($extra);
-        // };
 
         //redirect verso nuova pagina (show)
         return redirect()->route("admin.properties.show", $newProperty);
@@ -139,7 +114,8 @@ class PropertyController extends Controller
     public function edit($id)
     {
         $property = Property::find($id);
-        return view("admin.properties.edit", compact("property"));
+        $extras = Extra::all();
+        return view("admin.properties.edit", compact("property", "extras"));
     }
 
     /**
@@ -193,32 +169,38 @@ class PropertyController extends Controller
         //faccio l'update dei Dati
         $property->update();
 
-        if(isset($data["wi-fi"])){
-          $extra = Extra::all();
-          $property->extras()->sync([
+        if(isset($data["extras"])){
+          $property->extras()->sync($data["extras"]);
+        } else {
+          $property->extras()->detach();
+        }
 
-          ]);
-        };
-        if(isset($data["parking"])){
-          $extra = Extra::find(2);
-          $property->extras()->sync($extra);
-        };
-        if(isset($data["pool"])){
-          $extra = Extra::find(3);
-          $property->extras()->sync($extra);
-        };
-        if(isset($data["reception"])){
-          $extra = Extra::find(4);
-          $property->extras()->sync($extra);
-        };
-        if(isset($data["sauna"])){
-          $extra = Extra::find(5);
-          $property->extras()->sync($extra);
-        };
-        if(isset($data["sea-view"])){
-          $extra = Extra::find(6);
-          $property->extras()->sync($extra);
-        };
+        // if(isset($data["wi-fi"])){
+        //   $extra = Extra::all();
+        //   $property->extras()->sync([
+        //
+        //   ]);
+        // };
+        // if(isset($data["parking"])){
+        //   $extra = Extra::find(2);
+        //   $property->extras()->sync($extra);
+        // };
+        // if(isset($data["pool"])){
+        //   $extra = Extra::find(3);
+        //   $property->extras()->sync($extra);
+        // };
+        // if(isset($data["reception"])){
+        //   $extra = Extra::find(4);
+        //   $property->extras()->sync($extra);
+        // };
+        // if(isset($data["sauna"])){
+        //   $extra = Extra::find(5);
+        //   $property->extras()->sync($extra);
+        // };
+        // if(isset($data["sea-view"])){
+        //   $extra = Extra::find(6);
+        //   $property->extras()->sync($extra);
+        // };
 
         //redirect verso la pagina show della proprietà appena modificata
         return redirect()->route("admin.properties.show", $property);
