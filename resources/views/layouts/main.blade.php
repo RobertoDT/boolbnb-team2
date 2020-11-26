@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< Updated upstream
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,26 +11,10 @@
 </head>
 <body>
 
-    @include('layouts.header')
-<<<<<<< HEAD
-=======
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <title>@yield("title")</title>
-
-  </head>
-
-  <body>
 
     @include("layouts.header")
 
->>>>>>> Stashed changes
-=======
 
->>>>>>> main
     <main>
 
       @yield('mainContent')
