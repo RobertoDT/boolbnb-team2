@@ -10968,6 +10968,7 @@ body {
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: 0.5s ease-in-out;
 }
 
 .container ul li .overlay {
@@ -11003,7 +11004,6 @@ body {
 
 .container ul li:hover img {
   transform: scale(1.5, 1.5);
-  transition: 0.5s;
 }
 
 @media screen and (max-width: 768px) {

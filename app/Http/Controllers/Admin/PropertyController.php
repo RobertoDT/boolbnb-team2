@@ -229,6 +229,6 @@ class PropertyController extends Controller
     {
         $property = Property::find($id);
         $property->delete();
-        return redirect()->route("admin.properties.index");
+        return redirect()->route("admin.properties.index", $property);
     }
 }
