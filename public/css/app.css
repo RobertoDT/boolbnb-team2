@@ -10952,10 +10952,6 @@ body {
   position: relative;
 }
 
-body {
-  background-color: green;
-}
-
 .container {
   padding: 50px;
 }
@@ -11019,5 +11015,80 @@ ul li:hover .overlay {
 ul li:hover img {
   transform: scale(1.5, 1.5);
   transition: 0.5s;
+}
+
+.wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.wrapper .property-details {
+  margin-bottom: 30px;
+}
+
+.wrapper .property-details .img-container {
+  padding-top: 40px;
+  height: 500px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.wrapper .property-details .img-container .img-show {
+  width: 80%;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: auto;
+  display: block;
+}
+
+.wrapper .map-container {
+  width: 50%;
+  float: left;
+}
+
+.wrapper .map-container img {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  display: block;
+}
+
+.wrapper .form-container {
+  background-color: grey;
+  width: 50%;
+  padding: 20px;
+  float: right;
+}
+
+.wrapper .form-container input[type=text],
+.wrapper .form-container select,
+.wrapper .form-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+.wrapper .form-container input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.wrapper .form-container input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+@media screen and (max-width: 768px) {
+  .map-container {
+    background-color: red;
+  }
 }
 
