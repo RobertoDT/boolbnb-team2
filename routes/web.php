@@ -29,3 +29,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
 Route::resource("properties", "PropertyController");
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//route for search page
+
+Route::get('/search', 'PropertiesSearchController@index')->name('search');
