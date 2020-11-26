@@ -21,4 +21,5 @@ class PropertyController extends Controller
       $property = Property::find($id);
       return view("guest.show", compact("property"));
     }
+
 }

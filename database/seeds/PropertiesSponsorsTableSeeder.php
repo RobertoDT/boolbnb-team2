@@ -35,6 +35,7 @@ class PropertiesSponsorsTableSeeder extends Seeder
         // genero una data faker per lo sponsor
         $new_sponsor_dt = $faker->dateTimeBetween("-1 year", "now");
         // $new_sponsor_dt = '2020-10-15 20:55';
+        
         // salvo una variabile interruttore
         $isDouble = false;
         // controllo se esistono valori a db
