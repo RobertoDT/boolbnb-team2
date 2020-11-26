@@ -1,7 +1,4 @@
 .container {
-<<<<<<< HEAD
-        padding: 50px;
-=======
     padding: 50px;
 
     .premium_name {
@@ -9,7 +6,6 @@
         background: -webkit-linear-gradient(#dc18db, #15cff1);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
->>>>>>> main
     }
 
 ul {
@@ -62,16 +58,6 @@ ul {
 
                 }
             }
-<<<<<<< HEAD
-            li:hover .overlay {
-                display: block;
-            }
-            li:hover img {
-                transform: scale(1.5, 1.5);
-                transition: .5s;
-            }
-        }
-=======
         }
         li:hover .overlay {
             display: block;
@@ -93,4 +79,3 @@ ul {
         }
     }
 }
->>>>>>> main

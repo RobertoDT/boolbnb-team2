@@ -10931,10 +10931,7 @@ header #app .navbar-collapse {
 
 body {
   position: relative;
-<<<<<<< HEAD
-=======
   font-family: "Ubuntu", sans-serif;
->>>>>>> main
 }
 
 .container {
@@ -11009,7 +11006,14 @@ body {
   transition: 0.5s;
 }
 
-<<<<<<< HEAD
+@media screen and (max-width: 768px) {
+  header .all_properties {
+    width: 100%;
+    margin: 5px;
+    position: relative;
+  }
+}
+
 .wrapper {
   width: 80%;
   margin: auto;
@@ -11048,7 +11052,6 @@ body {
 }
 
 .wrapper .form-container {
-  background-color: grey;
   width: 50%;
   padding: 20px;
   float: right;
@@ -11082,13 +11085,6 @@ body {
 @media screen and (max-width: 768px) {
   .map-container {
     background-color: red;
-=======
-@media screen and (max-width: 768px) {
-  header .all_properties {
-    width: 100%;
-    margin: 5px;
-    position: relative;
->>>>>>> main
   }
 }
 
