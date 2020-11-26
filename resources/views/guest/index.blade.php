@@ -12,7 +12,7 @@
                 @foreach ($properties as $property)
                     <li class="all_properties">
                         <div class="img-responsive">
-                            <img src="{{$property->flat_image}}" alt="Home Picture">
+                            <img class="transition" src="{{$property->flat_image}}" alt="Home Picture">
                         </div>
                         <div class="overlay">
                         <div class="small-container">
