@@ -1,5 +1,5 @@
 <!-- pagina principale -->
-@extends('layouts.main')
+{{-- @extends('layouts.main')
 
 @section('mainContent')
 
@@ -8,4 +8,4 @@
     <a href="{{route('articles.show', $article)}}" class="list-group-item list-group-item-action">{{$property->title}}</a>
 </div>
 
-@endsection
+@endsection --}}
