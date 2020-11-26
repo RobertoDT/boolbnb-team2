@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 //importo i Model
 use App\Property;
+use App\Extra;
 
 class PropertyController extends Controller
 {
@@ -82,6 +83,31 @@ class PropertyController extends Controller
 
         //salvataggio
         $newProperty->save();
+
+        if(isset($data["wi-fi"])){
+          $extra = Extra::find(1);
+          $newProperty->extras()->attach($extra);
+        };
+        if(isset($data["parking"])){
+          $extra = Extra::find(2);
+          $newProperty->extras()->attach($extra);
+        };
+        if(isset($data["pool"])){
+          $extra = Extra::find(3);
+          $newProperty->extras()->attach($extra);
+        };
+        if(isset($data["reception"])){
+          $extra = Extra::find(4);
+          $newProperty->extras()->attach($extra);
+        };
+        if(isset($data["sauna"])){
+          $extra = Extra::find(5);
+          $newProperty->extras()->attach($extra);
+        };
+        if(isset($data["sea-view"])){
+          $extra = Extra::find(6);
+          $newProperty->extras()->attach($extra);
+        };
 
         //redirect verso nuova pagina (show)
         return redirect()->route("admin.properties.show", $newProperty);
@@ -161,6 +187,33 @@ class PropertyController extends Controller
 
         //faccio l'update dei Dati
         $property->update();
+
+        if(isset($data["wi-fi"])){
+          $extra = Extra::all();
+          $property->extras()->sync([
+
+          ]);
+        };
+        if(isset($data["parking"])){
+          $extra = Extra::find(2);
+          $property->extras()->sync($extra);
+        };
+        if(isset($data["pool"])){
+          $extra = Extra::find(3);
+          $property->extras()->sync($extra);
+        };
+        if(isset($data["reception"])){
+          $extra = Extra::find(4);
+          $property->extras()->sync($extra);
+        };
+        if(isset($data["sauna"])){
+          $extra = Extra::find(5);
+          $property->extras()->sync($extra);
+        };
+        if(isset($data["sea-view"])){
+          $extra = Extra::find(6);
+          $property->extras()->sync($extra);
+        };
 
         //redirect verso la pagina show della proprietà appena modificata
         return redirect()->route("admin.properties.show", $property);
