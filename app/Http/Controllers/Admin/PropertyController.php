@@ -175,33 +175,6 @@ class PropertyController extends Controller
           $property->extras()->detach();
         }
 
-        // if(isset($data["wi-fi"])){
-        //   $extra = Extra::all();
-        //   $property->extras()->sync([
-        //
-        //   ]);
-        // };
-        // if(isset($data["parking"])){
-        //   $extra = Extra::find(2);
-        //   $property->extras()->sync($extra);
-        // };
-        // if(isset($data["pool"])){
-        //   $extra = Extra::find(3);
-        //   $property->extras()->sync($extra);
-        // };
-        // if(isset($data["reception"])){
-        //   $extra = Extra::find(4);
-        //   $property->extras()->sync($extra);
-        // };
-        // if(isset($data["sauna"])){
-        //   $extra = Extra::find(5);
-        //   $property->extras()->sync($extra);
-        // };
-        // if(isset($data["sea-view"])){
-        //   $extra = Extra::find(6);
-        //   $property->extras()->sync($extra);
-        // };
-
         //redirect verso la pagina show della proprietà appena modificata
         return redirect()->route("admin.properties.show", $property);
     }
