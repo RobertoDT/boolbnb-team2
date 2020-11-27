@@ -37274,6 +37274,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ././partials/search.js */ "./resources/js/partials/search.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37321,6 +37323,37 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/partials/search.js":
+/*!*****************************************!*\
+  !*** ./resources/js/partials/search.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $("#submit").click(function () {
+    var input = $("#search").val();
+
+    if (input.length != 0) {
+      $.ajax({
+        "url": "https://api.tomtom.com/search/2/geometryFilter.json?key=HzXIu06Pe6tarmbzDYGjNPs5aLa7AlS0",
+        "method": "GET",
+        "data": {
+          "language": "en-US"
+        },
+        "success": function success(data) {
+          console.log(data);
+        },
+        "error": function error(err) {
+          alert("Errore");
+        }
+      });
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -37339,8 +37372,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
