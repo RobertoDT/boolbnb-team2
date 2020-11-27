@@ -67,6 +67,7 @@ class PropertiesTableSeeder extends Seeder
         $newtime = $time->modify('-1 year')->format('Y-m-d H:i');
         $newProperty->created_at = $newtime;
         $newProperty->updated_at = $newtime;
+        
 
         $newProperty->save();
       }
