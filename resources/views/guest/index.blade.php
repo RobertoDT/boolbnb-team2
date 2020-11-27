@@ -5,11 +5,15 @@
 @endsection
 
 @section('mainContent')
+<div class="hero">
+
+</div>
+
 <section class="home_guest">
     <div class="container">
-            <h1 class="premium_name">In Evidenza</h1>
+        <h1 class="premium_name">In Evidenza</h1>
             <ul class="flat_list">
-                @foreach ($properties as $property)
+                @foreach ($properties->slice(0, 12) as $property)
                     <li class="all_properties">
                         <div class="img-responsive">
                             <img class="transition" src="{{$property->flat_image}}" alt="Home Picture">

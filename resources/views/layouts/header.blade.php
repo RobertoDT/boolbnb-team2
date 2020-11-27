@@ -1,6 +1,6 @@
 <header>
   <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
           <div class="logo-img">
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -9,9 +9,9 @@
           </div>
 
             <div class="start_search">
-              <form class="form-inline my-2 my-lg-0">
+              <form class="form-inline my-2 my-lg-0" action="{{route("search")}}">
                 <input class="form-control mr-sm-2 input_search" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-dark my-2 my-sm-0 modifing_link" type="submit">Search</button>
               </form>
             </div>
 

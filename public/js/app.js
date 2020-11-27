@@ -37276,6 +37276,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ././partials/search.js */ "./resources/js/partials/search.js");
 
+__webpack_require__(/*! ././partials/guest.index.js */ "./resources/js/partials/guest.index.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37320,6 +37322,21 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/partials/guest.index.js":
+/*!**********************************************!*\
+  !*** ./resources/js/partials/guest.index.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $(window).scroll(function () {
+    $("#app").css("position", "fixed").css("z-index", "2"); //.css("background-color", "white");
+  });
+});
 
 /***/ }),
 
@@ -37372,8 +37389,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

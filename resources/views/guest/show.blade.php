@@ -19,17 +19,12 @@
                 <h5>Letti: {{$property->beds_number}}</h5>
                 <h5>Bagni: {{$property->bathrooms_number}}</h5>
                 <h5>Metri Quadrati: {{$property->square_meters}}</h5>
-
-                @if(!$result->isEmpty())
-                {{-- // $result is not empty --}}
-           @else
-            
         
                 <h5>Extra:</h5>
                     @foreach ($property->extras as $extra)
                         <p>{{$extra->name}}</p>
                     @endforeach
-                @endif
+               
             </div>      
         </div>
 

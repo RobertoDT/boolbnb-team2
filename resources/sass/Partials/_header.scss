@@ -1,11 +1,13 @@
 header {
-    height: 200px;
+    position:relative;
 
     #app {
-        height: 100%;
+        height: 100px;
+        position:absolute;
+        width: 100%;
 
         nav {
-            height: 150px;
+            height: 100px;
         }
     
     img {
@@ -26,3 +28,5 @@ header {
     }
 }
 }
+
+

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $(".all_properties").mouseleave(function() {
-      $(".transition").css("transform-scale", "-1.5, -1.5").css("transition", ".5s");
+  $(window).scroll(function() {
+      $("#app").css("position", "fixed").css("z-index", "2")//.css("background-color", "white");
   })
 });

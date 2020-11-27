@@ -3,7 +3,30 @@
     margin: 0;
     padding: 0;
 }
+a:hover {
+    text-decoration: none;
+    color: $purple;
+}
+
 body {
     position:relative;
     font-family: 'Ubuntu', sans-serif;
 }
+.p_left_35 {
+    padding-left: 35px;
+}
+.p_top_30 {
+    padding-top: 30px;;
+}
+.text_center {
+    text-align:center;
+}
+.text_left {
+    text-align: left;
+}
+.text_right {
+    text-align: right;
+}
+.white {
+    color: $white;
+  }
