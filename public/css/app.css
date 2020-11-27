@@ -10934,36 +10934,54 @@ body {
   font-family: "Ubuntu", sans-serif;
 }
 
-.container {
-  padding: 50px;
+.wrapper .property-details .extra,
+.wrapper .property-details .features,
+.wrapper .property-details .description {
+  padding: 10px;
+  width: calc(100% / 3);
+  display: flex;
+  justify-content: center;
 }
 
-.container .premium_name {
+@media screen and (max-width: 768px) {
+  .wrapper .property-details .description {
+    width: 100%;
+    display: block;
+  }
+
+  .wrapper .property-details .features,
+  .wrapper .property-details .extra {
+    width: calc(100% /2);
+    flex-wrap: wrap;
+  }
+}
+
+.premium_name {
   padding-bottom: 20px;
   background: -webkit-linear-gradient(#dc18db, #15cff1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.container ul {
+ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
 }
 
-.container ul li {
+ul li {
   width: calc((100% / 3) - 10px);
   margin: 5px;
   position: relative;
 }
 
-.container ul li .img-responsive {
+ul li .img-responsive {
   height: 300px;
   width: 100%;
   overflow: hidden;
 }
 
-.container ul li .img-responsive img {
+ul li .img-responsive img {
   width: 100%;
   height: 300px;
   -o-object-fit: cover;
@@ -10971,7 +10989,7 @@ body {
   transition: 0.5s ease-in-out;
 }
 
-.container ul li .overlay {
+ul li .overlay {
   background-color: rgba(74, 102, 128, 0.4);
   width: 100%;
   height: 100%;
@@ -10982,7 +11000,7 @@ body {
   display: none;
 }
 
-.container ul li .overlay .small-container {
+ul li .overlay .small-container {
   height: 90%;
   display: flex;
   margin: auto;
@@ -10991,19 +11009,26 @@ body {
   justify-content: center;
 }
 
-.container ul li .overlay .small-container a {
+ul li .overlay .small-container a {
   color: #fff;
   text-decoration: none;
   width: 90%;
   font-weight: bold;
 }
 
-.container ul li:hover .overlay {
+ul .all_properties:hover .overlay {
   display: block;
 }
 
-.container ul li:hover img {
+ul .all_properties:hover img {
   transform: scale(1.5, 1.5);
+}
+
+.modifing_link {
+  text-decoration: none;
+  background-color: #dc18db;
+  color: #fff;
+  margin: 3px;
 }
 
 @media screen and (max-width: 768px) {
@@ -11020,41 +11045,49 @@ body {
 }
 
 .wrapper .property-details {
-  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #e0e8ff;
 }
 
-.wrapper .property-details .img-container {
-  padding-top: 40px;
-  height: 500px;
+.wrapper .property-details .title-wrapper {
+  text-align: center;
+  height: 100%;
+  padding-bottom: 80px;
+}
+
+.wrapper .property-details .title-wrapper h1 {
+  padding: 20px 0 20px 0;
+}
+
+.wrapper .property-details .title-wrapper .img-container {
+  max-height: 450px;
   width: 100%;
   overflow: hidden;
+  padding-top: 30px;
 }
 
-.wrapper .property-details .img-container .img-show {
+.wrapper .property-details .title-wrapper .img-container .img-show {
   width: 80%;
-  height: 400px;
+  max-height: 450px;
   -o-object-fit: cover;
      object-fit: cover;
   margin: auto;
   display: block;
+  padding-bottom: 10px;
 }
 
-.wrapper .map-container {
-  width: 50%;
-  float: left;
-}
-
-.wrapper .map-container img {
-  width: 400px;
-  height: 400px;
-  margin: auto;
-  display: block;
+.wrapper .modal-content {
+  background-color: #a7bcff;
 }
 
 .wrapper .form-container {
-  width: 50%;
-  padding: 20px;
-  float: right;
+  background-color: #ced8fa;
+}
+
+.wrapper .form-container label {
+  text-align: left;
+  display: block;
 }
 
 .wrapper .form-container input[type=text],
@@ -11069,22 +11102,45 @@ body {
   resize: vertical;
 }
 
-.wrapper .form-container input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.wrapper .description {
+  text-align: justify;
 }
 
-.wrapper .form-container input[type=submit]:hover {
-  background-color: #45a049;
+.wrapper .features h6 {
+  margin-bottom: 1rem;
+}
+
+.wrapper .map-container {
+  padding: 40px 0 60px 0;
+}
+
+.wrapper .map-container h4 {
+  text-decoration: underline;
+}
+
+.wrapper .map-container .map {
+  width: 100%;
+  height: 400px;
+  background-color: lightblue;
+  margin: auto;
+  display: block;
 }
 
 @media screen and (max-width: 768px) {
-  .map-container {
-    background-color: red;
+  .wrapper .title-wrapper h1 {
+    font-size: 25px;
+  }
+
+  .wrapper .map-container {
+    padding: 20px 0 30px 0;
+  }
+
+  .wrapper .map-container h2 {
+    font-size: 20px;
+  }
+
+  .wrapper .map-container h4 {
+    font-size: 17px;
   }
 }
 
