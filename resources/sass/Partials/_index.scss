@@ -1,12 +1,12 @@
-.container {
-    padding: 50px;
 
-    .premium_name {
-        padding-bottom: 20px;
-        background: -webkit-linear-gradient(#dc18db, #15cff1);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+// index guest e admin
+
+.premium_name {
+    padding-bottom: 20px;
+    background: -webkit-linear-gradient(#dc18db, #15cff1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 ul {
     list-style: none;
@@ -22,11 +22,12 @@ ul {
                 height: 300px;
                 width: 100%;
                 overflow: hidden;
-
+                
                 img {
                     width: 100%;
                     height: 300px;
                     object-fit: cover;
+                    transition: .5s ease-in-out;
                 }
             }
 
@@ -59,15 +60,23 @@ ul {
                 }
             }
         }
-        li:hover .overlay {
+        .all_properties:hover .overlay {
             display: block;
         }
-        li:hover img {
+        .all_properties:hover img {
             transform: scale(1.5, 1.5);
-            transition: .5s;
         }
     }
+
+// Links/buttons index.admin
+.modifing_link {
+    text-decoration: none;
+    background-color: #dc18db; //linear-gradient(to bottom right, #dc18db, #15cff1);
+    color: #fff;
+    margin: 3px;
+    // padding: 3px;
 }
+
 
 @media screen and (max-width: 768px) {
     header {

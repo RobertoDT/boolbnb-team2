@@ -37274,6 +37274,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ././partials/search.js */ "./resources/js/partials/search.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37318,6 +37320,37 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/partials/search.js":
+/*!*****************************************!*\
+  !*** ./resources/js/partials/search.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $("#submit").click(function () {
+    var input = $("#search").val();
+
+    if (input.length != 0) {
+      $.ajax({
+        "url": "https://api.tomtom.com/search/2/geometryFilter.json?key=HzXIu06Pe6tarmbzDYGjNPs5aLa7AlS0",
+        "method": "GET",
+        "data": {
+          "language": "en-US"
+        },
+        "success": function success(data) {
+          console.log(data);
+        },
+        "error": function error(err) {
+          alert("Errore");
+        }
+      });
+    }
+  });
+});
 
 /***/ }),
 
