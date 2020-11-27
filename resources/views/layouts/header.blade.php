@@ -10,8 +10,8 @@
 
             <div class="start_search">
               <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 input_search" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2 input_search" type="search" placeholder="Search" aria-label="Search" id="search">
+                <button class="btn btn-dark my-2 my-sm-0" type="submit" id="submit">Search</button>
               </form>
             </div>
 
