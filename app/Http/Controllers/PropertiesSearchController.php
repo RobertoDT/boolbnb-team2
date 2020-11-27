@@ -22,7 +22,6 @@ class PropertiesSearchController extends Controller
     {
       return view("guest.search");
 
-
     }
 
 }
