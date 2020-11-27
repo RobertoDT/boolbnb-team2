@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.search')
 
 @section('title')
     BoolBnB
@@ -6,5 +6,4 @@
 
 @section('mainContent')
 
-<script src="{{asset('js/app.js')}}"></script>
 @endsection
