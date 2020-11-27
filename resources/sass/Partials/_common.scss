@@ -7,3 +7,32 @@ body {
     position:relative;
     font-family: 'Ubuntu', sans-serif;
 }
+
+.wrapper{
+    .property-details{
+        .extra, .features, .description{
+            padding: 10px;
+            width: calc(100% / 3);
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+@media screen and (max-width: 768px)
+    {
+
+        .wrapper{
+            .property-details{
+                .description{
+                    width: 100%;
+                    display: block;  
+                }
+                .features, .extra{
+                    width: calc(100% /2);
+                    flex-wrap: wrap;
+                }
+            }
+        }
+    }
+    
