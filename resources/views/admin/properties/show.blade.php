@@ -22,12 +22,12 @@
             <h5>Metri Quadrati:</h5>
                 <p>{{$property->square_meters}}</p>
 
-                <div class="img-container">  
+                <div class="img-container">
                     <h2>Immagine di copertina:</h2>
                         <img class="img-show" src="{{$property->flat_image}}" alt="">
-                </div> 
+                </div>
                 {{-- <h4>{{$property->address}}</h4> --}}
-            </div>      
+            </div>
         </div>
 
         <div class="map-border">
@@ -44,11 +44,11 @@
 
     <div class="sponsor">
         <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Sponsorizza il tuo Appartemento</button>
-      
+
         <div id="id01" class="w3-modal">
           <div class="w3-modal-content w3-animate-top w3-card-4">
-            <header class="w3-container w3-teal"> 
-              <span onclick="document.getElementById('id01').style.display='none'" 
+            <header class="w3-container w3-teal">
+              <span onclick="document.getElementById('id01').style.display='none'"
               class="w3-button w3-display-topright">&times;</span>
               <h2>Scegli il tipo di sponsorizzazione</h2>
             </header>
@@ -75,12 +75,20 @@
   <form class="" action="{{route("admin.properties.destroy", $property)}}" method="POST">
     @csrf
     @method("DELETE")
+<<<<<<< Updated upstream
 
     <button type="submit" class="btn btn-danger">ELIMINA PROPRIETA'</button>
   </form>
   <!-- /form di eliminazione proprietà --> --}}
-    
+
 </section>
 @endsection
+=======
+>>>>>>> Stashed changes
 
+    <button type="submit" class="btn btn-danger">ELIMINA PROPRIETA'</button>
+  </form>
+  <!-- /form di eliminazione proprietà -->
 
+</section>
+@endsection
