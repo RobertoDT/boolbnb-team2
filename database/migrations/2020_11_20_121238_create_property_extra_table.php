@@ -14,8 +14,8 @@ class CreatePropertyExtraTable extends Migration
     public function up()
     {
         Schema::create('property_extra', function (Blueprint $table) {
-          $table->foreignId('property_id')->constrained();
-          $table->foreignId('extra_id')->constrained();
+          $table->foreignId('property_id')->constrained()->on('properties')->onDelete('cascade');
+          $table->foreignId('extra_id')->constrained()->on('extras')->onDelete('cascade');
         });
     }
 
