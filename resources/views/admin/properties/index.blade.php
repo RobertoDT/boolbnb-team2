@@ -2,6 +2,19 @@
 @extends('layouts.main')
 
 @section('mainContent')
+<div class="container">
+  <!-- bottone per creare annuncio appartamento -->
+  <a href="{{route("admin.properties.create")}}"><button type="button" class="btn btn-primary">CREA ANNUNCIO</button></a>
+  <!-- /bottone per creare annuncio appartamento -->
+
+  @foreach ($properties as $property)
+
+  <a href="{{route("admin.properties.show", $property)}}"><button type="button" class="btn btn-primary">VISUALIZZA PROPRIETA'</button></a>
+  <a href="{{route("admin.properties.edit", $property)}}"><button type="button" class="btn btn-primary">MODIFICA PROPRIETA'</button></a>
+
+  @endforeach
+
+
 
 
 <div class="container">
@@ -44,7 +57,7 @@
                 <form class="" action="{{route("admin.properties.destroy", $property)}}" method="POST">
                     @csrf
                     @method("DELETE")
-                    
+
                     <button type="submit" class="btn modifing_link">Delete House</button>
                 </form>
                 <!-- /form di eliminazione proprietà -->
