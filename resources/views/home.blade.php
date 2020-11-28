@@ -5,7 +5,7 @@
 @section('mainContent')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 home_admin">
+        <div class="col-md-8 p_t_b_50">
             <div class="card text-center">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 

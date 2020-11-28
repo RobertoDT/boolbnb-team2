@@ -38,7 +38,7 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown width_100">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->firstname }} {{Auth::user()->lastname}}
                             </a>
@@ -62,9 +62,9 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    {{-- <main class="py-4">
         @yield('content')
     </main>
-</div>
+</div> --}}
 
 </header>

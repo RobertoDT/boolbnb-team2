@@ -6,7 +6,7 @@
 @section('mainContent')
 
 <div class="container">
-    <div class="row">
+    <div class="row p_t_b_50">
         <div class="container">
             @if (session()->has('success'))
             <div class="alert alert-success">
