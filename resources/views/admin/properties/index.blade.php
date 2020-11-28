@@ -1,8 +1,9 @@
 <!-- pagina principale -->
 @extends('layouts.main')
 
-@section('mainContent')
+@include('layouts.header-general')
 
+@section('mainContent')
 
 <div class="container">
     <div class="row">
@@ -22,8 +23,8 @@
         @endif
 
          <!-- bottone per creare annuncio appartamento -->
-            <a class="btn modifing_link" href="{{route("admin.properties.create")}}">Crea annuncio</a>
-        <!-- /bottone per creare annuncio appartamento -->
+            <a class="btn modifing_link" href="{{route("admin.properties.create")}}">Aggiungi appartamento</a>
+         <!-- /bottone per creare annuncio appartamento -->
 
         <h1>I miei appartamenti</h1>
         <ul class="flat_list">

@@ -24,12 +24,23 @@ footer {
 
 @media screen and (max-width:768px) {
   footer {
-
     .footer_details {
       padding: 10px;
     }
     .text_right, .text_left {
       text-align: center;
     }
+
+  }
+}
+
+@media screen and (max-width:576px) {
+  .who {
+    width:70%;
+    margin:auto;
+  }
+  .where {
+    width: 30%;
+    margin:auto;
   }
 }

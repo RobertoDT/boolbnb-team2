@@ -13,7 +13,7 @@
       </div>
       <!-- Grid row-->
       <div class="row d-flex text-center justify-content-between mb-md-0 mb-4 align_footer p_top_30">
-        <div class="col-md-4 col-sm-4 col-xs-12 mt-md-0 mt-3 text_left footer_details">
+        <div class="who col-md-4 col-sm-4 col-xs-12 mt-md-0 mt-3 text_left footer_details">
             <!-- Content -->
             <h5 class="text-uppercase font-weight-bold">CHI SIAMO</h5>
             <p>Con milioni di alloggi e decine di migliaia di attività uniche, tutto proposto da host del luogo, BoolBnb mette in contatto persone provenienti da tutto il mondo.</p>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <!-- Grid column -->
-        <div class="col-md-4 col-sm-4 col-xs-12 mt-md-0 mt-3 text_right">
+        <div class="where col-md-4 col-sm-4 col-xs-12 mt-md-0 mt-3 text_right">
             <!-- Content -->
             <h5 class="text-uppercase font-weight-bold">DOVE SIAMO</h5>            
             <p>

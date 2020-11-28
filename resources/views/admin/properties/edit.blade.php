@@ -1,6 +1,8 @@
 <!-- form di modifica di una proprietà -->
 @extends("layouts.main")
 
+@include('layouts.header-general')
+
 @section("mainContent")
 <div class="container">
   <h1>Modifica il tuo annuncio</h1>

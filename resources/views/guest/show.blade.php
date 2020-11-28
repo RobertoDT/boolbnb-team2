@@ -4,6 +4,8 @@
     Property Details
 @endsection
 
+@include('layouts.header-general')
+
 @section('mainContent')
 <section class="detail">
     <div class="wrapper">

@@ -4,6 +4,8 @@
     BoolBnB
 @endsection
 
+@include('layouts.header-index')
+
 @section('mainContent')
 <div class="hero">
 

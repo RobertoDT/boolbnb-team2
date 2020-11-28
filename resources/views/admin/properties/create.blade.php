@@ -1,6 +1,8 @@
 <!-- form di creazione nuova proprietà -->
 @extends("layouts.main")
 
+@include('layouts.header-general')
+
 @section("mainContent")
 <div class="container">
   <h1>Crea un nuovo annuncio</h1>

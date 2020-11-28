@@ -1,8 +1,8 @@
-<header>
-  <div id="app">
+<header class="height_header_general">
+  <div id="app" class="scroll">
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
-          <div class="logo-img">
+          <div class="logo_img">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{asset('img/cover.png')}}" alt="Logo Boolbnb">
             </a>
@@ -44,6 +44,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti<i class="fas fa-home"></i></a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

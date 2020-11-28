@@ -2,10 +2,21 @@ header {
     position:relative;
 
     #app {
-        height: 100px;
-        position:absolute;
-        width: 100%;
+    height: 100px;
+    } 
 
+    .fixed_search {
+    position:fixed;
+    width: 100%;
+    }
+
+    .scroll {
+    position:fixed;
+    z-index: 2;
+    background-color: #fff;
+    width:100%;
+    }
+    
         nav {
             height: 100px;
         }
@@ -19,14 +30,25 @@ header {
         text-align: center;
     }
 
-            // .input_search {
-            //     width: 500px;
-            // }
-  
     .navbar-collapse {
         flex-grow: 0;
     }
 }
+
+.height_header_general {
+    height:100px;
+}
+
+@media screen and(max-width:576px) {
+    header {
+        .logo_img {
+            display:none;
+        }
+
+        .form-control {
+            width: auto;
+        }
+    }
 }
 
 
