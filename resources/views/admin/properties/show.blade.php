@@ -1,8 +1,11 @@
 @extends('layouts.main')
 
+
 @section('title')
     Property Details Edit
 @endsection
+
+@include('layouts.header-general')
 
 @section('mainContent')
 <section class="detail">
