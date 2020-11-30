@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 //importo il Model
 use App\Property;
-
+use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
 {
@@ -20,7 +20,8 @@ class PropertyController extends Controller
     public function show($id)
     {
       $property = Property::find($id);
-      return view("guest.show", compact("property"));
+      $email = Auth::user()->email;
+      return view("guest.show", compact("property", "email"));
     }
 
 }
