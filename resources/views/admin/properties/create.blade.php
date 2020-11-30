@@ -79,9 +79,12 @@
       <h3>Servizi extra disponibili</h3>
       <ul>
         @foreach($extras as $extra)
+        @php
+          $extra_id = $extra->id;
+        @endphp
         <li>
           <label for="{{$extra->id}}"> {{$extra->name}}</label>
-          <input type="checkbox" name="extras[]" id="{{$extra->id}}" value="{{$extra->id}}" {{old("wi-fi") == 1 ? "checked" : ""}}>
+          <input type="checkbox" name="extras[]" id="{{$extra->id}}" value="{{$extra->id}}" {{ (is_array(old('extras')) and in_array($extra_id, old('extras'))) ? ' checked' : '' }}>
         </li>
         @endforeach
       </ul>

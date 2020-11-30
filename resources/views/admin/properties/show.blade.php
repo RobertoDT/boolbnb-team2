@@ -109,4 +109,9 @@
 
 </section>
 @endsection
+=======
+>>>>>>> Stashed changes
 
+    <button type="submit" class="btn btn-danger">ELIMINA PROPRIETA'</button>
+  </form>
+  <!-- /form di eliminazione proprietà -->

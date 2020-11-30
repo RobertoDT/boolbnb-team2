@@ -77,30 +77,28 @@
     <div class="form-group width_40">
       <label class="form-check-label" for="active">Servizi extra disponibili</label>
       <ul>
-        <li>
-          <span>wi-fi</span>
-          <input type="checkbox" name="extra[]" id="wi-fi" value="1" {{old("wi-fi") == 1 ? "checked" : ""}}>
-        </li>
-        <li>
-          <span>parking</span>
-          <input type="checkbox" name="extra[]" id="parking" value="1" {{old("parking") == 1 ? "checked" : ""}}>
-        </li>
-        <li>
-          <span>pool</span>
-          <input type="checkbox" name="extra[]" id="pool" value="1" {{old("pool") == 1 ? "checked" : ""}}>
-        </li>
-        <li>
-          <span>reception</span>
-          <input type="checkbox" name="extra[]" id="reception" value="1" {{old("reception") == 1 ? "checked" : ""}}>
-        </li>
-        <li>
-          <span>sauna</span>
-          <input type="checkbox" name="extra[]" id="sauna" value="1" {{old("sauna") == 1 ? "checked" : ""}}>
-        </li>
-        <li>
-          <span>sea view</span>
-          <input type="checkbox" name="extra[]" id="sea-view" value="1" {{old("sea-view") == 1 ? "checked" : ""}}>
-        </li>
+        @php
+        $array_extras = [];
+        foreach($property->extras as $property_extra){
+          $property_extra_id = $property_extra->id;
+          $array_extras[] = $property_extra_id;
+        }
+        @endphp
+
+        @foreach($extras as $extra)
+
+          @php
+            $extra_id = $extra->id;
+          @endphp
+          <li>
+            <label class="form-check-label" for="{{$extra->id}}"> {{$extra->name}}</label>
+            @if(is_array(old("extras")))
+            <input type="checkbox" name="extras[]" id="{{$extra->id}}" value="{{$extra->id}}" {{ in_array($extra_id, old('extras')) ? ' checked' : '' }}>
+            @else
+            <input type="checkbox" name="extras[]" id="{{$extra->id}}" value="{{$extra->id}}" {{ (is_array($array_extras) && in_array($extra_id, $array_extras)) ? 'checked' : '' }}>
+            @endif
+          </li>
+        @endforeach
       </ul>
     </div>
     <!-- /lista di servizi extra -->
