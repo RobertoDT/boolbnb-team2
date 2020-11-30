@@ -29,7 +29,7 @@ class PropertiesTableSeeder extends Seeder
 
         $mq = $faker->numberBetween(30, 500);
         if($mq <= 100){
-          $newProperty->flat_image = "https://source.unsplash.com/random?apartment=".$user->id;
+          $newProperty->flat_image = "https://source.unsplash.com/random/1024x600?apartment-interiors=".$user->id;
           $newProperty->rooms_number = $faker->numberBetween(1, 4);
           if($newProperty->rooms_number <= 2){
             $newProperty->bathrooms_number = 1;
@@ -38,7 +38,7 @@ class PropertiesTableSeeder extends Seeder
           }
           $newProperty->beds_number = $faker->numberBetween(1, 4);
         } elseif($mq > 100 && $mq <= 250){
-          $newProperty->flat_image = "https://source.unsplash.com/random?house=".$user->id;
+          $newProperty->flat_image = "https://source.unsplash.com/random/1024x600?little-house=".$user->id;
           $newProperty->rooms_number = $faker->numberBetween(3, 6);
           if($newProperty->rooms_number <= 3){
             $newProperty->bathrooms_number = 1;
@@ -48,7 +48,7 @@ class PropertiesTableSeeder extends Seeder
             $newProperty->beds_number = $faker->numberBetween(4, 8);
           }
         } else {
-          $newProperty->flat_image = "https://source.unsplash.com/random?villa=".$user->id;
+          $newProperty->flat_image = "https://source.unsplash.com/random/1024x600?villa=".$user->id;
           $newProperty->rooms_number = $faker->numberBetween(6, 12);
           if($newProperty->rooms_number <= 7){
             $newProperty->beds_number = $faker->numberBetween(6, 10);
@@ -59,15 +59,61 @@ class PropertiesTableSeeder extends Seeder
           }
         }
 
+        // partendo da un array con le principali citta calcolo ne pesco una casualmente e creo delle cordinate vicine
+        $cities = [
+          // milano
+          [
+              'lat' => 45.46362,
+              'lon' => 9.18812
+          ],
+          // venezia
+          [
+              'lat' => 45.43461,
+              'lon' => 12.33891
+          ],
+          // firenze
+          [
+              'lat' => 43.7687,
+              'lon' => 11.25693
+          ],
+          // roma
+          [
+              'lat' => 41.89056,
+              'lon' => 12.49427
+          ],
+          // costa smeralda
+          [
+              'lat' => 40.7229,
+              'lon' => 9.68709
+          ],
+          // gallipoli
+          [
+              'lat' => 40.05618,
+              'lon' => 17.97882
+          ],
+        ];
+
+        // scelgo una citta casuale
+        $city = $cities[mt_rand(0,count($cities)-1)];
+        // discosto in maniera random il valore in modo da creare un punto vicino la città
+        $rand_numb = round((1 / (mt_rand(1,10000))),5);
+        $rand_value  = mt_rand(0,1) == 1 ? 1 : -1;
+        $lat = $city['lat'] + ($rand_value * $rand_numb);
+        $lon = $city['lon'] + ($rand_value * $rand_numb);
+        // salvo le cordinate a database
+        $newProperty->latitude = $lat;
+        $newProperty->longitude = $lon;
+        // faker cordinates
+        // $newProperty->latitude = $faker->latitude(-90, 90);
+        // $newProperty->longitude = $faker->longitude(-180, 180);
+
         $newProperty->square_meters = $mq;
-        $newProperty->latitude = $faker->randomFloat(6, -90, 90);
-        $newProperty->longitude = $faker->randomFloat(6, -180, 180);
         $newProperty->active = rand(0, 2) == 0 ? 0 : 1;
         $time = new DateTime('now');
         $newtime = $time->modify('-1 year')->format('Y-m-d H:i');
         $newProperty->created_at = $newtime;
         $newProperty->updated_at = $newtime;
-        
+
 
         $newProperty->save();
       }

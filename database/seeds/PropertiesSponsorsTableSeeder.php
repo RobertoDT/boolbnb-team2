@@ -28,14 +28,17 @@ class PropertiesSponsorsTableSeeder extends Seeder
       // contatore
       $i = 0;
 
-      // genero un ciclo while per ogni qty di sponsor 
-      // finche non inserisco a db un dato che non si interseca 
+      // genero un ciclo while per ogni qty di sponsor
+      // finche non inserisco a db un dato che non si interseca
       // con nessuno dei created e end_sponsor della proprieta in questione
       while ($i <= $sponsor_qty) {
         // genero una data faker per lo sponsor
         $new_sponsor_dt = $faker->dateTimeBetween("-1 year", "now");
         // $new_sponsor_dt = '2020-10-15 20:55';
-        
+
+        // salvo la nuova data in formato carbon
+        $new_dt_carbon = Carbon::parse($new_sponsor_dt);
+
         // salvo una variabile interruttore
         $isDouble = false;
         // controllo se esistono valori a db
@@ -45,16 +48,15 @@ class PropertiesSponsorsTableSeeder extends Seeder
             // prendo i valori esistenti di inizio e di fine di ogni sponsor
             $created_at = $sponsor->pivot->created_at;
             $end_sponsor = $sponsor->pivot->end_sponsor;
-            // salvo la nuova data in formato carbon
-            $new_dt_carbon = Carbon::parse($new_sponsor_dt);
+
             // confronto i valori con la funzione between di Carbon
             $inArray = $new_dt_carbon->between($created_at, $end_sponsor);
             if ($inArray) {
               $isDouble = true;
-            }            
+            }
           }
         }
-        
+
         // controllo se isDouble è stato attivato in caso contrario vado a salvare il valore a db
         if ($isDouble == false) {
           // scelgo random uno sponsor (24,72,144);
@@ -72,4 +74,3 @@ class PropertiesSponsorsTableSeeder extends Seeder
     }
   }
 }
-
