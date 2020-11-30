@@ -107,7 +107,7 @@
     <div class="form-group">
       <label class="form-check-label" for="active">Rendi visibile l'appartamento adesso</label>
       @php
-        $checked = old("active") !== null ? old("active") : 0;
+        $checked = old("active") !== null ? old("active") : $property->active;
       @endphp
       <input type="checkbox" name="active" placeholder="active" id="active" value="1" {{$checked == 1 ? "checked" : ""}}>
     </div>

@@ -18,7 +18,7 @@
                 <div class="title-wrapper"> 
                   <h1>Il tuo appartamento "{{$property->title}}"</h1>
                     <div class="img-container"> 
-                        <img class="img-show" src="{{$property->flat_image}}" alt="Logo immagine">
+                        <img class="img-show" src="{{asset('storage/'.$property->flat_image)}}" alt="Logo immagine">
                     </div>
                     
                     
