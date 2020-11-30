@@ -147,16 +147,17 @@ class PropertyController extends Controller
         //vado a prendere quella proprietà da modificare tramite id
         $property = Property::find($id);
 
+        //cancelliamo path immagine precedente
+        $path = Storage::disk("public")->delete("images", $data["flat_image"]);
+
         //modifico i dati
         $property->title = $data["title"];
         $property->description = $data["description"];
         $property->rooms_number = $data["rooms_number"];
         $property->beds_number = $data["beds_number"];
         $property->bathrooms_number = $data["bathrooms_number"];
-        if(isset($path)){
-          $path = Storage::disk("public")->put("images", $data["flat_image"]);
-          $property->flat_image = $path;
-        }
+        $path = Storage::disk("public")->put("images", $data["flat_image"]);
+        $property->flat_image = $path;
         $property->square_meters = $data["square_meters"];
         $property->latitude = $data["latitude"];
         $property->longitude = $data["longitude"];
@@ -165,9 +166,11 @@ class PropertyController extends Controller
         } else {
           $property->active = 0;
         }
+        // dd($request->flat_image);
 
         //faccio l'update dei Dati
         $property->update();
+
 
         if(isset($data["extras"])){
           $property->extras()->sync($data["extras"]);

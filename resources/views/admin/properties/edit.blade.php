@@ -119,7 +119,7 @@
     </form>
     
     {{-- Link per tornare all'admin.index --}}
-    <a class="btn modifing_link" href="{{route("admin.properties.index")}}">Indietro</a>
+    <a class="btn modifing_link" href="{{route("admin.properties.show", $property)}}">Indietro</a>
     {{-- /Link per tornare all'admin.index --}}
 
     <!-- form di eliminazione proprietà -->

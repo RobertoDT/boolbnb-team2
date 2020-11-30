@@ -10949,8 +10949,20 @@ header .navbar-collapse {
   }
 }
 
+@media screen and (max-width: 360px) {
+  header .logo_img {
+    display: block;
+    width: 100%;
+    margin: auto;
+  }
+
+  header .form-control {
+    width: auto;
+  }
+}
+
 footer {
-  background-color: #40a6ec;
+  background-color: #483d8b;
   color: #fff;
 }
 
@@ -11082,6 +11094,10 @@ body {
   width: 100%;
 }
 
+.height_100 {
+  height: 100px;
+}
+
 .premium_name {
   padding-bottom: 20px;
   background: -webkit-linear-gradient(#dc18db, #15cff1);
@@ -11183,6 +11199,10 @@ ul .all_properties:hover img {
   }
 }
 
+.large-wrapper {
+  background-image: linear-gradient(#F8FAFC, #dad5da, #bbcdcf, #F8FAFC);
+}
+
 .wrapper {
   width: 80%;
   margin: auto;
@@ -11191,13 +11211,13 @@ ul .all_properties:hover img {
 .wrapper .property-details {
   display: flex;
   flex-wrap: wrap;
-  background-color: #e0e8ff;
 }
 
 .wrapper .property-details .title-wrapper {
   text-align: center;
   height: 100%;
   padding-bottom: 80px;
+  margin: auto;
 }
 
 .wrapper .property-details .title-wrapper h1 {
@@ -11207,6 +11227,7 @@ ul .all_properties:hover img {
 .wrapper .property-details .title-wrapper .img-container {
   max-height: 450px;
   width: 100%;
+  display: block;
   overflow: hidden;
   padding-top: 30px;
 }
@@ -11219,6 +11240,10 @@ ul .all_properties:hover img {
   margin: auto;
   display: block;
   padding-bottom: 10px;
+}
+
+.wrapper .property-details .title-wrapper .btn-primary {
+  border: none;
 }
 
 .wrapper .modal-content {
@@ -11254,15 +11279,15 @@ ul .all_properties:hover img {
   margin-bottom: 1rem;
 }
 
-.wrapper .map-container {
+.map-container {
   padding: 40px 0 60px 0;
 }
 
-.wrapper .map-container h4 {
+.map-container h4 {
   text-decoration: underline;
 }
 
-.wrapper .map-container .map {
+.map-container .map {
   width: 100%;
   height: 400px;
   background-color: lightblue;
@@ -11271,21 +11296,46 @@ ul .all_properties:hover img {
 }
 
 @media screen and (max-width: 768px) {
-  .wrapper .title-wrapper h1 {
+  .title-wrapper h1 {
     font-size: 25px;
   }
 
-  .wrapper .map-container {
+  .map-container {
     padding: 20px 0 30px 0;
   }
 
-  .wrapper .map-container h2 {
+  .map-container h2 {
     font-size: 20px;
   }
 
-  .wrapper .map-container h4 {
+  .map-container h4 {
     font-size: 17px;
   }
+}
+
+.background-wrapper {
+  background-image: linear-gradient(to right, white, #5db6b9, #d19fd1, #5db6b9, white);
+}
+
+.wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.wrapper .property-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper .property-details .buttons {
+  border: 2px solid white;
+  width: 50%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.wrapper .property-details .buttons .btn-primary {
+  border: none;
 }
 
 .img_form {
