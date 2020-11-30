@@ -1,16 +1,19 @@
-.wrapper{
+.large-wrapper{
+    background-image: linear-gradient(#F8FAFC, #dad5da, #bbcdcf, #F8FAFC);
+}
+    .wrapper{
     width: 80%;
     margin: auto;
     
         .property-details{
             display: flex;
             flex-wrap: wrap;
-            background-color: rgb(224, 232, 255);
-
+            
             .title-wrapper{
                 text-align: center;
                 height: 100%;
                 padding-bottom: 80px;
+                margin: auto;
 
                 h1{
                    padding: 20px 0 20px 0; 
@@ -30,6 +33,10 @@
                         display: block;
                         padding-bottom: 10px;
                     }
+                }
+
+                .btn-primary{
+                    border: none;
                 }
             }
         }
@@ -62,6 +69,8 @@
             margin-bottom: 1rem;
         }
 
+    }  
+
         .map-container{
             padding: 40px 0 60px 0;
             h4{
@@ -75,7 +84,6 @@
                 display: block;
             }
         }
-    
         
     @media screen and (max-width: 768px)
     {
@@ -96,4 +104,3 @@
     }
     
    
-}
