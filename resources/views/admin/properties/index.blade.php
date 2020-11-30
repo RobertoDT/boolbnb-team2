@@ -26,6 +26,10 @@
             <a class="btn modifing_link" href="{{route("admin.properties.create")}}">Aggiungi appartamento</a>
          <!-- /bottone per creare annuncio appartamento -->
 
+         <!-- bottone per creare annuncio appartamento -->
+         <a class="btn modifing_link" //href="{{route("admin.properties.create")}}">Visualizza statistiche</a>
+         <!-- /bottone per creare annuncio appartamento -->
+
         <h1>I miei appartamenti</h1>
         <ul class="flat_list">
             {{-- Stampa della lista degli appartamenti --}}

@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
-@section('content')
+@include('layouts.header-general')
+
+@section('mainContent')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
