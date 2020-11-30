@@ -11083,20 +11083,6 @@ body {
 }
 
 .premium_name {
-@media screen and (max-width: 768px) {
-  .wrapper .property-details .description {
-    width: 100%;
-    display: block;
-  }
-
-  .wrapper .property-details .features,
-  .wrapper .property-details .extra {
-    width: calc(100% /2);
-    flex-wrap: wrap;
-  }
-}
-
-.premium_name {
   padding-bottom: 20px;
   background: -webkit-linear-gradient(#dc18db, #15cff1);
   -webkit-background-clip: text;
@@ -11108,7 +11094,6 @@ h1 {
   padding: 30px;
 }
 
-ul {
 ul {
   list-style: none;
   display: flex;
@@ -11183,18 +11168,11 @@ ul .all_properties:hover img {
 }
 
 .hero {
-  height: 400px;
+  height: 600px;
   background-image: url("/img/hero.jfif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.modifing_link {
-  text-decoration: none;
-  background-color: #dc18db;
-  color: #fff;
-  margin: 3px;
 }
 
 @media screen and (max-width: 768px) {
