@@ -1,85 +1,111 @@
 @extends('layouts.main')
 
 @section('title')
-    Property Details Edit
+    Admin Property Details
 @endsection
+
+@include('layouts.header-general')
 
 @section('mainContent')
 <section class="detail">
+    <div class="background-wrapper">
+        <div class="wrapper">
 
-    <div class="wrapper">
+            {{-- DETTGLI STRUTTURA --}}
+            <div class="property-details">
 
-        <div class="property-details">
-            <h1>Il tuo appartamento "{{$property->title}}"</h1>
-            <h5>Descrizione:</h5>
-                <p>{{$property->description}}</p>
-            <h5>Locali:</h5>
-                <p>{{$property->rooms_number}}</p>
-            <h5>Letti:</h5>
-                <p>{{$property->beds_number}}</p>
-            <h5>Bagni:</h5>
-                <p>{{$property->bathrooms_number}}</p>
-            <h5>Metri Quadrati:</h5>
-                <p>{{$property->square_meters}}</p>
-
-                <div class="img-container">
-                    <h2>Immagine di copertina:</h2>
+                {{-- IMMAGINE COPERTINA E TITOLO --}}
+                <div class="title-wrapper"> 
+                  <h1>Il tuo appartamento "{{$property->title}}"</h1>
+                    <div class="img-container"> 
                         <img class="img-show" src="{{$property->flat_image}}" alt="">
+                    </div>
+                    
+                    
+                    <!-- BOTTONI -->
+                    <div class="buttons">
+                      <div class="card-body text_center">
+
+                        {{-- MODIFICA --}}
+                        <a class="btn modifing_link" href="{{route('admin.properties.edit', $property)}}" class="card-link">Modifica informazioni</a>
+                        {{-- MODIFICA --}}
+                        
+                        <!-- ELIMINA -->
+                        <form class="" action="{{route("admin.properties.destroy", $property)}}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            
+                            <button type="submit" class="btn modifing_link">Cancella la struttura</button>
+                        </form>
+                        <!-- /ELIMINA -->
+                        
+                        {{-- STATISTICHE --}}
+                        <a class="btn modifing_link" class="card-link">Statistiche della struttura</a>
+                        {{-- //STATISTICHE --}}
+
+                        {{-- SPONSOR --}}
+                        <a class="btn modifing_link" class="card-link">Sponsorizza la struttura</a>
+                        {{-- //SPONSOR --}}
+                        </div>
+                      </div>
+                    <!-- //BOTTONI -->
+                
                 </div>
-                {{-- <h4>{{$property->address}}</h4> --}}
+                {{-- //IMMAGINE COPERTINA E TITOLO --}}
+
+                {{-- DESCRIZIONE --}}
+                <div class="description">
+                    <div>
+                    <h6><i class="fas fa-door-open"></i> La tua descrizione: {{$property->description}}</h6>  
+                    </div>
+                </div>
+                {{-- //DESCRIZIONE --}}
+            
+                {{-- LOCALI --}}
+                <div class="features">
+                    <div>
+                        <h5>Le tue Caratteristiche</h5>
+                        <h6><i class="fas fa-home"></i> Locali: {{$property->rooms_number}}</h6>
+                        <h6><i class="fas fa-bed"></i> Letti: {{$property->beds_number}}</h6>
+                        <h6><i class="fas fa-shower"></i> Bagni: {{$property->bathrooms_number}}</h6>
+                        <h6><i class="fas fa-th"></i> Metri Quadri: {{$property->square_meters}}</h6>
+                    </div> 
+                </div>
+                {{-- //LOCALI --}}
+
+                {{-- EXTRA --}}
+                <div class="extra">
+                    <div>
+                        @if($property->extras->isEmpty())
+                        <p>Non hai inserito extra</p>
+                        @else
+                            <h5>I tuoi Extra</h5>
+                                @foreach ($property->extras as $extra)
+                                    <p><i class="far fa-star"></i> {{$extra->name}}</p>
+                                @endforeach
+                        @endif
+                    </div>
+                </div>
+                {{-- //EXTRA --}}    
+
             </div>
+            {{-- //DETTGLI STRUTTURA --}}
+
         </div>
+    </div> 
 
-        <div class="map-border">
-            <h2>Indirizzo e geolocalizzazione:</h2>
-                <h5>Viale Italia 78, 78000 Pistoia</h5>
-                <img src="{{asset('img/maps.png')}}" alt="maps">
-        </div>
-    </div>
-
-    <div class="buttons">
-        <button class="edit">Modifica Appartemento</button>
-        <button class="edit">Elimina Appartemento</button>
-    </div>
-
-    <div class="sponsor">
-        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Sponsorizza il tuo Appartemento</button>
-
-        <div id="id01" class="w3-modal">
-          <div class="w3-modal-content w3-animate-top w3-card-4">
-            <header class="w3-container w3-teal">
-              <span onclick="document.getElementById('id01').style.display='none'"
-              class="w3-button w3-display-topright">&times;</span>
-              <h2>Scegli il tipo di sponsorizzazione</h2>
-            </header>
-            <div class="w3-container">
-              <p>Gold</p>
-              <p>Silver</p>
-              <p>Platinum</p>
+        <div class="wrapper">
+            {{-- MAPPA --}}
+            <div class="map-container">
+                <h2>Indirizzo e geolocalizzazione</h2>
+                <h5><i class="fas fa-map-marker-alt"></i> Viale Italia 78, 78000 Pistoia <a class="btn modifing_link" href="{{route('admin.properties.edit', $property)}}" class="card-link">Modifica l'indirizzo</a> </h5>
+                
+                    <div class="map"></div>
+                    {{-- <h4>{{$property->address}}</h4> --}}
             </div>
-            <footer class="w3-container w3-teal">
-              <p>Inserisci i dati per il pagamento</p>
-            </footer>
-          </div>
+            {{-- MAPPA --}}
         </div>
-      </div>
-
-
-      {{-- <!-- bottone per tornare alla index dell'admin -->
-  <a href="{{route("admin.properties.index")}}">
-    <button type="button" class="btn btn-primary">VISUALIZZA LE PROPRIETA'</button>
-  </a>
-  <!-- /bottone per tornare alla index dell'admin -->
-
-  <!-- form di eliminazione proprietà -->
-  <form class="" action="{{route("admin.properties.destroy", $property)}}" method="POST">
-    @csrf
-    @method("DELETE")
-<<<<<<< Updated upstream
-
-    <button type="submit" class="btn btn-danger">ELIMINA PROPRIETA'</button>
-  </form>
-  <!-- /form di eliminazione proprietà --> --}}
+    
 
 </section>
 @endsection
@@ -89,6 +115,3 @@
     <button type="submit" class="btn btn-danger">ELIMINA PROPRIETA'</button>
   </form>
   <!-- /form di eliminazione proprietà -->
-
-</section>
-@endsection
