@@ -2,11 +2,45 @@ $( document ).ready(function() {
   // al click sul bottone search parte la chiamata ajax a TomTom per ricavare coordinate
   $("#search").click(function() {
     // salvo il valore della variabile in una input
-      var inputSearch = $("#search_input").val();
+      var inputSearch = $("#address").val();
+  
+      if(inputSearch.length > 1) {
+         getCoordinates(inputSearch);
+      }
       // console.log(inputSearch);
-      getCoordinates(inputSearch);
+      
   });
-
+  $("#address").keyup(
+    function(event) {
+      if(event.which == 13) {
+        var inputSearch = $("#address").val();
+  
+      if(inputSearch.length > 1) {
+         getCoordinates(inputSearch);
+      }
+    }
+  }
+);
+  // autocomplete
+  (function() {
+    var placesAutocomplete = places({
+      appId: 'plWXAPEAGDXR',
+      apiKey: '45954f563deec0d78ef4a69018cdb84f',
+      container: document.querySelector('#address')
+    });
+  
+    var $address = document.querySelector('#address-value')
+    placesAutocomplete.on('change', function(e) {
+      $address.textContent = e.suggestion.value
+    });
+  
+    placesAutocomplete.on('clear', function() {
+      $address.textContent = 'none';
+    });
+  
+  })();
+  // end autocomplete
+  
 });
 // end document ready
 
@@ -57,19 +91,19 @@ function getProperties(lat, lon){
 function createJsonTomTom(results, lat, lon) {
   // creo lo scheletro di un Json vuoto per poi andarlo a fillare in maniera che sia leggibile dall'Api del TomTom
   var inputJsonTomTom = {
-    "poiList": []
-    // "geometryList": []
+    "poiList": [],
+    "geometryList": []
   };
 
   // compilo l'oggetto contextGeo con le cordinate del raggio e nella geometryList del Json
-  // var contextGeo =
-  // {
-  //     "type": "CIRCLE",
-  //     "position": lat+" "+lon,
-  //     "radius": 20000
-  // };
+  var contextGeo =
+  {
+      "type": "CIRCLE",
+      "position": lat+" "+lon,
+      "radius": 20000
+  };
   // pusho contextGeo in array geometryList del Json
-  // inputJsonTomTom.geometryList.push(contextGeo);
+  inputJsonTomTom.geometryList.push(contextGeo);
 
   // ciclo i risultati apartment per apartment estrapolo i dati e li inserisco nella poiList del Json
   for (var i = 0; i < results.length; i++) {
@@ -104,10 +138,20 @@ function getResultInRadius(json) {
     "contentType": "application/json; charset=utf-8",
     "data": JSON.stringify(json),
     "success": function(data) {
-        console.log(data);
+        // console.log(data);
+        renderResults(data);
     },
     "error": function(err) {
         alert("Errore");
     }
   });
+}
+
+// funzione per renderizzare i risultati
+function renderResults (data){
+    var properties = data.results;
+    for (var i = 0; i < properties.length; i++) {
+      var property = properties[i];
+      console.log(property.data.property);
+    }
 }
