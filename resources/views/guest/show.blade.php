@@ -48,7 +48,8 @@
                                         <input type="text" id="lname" name="lastname" placeholder="Cognome">
                 
                                         <label for="email">Email</label>
-                                        <input type="text" id="email" name="email" placeholder="Indirizzo Email" @if (Auth::check()) value="{{$email}}" @endif>
+                                        <input type="text" id="email" name="email" placeholder="Indirizzo Email" >
+                                        {{-- @if (Auth::check()) value="{{$email}}" @endif  --}}
                                         
             
                                         <label for="subject">Messaggio</label>

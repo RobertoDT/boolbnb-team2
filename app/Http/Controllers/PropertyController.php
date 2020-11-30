@@ -20,8 +20,8 @@ class PropertyController extends Controller
     public function show($id)
     {
       $property = Property::find($id);
-      $email = Auth::user()->email;
-      return view("guest.show", compact("property", "email"));
+      // $email = Auth::user()->email;
+      return view("guest.show", compact("property"));
     }
 
 }
