@@ -37276,6 +37276,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ././partials/search.js */ "./resources/js/partials/search.js");
 
+__webpack_require__(/*! ././partials/guest.index.js */ "./resources/js/partials/guest.index.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37320,6 +37322,37 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/partials/guest.index.js":
+/*!**********************************************!*\
+  !*** ./resources/js/partials/guest.index.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  // $(window).scroll(function() {
+  //     $("#app").removeClass('absolute_search').addClass('fixed_search');
+  // })
+  //   var lastScrollTop = 0;
+  //   $(window).scroll(function(event){
+  //    var st = $(this).scrollTop();
+  //    if (st > lastScrollTop){
+  //     $("#app").removeClass('absolute_search').addClass('fixed_search');
+  //    } else {
+  //     $("#app").removeClass('fixed_search').addClass('absolute_search');
+  //    }
+  //    lastScrollTop = st;
+  // });
+  var stickyOffset = 100;
+  $(window).scroll(function () {
+    var sticky = $('#app');
+    var scroll = $(window).scrollTop();
+    if (scroll >= stickyOffset) sticky.removeClass('fixed_search').addClass('scroll');else sticky.removeClass('scroll').addClass('fixed_search');
+  });
+});
 
 /***/ }),
 
@@ -37372,6 +37405,10 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
+__webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
 <<<<<<< Updated upstream
 __webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
@@ -37379,6 +37416,7 @@ module.exports = __webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean
 __webpack_require__(/*! C:\Users\jakon\Desktop\ATOM\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\jakon\Desktop\ATOM\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
 >>>>>>> Stashed changes
+>>>>>>> main
 
 
 /***/ })
