@@ -17,7 +17,7 @@
                 {{-- IMMAGINE COPERTINA E TITOLO --}}
                 <div class="title-wrapper"> 
                     <div class="img-container"> 
-                        <img class="img-show" src="{{$property->flat_image}}" alt="">
+                        <img class="img-show" src="{{$property->flat_image}}" alt="Foto appartamento">
                     </div>
                     <h1>{{$property->title}}</h1>
                     
