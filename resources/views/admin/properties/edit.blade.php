@@ -4,10 +4,10 @@
 @include('layouts.header-general')
 
 @section("mainContent")
-<div class="container">
+<div class="container p_bottom_50">
   <h1>Modifica il tuo annuncio</h1>
   <!-- form di modifica -->
-  <form class="p_bottom_50" action="{{route("admin.properties.update", $property)}}" method="POST" enctype="multipart/form-data">
+  <form action="{{route("admin.properties.update", $property)}}" method="POST" enctype="multipart/form-data">
     <!-- token e meotodo -->
     @csrf
     @method("PUT")
@@ -116,7 +116,8 @@
     <!-- bottone per il submit -->
     <button type="submit" class="btn modifing_link">Salva</button>
     <!-- /bottone per il submit -->
-
+    </form>
+    
     {{-- Link per tornare all'admin.index --}}
     <a class="btn modifing_link" href="{{route("admin.properties.index")}}">Indietro</a>
     {{-- /Link per tornare all'admin.index --}}
@@ -129,7 +130,7 @@
       <button type="submit" class="btn modifing_link">Cancella appartamento</button>
     </form>
 
-  </form>
+  
   <!-- /form di modifica -->
 
   <!-- controllo sugli errori -->

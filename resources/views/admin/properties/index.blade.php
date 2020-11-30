@@ -5,19 +5,6 @@
 
 @section('mainContent')
 <div class="container">
-  <!-- bottone per creare annuncio appartamento -->
-  <a href="{{route("admin.properties.create")}}"><button type="button" class="btn btn-primary">CREA ANNUNCIO</button></a>
-  <!-- /bottone per creare annuncio appartamento -->
-
-  @foreach ($properties as $property)
-
-  <a href="{{route("admin.properties.show", $property)}}"><button type="button" class="btn btn-primary">VISUALIZZA PROPRIETA'</button></a>
-  <a href="{{route("admin.properties.edit", $property)}}"><button type="button" class="btn btn-primary">MODIFICA PROPRIETA'</button></a>
-
-  @endforeach
-
-
-
 
 <div class="container">
     <div class="row p_t_b_50">

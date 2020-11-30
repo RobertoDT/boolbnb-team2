@@ -18,7 +18,7 @@
                 <div class="title-wrapper"> 
                   <h1>Il tuo appartamento "{{$property->title}}"</h1>
                     <div class="img-container"> 
-                        <img class="img-show" src="{{$property->flat_image}}" alt="">
+                        <img class="img-show" src="{{$property->flat_image}}" alt="Logo immagine">
                     </div>
                     
                     
@@ -109,9 +109,3 @@
 
 </section>
 @endsection
-=======
->>>>>>> Stashed changes
-
-    <button type="submit" class="btn btn-danger">ELIMINA PROPRIETA'</button>
-  </form>
-  <!-- /form di eliminazione proprietà -->
