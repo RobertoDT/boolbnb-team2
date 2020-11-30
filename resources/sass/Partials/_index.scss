@@ -8,6 +8,11 @@
     -webkit-text-fill-color: transparent;
 }
 
+h1 {
+    text-align: center;
+    padding: 30px;
+}
+
 ul {
     list-style: none;
     display: flex;
@@ -71,20 +76,31 @@ ul {
 // Links/buttons index.admin
 .modifing_link {
     text-decoration: none;
-    background-color: #dc18db; //linear-gradient(to bottom right, #dc18db, #15cff1);
-    color: #fff;
+    background-color: #40a7ec;
+    color: $white;
     margin: 3px;
-    // padding: 3px;
+}
+.modifing_link:hover {
+    background-color: $purple;
+    color: $white;
 }
 
 
-@media screen and (max-width: 768px) {
-    header {
 
-        .all_properties {
-        width: 100%;
-        margin: 5px;
-        position: relative;
-        }
+.hero {
+    height: 600px;
+    background-image: url('/img/hero.jfif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+  
+    .all_properties {
+    width: 100%;
+    margin: 5px;
+    position: relative;
     }
+
 }

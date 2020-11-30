@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 //importo il Model
 use App\Property;
 
+
 class PropertyController extends Controller
 {
     //metodo index

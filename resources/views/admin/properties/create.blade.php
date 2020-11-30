@@ -1,11 +1,13 @@
 <!-- form di creazione nuova proprietà -->
 @extends("layouts.main")
 
+@include('layouts.header-general')
+
 @section("mainContent")
 <div class="container">
   <h1>Crea un nuovo annuncio</h1>
   <!-- form di creazione -->
-  <form action="{{route("admin.properties.store")}}" method="POST" enctype="multipart/form-data">
+  <form action="{{route("admin.properties.store")}}" class="p_bottom_50" method="POST" enctype="multipart/form-data">
     <!-- token -->
     @csrf
     <!-- metodo -->
@@ -28,35 +30,35 @@
     <!-- rooms_number -->
     <div class="form-group">
       <label for="rooms_number">Numero di stanze</label>
-      <input type="number" class="form-control" id="rooms_number" name="rooms_number" placeholder="Inserisci il numero di stanze" value="{{old("rooms_number")}}">
+      <input type="number" class="form-control width_30" id="rooms_number" name="rooms_number" placeholder="Inserisci il numero di stanze" value="{{old("rooms_number")}}">
     </div>
     <!-- /rooms_number -->
 
     <!-- beds_number -->
     <div class="form-group">
       <label for="beds_number">Numero di letti</label>
-      <input type="number" class="form-control" id="beds_number" name="beds_number" placeholder="Inserisci il numero di letti" value="{{old("beds_number")}}">
+      <input type="number" class="form-control width_30" id="beds_number" name="beds_number" placeholder="Inserisci il numero di letti" value="{{old("beds_number")}}">
     </div>
     <!-- /beds_number -->
 
     <!-- bathrooms_number -->
     <div class="form-group">
       <label for="bathrooms_number">Numero di bagni</label>
-      <input type="number" class="form-control" id="bathrooms_number" name="bathrooms_number" placeholder="Inserisci il numero di bagni" value="{{old("bathrooms_number")}}">
+      <input type="number" class="form-control width_30" id="bathrooms_number" name="bathrooms_number" placeholder="Inserisci il numero di bagni" value="{{old("bathrooms_number")}}">
     </div>
     <!-- /bathrooms_number -->
 
     <!-- immagine -->
     <div class="form-group">
       <label for="flat_image">Immagine</label>
-      <input type="file" class="form-control" id="flat_image" name="flat_image" placeholder="Inserisci l'immagine" accept="image/*">
+      <input type="file" class="form-control img_form width_30" id="flat_image" name="flat_image" placeholder="Inserisci l'immagine" accept="image/*">
     </div>
     <!-- /immagine -->
 
     <!-- square_meters -->
     <div class="form-group">
       <label for="square_meters">Metri quadri</label>
-      <input type="number" class="form-control" id="square_meters" name="square_meters" placeholder="Inserisci i metri quadri" value="{{old("square_meters")}}">
+      <input type="number" class="form-control width_30" id="square_meters" name="square_meters" placeholder="Inserisci i metri quadri" value="{{old("square_meters")}}">
     </div>
     <!-- /square_meters -->
 
@@ -73,8 +75,8 @@
     <!-- /longitude -->
 
     <!-- lista di servizi extra -->
-    <div class="form-check">
-      <h3>Scegli quali servizi extra includere</h3>
+    <div class="form-group width_40">
+      <h3>Servizi extra disponibili</h3>
       <ul>
         @foreach($extras as $extra)
         <li>
@@ -87,15 +89,19 @@
     <!-- /lista di servizi extra -->
 
     <!-- active -->
-    <div class="form-check">
-      <label class="form-check-label" for="active">Rendi subito visibile il mio appartamento</label>
+    <div class="form-group">
+      <label class="form-check-label" for="active">Rendi visibile l'appartamento adesso</label>
       <input type="checkbox" name="active" placeholder="active" id="active" value="1" {{old("active") == 1 ? "checked" : ""}}>
     </div>
     <!-- /active -->
 
     <!-- bottone per il submit -->
-    <button type="submit" class="btn btn-primary">CREA</button>
+    <button type="submit" class="btn modifing_link">Salva</button>
     <!-- /bottone per il submit -->
+
+    {{-- Link per tornare alla index --}}
+    <a class="btn modifing_link" href="{{route("admin.properties.index")}}">Indietro</a>
+    {{-- Link per tornare alla index --}}
 
   </form>
   <!-- /form di creazione -->

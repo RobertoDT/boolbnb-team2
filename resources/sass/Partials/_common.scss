@@ -3,7 +3,76 @@
     margin: 0;
     padding: 0;
 }
+a:hover {
+    text-decoration: none;
+    color: $purple;
+}
 body {
     position:relative;
     font-family: 'Ubuntu', sans-serif;
+}
+
+.wrapper{
+    .property-details{
+        .extra, .features, .description{
+            padding: 10px;
+            width: calc(100% / 3);
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+@media screen and (max-width: 768px)
+    {
+
+        .wrapper{
+            .property-details{
+                .description{
+                    width: 100%;
+                    display: block;  
+                }
+                .features, .extra{
+                    width: calc(100% /2);
+                    flex-wrap: wrap;
+                }
+            }
+        }
+    }
+    
+.p_bottom_50 {
+    padding-bottom:50px;
+}
+.p_left_35 {
+    padding-left: 35px;
+}
+.p_top_30 {
+    padding-top: 30px;;
+}
+.p_t_b_50 {
+    padding: 50px 0;
+}
+.text_center {
+    text-align:center;
+}
+.text_left {
+    text-align: left;
+}
+.text_right {
+    text-align: right;
+}
+.white {
+    color: $white;
+ }
+.width_20 {
+    width: 20%;
+}
+.width_30 {
+    width: 30%;
+}
+.width_40 {
+    width: 40%;
+}
+.width_100 {
+    width: 100%;
 }
