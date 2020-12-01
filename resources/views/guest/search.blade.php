@@ -28,7 +28,7 @@
                 <p class="card-text">@{{description}}</p>
             </div>
             <div class="card-footer">
-                <a href="#" class="btn btn-primary">DETTAGLI</a>
+                <a href="/properties/@{{id}}" class="btn btn-primary">DETTAGLI</a>
             </div>
         </div>
     </div>
