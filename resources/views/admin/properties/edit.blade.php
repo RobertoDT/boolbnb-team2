@@ -117,7 +117,7 @@
     <button type="submit" class="btn modifing_link">Salva</button>
     <!-- /bottone per il submit -->
     </form>
-    
+
     {{-- Link per tornare all'admin.index --}}
     <a class="btn modifing_link" href="{{route("admin.properties.show", $property)}}">Indietro</a>
     {{-- /Link per tornare all'admin.index --}}
@@ -126,11 +126,11 @@
     <form class="" action="{{route("admin.properties.destroy", $property)}}" method="POST">
       @csrf
       @method("DELETE")
-      
+
       <button type="submit" class="btn modifing_link">Cancella appartamento</button>
     </form>
 
-  
+
   <!-- /form di modifica -->
 
   <!-- controllo sugli errori -->

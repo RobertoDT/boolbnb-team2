@@ -3,18 +3,18 @@ $( document ).ready(function() {
   $("#search").click(function() {
     // salvo il valore della variabile in una input
       var inputSearch = $("#address").val();
-  
+
       if(inputSearch.length > 1) {
          getCoordinates(inputSearch);
       }
       // console.log(inputSearch);
-      
+
   });
   $("#address").keyup(
     function(event) {
       if(event.which == 13) {
         var inputSearch = $("#address").val();
-  
+
       if(inputSearch.length > 1) {
          getCoordinates(inputSearch);
       }
@@ -28,19 +28,19 @@ $( document ).ready(function() {
       apiKey: '45954f563deec0d78ef4a69018cdb84f',
       container: document.querySelector('#address')
     });
-  
+
     var $address = document.querySelector('#address-value')
     placesAutocomplete.on('change', function(e) {
       $address.textContent = e.suggestion.value
     });
-  
+
     placesAutocomplete.on('clear', function() {
       $address.textContent = 'none';
     });
-  
+
   })();
   // end autocomplete
-  
+
 });
 // end document ready
 
@@ -150,8 +150,24 @@ function getResultInRadius(json) {
 // funzione per renderizzare i risultati
 function renderResults (data){
     var properties = data.results;
+    // console.log(properties);
+    //preparo il template
+    var source = $("#property-template").html();
+    var template = Handlebars.compile(source);
+    //ciclo per le properietà
     for (var i = 0; i < properties.length; i++) {
-      var property = properties[i];
-      console.log(property.data.property);
+
+      var property = properties[i].data.property;
+      console.log(property);
+      // var context = property[i].data.property;
+      var context = {
+        "id": property.id,
+        "flat_image": property.flat_image,
+        "title": property.title,
+        "description": property.description
+      };
+      console.log(context);
+      var html = template(context);
+      $('.properties_list').append(html);
     }
 }
