@@ -1,5 +1,5 @@
-<header>
-    <div id="app">
+<header class="height_header_general">
+    <div id="app" class="scroll">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 {{-- logo --}}
@@ -13,7 +13,7 @@
                     <input type="search" id="address" value="{{$string}}" class="form-control" placeholder="Where are we going?" />
                 </div>
                 <div class="start_search form-inline my-2 my-lg-0">
-                    <button id="search" class="btn btn-dark my-2 my-sm-0">Search</button>
+                    <button id="search" class="btn btn-dark my-2 my-sm-0 modifing_link">Search</button>
                 </div>
                 {{-- fine input di ricerca --}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
