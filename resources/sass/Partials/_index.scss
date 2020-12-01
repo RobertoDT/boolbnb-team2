@@ -76,12 +76,13 @@ ul {
 // Links/buttons index.admin
 .modifing_link {
     text-decoration: none;
-    background-color: #40a7ec;
+    background-color: $mainColor;;
     color: $white;
     margin: 3px;
+    border: none;
 }
 .modifing_link:hover {
-    background-color: $purple;
+    background-color: $hoverColor;
     color: $white;
 }
 

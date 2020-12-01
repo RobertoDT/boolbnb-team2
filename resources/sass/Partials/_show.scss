@@ -34,7 +34,11 @@
                         display: block;
                         padding-bottom: 10px;
                     }
-                }
+                    
+                    .img-show:hover{
+                        transform: scale(1.5, 1.5);
+                        transition-duration: 5s;
+                    }
 
                 .btn-primary{
                     border: none;
@@ -66,8 +70,14 @@
             text-align: justify;
         }
 
-        .features h6{
+        .features {
+            // i {
+            //     color: $mainColor;
+            // }
+
+            h6{
             margin-bottom: 1rem;
+            }
         }
 
     }  
@@ -105,3 +115,4 @@
     }
     
    
+}

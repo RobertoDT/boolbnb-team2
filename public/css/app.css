@@ -10962,7 +10962,7 @@ header .navbar-collapse {
 }
 
 footer {
-  background-color: #483d8b;
+  background-color: #3e3d8b;
   color: #fff;
 }
 
@@ -11098,6 +11098,10 @@ body {
   height: 100px;
 }
 
+.property-details i {
+  color: #3e3d8b;
+}
+
 .premium_name {
   padding-bottom: 20px;
   background: -webkit-linear-gradient(#dc18db, #15cff1);
@@ -11173,13 +11177,14 @@ ul .all_properties:hover img {
 
 .modifing_link {
   text-decoration: none;
-  background-color: #40a7ec;
+  background-color: #3e3d8b;
   color: #fff;
   margin: 3px;
+  border: none;
 }
 
 .modifing_link:hover {
-  background-color: #9561e2;
+  background-color: #12aed4;
   color: #fff;
 }
 
@@ -11242,26 +11247,31 @@ ul .all_properties:hover img {
   padding-bottom: 10px;
 }
 
-.wrapper .property-details .title-wrapper .btn-primary {
+.wrapper .property-details .title-wrapper .img-container .img-show:hover {
+  transform: scale(1.5, 1.5);
+  transition-duration: 5s;
+}
+
+.wrapper .property-details .title-wrapper .img-container .btn-primary {
   border: none;
 }
 
-.wrapper .modal-content {
+.wrapper .property-details .modal-content {
   background-color: #a7bcff;
 }
 
-.wrapper .form-container {
+.wrapper .property-details .form-container {
   background-color: #ced8fa;
 }
 
-.wrapper .form-container label {
+.wrapper .property-details .form-container label {
   text-align: left;
   display: block;
 }
 
-.wrapper .form-container input[type=text],
-.wrapper .form-container select,
-.wrapper .form-container textarea {
+.wrapper .property-details .form-container input[type=text],
+.wrapper .property-details .form-container select,
+.wrapper .property-details .form-container textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -11271,23 +11281,23 @@ ul .all_properties:hover img {
   resize: vertical;
 }
 
-.wrapper .description {
+.wrapper .property-details .description {
   text-align: justify;
 }
 
-.wrapper .features h6 {
+.wrapper .property-details .features h6 {
   margin-bottom: 1rem;
 }
 
-.map-container {
+.wrapper .map-container {
   padding: 40px 0 60px 0;
 }
 
-.map-container h4 {
+.wrapper .map-container h4 {
   text-decoration: underline;
 }
 
-.map-container .map {
+.wrapper .map-container .map {
   width: 100%;
   height: 400px;
   background-color: lightblue;
@@ -11296,19 +11306,19 @@ ul .all_properties:hover img {
 }
 
 @media screen and (max-width: 768px) {
-  .title-wrapper h1 {
+  .wrapper .title-wrapper h1 {
     font-size: 25px;
   }
 
-  .map-container {
+  .wrapper .map-container {
     padding: 20px 0 30px 0;
   }
 
-  .map-container h2 {
+  .wrapper .map-container h2 {
     font-size: 20px;
   }
 
-  .map-container h4 {
+  .wrapper .map-container h4 {
     font-size: 17px;
   }
 }
@@ -11327,14 +11337,28 @@ ul .all_properties:hover img {
   flex-wrap: wrap;
 }
 
-.wrapper .property-details .buttons {
+.wrapper .property-details .title-wrapper {
+  width: 100%;
+}
+
+.wrapper .property-details .title-wrapper .img-admin {
+  width: 80%;
+  max-height: 450px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: auto;
+  display: block;
+  padding-bottom: 10px;
+}
+
+.wrapper .property-details .title-wrapper .buttons {
   border: 2px solid white;
   width: 50%;
   margin: auto;
   margin-top: 30px;
 }
 
-.wrapper .property-details .buttons .btn-primary {
+.wrapper .property-details .title-wrapper .buttons .btn-primary {
   border: none;
 }
 

@@ -10,6 +10,18 @@
             display: flex;
             flex-wrap: wrap;
 
+            .title-wrapper{
+                width: 100%;
+
+                .img-admin{
+                    width: 80%;
+                    max-height: 450px;
+                    object-fit: cover;
+                    margin: auto;
+                    display: block;
+                    padding-bottom: 10px;
+                }
+
                 .buttons{
                     border: 2px solid white;
                     width: 50%;
@@ -20,5 +32,6 @@
                         border: none;
                     }
                  }
+                }
             }
         }
