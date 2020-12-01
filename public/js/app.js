@@ -37364,7 +37364,13 @@ $(document).ready(function () {
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  // al click sul bottone search parte la chiamata ajax a TomTom per ricavare coordinate
+  var inputSearch = $("#address").val();
+
+  if (inputSearch.length > 1) {
+    getCoordinates(inputSearch);
+  } // al click sul bottone search parte la chiamata ajax a TomTom per ricavare coordinate
+
+
   $("#search").click(function () {
     // salvo il valore della variabile in una input
     var inputSearch = $("#address").val();
@@ -37502,11 +37508,26 @@ function getResultInRadius(json) {
 
 
 function renderResults(data) {
-  var properties = data.results;
+  var properties = data.results; // console.log(properties);
+  //preparo il template
+
+  var source = $("#property-template").html();
+  var template = Handlebars.compile(source);
+  $('.properties_list').html(''); //ciclo per le properietà
 
   for (var i = 0; i < properties.length; i++) {
-    var property = properties[i];
-    console.log(property.data.property);
+    var property = properties[i].data.property;
+    console.log(property); // var context = property[i].data.property;
+
+    var context = {
+      "id": property.id,
+      "flat_image": property.flat_image,
+      "title": property.title,
+      "description": property.description
+    };
+    console.log(context);
+    var html = template(context);
+    $('.properties_list').append(html);
   }
 }
 
