@@ -12,7 +12,10 @@
                 <form class="form-inline my-2 my-lg-0" action="{{route("search")}}" method="GET">
                     @csrf
                     @method('GET')
-                <input class="form-control mr-sm-2 input_search" type="search" name="search" placeholder="Search" aria-label="Search">
+                {{-- <input class="form-control mr-sm-2 input_search" type="search" name="search" placeholder="Search" aria-label="Search"> --}}
+                <div class="start_search form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Where are we going?" />
+                </div>
                 <button class="btn btn-dark my-2 my-sm-0 modifing_link" class="search_button" type="submit">Search</button>
               </form>
             </div>

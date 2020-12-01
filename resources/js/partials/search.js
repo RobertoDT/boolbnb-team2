@@ -1,6 +1,13 @@
 $( document ).ready(function() {
+
+  var inputSearch = $("#address").val();
+
+  if(inputSearch.length > 1) {
+     getCoordinates(inputSearch);
+  }
   // al click sul bottone search parte la chiamata ajax a TomTom per ricavare coordinate
   $("#search").click(function() {
+
     // salvo il valore della variabile in una input
       var inputSearch = $("#address").val();
 
@@ -13,6 +20,8 @@ $( document ).ready(function() {
   $("#address").keyup(
     function(event) {
       if(event.which == 13) {
+        
+
         var inputSearch = $("#address").val();
 
       if(inputSearch.length > 1) {
@@ -154,6 +163,8 @@ function renderResults (data){
     //preparo il template
     var source = $("#property-template").html();
     var template = Handlebars.compile(source);
+
+    $('.properties_list').html('');
     //ciclo per le properietà
     for (var i = 0; i < properties.length; i++) {
 
