@@ -18,10 +18,11 @@ class PropertiesSearchController extends Controller
     }
       //metodo index per mostrare pagina di ricerca
 
-    public function index()
+    public function index (Request $request)
     {
-      return view("guest.search");
-
+      $data = $request->all();
+      $string = $data['search']; 
+      
+      return view("guest.search", compact('string'));
     }
-
 }

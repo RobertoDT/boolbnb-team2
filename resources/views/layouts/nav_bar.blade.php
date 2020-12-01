@@ -10,7 +10,7 @@
                 </div>
                 {{-- input di ricerca --}}
                 <div class="start_search form-inline my-2 my-lg-0">
-                    <input type="search" id="address" class="form-control" placeholder="Where are we going?" />
+                    <input type="search" id="address" value="{{$string}}" class="form-control" placeholder="Where are we going?" />
                 </div>
                 <div class="start_search form-inline my-2 my-lg-0">
                     <button id="search" class="btn btn-dark my-2 my-sm-0">Search</button>

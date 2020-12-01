@@ -9,9 +9,11 @@
           </div>
 
             <div class="start_search">
-              <form class="form-inline my-2 my-lg-0" action="{{route("search")}}">
-                <input class="form-control mr-sm-2 input_search" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-dark my-2 my-sm-0 modifing_link" type="submit">Search</button>
+              <form class="form-inline my-2 my-lg-0" action="{{route("search")}}" method="GET">
+                @csrf
+                @method('GET')
+                <input class="form-control mr-sm-2 input_search" name="search" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-dark my-2 my-sm-0 modifing_link" class="search_button" type="submit">Search</button>
               </form>
             </div>
 
