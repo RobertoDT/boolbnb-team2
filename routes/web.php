@@ -24,6 +24,7 @@ Auth::routes();
 Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function () {
 
   Route::resource("properties", "PropertyController");
+  Route::get("messages", "PropertyController@readMessages")->name('messages');
 });
 
 Route::resource("properties", "PropertyController");
@@ -33,5 +34,7 @@ Route::get('/', 'PropertyController@index')->name('properties.index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //route for search page
-
 Route::get('/search', 'PropertiesSearchController@index')->name('search');
+
+//rotta per messaggi
+Route::post("/messages/{id}", "MessagesController@store")->name("messages.store");
