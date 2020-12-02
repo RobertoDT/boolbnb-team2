@@ -3,13 +3,10 @@
 
 .premium_name {
     padding-bottom: 20px;
-    background: -webkit-linear-gradient(#dc18db, #15cff1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @include fontGradient;
 }
 
 h1 {
-    text-align: center;
     padding: 30px;
 }
 
