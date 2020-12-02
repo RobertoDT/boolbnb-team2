@@ -11377,6 +11377,7 @@ ul .all_properties:hover img {
   border: none;
 }
 
+<<<<<<< Updated upstream
 .wrapper .property-details .title-wrapper .buttons .modal-content {
   background-color: #a7bcff;
 }
@@ -11571,10 +11572,13 @@ body {
   margin-top: 20px;
 }
 
+=======
+>>>>>>> Stashed changes
 .card {
   min-height: 600px;
 }
 
+<<<<<<< Updated upstream
 body {
   margin-top: 20px;
 }
@@ -11723,6 +11727,8 @@ body {
   margin-top: 20px;
 }
 
+=======
+>>>>>>> Stashed changes
 .img_form {
   background-color: transparent;
   border: none;
