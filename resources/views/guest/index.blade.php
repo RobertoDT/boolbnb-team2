@@ -8,7 +8,7 @@
 
 @section('mainContent')
 <div class="hero">
-
+    <p>Home away from Home</p>
 </div>
 <section class="home_guest">
     <div class="container">

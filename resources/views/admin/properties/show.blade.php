@@ -17,7 +17,7 @@
                 {{-- IMMAGINE COPERTINA E TITOLO --}}
                 <div class="title-wrapper"> 
                   <h1>Il tuo appartamento "{{$property->title}}"</h1>
-                    <div class="img-container"> 
+                    <div class="img-wrapper"> 
                         <img class="img-admin" src="{{asset('storage/'.$property->flat_image)}}" alt="Logo immagine">
                     </div>
                     
@@ -34,7 +34,6 @@
                         <form class="" action="{{route("admin.properties.destroy", $property)}}" method="POST">
                             @csrf
                             @method("DELETE")
-                            
                             <button type="submit" class="btn modifing_link">Cancella la struttura</button>
                         </form>
                         <!-- /ELIMINA -->
@@ -44,15 +43,64 @@
                         {{-- //STATISTICHE --}}
 
                         {{-- SPONSOR --}}
-                        <a class="btn modifing_link" class="card-link">Sponsorizza la struttura</a>
-                        {{-- //SPONSOR --}}
-                        </div>
-                      </div>
+                            <button type="button" class="btn modifing_link" class="card-link" data-toggle="modal" data-target="#myModal">Sponsorizza la struttura</button>
+                          
+                            <!-- MODALE -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                  <div class="modal-body">
+                                    <h5>Scegli il tipo di sponsorizzazione:</h5>
+                                    <div class="sponsor-offers">
+                                        <input type="checkbox" name="sponsor1">
+                                            <label for="sponsor1">2,99 € per 24 ore di sponsorizzazione</label>
+                                                <br>
+                                        <input type="checkbox" name="sponsor2">
+                                            <label for="sponsor2">5,99 € per 72 ore di sponsorizzazione</label>
+                                                <br>
+                                        <input type="checkbox" name="sponsor3">
+                                            <label for="sponsor3">9,99 € per 144 ore di sponsorizzazione</label>
+                                                <br>
+                                    </div>
+                                    
+                                    <div class="payment">
+                                        <h5>Inserisci i dati per il pagamento con carta:</h5>
+                                        <div class="modal-body form-container">
+                                            <form action="action_page.php">
+                                                
+                                                <label for="fname">Nome e Cognome dell'intestatario</label>
+                                                <input type="text" name="fullname" placeholder="Nome Cognome">
+
+                                                <label for="cardnumber">Numero della carta</label>
+                                                <input type="text" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx">
+
+                                                <label for="expiry">Scadenza</label>
+                                                <input placeholder="MM/YY" type="text" name="expiry">
+
+                                                <label for="cvv">Codice di sicurezza</label>
+                                                <input type="text" inputmode="numeric" pattern="[0-9\s]{3,4}" autocomplete="ccv" maxlength="4" placeholder="xxx">
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <button type="submit" class="btn modifing_link proceed-btn">Procedi</button>
+
+                                </div>
+                              </div>
+                            </div>
+                            <!-- //MODALE -->
+                          {{-- //SPONSOR --}}
+
+                    </div>
                     <!-- //BOTTONI -->
                 
                 </div>
                 {{-- //IMMAGINE COPERTINA E TITOLO --}}
 
+            </div>
                 {{-- DESCRIZIONE --}}
                 <div class="description">
                     <div>
