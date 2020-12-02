@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Property;
+use App\Extra;
 
 class PropertiesSearchController extends Controller
 {
@@ -22,7 +23,7 @@ class PropertiesSearchController extends Controller
     {
       $data = $request->all();
       $string = $data['search']; 
-      
-      return view("guest.search", compact('string'));
+      $extras = Extra::all();
+      return view("guest.search", compact('string', 'extras'));
     }
 }
