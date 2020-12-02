@@ -8,13 +8,14 @@
                         <img src="{{asset('img/cover.png')}}" alt="Logo Boolbnb">
                     </a>
                 </div>
-                {{-- input di ricerca --}}
-                <div class="start_search form-inline my-2 my-lg-0">
-                    <input type="search" id="address" value="{{$string}}" class="form-control" placeholder="Where are we going?" />
+                {{-- input di ricerca --}}                 
+                <div class="start_search form-inline my-2 my-lg-0">                     
+                    <input type="search" id="address" value="{{isset($address) ? $address : ''}}" class="form-control" placeholder="Where are we going?" />                 
                 </div>
                 <div class="start_search form-inline my-2 my-lg-0">
                     <button id="search" class="btn btn-dark my-2 my-sm-0 modifing_link">Search</button>
                 </div>
+
                 {{-- fine input di ricerca --}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

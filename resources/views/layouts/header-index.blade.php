@@ -1,24 +1,28 @@
 <header>
-  <div id="app" class="fixed_search">
+  <div class="down fixed_search">
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
-          <div class="logo_img">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{asset('img/cover.png')}}" alt="Logo Boolbnb">
-            </a>
-          </div>
+                    {{-- Div logo --}}
+                    <div class="logo_img">
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            <img src="{{asset('img/cover.png')}}" clas="logo_regular" alt="Logo Boolbnb">
+                            {{-- <img src="{{asset('img/logo_min.png')}}" class="logo_min" alt="Logo Boolbnb"> --}}
+                        </a>
+                    </div>
+                    {{-- /Div logo --}}
 
-            <div class="start_search">
-                <form class="form-inline my-2 my-lg-0" action="{{route("search")}}" method="GET">
-                    @csrf
-                    @method('GET')
-                {{-- <input class="form-control mr-sm-2 input_search" type="search" name="search" placeholder="Search" aria-label="Search"> --}}
-                <div class="start_search form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Where are we going?" />
+                {{-- INPUT SEARCH --}}             
+                <div class="start_search">                 
+                    <form class="form-inline my-2 my-lg-0" action="{{route("search")}}" method="GET">                     
+                        @method('GET')                 
+                        <div class="start_search form-inline my-2 my-lg-0">                     
+                            <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Where are we going?" />                 
+                        </div>                 
+                        <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write"  class="search_button" type="submit">Search</button>
+                        <button class="btn btn-dark my-2 my-sm-0 modifing_link search_icon"  class="search_button" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
                 </div>
-                <button class="btn btn-dark my-2 my-sm-0 modifing_link" class="search_button" type="submit">Search</button>
-              </form>
-            </div>
+
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -31,7 +35,7 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto float-right text-right">
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
@@ -48,7 +52,8 @@
                                 {{ Auth::user()->firstname }} {{Auth::user()->lastname}}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right text-right bg_transparent" aria-labelledby="navbarDropdown">
+                                {{-- <p class="search_responsive">Search</p> --}}
                                 <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti <i class="fas fa-home"></i></a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -64,6 +69,7 @@
                     @endguest
                 </ul>
             </div>
+
         </div>
     </nav>
 

@@ -1,10 +1,6 @@
 header {
     position:relative;
 
-    #app {
-    height: 100px;
-    } 
-
     .fixed_search {
     position:fixed;
     width: 100%;
@@ -17,17 +13,24 @@ header {
     width:100%;
     }
     
-        nav {
-            height: 100px;
-        }
-    
     img {
         width: 180px;
         height: auto;
     }
 
-    form {
-        text-align: center;
+    .start_search {
+        width: 80%;
+
+        form {
+            text-align: center;
+    
+            #address {
+                width: 100%;
+            }
+            .search_icon {
+                display: none;
+            }
+        }
     }
 
     .navbar-collapse {
@@ -39,15 +42,36 @@ header {
     height:100px;
 }
 
+@media screen and(max-width:992px) {
+    header {
+        .start_search {
+            width:70%;
+        }
+    }
+}
+
+@media screen and(max-width:768px) {
+
+    header {
+
+        img {
+            width: 140px;
+        }
+        .start_search {
+            width:60%;
+        }
+    }
+}
+
 @media screen and(max-width:576px) {
     header {
-        .logo_img {
-            display:none;
+        .search_write {
+            display: block;
+        }
+        .search_icon {
+            display: block;
         }
 
-        .form-control {
-            width: auto;
-        }
     }
 }
 
@@ -59,11 +83,10 @@ header {
             margin: auto;
         }
 
-        .form-control {
-            width: auto;
-        }
-    }
-
+    //     .form-control {
+    //         width: auto;
+    //     }
+    // }
 }
 
-
+}

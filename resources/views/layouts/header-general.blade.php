@@ -1,24 +1,27 @@
 <header class="height_header_general">
-  <div id="app" class="scroll">
+  <div class="down fixed_search">
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
-          <div class="logo_img">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{asset('img/cover.png')}}" alt="Logo Boolbnb">
-            </a>
-          </div>
-
-            <div class="start_search">
-              <form class="form-inline my-2 my-lg-0" action="{{route("search")}}" method="GET">
-                @csrf
-                @method('GET')
-                <div class="start_search form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Where are we going?" />
+            <div class="row">
+                <div class="logo_img">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{asset('img/cover.png')}}" alt="Logo Boolbnb">
+                    </a>
                 </div>
-                {{-- <input class="form-control mr-sm-2 input_search" name="search" type="search" placeholder="Search" aria-label="Search"> --}}
-                <button class="btn btn-dark my-2 my-sm-0 modifing_link" class="search_button" type="submit">Search</button>
-              </form>
             </div>
+            <div class="row width_50">
+               {{-- INPUT SEARCH --}}             
+               <div class="start_search">                 
+                    <form class="form-inline my-2 my-lg-0" action="{{route("search")}}" method="GET">                     
+                        @method('GET')                 
+                        <div class="start_search form-inline my-2 my-lg-0">                     
+                            <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Where are we going?" />                 
+                        </div>                 
+                        <button class="btn btn-dark my-2 my-sm-0 modifing_link"  class="search_button" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        <div class="row">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -65,11 +68,13 @@
                 </ul>
             </div>
         </div>
+
+        </div>
     </nav>
 
-    <main class="py-4">
+    {{-- <main class="py-4">
         @yield('content')
-    </main>
+    </main> --}}
 </div>
 
 </header>

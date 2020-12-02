@@ -3,7 +3,7 @@ $(document).ready(function() {
 var stickyOffset = 100;
 
 $(window).scroll(function(){
-  var sticky = $('#app');
+  var sticky = $('.down');
   var scroll = $(window).scrollTop();
     
   if (scroll >= stickyOffset) sticky.removeClass('fixed_search').addClass('scroll');
