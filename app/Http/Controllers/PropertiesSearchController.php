@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Property;
+use App\Extra;
 
 class PropertiesSearchController extends Controller
 {
@@ -13,7 +14,7 @@ class PropertiesSearchController extends Controller
     {
 
       $properties = Property::all();
-      
+
       return response()->json(compact("properties"));
     }
       //metodo index per mostrare pagina di ricerca
