@@ -13,7 +13,7 @@ class PropertiesSearchController extends Controller
     {
 
       $properties = Property::all();
-      
+
       return response()->json(compact("properties"));
     }
       //metodo index per mostrare pagina di ricerca
@@ -21,8 +21,8 @@ class PropertiesSearchController extends Controller
     public function index (Request $request)
     {
       $data = $request->all();
-      $string = $data['search']; 
-      
+      $string = $data['search'];
+
       return view("guest.search", compact('string'));
     }
 }

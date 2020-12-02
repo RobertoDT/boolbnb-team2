@@ -12,9 +12,25 @@ use Illuminate\Support\Facades\Storage;
 //importo i Model
 use App\Property;
 use App\Extra;
+use App\Message;
 
 class PropertyController extends Controller
 {
+    public function readMessages()
+    {
+      $user_id = Auth::id();
+      $properties = Property::where("user_id", $user_id)->get();
+      $messagesArray = [];
+      foreach ($properties as $property) {
+        if($property->messages !== null){
+
+        }
+      }
+      $messages = Message::where("property_id", $properties)->get();
+      dd($properties);
+      return view("admin.messages.index", compact("messages"));
+    }
+
     /**
      * Display a listing of the resource.
      *

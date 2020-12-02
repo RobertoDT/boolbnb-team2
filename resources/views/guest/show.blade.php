@@ -15,19 +15,19 @@
             <div class="property-details">
 
                 {{-- IMMAGINE COPERTINA E TITOLO --}}
-                <div class="title-wrapper"> 
-                    <div class="img-container"> 
+                <div class="title-wrapper">
+                    <div class="img-container">
                         <img class="img-show" src="{{$property->flat_image}}" alt="Foto appartamento">
                     </div>
                     <h1>{{$property->title}}</h1>
-                    
+
                     <!-- BOTTONE -->
                     <button type="button" class="btn btn-primary modifing_link
                     " data-toggle="modal" data-target="#exampleModal">
                         Invia un messaggio alla struttura
                     </button>
                     <!-- //BOTTONE -->
-    
+
                     <!-- MODALE FORM MESSAGGIO -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -39,43 +39,42 @@
                             </button>
                             </div>
                                 <!-- FORM -->
+
                                 <div class="modal-body form-container">
-                                    <form action="action_page.php">
-                                        <label for="fname">Nome</label>
-                                        <input type="text" id="fname" name="firstname" placeholder="Nome">
-                        
-                                        <label for="lname">Cognome</label>
-                                        <input type="text" id="lname" name="lastname" placeholder="Cognome">
-                
+                                    <form action="{{route("messages.store", $property->id)}}" method="POST">
+
+                                      @csrf
+                                      @method("POST")
+
                                         <label for="email">Email</label>
-                                        <input type="text" id="email" name="email" placeholder="Indirizzo Email" >
-                                        {{-- @if (Auth::check()) value="{{$email}}" @endif  --}}
-                                        
-            
-                                        <label for="subject">Messaggio</label>
-                                        <textarea id="subject" name="subject" placeholder="Scrivi qualcosa..." style="height:200px"></textarea> 
+                                        <input class="form-control" type="email" id="email" name="email" placeholder="Indirizzo Email" required @if (Auth::check()) value="{{$email}}" @endif>
+
+
+                                        <label for="text">Messaggio</label>
+                                        <textarea class="form-control" id="text" name="text" placeholder="Scrivi messaggio..." style="height:200px" required>{{old("text") ?? old("text")}}</textarea>
+
+                                        <div class="modal-footer">
+                                          <button type="submit" class="btn btn-primary">Invia</button>
+                                        </div>
                                     </form>
                                 </div>
                                 <!-- //FORM -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Invia</button>
-                            </div>
                         </div>
                         </div>
                     </div>
                     <!-- //MODALE FORM MESSAGGIO -->
-                
+
                 </div>
                 {{-- //IMMAGINE COPERTINA E TITOLO --}}
 
                 {{-- DESCRIZIONE --}}
                 <div class="description">
                     <div>
-                    <h6><i class="fas fa-door-open"></i> {{$property->description}}</h6>  
+                    <h6><i class="fas fa-door-open"></i> {{$property->description}}</h6>
                     </div>
                 </div>
                 {{-- //DESCRIZIONE --}}
-            
+
                 {{-- LOCALI --}}
                 <div class="features">
                     <div>
@@ -84,7 +83,7 @@
                         <h6><i class="fas fa-bed"></i> Letti: {{$property->beds_number}}</h6>
                         <h6><i class="fas fa-shower"></i> Bagni: {{$property->bathrooms_number}}</h6>
                         <h6><i class="fas fa-th"></i> Metri Quadri: {{$property->square_meters}}</h6>
-                    </div> 
+                    </div>
                 </div>
                 {{-- //LOCALI --}}
 
@@ -101,13 +100,13 @@
                         @endif
                     </div>
                 </div>
-                {{-- //EXTRA --}}    
+                {{-- //EXTRA --}}
 
             </div>
             {{-- //DETTGLI STRUTTURA --}}
 
         </div>
-    </div> 
+    </div>
 
         <div class="wrapper">
             {{-- MAPPA --}}
@@ -119,7 +118,7 @@
             </div>
             {{-- MAPPA --}}
         </div>
-    
+
 
 </section>
 @endsection
