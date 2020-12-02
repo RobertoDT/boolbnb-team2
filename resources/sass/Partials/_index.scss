@@ -3,7 +3,6 @@
 
 .premium_name {
     padding-bottom: 20px;
-    @include fontGradient;
 }
 
 h1 {
@@ -73,7 +72,7 @@ ul {
 // Links/buttons index.admin
 .modifing_link {
     text-decoration: none;
-    background-color: $mainColor;;
+    background-image: linear-gradient(140deg, #6f54e9, #488ec7);
     color: $white;
     margin: 3px;
     border: none;

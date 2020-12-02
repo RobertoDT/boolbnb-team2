@@ -84,3 +84,7 @@ body {
 .property-details i {
     color: $mainColor;
 }
+
+h1{
+    @include fontGradient;
+}

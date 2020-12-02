@@ -82,19 +82,15 @@
 
     }  
 
-        .map-container{
-            padding: 40px 0 60px 0;
-            h4{
-            text-decoration: underline;
-            }
-            .map{
-                width: 100%;
-                height: 400px;
-                background-color: lightblue;
-                margin: auto;
-                display: block;
-            }
-        }
+    #map-example-container-paris {
+        height: 400px;
+        max-width: 800px;
+        margin: auto;
+        display: block;
+        margin-bottom: 50px;
+        margin-top: 50px;
+      }
+    
         
     @media screen and (max-width: 768px)
     {
