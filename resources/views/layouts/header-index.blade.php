@@ -12,7 +12,7 @@
                     {{-- /Div logo --}}
 
                 {{-- INPUT SEARCH --}}             
-                <div class="start_search">                 
+                <div class="start_search order">                 
                     <form class="form-inline my-2 my-lg-0" action="{{route("search")}}" method="GET">                     
                         @method('GET')                 
                         <div class="start_search form-inline my-2 my-lg-0">                     

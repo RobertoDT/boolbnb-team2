@@ -63,10 +63,27 @@ header {
     }
 }
 
-@media screen and(max-width:576px) {
+@media screen and(max-width:558px) {
     header {
-        .search_write {
-            display: block;
+        .container {
+            position: relative;
+
+            .order {
+                order: 1;
+                flex-grow:1;
+
+                .start_search {
+                    width:70%;
+                    margin: auto;
+                }
+            }
+
+            .navbar-collapse {
+                position:absolute;
+                top:60px;
+                background-color: #fff;
+                width:100%;
+            }
         }
         .search_icon {
             display: block;
