@@ -16,20 +16,23 @@ use App\Message;
 
 class PropertyController extends Controller
 {
-    public function readMessages()
-    {
-      $user_id = Auth::id();
-      $properties = Property::where("user_id", $user_id)->get();
-      $messagesArray = [];
-      foreach ($properties as $property) {
-        if($property->messages !== null){
+  public function readMessages()
+  {
+    $user_id = Auth::id();
+    $properties = Property::where("user_id", $user_id)->get();
 
-        }
-      }
-      $messages = Message::where("property_id", $properties)->get();
-      dd($properties);
-      return view("admin.messages.index", compact("messages"));
-    }
+    // foreach ($properties as $property) {
+    //
+    //   if(isset($property->messages)){
+    //     $property_messages = $property->messages;
+    //
+    //     $array_property["property"] = $property;
+    //   }
+    // }
+
+    return view("admin.properties.index_messages", compact("properties"));
+  }
+
 
     /**
      * Display a listing of the resource.
