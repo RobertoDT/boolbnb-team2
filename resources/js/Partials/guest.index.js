@@ -22,15 +22,15 @@ $(window).scroll(function(){
   // /Mostrare e togliere filtri
   // Barra search hide-show
 
-  var show = $( "#navbarSupportedContent" );
-  $(document).on( 'click', show, function(){
-    if (show.hasClass('show') ) {
-      console.log("the tab is already active");
-  }   
-    else {
-      console.log("selected");
-  }  
-  });
+  // var show = $( "#navbarSupportedContent" );
+  // $(document).on( 'click', show, function(){
+  //   if (show.hasClass('show') ) {
+  //     console.log("the tab is already active");
+  // }   
+  //   else {
+  //     console.log("selected");
+  // }  
+  // });
 
   // show.on('click','#navbarSupportedContent')
      

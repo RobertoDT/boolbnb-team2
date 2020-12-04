@@ -1,5 +1,7 @@
-var latitude = document.getElementById('latitude').value;
+if(document.getElementById('latitude') != null && document.getElementById('longitude') != null) {
+    var latitude = document.getElementById('latitude').value;
     var longitude = document.getElementById('longitude').value;
+  
 
   (function() {
     var latlng = {
@@ -47,4 +49,4 @@ var latitude = document.getElementById('latitude').value;
     }
 
 })();
-
+}
