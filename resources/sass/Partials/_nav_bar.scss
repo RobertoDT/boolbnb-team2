@@ -1,0 +1,48 @@
+.funnel {
+    color: #3e3d8b;
+    cursor: pointer;
+    width: 10px;
+}
+
+.filter_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3px;
+    // background-color: red;
+    
+    .small_filter_container {
+        padding: 0 10px;        
+    }
+    .bar_tab {
+        height:4px;
+        background-color: #6F6F6F;
+        border-radius: 5px;
+        width: 100px;
+    }
+    .bar_up {
+        height:4px;
+        background-color: #D2D2D2;
+        border-radius: 5px;
+    }
+    .overlay_green {
+        background-color: #ADFF2F;
+        display: none;
+        position:relative;
+    }
+    .overlay_green:after {
+        content:"";
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        display: inline-block;
+    }
+    .bar_tab:hover .overlay_green{
+        display:block;
+    }
+}

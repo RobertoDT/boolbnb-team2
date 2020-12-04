@@ -4,11 +4,14 @@
     BoolBnB
 @endsection
 
+
+
+
 @section('mainContent')
 <div class="container search_container">
   <div class="row">
     <div class="col">
-      <h1 class="premium_name">Apartments</h1>
+      <h1 class="premium_name p_top_50">Apartments</h1>
       <div class="card-deck row properties_list">
 
       </div>

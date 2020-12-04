@@ -14,15 +14,10 @@ class PropertyController extends Controller
     public function index()
     {
 
-      $properties = Property::all();
+      $properties = Property::where('active', 1)->get();
 
       $sponsored_properties = [];
       $not_sponsored_properties = [];
-
-      // $properties_list = [
-      //   "sponsored_properties" => [],
-      //   "not_sponsored_properties"=> [],
-      // ];
 
       foreach ($properties as $property) {
 
@@ -40,7 +35,7 @@ class PropertyController extends Controller
               }
             }
           }
-        }
+        }      
       return view ("guest.index", compact('sponsored_properties', 'not_sponsored_properties'));
 
     }

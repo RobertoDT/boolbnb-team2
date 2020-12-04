@@ -9,8 +9,8 @@
     }
     .card-box{
         background-color: white;
-        border: 1px solid rgb(112, 111, 128);
-        box-shadow: 5px 5px 5px #8086aa;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 5px 5px 5px #a0a7cf;
         padding: 15px;
         max-block-size: fit-content;
         .card-img-top{
@@ -22,8 +22,6 @@
     }
 }
 
-
-body{margin-top:20px;}
 
 
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {

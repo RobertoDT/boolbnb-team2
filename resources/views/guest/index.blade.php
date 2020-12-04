@@ -29,7 +29,7 @@
                             </div>
                         </li>
                     <?php $count++; ?>
-                @endforeach
+                @endforeach  
                 @php
                 $i = 12 - $count;
                 @endphp
@@ -50,9 +50,9 @@
                                 </div>
                             </li>
                             <?php $count_not_sponsored++; ?>
-                    @endforeach
+                    @endforeach     
                 </ul>
-
+            
     </div>
 </section>
 @endsection
