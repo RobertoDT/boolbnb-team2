@@ -41,6 +41,12 @@ body {
         
     }
     
+.bg_transparent {
+    background-color: transparent;
+}
+.float-right {
+    float: right;
+}
 .p_bottom_50 {
     padding-bottom:50px;
 }
@@ -77,6 +83,15 @@ body {
 .width_40 {
     width: 40%;
 }
+.width_50 {
+    width: 50%;
+}
+.width_60 {
+    width: 60%;
+}
+.width_80 {
+    width: 80%;
+}
 .width_100 {
     width: 100%;
 }
@@ -86,4 +101,13 @@ body {
 
 .property-details i {
     color: $mainColor;
+}
+.b_none {
+    border: none;
+}
+.m_0 {
+    margin:0;
+}
+.p_5 {
+    padding: 5 px;
 }
