@@ -41,6 +41,12 @@ body {
         
 //     }
     
+.bg_transparent {
+    background-color: transparent;
+}
+.float-right {
+    float: right;
+}
 .p_bottom_50 {
     padding-bottom:50px;
 }
@@ -53,9 +59,7 @@ body {
 .p_top_50 {
     padding-top: 50px;
 }
-.p_t_b_50 {
-    padding: 50px 0;
-}
+
 .text_center {
     text-align:center;
 }
@@ -77,6 +81,15 @@ body {
 .width_40 {
     width: 40%;
 }
+.width_50 {
+    width: 50%;
+}
+.width_60 {
+    width: 60%;
+}
+.width_80 {
+    width: 80%;
+}
 .width_100 {
     width: 100%;
 }
@@ -90,4 +103,13 @@ body {
 
 h1{
     @include fontGradient;
+}
+.b_none {
+    border: none;
+}
+.m_0 {
+    margin:0;
+}
+.p_5 {
+    padding: 5 px;
 }
