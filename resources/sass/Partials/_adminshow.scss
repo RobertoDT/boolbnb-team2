@@ -1,30 +1,84 @@
 .background-wrapper{
-    background-image: linear-gradient(to right, white, #5db6b9, #d19fd1, #5db6b9, white);
+background-color: #F8FAFC;
 }
 
-    .wrapper{
-    width: 80%;
-    margin: auto;
+.wrap{
+width: 80%;
+margin: auto;
+display: flex;
+flex-wrap: wrap;
 
-        .property-details{
-            display: flex;
-            flex-wrap: wrap;
+    .title-wrap{
+        width: 70%;
 
-            .title-wrapper{
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+
+        h1{
+            padding: 15px;
+            text-align: center;
+            font-size: 30px;
+            @media screen and (max-width: 768px) {
+                font-size: 20px;
+            }
+        }
+
+        .img-wrapper{
+            padding-top: none;
+            
+            .img-admin{
+                width: 80%;
+                max-height: 450px;
+                object-fit: cover;
+                margin: auto;
+                display: block;
+                padding-bottom: 10px;
+            }
+        }
+    } 
+
+    .apt-details{
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        padding: 10px;
+        overflow: hidden;
+        overflow-y: auto;
+
+        .menu-btn{
+            margin: 15px 0 25px 0;
+
+        }
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+
+            .desc, .feat, .extras{
+                padding-bottom: 20px;
+                line-height: 1.5;
+            }
+
+            .desc{
+                @media screen and (max-width: 768px) {
                 width: 100%;
+                display: block; 
+                }
+            }
 
-                .img-wrapper{
-                    padding-top: none;
-                    
-                    .img-admin{
-                        width: 80%;
-                        max-height: 450px;
-                        object-fit: cover;
-                        margin: auto;
-                        display: block;
-                        padding-bottom: 10px;
-                    }
-              }
+            .feat, .extras{
+                @media screen and (max-width: 768px) {
+                    width: calc(100% /2);
+                    flex-direction: row;
+                }
+            }
+
+    }
+
+
+
+
 
                 .buttons{
                     border: 2px solid white;
@@ -100,6 +154,20 @@
 
                     }
                 }
-            }
-        }
-    }
+
+
+                #map-example-container-paris {
+                    height: 400px;
+                    max-width: 800px;
+                    margin: auto;
+                    display: block;
+                    margin-bottom: 50px;
+                    margin-top: 50px;
+                  }
+
+
+} //wrap
+        
+    
+
+   

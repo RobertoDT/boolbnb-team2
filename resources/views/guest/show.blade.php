@@ -110,11 +110,15 @@
 
         <div class="wrapper">
             {{-- MAPPA --}}
-            <div class="map-container">
-                <h2>Indirizzo e geolocalizzazione</h2>
-                <h5><i class="fas fa-map-marker-alt"></i> Viale Italia 78, 78000 Pistoia</h5>
-                    <div class="map"></div>
-                    {{-- <h4>{{$property->address}}</h4> --}}
+            <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+    
+            <div id="map-example-container-paris"></div>
+            <input type="hidden" id="input-map-paris" class="form-control" placeholder="Find a street in Paris, France. Try &quot;Rivoli&quot;" />
+        
+            {{-- prendiamo coordinate da $property --}}
+            <input type="hidden" id="latitude" value="{{$property->latitude}}">
+            <input type="hidden" id="longitude" value="{{$property->longitude}}">
+                {{-- MAPPA --}}
             </div>
             {{-- MAPPA --}}
         </div>
