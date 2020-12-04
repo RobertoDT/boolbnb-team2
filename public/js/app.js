@@ -37472,21 +37472,11 @@ var longitude = document.getElementById('longitude').value;
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-<<<<<<< HEAD
-=======
   // Header fissato in alto allo scroll
->>>>>>> Elisa0212
   var stickyOffset = 100;
   $(window).scroll(function () {
     var sticky = $('.down');
     var scroll = $(window).scrollTop();
-<<<<<<< HEAD
-    if (scroll >= stickyOffset) sticky.removeClass('fixed_search').addClass('scroll');else sticky.removeClass('scroll').addClass('fixed_search');
-  });
-  $(".funnel").click(function () {
-    $(".filter_container").toggleClass("d-none");
-  });
-=======
 
     if (scroll >= stickyOffset) {
       sticky.removeClass('fixed_search').addClass('scroll');
@@ -37518,7 +37508,6 @@ $(document).ready(function () {
   //     }      
   // });
   // Barra search hide-show
->>>>>>> Elisa0212
 });
 
 /***/ }),
@@ -37638,19 +37627,12 @@ var longitude = document.getElementById('longitude').value;
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-<<<<<<< HEAD
-  var inputSearch = $("#address").val();
-
-  if (inputSearch.length > 1) {
-    getCoordinates(inputSearch);
-=======
   // salvo il valore della variabile in una input
   var inputSearch = $("#address").val();
   var radius = 20;
 
   if (inputSearch.length > 1) {
     getCoordinates(inputSearch, radius);
->>>>>>> Elisa0212
   } // al click sul bottone search parte la chiamata ajax a TomTom per ricavare coordinate
 
 
@@ -37729,36 +37711,14 @@ function getProperties(lat, lon, radius) {
 } // funzione per renderizzare i risultati
 
 
-<<<<<<< HEAD
-function renderResults(data) {
-  var properties = data.results; // console.log(properties);
-  //preparo il template
-
-=======
 function renderResults(results) {
   //preparo il template
->>>>>>> Elisa0212
   var source = $("#property-template").html();
   var template = Handlebars.compile(source);
   $('.properties_list').html(''); //ciclo per le properietà
 
-<<<<<<< HEAD
-  for (var i = 0; i < properties.length; i++) {
-    var property = properties[i].data.property;
-    console.log(property); // var context = property[i].data.property;
-
-    var context = {
-      "id": property.id,
-      "flat_image": property.flat_image,
-      "title": property.title,
-      "description": property.description
-    };
-    console.log(context);
-    var html = template(context);
-=======
   for (var i = 0; i < results.length; i++) {
     var html = template(results[i]);
->>>>>>> Elisa0212
     $('.properties_list').append(html);
   }
 }
@@ -37783,8 +37743,8 @@ function renderResults(results) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
