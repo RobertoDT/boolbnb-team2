@@ -11039,6 +11039,7 @@ header a {
 footer {
   background-image: linear-gradient(#684ce6, #488ec7);
   color: #fff;
+  margin-top: 80px;
 }
 
 footer .logo-img {
@@ -11277,8 +11278,8 @@ ul .all_properties:hover img {
 
 .hero {
   height: 630px;
-  background-image: url("/img/hero.jfif");
-  background-position: center;
+  background-image: url("/img/house3dd.jpg");
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -11449,40 +11450,132 @@ svg {
   background-color: #F8FAFC;
 }
 
-.wrap {
+.background-wrapper .wrap {
   width: 80%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
 }
 
-.wrap .title-wrap {
-  width: 70%;
+.background-wrapper .wrap .menu-admin {
+  overflow: hidden;
+  background-image: linear-gradient(to right, #7e65ec, #74b0e0, #7e65ec);
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  border-radius: 45px;
+  margin: auto;
+}
+
+.background-wrapper .wrap .menu-admin ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.background-wrapper .wrap .menu-admin li {
+  width: calc((100% / 5) - 10px);
+  float: left;
+}
+
+.background-wrapper .wrap .menu-admin li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.background-wrapper .wrap .menu-admin li a span {
+  display: none;
+  font-size: 15px;
+  font-weight: 100;
+}
+
+.background-wrapper .wrap .menu-admin li:hover {
+  background: rgba(55, 80, 161, 0.3);
+}
+
+.background-wrapper .wrap .menu-admin li:hover i {
+  color: #f9a1fd;
+}
+
+.background-wrapper .wrap .menu-admin li:hover span {
+  display: inline;
+  color: #f9a1fd;
+}
+
+.background-wrapper .wrap .main-layout {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: auto;
+}
+
+.background-wrapper .wrap .main-layout .sezione {
+  float: left;
+  padding: 20px;
+}
+
+.background-wrapper .wrap .main-layout .side {
+  width: 25%;
+  background-color: #d8e3fa;
+  transition: transform 0.2s;
+}
+
+.background-wrapper .wrap .main-layout .side .desc {
+  text-align: justify;
+  line-height: 1.4;
+}
+
+.background-wrapper .wrap .main-layout .side .extras {
+  margin-top: 40px;
+  line-height: 1;
 }
 
 @media screen and (max-width: 768px) {
-  .wrap .title-wrap {
+  .background-wrapper .wrap .main-layout .side {
     width: 100%;
   }
 }
 
-.wrap .title-wrap h1 {
-  padding: 15px;
+.background-wrapper .wrap .main-layout .side:hover {
+  background-color: #d5dcfc;
+  transform: scale(1.3);
+}
+
+.background-wrapper .wrap .main-layout .title-wrap {
+  width: 50%;
+  background-color: #e7eaf7;
+  transition: transform 0.2s;
+}
+
+@media screen and (max-width: 768px) {
+  .background-wrapper .wrap .main-layout .title-wrap {
+    width: 100%;
+  }
+}
+
+.background-wrapper .wrap .main-layout .title-wrap h1 {
+  padding: 0 0 10px 0;
   text-align: center;
   font-size: 30px;
 }
 
 @media screen and (max-width: 768px) {
-  .wrap .title-wrap h1 {
+  .background-wrapper .wrap .main-layout .title-wrap h1 {
     font-size: 20px;
   }
 }
 
-.wrap .title-wrap .img-wrapper {
+.background-wrapper .wrap .main-layout .title-wrap .img-wrapper {
   padding-top: none;
+  max-height: 450px;
+  width: 100%;
 }
 
-.wrap .title-wrap .img-wrapper .img-admin {
+.background-wrapper .wrap .main-layout .title-wrap .img-wrapper .img-admin {
   width: 80%;
   max-height: 450px;
   -o-object-fit: cover;
@@ -11492,130 +11585,62 @@ svg {
   padding-bottom: 10px;
 }
 
-.wrap .apt-details {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  padding: 10px;
-  overflow: hidden;
-  overflow-y: auto;
+.background-wrapper .wrap .main-layout .title-wrap:hover {
+  background-color: #e7eaf7;
+  transform: scale(1.3);
 }
 
-.wrap .apt-details .menu-btn {
-  margin: 15px 0 25px 0;
+.background-wrapper .wrap .main-layout:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-@media screen and (max-width: 768px) {
-  .wrap .apt-details {
-    width: 100%;
-  }
-}
-
-.wrap .apt-details .desc,
-.wrap .apt-details .feat,
-.wrap .apt-details .extras {
-  padding-bottom: 20px;
-  line-height: 1.5;
-}
-
-@media screen and (max-width: 768px) {
-  .wrap .apt-details .desc {
-    width: 100%;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .wrap .apt-details .feat,
-  .wrap .apt-details .extras {
-    width: calc(100% /2);
-    flex-direction: row;
-  }
-}
-
-.wrap .buttons {
-  border: 2px solid white;
-  width: 50%;
+.background-wrapper .wrap .info-mappa {
+  width: 100%;
+  background-color: #e7eaf7;
+  width: 95%;
   margin: auto;
-  margin-top: 30px;
 }
 
-.wrap .buttons .btn-primary {
-  border: none;
-}
-
-.wrap .buttons .modal-content {
-  background-color: #a7bcff;
-}
-
-.wrap .buttons .modal-content .close {
-  padding: 20px 20px 0 0;
-  text-align: right;
-}
-
-.wrap .buttons .modal-content .sponsor-offers {
+.background-wrapper .wrap .info-mappa .indirizzo {
+  padding: 20px 0 15px 0;
+  background-image: linear-gradient(to right, #d0c8f0, #cadae6, #d0c8f0);
+  text-align: center;
   display: flex;
-  align-items: baseline;
-  padding: 10px;
+  align-items: center;
   justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
-  .wrap .buttons .modal-content .sponsor-offers {
-    display: block;
-  }
-}
-
-.wrap .buttons .modal-content .sponsor-offers label {
-  padding-right: 10px;
-  font-size: 13px;
-  color: #3e3d8b;
-  font-weight: bold;
-}
-
-.wrap .buttons .modal-content .payment h5 {
-  margin: 15px;
-}
-
-.wrap .buttons .modal-content .payment .form-container {
-  background-color: #ced8fa;
-}
-
-.wrap .buttons .modal-content .payment .form-container label {
-  text-align: left;
-  display: block;
-  margin: 2px;
-}
-
-.wrap .buttons .modal-content .payment .form-container input[type=text],
-.wrap .buttons .modal-content .payment .form-container select,
-.wrap .buttons .modal-content .payment .form-container textarea {
+.background-wrapper .wrap .info-mappa .container-mappa {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 15px;
-  resize: vertical;
+  margin-top: 50px;
 }
 
-.wrap .buttons .modal-content .payment .proceed-btn {
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  border-color: transparent;
-  border-radius: 6px;
-  color: #fff;
-  text-transform: none;
-}
-
-.wrap #map-example-container-paris {
+.background-wrapper .wrap .info-mappa .container-mappa #map-example-container-paris {
   height: 400px;
   max-width: 800px;
   margin: auto;
   display: block;
   margin-bottom: 50px;
   margin-top: 50px;
+  z-index: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .background-wrapper .wrap h4 {
+    font-size: 14px;
+  }
+
+  .background-wrapper .wrap .wrapper {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .background-wrapper .wrap .description h4 {
+    padding-top: 0px;
+  }
 }
 
 .bg-color {
@@ -11655,7 +11680,7 @@ svg {
 }
 
 .sidenav a:hover {
-  color: #f77ffd;
+  color: #f9a1fd;
 }
 
 .sidenav .closebtn {
