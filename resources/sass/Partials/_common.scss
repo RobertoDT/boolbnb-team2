@@ -12,34 +12,34 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
-.wrapper{
-    .property-details{
-        .extra, .features, .description{
-            padding: 10px;
-            width: calc(100% / 3);
-            display: flex;
-            justify-content: center;
-        }
-    }
-}
+// .wrapper{
+//     .property-details{
+//         .extra, .features, .description{
+//             padding: 10px;
+//             width: calc(100% / 3);
+//             display: flex;
+//             justify-content: center;
+//         }
+//     }
+// }
 
-@media screen and (max-width: 768px)
-    {
+// @media screen and (max-width: 768px)
+//     {
 
-        .wrapper{
-            .property-details{
-                .description{
-                    width: 100%;
-                    display: block;  
-                }
-                .features, .extra{
-                    width: calc(100% /2);
-                    flex-wrap: wrap;
-                }
-            }
-        }
+//         .wrapper{
+//             .property-details{
+//                 .description{
+//                     width: 100%;
+//                     display: block;  
+//                 }
+//                 .features, .extra{
+//                     width: calc(100% /2);
+//                     flex-wrap: wrap;
+//                 }
+//             }
+//         }
         
-    }
+//     }
     
 .p_bottom_50 {
     padding-bottom:50px;
