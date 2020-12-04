@@ -37274,6 +37274,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ././partials/admin.index.js */ "./resources/js/partials/admin.index.js");
+
 __webpack_require__(/*! ././partials/search.js */ "./resources/js/partials/search.js");
 
 __webpack_require__(/*! ././partials/guest.index.js */ "./resources/js/partials/guest.index.js");
@@ -37326,6 +37328,32 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/partials/admin.index.js":
+/*!**********************************************!*\
+  !*** ./resources/js/partials/admin.index.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('.menu-nav').click(function () {
+    openNav();
+  });
+  $('.closebtn').click(function () {
+    closeNav();
+  });
+
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+});
 
 /***/ }),
 
@@ -37444,24 +37472,14 @@ var longitude = document.getElementById('longitude').value;
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  // $(window).scroll(function() {
-  //     $("#app").removeClass('absolute_search').addClass('fixed_search');
-  // })
-  //   var lastScrollTop = 0;
-  //   $(window).scroll(function(event){
-  //    var st = $(this).scrollTop();
-  //    if (st > lastScrollTop){
-  //     $("#app").removeClass('absolute_search').addClass('fixed_search');
-  //    } else {
-  //     $("#app").removeClass('fixed_search').addClass('absolute_search');
-  //    }
-  //    lastScrollTop = st;
-  // });
   var stickyOffset = 100;
   $(window).scroll(function () {
     var sticky = $('#app');
     var scroll = $(window).scrollTop();
     if (scroll >= stickyOffset) sticky.removeClass('fixed_search').addClass('scroll');else sticky.removeClass('scroll').addClass('fixed_search');
+  });
+  $(".funnel").click(function () {
+    $(".filter_container").toggleClass("d-none");
   });
 });
 
@@ -37582,7 +37600,13 @@ var longitude = document.getElementById('longitude').value;
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  // al click sul bottone search parte la chiamata ajax a TomTom per ricavare coordinate
+  var inputSearch = $("#address").val();
+
+  if (inputSearch.length > 1) {
+    getCoordinates(inputSearch);
+  } // al click sul bottone search parte la chiamata ajax a TomTom per ricavare coordinate
+
+
   $("#search").click(function () {
     // salvo il valore della variabile in una input
     var inputSearch = $("#address").val();
@@ -37720,11 +37744,26 @@ function getResultInRadius(json) {
 
 
 function renderResults(data) {
-  var properties = data.results;
+  var properties = data.results; // console.log(properties);
+  //preparo il template
+
+  var source = $("#property-template").html();
+  var template = Handlebars.compile(source);
+  $('.properties_list').html(''); //ciclo per le properietà
 
   for (var i = 0; i < properties.length; i++) {
-    var property = properties[i];
-    console.log(property.data.property);
+    var property = properties[i].data.property;
+    console.log(property); // var context = property[i].data.property;
+
+    var context = {
+      "id": property.id,
+      "flat_image": property.flat_image,
+      "title": property.title,
+      "description": property.description
+    };
+    console.log(context);
+    var html = template(context);
+    $('.properties_list').append(html);
   }
 }
 
