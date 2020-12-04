@@ -11156,7 +11156,7 @@ ul .all_properties:hover .overlay {
 }
 
 ul .all_properties:hover img {
-  transform: scale(1.5, 1.5);
+  transform: scale(1.1, 1.1);
 }
 
 .modifing_link {
@@ -11292,7 +11292,7 @@ svg {
 
 .address {
   position: absolute;
-  top: 28%;
+  top: 30%;
   bottom: 0;
   left: 0;
   right: 0;
@@ -11309,6 +11309,15 @@ svg {
 
 .img-container:hover .img-show {
   -webkit-filter: brightness(110%);
+  transform: scale(1.1, 1.1);
+}
+
+.img-show {
+  transition: all 0.2s ease-in-out;
+}
+
+.address p {
+  text-shadow: 2px 2px gray;
 }
 
 @media screen and (max-width: 900px) {

@@ -31,7 +31,6 @@
                 <div id="map-example-container-paris"></div>
                 {{-- <input type="hidden" id="input-map-paris"/> --}}
                 <input type="hidden" id="input-map-paris">
-                <style>.algolia-places {display: none}</style>
                 {{-- prendiamo coordinate da $property --}}
                 <input type="hidden" id="latitude" value="{{$property->latitude}}">
                 <input type="hidden" id="longitude" value="{{$property->longitude}}">
