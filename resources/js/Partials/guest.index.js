@@ -23,19 +23,17 @@ $(window).scroll(function(){
   // /Mostrare e togliere filtri
 
 // Prendere il valore inserito nell'input di distanza
-var distance = $('#distance').val();
-// console.log(distance);
-$(document).on('change', '#distance', function() {
+var distance = $('#radius').val();
+console.log(distance);
+$(document).on('change', '#radius', function() {
   var newDistance = $(this).val();
-  // console.log(newDistance);
+  console.log(newDistance);
 });
 // Prendere il valore inserito nell'input di distanza
 
 // Prendere il valore inserito negli input della stanza
-var roomsNumber = $('#rooms_number').val();
-var bedsNumber = $('#beds_number').val();
 console.log(roomsNumber, bedsNumber);
-$(document).on('change', '#rooms_number', function() {
+$(document).on('change', '#rooms', function() {
   var filterRoomsNumber = $(this).val();
   console.log(filterRoomsNumber);
   var filterBedsNumber = $(this).val();

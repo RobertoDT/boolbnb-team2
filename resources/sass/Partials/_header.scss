@@ -24,7 +24,7 @@ header {
     .start_search {
         width: 80%;
 
-        form {
+        form, .header_nav {
             text-align: center;
             width:80%;
             margin:auto;
@@ -112,7 +112,7 @@ header {
                 margin: auto;
             }
 
-            form {
+            form, .header_nav {
                 width:100%;
             }
 

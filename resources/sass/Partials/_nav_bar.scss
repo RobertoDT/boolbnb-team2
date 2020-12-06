@@ -1,8 +1,4 @@
-// .funnel {
-//     color: #3e3d8b;
-//     cursor: pointer;
-//     width: 30px;
-// }
+
 button.filter_button {
   border-radius:20px;
   background-color: white;
@@ -17,20 +13,7 @@ button.filter_button:after{
   font-family: "Font Awesome 5 Free";
   color: #3e3d8b;
   font-weight: 900;
-}
-
-// .filter_container {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     padding-top: 3px;
-//     background-color: red;
-//     position:fixed;
-//     top:100px;
-//     z-index:2;
-//     flex-wrap: wrap;
-// }
-    
+}    
   .small_filter_container {
       padding: 0 10px;        
   }
@@ -52,11 +35,10 @@ button.filter_button:after{
   content: '\f1eb';
 }
 .pool:before, .sauna:before {
-    content: '\f5c4';
-
+  content: '\f5c4';
 }
 .sauna:before {
-    content: '\f593';
+  content: '\f593';
 }
 .parking:before {
   content: '\f540';

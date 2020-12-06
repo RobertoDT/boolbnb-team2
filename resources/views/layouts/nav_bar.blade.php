@@ -17,22 +17,17 @@
                 </div> --}}
                 {{-- INPUT SEARCH --}}             
                 <div class="start_search order">                 
-                    <form class="form-inline my-2 my-lg-0" action="{{route("search")}}" method="GET">                     
-                        @method('GET')                 
+                    <div class="header_nav form-inline my-2 my-lg-0">                                                         
                         <div class="div_search form-inline my-2 my-lg-0">                     
-                            <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Where are we going?" />                 
+                            <input type="hidden" id="address-value">
+                            <input type="search" class="address_search_input" id="address" value="{{isset($address) ? $address : ''}}" class="form-control" placeholder="Where are we going?" data-address="{{isset($address) ? $address : ''}}"/>
                         </div>                 
-                        <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write"  class="search_button" type="submit">Search</button>
+                        <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write" id="search" class="search_button" type="submit">Search</button>
                         <!-- {{-- Icona filtro --}} -->
                         <button type="button" class="btn filter_button" data-toggle="modal" data-target="#myModal">
                         </button>
                         <!-- {{-- /Icona filtro --}} -->
-                    {{-- Icona filtro --}}
-                        {{-- <div class="filter">
-                            <i class="fas fa-filter funnel"></i>
-                        </div> --}}
-                    {{-- /Icona filtro --}}
-                    </form>
+                    </div>
                 </div>
 
                 {{-- fine input di ricerca --}}
@@ -142,7 +137,7 @@
                                     <div class="col-2 small_filter_container {{$extra->name}}" data-toggle="tooltip" data-placement="top" title="{{$extra->name}}">
                                         <label for="{{$extra->name}}"></label>
                                             <label class="switch">
-                                            <input type="checkbox" name="extras[]">
+                                            <input type="checkbox" value= "{{$extra->id}}" name="extras[]">
                                             <span class="slider round"></span>
                                         </label>                            
                                     </div>
@@ -151,27 +146,27 @@
                             <div class="row justify-content-center rooms_line"> 
                                     <!-- {{-- Barra per selezionare la distanza dalla search--}} -->
                                     <div class="col-2 small_filter_container text_size">
-                                        <label for="rooms_number">Rooms</label>
-                                        <input type="number" id="rooms_number" name="rooms_numebr" min="1" max="15">
+                                        <label for="rooms">Rooms</label>
+                                        <input type="number" id="rooms" name="rooms" min="1" max="15">
                                     </div>
                                     <div class="col-2 small_filter_container text_size">
-                                        <label for="beds_number">Beds</label>
-                                        <input type="number" id="beds_number" name="beds_number" min="1" max="20">
+                                        <label for="beds">Beds</label>
+                                        <input type="number" id="beds" name="beds" min="1" max="20">
                                     </div>
                                     <div class="col-2 small_filter_container text_size square_meters">
-                                        <label for="square_meters">Square meters</label>
-                                        <input type="number" id="square_meters" name="square_meters" min="1" max="1000">
+                                        <label for="mq">Mq</label>
+                                        <input type="number" id="mq" name="mq" data-mq ="" min="30" max="1000">
                                     </div>
                                     <div class="col-2 small_filter_container text_size">
-                                        <label for="bathrooms_number">Bathrooms</label>
-                                        <input type="number" id="bathrooms_number" name="bathrooms_number" min="1" max="5">
+                                        <label for="bathrooms">Bathrooms</label>
+                                        <input type="number" id="bathrooms" name="bathrooms" min="1" max="5">
                                     </div>
                             </div>
                             <div class="row distance_row">
                                 <!-- {{-- barra per selezionare la distanza dalla search--}} -->
                                 <div  class= "col-4 text-center small_filter_container text_size">
-                                    <label for="distance">Distance</label>
-                                    <input type="range" value ="20" id="distance" name="distance"
+                                    <label for="radius">Distance</label>
+                                    <input type="range" value ="20" id="radius" name="distance"
                                         min="5" max="100">
                                 <!-- {{--/ barra per selezionare la distanza dalla search--}} -->
                                 </div>
