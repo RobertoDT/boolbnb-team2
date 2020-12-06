@@ -73,22 +73,13 @@
                                         <p><i class="far fa-star"></i> {{$extra->name}}</p>
                                     @endforeach
                             @endif
-<<<<<<< Updated upstream
                         </div>
-=======
-                        </div>                  
->>>>>>> Stashed changes
                     </div>
                 </div>
                 {{-- //EXTRA --}}
 
             </div>
             {{-- //MAIN --}}
-<<<<<<< Updated upstream
-
-=======
-                         
->>>>>>> Stashed changes
             {{-- INFORMATIONS AND MAP --}}
             <div class="info-mappa">
                 {{-- ADDRESS --}}
@@ -114,11 +105,7 @@
         </div>
         {{-- //wrap --}}
 
-<<<<<<< Updated upstream
     </div>
-=======
-    </div> 
->>>>>>> Stashed changes
     {{-- //background-wrapper --}}
 
 </section>
