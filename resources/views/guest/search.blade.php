@@ -1,25 +1,30 @@
-@extends('layouts.search')
+@extends('layouts.search_main')
 
 @section('title')
     BoolBnB
 @endsection
 
-
-
-
 @section('mainContent')
+
 <div class="container search_container">
   <div class="row">
     <div class="col">
-      <h1 class="premium_name p_top_50">Apartments</h1>
-      <div class="card-deck row properties_list">
+      <h1 class="premium_name">Apartments Luxury</h1>
+      <div class="card-deck row properties_list sponsored">
 
       </div>
-
     </div>
-
   </div>
+</div>
+<div class="container search_container">
+  <div class="row">
+    <div class="col">
+      <h1 class="premium_name">Apartments Cheap</h1>
+      <div class="card-deck row properties_list not_sponsored">
 
+      </div>
+    </div>
+  </div>
 </div>
 
   <script id="property-template" type="text/x-handlebars-template">
@@ -36,4 +41,5 @@
         </div>
     </div>
   </script>
+
 @endsection

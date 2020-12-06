@@ -1,48 +1,258 @@
-.funnel {
-    color: #3e3d8b;
-    cursor: pointer;
-    width: 10px;
+
+button.filter_button {
+  border-radius:20px;
+  background-color: white;
+  border: none;
+  color: #3e3d8b;
+}
+button.filter_button:hover{
+  background:linear-gradient(140deg, #6f54e9, #488ec7);;
+}
+button.filter_button:after{ 
+  content: '\f0b0';
+  font-family: "Font Awesome 5 Free";
+  color: #3e3d8b;
+  font-weight: 900;
+}    
+  .small_filter_container {
+      padding: 0 10px;        
+  }
+    
+// Symbol raw//
+.symbol_filters {
+  margin:0;
+  text-align:center;
 }
 
-.filter_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 3px;
-    // background-color: red;
-    
-    .small_filter_container {
-        padding: 0 10px;        
-    }
-    .bar_tab {
-        height:4px;
-        background-color: #6F6F6F;
-        border-radius: 5px;
-        width: 100px;
-    }
-    .bar_up {
-        height:4px;
-        background-color: #D2D2D2;
-        border-radius: 5px;
-    }
-    .overlay_green {
-        background-color: #ADFF2F;
-        display: none;
-        position:relative;
-    }
-    .overlay_green:after {
-        content:"";
-        width: 10px;
-        height: 10px;
-        background-color: #fff;
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
-        display: inline-block;
-    }
-    .bar_tab:hover .overlay_green{
-        display:block;
-    }
+  .wi-fi:before, .pool:before, .sauna:before, .parking:before, .sea-view:before, .reception:before {
+    font-family: "Font Awesome 5 Free";
+    color:  #3e3d8b;
+    font-weight: 900;
+    width:100%;
+    text-align: center;
+}
+.wi-fi:before {
+  content: '\f1eb';
+}
+.pool:before, .sauna:before {
+  content: '\f5c4';
+}
+.sauna:before {
+  content: '\f593';
+}
+.parking:before {
+  content: '\f540';
+}
+.sea-view:before {
+  content: '\f773';
+}
+.reception:before {
+  content: '\f562';
+} 
+.tooltip_div {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+.tooltip_div .tooltip_text {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+  }
+  .switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+  }
+  
+  .slider {
+  position: absolute;
+  cursor: pointer;
+  width:100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  }
+  
+  .slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  }
+  
+  input:checked + .slider {
+  background: linear-gradient(140deg, #6f54e9, #488ec7);
+  }
+  
+  input:focus + .slider {
+  box-shadow: 0 0 1px #6f54e9;
+  }
+  
+  input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+  border-radius: 17px;
+  }
+  
+  .slider.round:before {
+  border-radius: 50%;
+  }
+  /* /The switch - the box around the slider */
+// /Symbol raw//
+
+/* // Barra per distanza da città */
+input[type=range] {
+-webkit-appearance: none;
+margin: 10px 0;
+/* // width: 100%; */
+}
+input[type=range]:focus {
+outline: none;
+}
+/* // barra */
+input[type=range]::-webkit-slider-runnable-track {
+/* // width: 100%; */
+height: 10px;
+cursor: pointer;
+/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
+background:linear-gradient(140deg, #6f54e9, #488ec7);
+border-radius: 25px;
+/* // border: 0px solid #000101; */
+}
+/* // /barra */
+/* // cursore */
+input[type=range]::-webkit-slider-thumb {
+/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
+/* // border: 0px solid #000000; */
+height: 15px;
+width: 30px;
+border-radius: 7px;
+background:  #fff;
+cursor: pointer;
+-webkit-appearance: none;
+margin-top: -3.6px;
+}
+/* // /cursore */
+input[type=range]:focus::-webkit-slider-runnable-track {
+background: linear-gradient(140deg, #6f54e9, #488ec7);;
+}
+input[type=range]::-moz-range-track {
+width: 100%;
+height: 10px;
+cursor: pointer;
+animate: 0.2s;
+box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+background:linear-gradient(140deg, #6f54e9, #488ec7);;
+border-radius: 25px;
+/* // border: 0px solid #000101; */
+}
+input[type=range]::-moz-range-thumb {
+/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
+/* // border: 0px solid #000000; */
+height: 15px;
+width: 30px;
+border-radius: 7px;
+background:  #6f54e9;
+cursor: pointer;
+}
+input[type=range]::-ms-track {
+width: 100%;
+height: 10px;
+cursor: pointer;
+animate: 0.2s;
+background: transparent;
+border-color: transparent;
+border-width: 39px 0;
+color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+background: #ac51b5;
+border: 0px solid #000101;
+border-radius: 50px;
+/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
+}
+input[type=range]::-ms-fill-upper {
+background: #ac51b5;
+border: 0px solid #000101;
+border-radius: 50px;
+/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
+}
+input[type=range]::-ms-thumb {
+/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
+border: 0px solid #000000;
+height: 20px;
+width: 39px;
+border-radius: 7px;
+background:  #6f54e9;
+cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+background: linear-gradient(140deg, #6f54e9, #488ec7);;
+}
+input[type=range]:focus::-ms-fill-upper {
+background: linear-gradient(140deg, #6f54e9, #488ec7);;
+}
+/* // Barra per distanza da città */
+
+
+
+
+/* Input number */
+.rooms_line {
+  align-items: baseline;
+}
+.text_size {
+  font-size: 14px;
+}
+input[type=number] {
+  border:none;
+  border-bottom: 1px solid #6f54e9;
+}
+input[type=number]:focus {
+  outline: none;
+}
+.square_meters {
+  margin-right:5px;
+}
+/* /Input number */
+.distance_row {
+  padding-top:10px;
+}
+.distance_row div{
+  margin:auto;
 }
