@@ -27,18 +27,18 @@
 }
 .info-map {
     display: flex;
-    height: 500px;
-
+    width: 100%;
     .container-map, .container-info {
         width: calc(100% / 2);
         margin-top: 50px;
+        
 
         #map-example-container-paris {
             height: 400px;
             max-width: 800px;
             margin: auto;
             margin-bottom: 50px;
-            z-index: 1;
+            z-index: 0;
 
         }
     }
@@ -61,8 +61,13 @@
         justify-content: space-around;
     } 
 }
+
 h4 {
     @include fontGradient;
+}
+h3 {
+    @include fontGradient;
+    display: inline;
 }
 .gradient{
     @include fontGradient
@@ -74,50 +79,57 @@ h4 {
 svg {
     display: none;
 }
-.address {
+
+.jumbo_text {
+    opacity: 0;
     position: absolute;
-    top: 30%;
+    top: 40%;
     bottom: 0;
     left: 0;
     right: 0;
     color: white;
-    visibility: hidden;
-    opacity: 0;
     font-size: 30px;
-} 
-  .img-container:hover .address {
-    visibility: visible;
+    text-shadow: 4px 4px 3px black;
+
+    .jumbo_text p {
+        font-family: "Ubuntu", sans-serif;
+    }
+}
+  
+  #jumboText {
+      opacity: 0;
+      transition: 4s;
+  }
+  #jumboText.display_on {
     opacity: 1;
   }
-  .img-container:hover .img-show {
+  
+  .img-show:hover {
     -webkit-filter: brightness(110%);
-    transform: scale(1.1, 1.1)
+    transform: scale(1.005)
   }
   .img-show { 
     transition: all .2s ease-in-out;
  }
+ .fa-arrow-right {
+     margin-left: 5px;
+     margin-right: 10px;
+ }
+ .send-message {
+     margin-top: 50px;
+ }
 
+// mediaquery responsive
+@media screen and (max-width: 800px) {
+    .info-map {
+        flex-wrap: wrap;
 
- .address p {
-    text-shadow: 2px 2px gray
- } 
-  @media screen and (max-width: 900px) {
-  
-    h4 {
-    font-size: 14px;
+       .container-info, .container-map {
+        width: 100%;
+       
+        }
     }
-    .wrapper {
-        width: 80%;
+    .container-info {
+        margin-top: 0px;
     }
-    
-}
-@media screen and (max-width: 760px) {
-    .description h4{
-        padding-top:0px;
-     }
-}
-@media screen and (max-width:560px) {
-    .features-extras {
-        padding-top:50px
-     }
 }

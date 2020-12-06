@@ -50,3 +50,14 @@ if(document.getElementById('latitude') != null && document.getElementById('longi
 
 })();
 }
+
+// effetto hover su img apartment
+var jumboText = document.getElementById("jumboText");
+var jumbo = document.getElementById("jumbo");
+
+jumbo.addEventListener("mouseover",
+  function () {
+    jumboText.className = jumboText.classList+" display_on";
+  }
+
+);
