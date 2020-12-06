@@ -11453,8 +11453,17 @@ svg {
     width: 100%;
   }
 
+  .info-map .container-info .description h4,
+  .info-map .container-map .description h4 {
+    padding-top: 0px;
+  }
+
   .container-info {
-    margin-top: 0px;
+    order: 1;
+  }
+
+  .container-map {
+    order: 2;
   }
 }
 

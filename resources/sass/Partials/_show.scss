@@ -125,11 +125,17 @@ svg {
         flex-wrap: wrap;
 
        .container-info, .container-map {
-        width: 100%;
-       
+            width: 100%;
+
+            .description h4{
+                padding-top: 0px;
+            }
         }
     }
     .container-info {
-        margin-top: 0px;
+        order: 1;
+    }
+    .container-map {
+        order: 2;
     }
 }
