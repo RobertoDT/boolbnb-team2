@@ -37284,6 +37284,12 @@ __webpack_require__(/*! ././partials/guest.index.js */ "./resources/js/partials/
 
 __webpack_require__(/*! ././partials/guest.show.js */ "./resources/js/partials/guest.show.js");
 
+__webpack_require__(/*! ././partials/admin.show.js */ "./resources/js/partials/admin.show.js");
+
+__webpack_require__(/*! ././partials/navbar.filter.js */ "./resources/js/partials/navbar.filter.js");
+
+__webpack_require__(/*! ././partials/algolia.js */ "./resources/js/partials/algolia.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37450,6 +37456,37 @@ $(document).ready(function () {
 
 /***/ }),
 
+/***/ "./resources/js/partials/algolia.js":
+/*!******************************************!*\
+  !*** ./resources/js/partials/algolia.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function () {
+  var placesAutocomplete = places({
+    appId: 'plD2BZ3YCS9X',
+    apiKey: 'd15f227b04df27ca7267846ac790a5da',
+    container: document.querySelector('#form-address'),
+    templates: {
+      value: function value(suggestion) {
+        return suggestion.name;
+      }
+    }
+  }).configure({
+    type: 'address'
+  });
+  placesAutocomplete.on('change', function resultSelected(e) {
+    document.querySelector('#form-city').value = e.suggestion.city || '';
+    document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+    document.querySelector('#form-country').value = e.suggestion.country || '';
+    document.querySelector('#form-lat').value = e.suggestion.latlng.lat || '';
+    document.querySelector('#form-lon').value = e.suggestion.latlng.lng || '';
+  });
+})();
+
+/***/ }),
+
 /***/ "./resources/js/partials/guest.index.js":
 /*!**********************************************!*\
   !*** ./resources/js/partials/guest.index.js ***!
@@ -37475,26 +37512,24 @@ $(document).ready(function () {
   $(".funnel").click(function () {
     $(".filter_container").toggleClass("d-none");
   }); // /Mostrare e togliere filtri
-  // Barra search hide-show
-  // var show = $( "#navbarSupportedContent" );
-  // $(document).on( 'click', show, function(){
-  //   if (show.hasClass('show') ) {
-  //     console.log("the tab is already active");
-  // }   
-  //   else {
-  //     console.log("selected");
-  // }  
-  // });
-  // show.on('click','#navbarSupportedContent')
-  // $( "li" ).click(function() {            
-  //     if (i == true ) {
-  //         console.log("the tab is already active");
-  //     }   
-  //     else {
-  //         console.log("selected");
-  //     }      
-  // });
-  // Barra search hide-show
+  //Verificare se i checkbox sono checked o no
+  // /Verificare se i checkbox sono checked o no
+  // Prendere il valore inserito nell'input di distanza
+
+  var distance = $('#radius').val();
+  console.log(distance);
+  $(document).on('change', '#radius', function () {
+    var newDistance = $(this).val();
+    console.log(newDistance);
+  }); // Prendere il valore inserito nell'input di distanza
+  // Prendere il valore inserito negli input della stanza
+
+  console.log(roomsNumber, bedsNumber);
+  $(document).on('change', '#rooms', function () {
+    var filterRoomsNumber = $(this).val();
+    console.log(filterRoomsNumber);
+    var filterBedsNumber = $(this).val();
+  }); // Prendere il valore inserito negli input della stanza
 });
 
 /***/ }),
@@ -37553,42 +37588,72 @@ if (document.getElementById('latitude') != null && document.getElementById('long
 
 /***/ }),
 
+/***/ "./resources/js/partials/navbar.filter.js":
+/*!************************************************!*\
+  !*** ./resources/js/partials/navbar.filter.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./resources/js/partials/search.js":
 /*!*****************************************!*\
   !*** ./resources/js/partials/search.js ***!
   \*****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    isEmpty = _require.isEmpty;
 
 $(document).ready(function () {
-  // salvo il valore della variabile in una input
-  var inputSearch = $("#address").val();
-  var radius = 20;
+  // RESETTA IMPUT
+  // $('#address').attr('value', "");
+  // $('#address').val("");
+  // variabile globale per extras
+  extrasString = ""; // CONTROLLO SE IL DATA_ADDRESS E' STATO COMPILATO
+  // DALLA RICERCA DI ALTRE PAGINE OPPURE NO
 
-  if (inputSearch.length > 1) {
-    getCoordinates(inputSearch, radius);
-  } // al click sul bottone search parte la chiamata ajax a TomTom per ricavare coordinate
+  if ($('#address').val().length > 0) {
+    //ISSET
+    var humanAddress = $('#address').val();
+    $('#address').attr('value', "");
+    $('#address').val("");
 
-
-  $("#search").click(function () {
-    // salvo il valore della variabile in una input
-    var inputSearch = $("#address").val();
-    var radius = 20;
-
-    if (inputSearch.length > 1) {
-      getCoordinates(inputSearch, radius);
+    if (humanAddress.length > 2) {
+      console.log(humanAddress);
+      getCoordinatesTomTom(humanAddress);
     }
-  });
-  $("#address").keyup(function (event) {
-    if (event.which == 13) {
-      var inputSearch = $("#address").val();
-      var radius = 20;
+  }
 
-      if (inputSearch.length > 1) {
-        getCoordinates(inputSearch, radius);
+  $(document).on("click", "#search", function () {
+    if ($('#address').val().length > 2) {
+      var humanAddress = $('#address').val();
+      $('#address').attr('value', "");
+      $('#address').val("");
+      console.log(humanAddress);
+      getCoordinatesTomTom(humanAddress);
+    } else {
+      alert('La tua ricerca deve includere almeno 3 caratteri. Grazie!');
+    }
+  }); // SEARCH PREMENDO INVIO
+
+  $(".address_search_input").keyup(function (event) {
+    if (event.which == 13) {
+      if ($('#address').val().length > 2) {
+        var humanAddress = $('#address').val();
+        $('#address').attr('value', "");
+        $('#address').val("");
+        console.log(humanAddress);
+        getCoordinatesTomTom(humanAddress);
+      } else {
+        alert('La tua ricerca deve includere almeno 3 caratteri. Grazie!');
       }
     }
-  }); // autocomplete
+  }); // AUTOCOMPLETE
 
   (function () {
     var placesAutocomplete = places({
@@ -37596,14 +37661,24 @@ $(document).ready(function () {
       apiKey: '45954f563deec0d78ef4a69018cdb84f',
       container: document.querySelector('#address')
     });
-  })(); // end autocomplete
+
+    if (document.querySelector('#address-value') != null) {
+      var $address = document.querySelector('#address-value');
+    } // placesAutocomplete.on('change', function(e) {
+    //   $address.textContent = e.suggestion.value;
+    // });
+    // placesAutocomplete.on('clear', function() {
+    //   $address.textContent = 'none';
+    // });
+
+  })(); // END AUTOCOMPLETE
 
 }); // end document ready
-// Api che ottiene le cordinate da indirizzo umano
+// TOM TOM 
 
-function getCoordinates(address, radius) {
+function getCoordinatesTomTom(address) {
   // controllo se esiste il valore
-  if (address.length != 0) {
+  if (address.length > 3) {
     // codifico l'input in formato URI
     var encodetext = encodeURI(address); // inserisco l'URI nella API Tom Tom e richiedo le cordinate dell'indirizzo
 
@@ -37611,21 +37686,77 @@ function getCoordinates(address, radius) {
       "url": "https://api.tomtom.com/search/2/geocode/" + encodetext + ".json?limit=1&countrySet=IT&key=HzXIu06Pe6tarmbzDYGjNPs5aLa7AlS0",
       "method": "GET",
       "success": function success(data) {
-        // salvo le cordinate in due variabili
-        var lat = data.results[0].position.lat;
-        var lon = data.results[0].position.lon; // richiedo la lista degli apartment che sono all'interno del raggio stabilito
+        // FARE UN CONTROLLO SUI DATI IN ENTRATA
+        if (!isEmpty(data)) {
+          // salvo le cordinate in due variabili
+          var lat = data.results[0].position.lat;
+          var lon = data.results[0].position.lon;
+          console.log('getCoordinates', lat, lon); // setto i parametri per inviare la query
 
-        getProperties(lat, lon, radius);
+          setParameters(lat, lon);
+        }
       },
       "error": function error(err) {
         alert("Errore");
       }
     });
   }
+} // END TOM TOM
+// SETTO LE VARIABILI DA INVIARE A BACK END
+
+
+function setParameters(lat, lon) {
+  // variabili fondamentali per la ricerca
+  if (lat > 0 && lon > 0) {
+    // RADIUS
+    if ($('#radius').val() != "") {
+      var radius = $('#radius').val();
+    } else {
+      var radius = 20;
+    } // ROOMS
+
+
+    if ($('#rooms').val() != "") {
+      var rooms = $('#rooms').val();
+    } else {
+      var rooms = 1;
+    } // BEDS
+
+
+    if ($('#beds').val() != "") {
+      var beds = $('#beds').val();
+    } else {
+      var beds = 1;
+    } // BATHROOMS
+
+
+    if ($('#bathrooms').val() != "") {
+      var bathrooms = $('#bathrooms').val();
+    } else {
+      var bathrooms = 1;
+    } // BATHROOMS
+
+
+    if ($('#mq').val() != "") {
+      var mq = $('#mq').val();
+    } else {
+      var mq = 1;
+    } // EXTRAS
+
+
+    if (extrasString.length > 0) {
+      var extras = extrasString;
+    } else {
+      var extras = 0;
+    }
+
+    console.log("EXTRAS", extras, "radius", radius, "extras", extras, "rooms", rooms, "beds", beds, "bathrooms", bathrooms, "mq", mq);
+    getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq);
+  }
 } // Api per ottenere le proprieta
 
 
-function getProperties(lat, lon, radius) {
+function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq) {
   // Chiamata ajax per richiedere la lista degli tutti gli apartment nel sito
   $.ajax({
     "url": "http://localhost:8000/api/filterProperties",
@@ -37633,27 +37764,57 @@ function getProperties(lat, lon, radius) {
     "data": {
       'lat_poi': lat,
       'lon_poi': lon,
-      'radius': radius
+      'radius': radius,
+      'extras': extras,
+      'rooms': rooms,
+      'beds': beds,
+      'bathrooms': bathrooms,
+      'mq': mq
     },
     "success": function success(data) {
-      renderResults(data);
+      // controllo dati in entrata
+      if (!isEmpty(data)) {
+        console.log(data);
+        $('.properties_list').html(""); // renderizzo la nuova lista
+
+        renderResults(data);
+      }
     },
-    "error": function error(err) {
-      alert("Errore");
+    "error": function error(_error) {
+      alert(_error);
     }
   });
 } // funzione per renderizzare i risultati
 
 
 function renderResults(results) {
-  //preparo il template
-  var source = $("#property-template").html();
-  var template = Handlebars.compile(source);
-  $('.properties_list').html(''); //ciclo per le properietà
+  // SPONSORED
+  if (results.sponsored.length > 0) {
+    // salvo lista sponsorizzati
+    var sponsored = results.sponsored; //preparo il template per SPONSORIZZATI
 
-  for (var i = 0; i < results.length; i++) {
-    var html = template(results[i]);
-    $('.properties_list').append(html);
+    var source = $("#property-template").html();
+    var template = Handlebars.compile(source); //ciclo e appendo in dom
+
+    for (var i = 0; i < sponsored.length; i++) {
+      var html = template(sponsored[i]); // inserisco i nuovi risultati
+
+      $('.sponsored').append(html);
+    }
+  } // NOT SPONSORED
+
+
+  if (results.not_sponsored.length > 0) {
+    // salvo lista NON sponsorizzati
+    var notSponsored = results.not_sponsored; //preparo il template per NON sponsorizzati
+
+    var source = $("#property-template").html();
+    var template = Handlebars.compile(source); //ciclo per le properietà
+
+    for (var i = 0; i < notSponsored.length; i++) {
+      var html = template(notSponsored[i]);
+      $('.not_sponsored').append(html);
+    }
   }
 }
 
@@ -37677,8 +37838,8 @@ function renderResults(results) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\rober\Desktop\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\rober\Desktop\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
