@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Api which filters apartments
 Route::get('/getproperties', 'PropertiesSearchController@getProperties')->name('getProperties');
-Route::get('/filterProperties/inRadius', 'PropertiesSearchController@getPropertiesInRadius')->name('filterPropertiesInRadius');
+Route::get('/filterProperties', 'PropertiesSearchController@filterProperties')->name('filterProperties');

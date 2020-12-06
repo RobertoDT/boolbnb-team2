@@ -1,0 +1,16 @@
+.premium_name {
+    padding-bottom: 20px;
+    background: -webkit-linear-gradient(#dc18db, #15cff1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.create_form_group{
+  width: 40%;
+  .create_form_control{
+    width: 100%;
+    .create_alert_danger{
+      width: 100%;
+    }
+  }
+}

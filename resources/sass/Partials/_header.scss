@@ -1,10 +1,6 @@
 header {
     position:relative;
-
-    #app {
-    height: 100px;
-    } 
-
+    
     .fixed_search {
     position:fixed;
     width: 100%;
@@ -15,23 +11,71 @@ header {
     z-index: 2;
     background-color: #fff;
     width:100%;
+    -webkit-box-shadow: 0 4px 6px -6px $mainColor;
+    -moz-box-shadow: 0 4px 6px -6px $mainColor;
+    box-shadow: 0 4px 6px -6px $mainColor;
     }
-    
-        nav {
-            height: 100px;
-        }
     
     img {
         width: 180px;
         height: auto;
     }
 
-    form {
-        text-align: center;
+    .start_search {
+        width: 80%;
+
+        form, .header_nav {
+            text-align: center;
+            width:80%;
+            margin:auto;
+    
+            #address {
+                width: 100%;
+                border-radius: 20px;
+                text-align:center;
+            }
+            ::-webkit-input-placeholder {
+                text-align: center;
+             }
+            :-moz-placeholder {
+            text-align: center;
+            }
+            #address:hover, #address:focus {
+                -moz-box-shadow:    inset 0 0 5px $mainColor;
+                -webkit-box-shadow: inset 0 0 5px $mainColor;
+                box-shadow:         inset 0 0 5px $mainColor;
+            }
+            .form-control:focus{
+                border-color: #ced4da;
+                box-shadow: none;
+              }
+            .div_search {
+                width:70%;
+            }
+            .search_write {
+                border-radius: 20px;
+            }
+        }
+    }
+    .dropdown-toggle::after{
+        border: none;
     }
 
     .navbar-collapse {
         flex-grow: 0;
+        display:none;
+    }
+
+    .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    a {
+        color: $mainColor;
+        }
+    .hamburger.show {
+       display:none; 
     }
 }
 
@@ -39,31 +83,73 @@ header {
     height:100px;
 }
 
-@media screen and(max-width:576px) {
+@media screen and(max-width:992px) {
     header {
-        .logo_img {
-            display:none;
+
+        .div_search {
+            width:70%;
+        }
+    }
+}
+
+@media screen and(max-width:768px) {
+
+    header {
+        
+        .fixed_search {
+            background-color: #fff;
         }
 
-        .form-control {
-            width: auto;
+        img {
+            width: 140px;
         }
+        .order {
+            order: 1;
+            flex-grow:1;
+
+            .div_search {
+                width:70%;
+                margin: auto;
+            }
+
+            form, .header_nav {
+                width:100%;
+            }
+
+        }
+        .hamburger {
+            flex-basis:100%;
+        }
+        .hamburger.show {
+            display:block;
+        }
+    }
+}
+
+@media screen and(max-width:558px) {
+    header {
+        .container {
+            position: relative;
+
+            .order {
+                order: 1;
+                flex-grow:1; 
+            }
+
+            .navbar-collapse {
+                top:60px;
+                background-color: #fff;
+                width:100%;
+            }
+        }
+        .search_icon {
+            display: block;
+        }
+
     }
 }
 
 @media screen and (max-width:360px) {
-    header {
-        .logo_img {
-            display:block;
-            width:100%;
-            margin: auto;
-        }
 
-        .form-control {
-            width: auto;
-        }
-    }
 
 }
-
-

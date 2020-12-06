@@ -1,36 +1,57 @@
+const { isEmpty } = require("lodash");
+
 $( document ).ready(function() {
+  // RESETTA IMPUT
+  // $('#address').attr('value', "");
+  // $('#address').val("");
 
-  var inputSearch = $("#address").val();
 
-  if(inputSearch.length > 1) {
-     getCoordinates(inputSearch);
-  }
-  // al click sul bottone search parte la chiamata ajax a TomTom per ricavare coordinate
-  $("#search").click(function() {
+  
+  // variabile globale per extras
+  extrasString = "";
 
-    // salvo il valore della variabile in una input
-      var inputSearch = $("#address").val();
-
-      if(inputSearch.length > 1) {
-         getCoordinates(inputSearch);
-      }
-      // console.log(inputSearch);
-
-  });
-  $("#address").keyup(
-    function(event) {
-      if(event.which == 13) {
-        
-
-        var inputSearch = $("#address").val();
-
-      if(inputSearch.length > 1) {
-         getCoordinates(inputSearch);
-      }
+  // CONTROLLO SE IL DATA_ADDRESS E' STATO COMPILATO
+  // DALLA RICERCA DI ALTRE PAGINE OPPURE NO
+  if ($('#address').val().length > 0) { //ISSET
+    var humanAddress = $('#address').val();
+      $('#address').attr('value', "");
+      $('#address').val("");
+    if (humanAddress.length > 2) {
+      console.log(humanAddress);
+      getCoordinatesTomTom(humanAddress);
     }
   }
-);
-  // autocomplete
+
+  $( document ).on( "click", "#search", function() {
+    if ($('#address').val().length > 2) {
+      var humanAddress = $('#address').val();
+      $('#address').attr('value', "");
+      $('#address').val("");
+      console.log(humanAddress);
+      getCoordinatesTomTom(humanAddress);
+    } else {
+      alert('La tua ricerca deve includere almeno 3 caratteri. Grazie!')
+    }
+  });
+
+
+  // SEARCH PREMENDO INVIO
+  $(".address_search_input").keyup(
+    function(event) {
+      if(event.which == 13) {
+        if ($('#address').val().length > 2) {
+          var humanAddress = $('#address').val();
+          $('#address').attr('value', "");
+          $('#address').val("");
+          console.log(humanAddress);
+          getCoordinatesTomTom(humanAddress);
+        } else {
+          alert('La tua ricerca deve includere almeno 3 caratteri. Grazie!')
+        }
+    }
+  });
+
+  // AUTOCOMPLETE
   (function() {
     var placesAutocomplete = places({
       appId: 'plWXAPEAGDXR',
@@ -38,25 +59,30 @@ $( document ).ready(function() {
       container: document.querySelector('#address')
     });
 
-    var $address = document.querySelector('#address-value')
-    placesAutocomplete.on('change', function(e) {
-      $address.textContent = e.suggestion.value
-    });
+    if (document.querySelector('#address-value') != null) {
+      var $address = document.querySelector('#address-value');
+    }
+    
+      
+    // placesAutocomplete.on('change', function(e) {
+    //   $address.textContent = e.suggestion.value;
+    // });
 
-    placesAutocomplete.on('clear', function() {
-      $address.textContent = 'none';
-    });
+
+    // placesAutocomplete.on('clear', function() {
+    //   $address.textContent = 'none';
+    // });
 
   })();
-  // end autocomplete
+  // END AUTOCOMPLETE
 
 });
 // end document ready
 
-// Api che ottiene le cordinate da indirizzo umano
-function getCoordinates(address) {
+// TOM TOM 
+function getCoordinatesTomTom(address) {
   // controllo se esiste il valore
-  if(address.length != 0) {
+  if(address.length > 3) {
     // codifico l'input in formato URI
     var encodetext = encodeURI(address);
 
@@ -65,12 +91,17 @@ function getCoordinates(address) {
         "url": "https://api.tomtom.com/search/2/geocode/"+encodetext+".json?limit=1&countrySet=IT&key=HzXIu06Pe6tarmbzDYGjNPs5aLa7AlS0",
         "method": "GET",
         "success": function(data){
-          // salvo le cordinate in due variabili
-          var lat = data.results[0].position.lat;
-          var lon = data.results[0].position.lon;
-          console.log(lat, lon);
-          // richiedo la lista degli apartment che sono all'interno del raggio stabilito
-          getProperties(lat, lon);
+            // FARE UN CONTROLLO SUI DATI IN ENTRATA
+            if (!isEmpty(data)) {
+              // salvo le cordinate in due variabili
+              var lat = data.results[0].position.lat;
+              var lon = data.results[0].position.lon;
+              console.log('getCoordinates', lat, lon);
+              // setto i parametri per inviare la query
+              setParameters(lat, lon);
+              
+            }
+
         },
         "error": function(err) {
             alert("Errore");
@@ -78,107 +109,124 @@ function getCoordinates(address) {
     });
   }
 }
+// END TOM TOM
+
+// SETTO LE VARIABILI DA INVIARE A BACK END
+function setParameters(lat, lon) {
+  // variabili fondamentali per la ricerca
+  
+  if (lat > 0 && lon > 0) {
+    // RADIUS
+    if ($('#radius').val() != "") {
+      var radius = $('#radius').val();
+    } else {
+      var radius = 20;
+    }
+
+    // ROOMS
+    if ($('#rooms').val() != "") {
+      var rooms = $('#rooms').val();
+    } else {
+      var rooms = 1;
+    }
+
+    // BEDS
+    if ($('#beds').val() != "") {
+      var beds = $('#beds').val();
+    } else {
+      var beds = 1;
+    }
+
+    // BATHROOMS
+    if ($('#bathrooms').val() != "") {
+      var bathrooms = $('#bathrooms').val();
+    } else {
+      var bathrooms = 1;
+    }
+
+    // BATHROOMS
+    if ($('#mq').val() != "") {
+      var mq = $('#mq').val();
+    } else {
+      var mq = 1;
+    }
+
+    // EXTRAS
+    if (extrasString.length > 0) {
+      var extras = extrasString;
+    } else {
+      var extras = 0;
+    }
+
+    console.log("EXTRAS", extras,"radius", radius,"extras", extras,"rooms", rooms,"beds", beds,"bathrooms", bathrooms,"mq", mq);
+
+    getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq);
+    
+  } 
+}
 
 // Api per ottenere le proprieta
-function getProperties(lat, lon){
+function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq){
   // Chiamata ajax per richiedere la lista degli tutti gli apartment nel sito
   $.ajax({
-      "url": "http://localhost:8000/api/getproperties",
+      "url": "http://localhost:8000/api/filterProperties",
       "method": "GET",
-      "success": function(data) {
-        var results = data.properties;
-        // creo Json degli Apartments
-        createJsonTomTom(results, lat, lon)
+      "data": {
+        'lat_poi': lat,
+        'lon_poi': lon,
+        'radius': radius,
+        'extras': extras,
+        'rooms': rooms,
+        'beds': beds,
+        'bathrooms': bathrooms,
+        'mq': mq
       },
-      "error": function(err) {
-          alert("Errore");
+      "success": function(data) {
+      // controllo dati in entrata
+      if (!isEmpty(data)) {
+        console.log(data);
+        $('.properties_list').html("");
+        // renderizzo la nuova lista
+        renderResults (data);
+      }
+
+      },
+      "error": function(error) {
+          alert(error);
       }
   });
 }
 
-// Funzione per creare un Json per Api TomTom
-function createJsonTomTom(results, lat, lon) {
-  // creo lo scheletro di un Json vuoto per poi andarlo a fillare in maniera che sia leggibile dall'Api del TomTom
-  var inputJsonTomTom = {
-    "poiList": [],
-    "geometryList": []
-  };
-
-  // compilo l'oggetto contextGeo con le cordinate del raggio e nella geometryList del Json
-  var contextGeo =
-  {
-      "type": "CIRCLE",
-      "position": lat+" "+lon,
-      "radius": 20000
-  };
-  // pusho contextGeo in array geometryList del Json
-  inputJsonTomTom.geometryList.push(contextGeo);
-
-  // ciclo i risultati apartment per apartment estrapolo i dati e li inserisco nella poiList del Json
-  for (var i = 0; i < results.length; i++) {
-    var latApartment = results[i].latitude; //es. 42.589
-    var lonApartment = results[i].longitude; //es. 16.564
-
-    // creo contextPoi dove inserire risultati
-    var contextPoi =
-    {
-        "position": {
-          "lat": latApartment,
-          "lon": lonApartment
-        },
-        "data": {
-          "property": results[i]
-        }
-    };
-    // inserisco il risulato  nell'array poiList
-    inputJsonTomTom.poiList.push(contextPoi);
-  }
-  getResultInRadius(inputJsonTomTom);
-}
-
-
-// Api che restituisce risultati all'interno di un raggio specificato
-function getResultInRadius(json) {
-  // chiamata POST ad Api per ottenere risultati
-  $.ajax({
-    "url": "https://api.tomtom.com/search/2/geometryFilter.json?key=HzXIu06Pe6tarmbzDYGjNPs5aLa7AlS0&lat=41.89056&lon=12.49427&radius=20000",
-    "method": "POST",
-    "dataType": "json",
-    "contentType": "application/json; charset=utf-8",
-    "data": JSON.stringify(json),
-    "success": function(data) {
-        // console.log(data);
-        renderResults(data);
-    },
-    "error": function(err) {
-        alert("Errore");
-    }
-  });
-}
 
 // funzione per renderizzare i risultati
-function renderResults (data){
-    var properties = data.results;
-    // console.log(properties);
-    //preparo il template
+function renderResults (results){
+  // SPONSORED
+  if (results.sponsored.length > 0) {
+    // salvo lista sponsorizzati
+    var sponsored = results.sponsored;
+    //preparo il template per SPONSORIZZATI
     var source = $("#property-template").html();
     var template = Handlebars.compile(source);
-
-    $('.properties_list').html('');
-    //ciclo per le properietà
-    for (var i = 0; i < properties.length; i++) {
-
-      var property = properties[i].data.property;
-      console.log(property);
-      // var context = property[i].data.property;
-      var context = {
-        "id": property.id,
-        "flat_image": property.flat_image,
-        "title": property.title,
-        "description": property.description
-      };
-      console.log(context);
-      var html = template(context);
-      $('.properties_list').append(html);
+    //ciclo e appendo in dom
+    for (var i = 0; i < sponsored.length; i++) {
+      var html = template(sponsored[i]);
+      // inserisco i nuovi risultati
+      $('.sponsored').append(html);
     }
+  }
+
+  // NOT SPONSORED
+  if (results.not_sponsored.length > 0) {
+    // salvo lista NON sponsorizzati
+    var notSponsored = results.not_sponsored;
+    //preparo il template per NON sponsorizzati
+    var source = $("#property-template").html();
+    var template = Handlebars.compile(source);
+    //ciclo per le properietà
+    for (var i = 0; i < notSponsored.length; i++) {
+      var html = template(notSponsored[i]);
+      $('.not_sponsored').append(html);
+    }
+  }
+
 }

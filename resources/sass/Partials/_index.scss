@@ -3,13 +3,9 @@
 
 .premium_name {
     padding-bottom: 20px;
-    background: -webkit-linear-gradient(#dc18db, #15cff1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 h1 {
-    text-align: center;
     padding: 30px;
 }
 
@@ -69,27 +65,28 @@ ul {
             display: block;
         }
         .all_properties:hover img {
-            transform: scale(1.5, 1.5);
+            transform: scale(1.1, 1.1);
         }
     }
 
 // Links/buttons index.admin
 .modifing_link {
     text-decoration: none;
-    background-color: $mainColor;;
+    background-image: linear-gradient(140deg, #6f54e9, #488ec7);
     color: $white;
     margin: 3px;
     border: none;
 }
+
 .modifing_link:hover {
-    background-color: $hoverColor;
+    background-color: red;
     color: $white;
 }
 
 .hero {
     height: 630px;
-    background-image: url('/img/hero.jfif');
-    background-position: center;
+    background-image: url('/img/house3dd.jpg');
+    background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -112,5 +109,4 @@ ul {
     margin: 5px;
     position: relative;
     }
-
 }

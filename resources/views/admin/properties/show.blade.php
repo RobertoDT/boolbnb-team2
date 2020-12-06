@@ -8,152 +8,159 @@
 
 @section('mainContent')
 <section class="detail">
+
     <div class="background-wrapper">
-        <div class="wrapper">
 
-            {{-- DETTGLI STRUTTURA --}}
-            <div class="property-details">
+        <div class="wrap">
 
-                {{-- IMMAGINE COPERTINA E TITOLO --}}
-                <div class="title-wrapper"> 
-                  <h1>Il tuo appartamento "{{$property->title}}"</h1>
-                    <div class="img-wrapper"> 
-                        <img class="img-admin" src="{{asset('storage/'.$property->flat_image)}}" alt="Logo immagine">
-                    </div>
-                    
-                    
-                    <!-- BOTTONI -->
-                    <div class="buttons">
-                      <div class="card-body text_center">
 
-                        {{-- MODIFICA --}}
-                        <a class="btn modifing_link" href="{{route('admin.properties.edit', $property)}}" class="card-link">Modifica informazioni</a>
-                        {{-- MODIFICA --}}
-                        
-                        <!-- ELIMINA -->
+            {{-- NAVBAR --}}
+            <div class="menu-admin">
+                <ul>
+                    <li id="menu-item"><a href="{{route('admin.properties.edit', $property)}}"><i class="fas fa-pencil-alt"></i> <span>Modifica</span></a></li>
+                    <li id="menu-item">
                         <form class="" action="{{route("admin.properties.destroy", $property)}}" method="POST">
                             @csrf
                             @method("DELETE")
-                            <button type="submit" class="btn modifing_link">Cancella la struttura</button>
+                           <a href=""><i class="fas fa-trash-alt"></i> <span>Elimina</span></a>
                         </form>
-                        <!-- /ELIMINA -->
-                        
-                        {{-- STATISTICHE --}}
-                        <a class="btn modifing_link" class="card-link">Statistiche della struttura</a>
-                        {{-- //STATISTICHE --}}
+                    </li>
+                    <li id="menu-item"><a href="{{route("admin.properties.index")}}"><i class="fas fa-eye"></i> <span>Visibilita'</span></a></li>
+                    <li id="menu-item"><a href="{{route("admin.properties.index")}}"><i class="fas fa-chart-bar"></i> <span>Statistiche</span></a></li>
+                    <li id="menu-item"><a href="{{route("admin.properties.index")}}"><i class="fas fa-user"></i> <span>Torna Indietro</span></a></li>
+                </ul>
 
-                        {{-- SPONSOR --}}
-                            <button type="button" class="btn modifing_link" class="card-link" data-toggle="modal" data-target="#myModal">Sponsorizza la struttura</button>
-                          
-                            <!-- MODALE -->
-                            <div class="modal fade" id="myModal" role="dialog">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                                  <div class="modal-body">
-                                    <h5>Scegli il tipo di sponsorizzazione:</h5>
-                                    <div class="sponsor-offers">
-                                        <input type="checkbox" name="sponsor1">
-                                            <label for="sponsor1">2,99 € per 24 ore di sponsorizzazione</label>
-                                                <br>
-                                        <input type="checkbox" name="sponsor2">
-                                            <label for="sponsor2">5,99 € per 72 ore di sponsorizzazione</label>
-                                                <br>
-                                        <input type="checkbox" name="sponsor3">
-                                            <label for="sponsor3">9,99 € per 144 ore di sponsorizzazione</label>
-                                                <br>
-                                    </div>
-                                    
-                                    <div class="payment">
-                                        <h5>Inserisci i dati per il pagamento con carta:</h5>
-                                        <div class="modal-body form-container">
-                                            <form action="action_page.php">
-                                                
-                                                <label for="fname">Nome e Cognome dell'intestatario</label>
-                                                <input type="text" name="fullname" placeholder="Nome Cognome">
-
-                                                <label for="cardnumber">Numero della carta</label>
-                                                <input type="text" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx">
-
-                                                <label for="expiry">Scadenza</label>
-                                                <input placeholder="MM/YY" type="text" name="expiry">
-
-                                                <label for="cvv">Codice di sicurezza</label>
-                                                <input type="text" inputmode="numeric" pattern="[0-9\s]{3,4}" autocomplete="ccv" maxlength="4" placeholder="xxx">
-                                        </div>
-                                    </div>
-                                  </div>
-
-                                  <button type="submit" class="btn modifing_link proceed-btn">Procedi</button>
-
-                                </div>
-                              </div>
-                            </div>
-                            <!-- //MODALE -->
-                          {{-- //SPONSOR --}}
-
-                    </div>
-                    <!-- //BOTTONI -->
-                
+            {{-- IMMAGINE COPERTINA E TITOLO --}}
+            <div class="title-wrap">
+                <h1>Il tuo appartamento: <br> "{{$property->title}}"</h1>
+                <div class="img-wrapper">
+                    <img class="img-admin" src="{{asset('storage/'.$property->flat_image)}}" alt="Logo immagine">
                 </div>
-                {{-- //IMMAGINE COPERTINA E TITOLO --}}
 
             </div>
+            {{-- //NAVBAR --}}
+
+            {{-- MAIN --}}
+            <div class="main-layout">
+
                 {{-- DESCRIZIONE --}}
-                <div class="description">
-                    <div>
-                    <h6><i class="fas fa-door-open"></i> La tua descrizione: {{$property->description}}</h6>  
+
+                <div class="sezione side">
+                    <div class="desc">
+                        <h5><i class="fas fa-door-open"></i> La tua descrizione: </h5>
+                            <p>{{$property->description}}</p>
                     </div>
                 </div>
                 {{-- //DESCRIZIONE --}}
             
+            
+                {{-- IMMAGINE COPERTINA E TITOLO --}}
+                <div class="sezione title-wrap">
+                    <h1>Il tuo appartamento: <br> "{{$property->title}}"</h1>
+                    <div class="img-wrapper">
+                        <img class="img-admin" src="{{asset('storage/'.$property->flat_image)}}" alt="Logo immagine">
+                    </div>
+                </div>
+                {{-- //IMMAGINE COPERTINA E TITOLO --}}
+            
+                {{-- EXTRA --}}
+                <div class="sezione side">
+                    <div class="feat">
+                        <h5>Le tue Caratteristiche:</h5>
+
+                <div class="desc">
+                    <div>
+                    <h6><i class="fas fa-door-open"></i> La tua descrizione: {{$property->description}}</h6>
+                    </div>
+                </div>
+                {{-- //DESCRIZIONE --}}
+
                 {{-- LOCALI --}}
-                <div class="features">
+                <div class="feat">
                     <div>
                         <h5>Le tue Caratteristiche</h5>
+
                         <h6><i class="fas fa-home"></i> Locali: {{$property->rooms_number}}</h6>
                         <h6><i class="fas fa-bed"></i> Letti: {{$property->beds_number}}</h6>
                         <h6><i class="fas fa-shower"></i> Bagni: {{$property->bathrooms_number}}</h6>
                         <h6><i class="fas fa-th"></i> Metri Quadri: {{$property->square_meters}}</h6>
-                    </div> 
+                    </div>
+
+                    <div class="extras">
+
                 </div>
                 {{-- //LOCALI --}}
 
                 {{-- EXTRA --}}
-                <div class="extra">
+                <div class="extras">
                     <div>
+
                         @if($property->extras->isEmpty())
-                        <p>Non hai inserito extra</p>
+                            <p>Non hai inserito extra</p>
                         @else
-                            <h5>I tuoi Extra</h5>
+                            <h5>I tuoi Extra:</h5>
                                 @foreach ($property->extras as $extra)
                                     <p><i class="far fa-star"></i> {{$extra->name}}</p>
                                 @endforeach
                         @endif
-                    </div>
+                    </div>                  
                 </div>
-                {{-- //EXTRA --}}    
+
+             {{-- //EXTRA --}}
+            
+
+                {{-- //EXTRA --}}
+
 
             </div>
-            {{-- //DETTGLI STRUTTURA --}}
-
-        </div>
-    </div> 
-
-        <div class="wrapper">
-            {{-- MAPPA --}}
-            <div class="map-container">
-                <h2>Indirizzo e geolocalizzazione</h2>
-                <h5><i class="fas fa-map-marker-alt"></i> Viale Italia 78, 78000 Pistoia <a class="btn modifing_link" href="{{route('admin.properties.edit', $property)}}" class="card-link">Modifica l'indirizzo</a> </h5>
+            {{-- //MAIN --}}
+            
                 
-                    <div class="map"></div>
-                    {{-- <h4>{{$property->address}}</h4> --}}
-            </div>
-            {{-- MAPPA --}}
+            {{-- INFORMATIONS AND MAP --}}
+            <div class="info-mappa">
+                {{-- ADDRESS --}}
+                <div class="indirizzo">
+                    <h5>Il tuo indirizzo: Via ciao 43, 75584 Roma</h5>
+                </div>
+                {{-- //ADDRESS --}}
+        
+                {{-- MAP  --}}
+                <div class="container-mappa">
+                    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+                    <div id="map-example-container-paris"></div>
+                    {{-- <input type="hidden" id="input-map-paris"/> --}}
+                    <input type="hidden" id="input-map-paris">
+                    {{-- prendiamo coordinate da $property --}}
+                    <input type="hidden" id="latitude" value="{{$property->latitude}}">
+                    <input type="hidden" id="longitude" value="{{$property->longitude}}">
+                </div>
+                {{-- /MAP  --}}
+            </div>    
+            {{-- /INFORMATIONS AND MAP --}}   
+
         </div>
-    
+        {{-- //wrap --}}
+
+
+    </div> 
+    {{-- //background-wrapper --}}
+
+    </div>
+
+    {{-- MAPPA --}}
+    <div class="wrapper">
+        <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+
+        <div id="map-example-container-paris"></div>
+        <input type="hidden" id="input-map-paris" class="form-control" placeholder="Find a street in Paris, France. Try &quot;Rivoli&quot;" />
+
+        {{-- prendiamo coordinate da $property --}}
+        <input type="hidden" id="latitude" value="{{$property->latitude}}">
+        <input type="hidden" id="longitude" value="{{$property->longitude}}">
+    </div>
+    {{-- //MAPPA --}}
+
 
 </section>
+<script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
 @endsection

@@ -16,20 +16,14 @@ use App\Message;
 
 class PropertyController extends Controller
 {
-    public function readMessages()
-    {
-      $user_id = Auth::id();
-      $properties = Property::where("user_id", $user_id)->get();
-      $messagesArray = [];
-      foreach ($properties as $property) {
-        if($property->messages !== null){
+  public function readMessages()
+  {
+    $user_id = Auth::id();
+    $properties = Property::where("user_id", $user_id)->get();
 
-        }
-      }
-      $messages = Message::where("property_id", $properties)->get();
-      dd($properties);
-      return view("admin.messages.index", compact("messages"));
-    }
+    return view("admin.properties.index_messages", compact("properties"));
+  }
+
 
     /**
      * Display a listing of the resource.
@@ -67,6 +61,10 @@ class PropertyController extends Controller
         //validation
         $request->validate([
           "title" => "required|max:255",
+          "street" => "required",
+          "metropolis" => "required",
+          "country" => "required",
+          "zip_code" => "required|max:10",
           "description" => "max:400",
           "rooms_number" => "required|integer",
           "beds_number" => "required|integer",
@@ -86,6 +84,9 @@ class PropertyController extends Controller
 
         $newProperty->user_id = Auth::id();
         $newProperty->title = $data["title"];
+        $newProperty->street = $data["street"];
+        $newProperty->metropolis = $data["metropolis"];
+        $newProperty->country = $data["country"];
         $newProperty->description = $data["description"];
         $newProperty->rooms_number = $data["rooms_number"];
         $newProperty->beds_number = $data["beds_number"];
@@ -148,6 +149,9 @@ class PropertyController extends Controller
         //validazione
         $request->validate([
           "title" => "required|max:255",
+          "street" => "required",
+          "metropolis" => "required",
+          "country" => "required",
           "description" => "max:400",
           "rooms_number" => "required|integer",
           "beds_number" => "required|integer",
@@ -159,21 +163,26 @@ class PropertyController extends Controller
           "active" => "boolean"
         ]);
 
-
         //vado a prendere quella proprietà da modificare tramite id
         $property = Property::find($id);
 
-        //cancelliamo path immagine precedente
-        $path = Storage::disk("public")->delete("images", $data["flat_image"]);
-
         //modifico i dati
         $property->title = $data["title"];
+        $property->street = $data["street"];
+        $property->metropolis = $data["metropolis"];
+        $property->country = $data["country"];
         $property->description = $data["description"];
         $property->rooms_number = $data["rooms_number"];
         $property->beds_number = $data["beds_number"];
         $property->bathrooms_number = $data["bathrooms_number"];
-        $path = Storage::disk("public")->put("images", $data["flat_image"]);
-        $property->flat_image = $path;
+        if(isset($data["flat_image"])){
+          //cancelliamo path immagine precedente
+          $path = Storage::disk("public")->delete("images", $data["flat_image"]);
+          //storiamo la nuova immagine
+          $path = Storage::disk("public")->put("images", $data["flat_image"]);
+          //assegniamo il valore
+          $property->flat_image = $path;
+        }
         $property->square_meters = $data["square_meters"];
         $property->latitude = $data["latitude"];
         $property->longitude = $data["longitude"];
@@ -186,7 +195,6 @@ class PropertyController extends Controller
 
         //faccio l'update dei Dati
         $property->update();
-
 
         if(isset($data["extras"])){
           $property->extras()->sync($data["extras"]);
