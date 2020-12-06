@@ -15,7 +15,7 @@
                     <form class="form-inline my-2 my-lg-0" action="{{route("search")}}" method="GET">                     
                         @method('GET')                 
                         <div class="div_search form-inline my-2 my-lg-0">                     
-                            <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Where are we going?" />                 
+                            <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Where are we going?" />               
                         </div>                 
                         <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write"  class="search_button" type="submit">Search</button>
                     </form>
