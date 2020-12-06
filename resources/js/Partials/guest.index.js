@@ -22,6 +22,10 @@ $(window).scroll(function(){
   })
   // /Mostrare e togliere filtri
 
+//Verificare se i checkbox sono checked o no
+
+// /Verificare se i checkbox sono checked o no
+
 // Prendere il valore inserito nell'input di distanza
 var distance = $('#radius').val();
 console.log(distance);
