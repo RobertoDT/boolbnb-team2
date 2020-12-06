@@ -15,35 +15,32 @@ $(window).scroll(function(){
   }
   // /Header fissato in alto allo scroll
 });
+
   // Mostrare e togliere filtri
   $(".funnel").click(function() {
   $(".filter_container").toggleClass("d-none");
   })
   // /Mostrare e togliere filtri
-  // Barra search hide-show
 
-  // var show = $( "#navbarSupportedContent" );
-  // $(document).on( 'click', show, function(){
-  //   if (show.hasClass('show') ) {
-  //     console.log("the tab is already active");
-  // }   
-  //   else {
-  //     console.log("selected");
-  // }  
-  // });
+// Prendere il valore inserito nell'input di distanza
+var distance = $('#distance').val();
+// console.log(distance);
+$(document).on('change', '#distance', function() {
+  var newDistance = $(this).val();
+  // console.log(newDistance);
+});
+// Prendere il valore inserito nell'input di distanza
 
-  // show.on('click','#navbarSupportedContent')
-     
-
-  // $( "li" ).click(function() {            
-  //     if (i == true ) {
-  //         console.log("the tab is already active");
-  //     }   
-  //     else {
-  //         console.log("selected");
-  //     }      
-  // });
-    // Barra search hide-show
+// Prendere il valore inserito negli input della stanza
+var roomsNumber = $('#rooms_number').val();
+var bedsNumber = $('#beds_number').val();
+console.log(roomsNumber, bedsNumber);
+$(document).on('change', '#rooms_number', function() {
+  var filterRoomsNumber = $(this).val();
+  console.log(filterRoomsNumber);
+  var filterBedsNumber = $(this).val();
+});
+// Prendere il valore inserito negli input della stanza
 
 })
 
