@@ -64,33 +64,63 @@ class PropertiesTableSeeder extends Seeder
           // milano
           [
               'lat' => 45.46362,
-              'lon' => 9.18812
+              'lon' => 9.18812,
+              'metropolis' => 'Milano',
+              'country' => 'Italia'
           ],
           // venezia
           [
               'lat' => 45.43461,
-              'lon' => 12.33891
+              'lon' => 12.33891,
+              'metropolis' => 'Venezia',
+              'country' => 'Italia'
           ],
           // firenze
           [
               'lat' => 43.7687,
-              'lon' => 11.25693
+              'lon' => 11.25693,
+              'metropolis' => 'Firenze',
+              'country' => 'Italia'
           ],
           // roma
           [
               'lat' => 41.89056,
-              'lon' => 12.49427
+              'lon' => 12.49427,
+              'metropolis' => 'Roma',
+              'country' => 'Italia'
           ],
-          // costa smeralda
+          //perugia
           [
-              'lat' => 40.7229,
-              'lon' => 9.68709
+              'lat' => 43.0977,
+              'lon' => 12.3838,
+              'metropolis' => 'Perugia',
+              'country' => 'Italia'
           ],
-          // gallipoli
+          //torino
           [
-              'lat' => 40.05618,
-              'lon' => 17.97882
+              'lat' => 45.0781,
+              'lon' => 7.6761,
+              'metropolis' => 'Torino',
+              'country' => 'Italia'
           ],
+          //bologna
+          [
+              'lat' => 44.5075,
+              'lon' => 11.3514,
+              'metropolis' => 'Bologna',
+              'country' => 'Italia'
+          ]
+          // // costa smeralda
+          // [
+          //     'lat' => 40.7229,
+          //     'lon' => 9.68709
+          // ],
+          // // gallipoli
+          // [
+          //     'lat' => 40.05618,
+          //     'lon' => 17.97882,
+          //     'address' => 'Gallipoli, Italia'
+          // ],
         ];
 
         // scelgo una citta casuale
@@ -100,9 +130,13 @@ class PropertiesTableSeeder extends Seeder
         $rand_value  = mt_rand(0,1) == 1 ? 1 : -1;
         $lat = $city['lat'] + ($rand_value * $rand_numb);
         $lon = $city['lon'] + ($rand_value * $rand_numb);
+        $metropolis = $city['metropolis'];
+        $country = $city['country'];
         // salvo le cordinate a database
         $newProperty->latitude = $lat;
         $newProperty->longitude = $lon;
+        $newProperty->metropolis = $metropolis;
+        $newProperty->country = $country;
         // faker cordinates
         // $newProperty->latitude = $faker->latitude(-90, 90);
         // $newProperty->longitude = $faker->longitude(-180, 180);
