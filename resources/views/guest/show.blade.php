@@ -15,7 +15,7 @@
             <img class="img-show" src="{{$property->flat_image}}" alt="Foto appartamento">
             <div class="address">
                 <p>ROMA</p>
-            </div> 
+            </div>
         </div>
         {{-- /APARTMENT IMAGE --}}
 
@@ -27,7 +27,7 @@
             {{-- MAP  --}}
             <div class="container-map">
                 <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-        
+
                 <div id="map-example-container-paris"></div>
                 {{-- <input type="hidden" id="input-map-paris"/> --}}
                 <input type="hidden" id="input-map-paris">
@@ -45,7 +45,7 @@
                 </div>
             {{-- /DESCRIPTION --}}
             {{-- FEATURE-EXTRAS    --}}
-            
+
                 <div class="features-extras">
                     <div class="features">
                         <h4>FEATURES</h4>
@@ -74,10 +74,11 @@
                 </div>
             </div>
 
-        </div>    
-        {{-- /INFORMATIONS AND MAP --}}   
-                
-        
+        </div>
+        {{-- /INFORMATIONS AND MAP --}}
+
+
     </div>
 </section>
+<script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
 @endsection

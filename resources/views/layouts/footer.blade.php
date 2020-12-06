@@ -37,11 +37,11 @@
         <!-- Grid column -->
         <div class="where col-md-4 col-sm-4 col-xs-12 mt-md-0 mt-3 text_right">
             <!-- Content -->
-            <h5 class="text-uppercase font-weight-bold">DOVE SIAMO</h5>            
+            <h5 class="text-uppercase font-weight-bold">DOVE SIAMO</h5>
             <p>
                 BOOLBNB srl <br>
                 Piazzale Giovanni dalle Bande Nere, 9 <br>
-                20146, Milano <br>                
+                20146, Milano <br>
             </p>
           </div>
       <!-- Grid row-->

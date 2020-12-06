@@ -73,13 +73,24 @@ span{
 
 //smartphone
 @media screen and (max-width: 576px){
-  .modal{
-    min-width: 600px;
+  .fade{
     width: 100%;
-    .modal-content{
-      width: 50%;
+    .modal-dialog{
+      max-width: 400px;
+      width: 100%;
       margin: auto;
+
+      .modal-content{
+        min-width: 550px;
+        width: 100%;
+        margin: auto;
+      }
     }
+  }
+  .modal{
+    min-width: 750px;
+    width: 100%;
+    margin: auto;
   }
   .row_messages{
     height: 100%;
