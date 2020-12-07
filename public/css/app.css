@@ -11277,6 +11277,7 @@ ul li .overlay .small-container a {
   font-weight: bold;
 }
 
+<<<<<<< HEAD
 ul li .overlay .small-container .evidence {
   color: #3e3d8b;
   background-color: #f9a1fd;
@@ -11286,6 +11287,8 @@ ul li .overlay .small-container .evidence {
   transform: translateY(50%);
 }
 
+=======
+>>>>>>> main
 ul .all_properties:hover .overlay {
   display: block;
 }
@@ -11757,10 +11760,14 @@ svg {
 
 .card-list .card-box h5 {
   padding-top: 30px;
+<<<<<<< HEAD
   font-size: 20px;
   background: -webkit-linear-gradient(#b31bb3, #48b5c9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+=======
+  font-size: 25px;
+>>>>>>> main
 }
 
 .flip-card {
