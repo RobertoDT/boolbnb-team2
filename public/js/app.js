@@ -37370,120 +37370,50 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// var latitude = document.getElementById('latitude').value;
-//     var longitude = document.getElementById('longitude').value;
-//   (function() {
-//     var latlng = {
-//       lat: latitude,
-//       lng: longitude
-//     };
-//     var placesAutocomplete = places({
-//       appId: 'plD2BZ3YCS9X',
-//       apiKey: 'd15f227b04df27ca7267846ac790a5da',
-//       container: document.querySelector('#input-map-paris')
-//     }).configure({
-//       aroundLatLng: latlng.lat + ',' + latlng.lng, // input latlong
-//       aroundRadius: 0, // no radius
-//       type: 'address'
-//     });
-//     var map = L.map('map-example-container-paris', {
-//       scrollWheelZoom: true,
-//       zoomControl: true
-//     });
-//     var osmLayer = new L.TileLayer(
-//       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//         minZoom: 6,
-//         maxZoom: 18,
-//         attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-//       }
-//     );
-//     var markers = [];
-//     var marker = L.marker(latlng, {opacity: 1});
-//       marker.addTo(map);
-//       markers.push(marker);
-//     map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
-//     map.addLayer(osmLayer);
-//     function handleOnSuggestions(e) {
-//       markers.forEach(removeMarker);
-//       markers = [];
-//       if (e.suggestions.length === 0) {
-//         map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
-//         return;
-//       }
-//       e.suggestions.forEach(addMarker);
-//       findBestZoom();
-//     }
-//     function handleOnChange(e) {
-//       markers
-//         .forEach(function(marker, markerIndex) {
-//           if (markerIndex === e.suggestionIndex) {
-//             markers = [marker];
-//             marker.setOpacity(1);
-//             findBestZoom();
-//           } else {
-//             removeMarker(marker);
-//           }
-//         });
-//     }
-//     function handleOnClear() {
-//       map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
-//     }
-//     function handleOnCursorchanged(e) {
-//       markers
-//         .forEach(function(marker, markerIndex) {
-//           if (markerIndex === e.suggestionIndex) {
-//             marker.setOpacity(1);
-//             marker.setZIndexOffset(1000);
-//         } else {
-//           marker.setZIndexOffset(0);
-//           marker.setOpacity(0.5);
-//         }
-//       });
-//   }
-//   function addMarker(suggestion) {
-//     var marker = L.marker(suggestion.latlng, {opacity: .4});
-//     marker.addTo(map);
-//     markers.push(marker);
-//   }
-//   function removeMarker(marker) {
-//     map.removeLayer(marker);
-//   }
-//   function findBestZoom() {
-//     var featureGroup = L.featureGroup(markers);
-//     map.fitBounds(featureGroup.getBounds().pad(0.5), {animate: false});
-//   }
-// })();
+if (document.getElementById('latitude') != null && document.getElementById('longitude') != null) {
+  var latitude = document.getElementById('latitude').value;
+  var longitude = document.getElementById('longitude').value;
 
-/***/ }),
+  (function () {
+    var latlng = {
+      lat: latitude,
+      lng: longitude
+    };
+    var placesAutocomplete = places({
+      appId: 'plD2BZ3YCS9X',
+      apiKey: 'd15f227b04df27ca7267846ac790a5da',
+      container: document.querySelector('#input-map-paris')
+    }).configure({
+      aroundLatLng: latlng.lat + ',' + latlng.lng,
+      // input latlong
+      aroundRadius: 0,
+      // no radius
+      type: 'address'
+    });
+    var map = L.map('map-example-container-paris', {
+      scrollWheelZoom: true,
+      zoomControl: true
+    });
+    var osmLayer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      minZoom: 6,
+      maxZoom: 18,
+      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    });
+    var markers = [];
+    var marker = L.marker(latlng, {
+      opacity: 1
+    });
+    marker.addTo(map);
+    markers.push(marker);
+    map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
+    map.addLayer(osmLayer);
 
-/***/ "./resources/js/partials/algolia.js":
-/*!******************************************!*\
-  !*** ./resources/js/partials/algolia.js ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function () {
-  var placesAutocomplete = places({
-    appId: 'plD2BZ3YCS9X',
-    apiKey: 'd15f227b04df27ca7267846ac790a5da',
-    container: document.querySelector('#form-address'),
-    templates: {
-      value: function value(suggestion) {
-        return suggestion.name;
-      }
+    function handleOnSuggestions(e) {
+      markers.forEach(removeMarker);
+      markers = [];
     }
-  }).configure({
-    type: 'address'
-  });
-  placesAutocomplete.on('change', function resultSelected(e) {
-    document.querySelector('#form-city').value = e.suggestion.city || '';
-    document.querySelector('#form-zip').value = e.suggestion.postcode || '';
-    document.querySelector('#form-country').value = e.suggestion.country || '';
-    document.querySelector('#form-lat').value = e.suggestion.latlng.lat || '';
-    document.querySelector('#form-lon').value = e.suggestion.latlng.lng || '';
-  });
-})();
+  })();
+}
 
 /***/ }),
 
@@ -37545,22 +37475,114 @@ $(document).ready(function () {
   }); // /Mostrare e togliere filtri
   //Verificare se i checkbox sono checked o no
   // /Verificare se i checkbox sono checked o no
-  // Prendere il valore inserito nell'input di distanza
-
-  var distance = $('#radius').val();
-  console.log(distance);
-  $(document).on('change', '#radius', function () {
-    var newDistance = $(this).val();
-    console.log(newDistance);
-  }); // Prendere il valore inserito nell'input di distanza
-  // Prendere il valore inserito negli input della stanza
-
-  console.log(roomsNumber, bedsNumber);
-  $(document).on('change', '#rooms', function () {
-    var filterRoomsNumber = $(this).val();
-    console.log(filterRoomsNumber);
-    var filterBedsNumber = $(this).val();
-  }); // Prendere il valore inserito negli input della stanza
+  // Creare un array contenente gli extra checkati se la checkbox è checked
+  // $('#set_result').click(function(){
+  // var inputsChecked = [];
+  // $('#wi-fi').change(function() {
+  //   var wiFi = $('#wi-fi').val();
+  //   var index = inputsChecked.indexOf(wiFi);
+  //   if (index > -1) {
+  //     inputsChecked.splice(index, 1);
+  //   } else {
+  //     inputsChecked.push(wiFi);
+  //   }
+  // console.log(inputsChecked);
+  // });
+  // $('#pool').change(function() {
+  //   var pool = $('#pool').val();
+  //   var index = inputsChecked.indexOf(pool);
+  //   if (index > -1) {
+  //     inputsChecked.splice(index, 1);
+  //   } else {
+  //     inputsChecked.push(pool);
+  //   }
+  // console.log(inputsChecked);
+  // });
+  // $('#parking').change(function() {
+  //   var parking = $('#parking').val();
+  //   var index = inputsChecked.indexOf(parking);
+  //   if (index > -1) {
+  //     inputsChecked.splice(index, 1);
+  //   } else {
+  //     inputsChecked.push(parking);
+  //   }
+  // console.log(inputsChecked);
+  // });
+  // $('#reception').change(function() {
+  //   var reception = $('#reception').val();
+  //   var index = inputsChecked.indexOf(reception);
+  //   if (index > -1) {
+  //     inputsChecked.splice(index, 1);
+  //   } else {
+  //     inputsChecked.push(reception);
+  //   }
+  // console.log(inputsChecked);
+  // });
+  // $('#sea-view').change(function() {
+  //   var seaView = $('#sea-view').val();
+  //   var index = inputsChecked.indexOf(seaView);
+  //   if (index > -1) {
+  //     inputsChecked.splice(index, 1);
+  //   } else {
+  //     inputsChecked.push(seaView);
+  //   }
+  // console.log(inputsChecked);
+  // });
+  // $('#sauna').change(function() {
+  //   var sauna = $('#sauna').val();
+  //   var index = inputsChecked.indexOf(sauna);
+  //   if (index > -1) {
+  //     inputsChecked.splice(index, 1);
+  //   } else {
+  //     inputsChecked.push(sauna);
+  //   }
+  // console.log(inputsChecked);
+  // });
+  // console.log(inputsChecked);
+  // var extrasString = inputsChecked.toString();
+  // console.log(extrasString);
+  //   $('#set_result').click(function(){
+  //     var inputsChecked = [];
+  //     if ($('input[id="wi-fi"]').is(":checked")) {
+  //     inputsChecked.push($('input[id="wi-fi"]').val());
+  //   } 
+  //   if ($('input[id="pool"]').is(":checked")) {
+  //     inputsChecked.push($('input[id="pool"]').val());
+  //   } 
+  //   if ($('input[id="sea-view"]').is(":checked")) {
+  //     inputsChecked.push($('input[id="sea-view"]').val());
+  //   } 
+  //   if ($('input[id="parking"]').is(":checked")) {
+  //     inputsChecked.push($('input[id="parking"]').val());
+  //   } 
+  //   if ($('input[id="sauna"]').is(":checked")) {
+  //     inputsChecked.push($('input[id="sauna"]').val());
+  //   } 
+  //   if ($('input[id="reception"]').is(":checked")) {
+  //     inputsChecked.push($('input[id="reception"]').val());
+  //   } 
+  //   console.log(inputsChecked);
+  //   var extrasString = inputsChecked.toString();
+  //   console.log(extrasString);
+  //   // Prendere il valore inserito negli input della stanza
+  // // console.log(roomsNumber, bedsNumber);
+  //   var rooms = $('#rooms').val();
+  //   console.log(rooms);
+  //   var beds = $('#beds').val();
+  //   console.log(beds);
+  //   var mq = $('#mq').val();
+  //   console.log(mq);
+  //   var bathrooms = $('#bathrooms').val();
+  //   console.log(bathrooms);
+  // // Prendere il valore inserito negli input della stanza
+  // // Prendere il valore inserito nell'input di distanza
+  // var radius = $('#radius').val();
+  // console.log(radius);
+  // // Prendere il valore inserito nell'input di distanza
+  // getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq);
+  // });
+  // });
+  // /Creare un array contenente gli extra checkati
 });
 
 /***/ }),
@@ -37647,12 +37669,21 @@ $(document).ready(function () {
   // variabile globale per extras
   extrasString = ""; // CONTROLLO SE IL DATA_ADDRESS E' STATO COMPILATO
   // DALLA RICERCA DI ALTRE PAGINE OPPURE NO
+  // if ($('#address').attr('data-address').length > 0) { //ISSET
+  //   var humanAddress = $('#address').attr('data-address');
+  //     $('#address').attr('data-address', "");
+  //     // $('#address').val("");
+  //   if (humanAddress.length > 2) {
+  //     console.log(humanAddress);
+  //     getCoordinatesTomTom(humanAddress);
+  //   }
+  // }
 
-  if ($('#address').val().length > 0) {
+  if ($('#foreign_address').val().length > 0) {
     //ISSET
-    var humanAddress = $('#address').val();
-    $('#address').attr('value', "");
-    $('#address').val("");
+    var humanAddress = $('#foreign_address').val();
+    $('#foreign_address').attr('value', "");
+    $('#foreign_address').val("");
 
     if (humanAddress.length > 2) {
       console.log(humanAddress);
@@ -37662,9 +37693,9 @@ $(document).ready(function () {
 
   $(document).on("click", "#search", function () {
     if ($('#address').val().length > 2) {
-      var humanAddress = $('#address').val();
-      $('#address').attr('value', "");
-      $('#address').val("");
+      var humanAddress = $('#address').val(); // $('#address').attr('value', "");
+      // $('#address').val("");
+
       console.log(humanAddress);
       getCoordinatesTomTom(humanAddress);
     } else {
@@ -37675,15 +37706,44 @@ $(document).ready(function () {
   $(".address_search_input").keyup(function (event) {
     if (event.which == 13) {
       if ($('#address').val().length > 2) {
-        var humanAddress = $('#address').val();
-        $('#address').attr('value', "");
-        $('#address').val("");
+        var humanAddress = $('#address').val(); // $('#address').attr('value', "");
+        // $('#address').val("");
+
         console.log(humanAddress);
         getCoordinatesTomTom(humanAddress);
       } else {
         alert('La tua ricerca deve includere almeno 3 caratteri. Grazie!');
       }
     }
+  });
+  $('#set_result').click(function () {
+    var inputsChecked = [];
+
+    if ($('input[id="wi-fi"]').is(":checked")) {
+      inputsChecked.push($('input[id="wi-fi"]').val());
+    }
+
+    if ($('input[id="pool"]').is(":checked")) {
+      inputsChecked.push($('input[id="pool"]').val());
+    }
+
+    if ($('input[id="sea-view"]').is(":checked")) {
+      inputsChecked.push($('input[id="sea-view"]').val());
+    }
+
+    if ($('input[id="parking"]').is(":checked")) {
+      inputsChecked.push($('input[id="parking"]').val());
+    }
+
+    if ($('input[id="sauna"]').is(":checked")) {
+      inputsChecked.push($('input[id="sauna"]').val());
+    }
+
+    if ($('input[id="reception"]').is(":checked")) {
+      inputsChecked.push($('input[id="reception"]').val());
+    }
+
+    extrasString = inputsChecked.toString();
   }); // AUTOCOMPLETE
 
   (function () {
@@ -37738,6 +37798,8 @@ function getCoordinatesTomTom(address) {
 
 function setParameters(lat, lon) {
   // variabili fondamentali per la ricerca
+  console.log(extrasString);
+
   if (lat > 0 && lon > 0) {
     // RADIUS
     if ($('#radius').val() != "") {
