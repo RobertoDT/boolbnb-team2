@@ -37799,8 +37799,13 @@ function renderResults(results) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\jakon\Desktop\ATOM\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\jakon\Desktop\ATOM\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! C:\Users\rober\Desktop\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\rober\Desktop\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> main
 
 
 /***/ })
