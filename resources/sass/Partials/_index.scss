@@ -1,14 +1,13 @@
 
 // index guest e admin
-.highlight {
-    padding: 40px 0 0 5px; 
+
+.premium_name {
+    padding-bottom: 20px;
 }
 
-.chosen {
-    padding: 30px 0 0 5px;
-    @include fontGradient;
+h1 {
+    padding: 30px;
 }
-
 
 ul {
     list-style: none;
@@ -44,15 +43,13 @@ ul {
                 display: none;
                 
                 .small-container {
+
                     height: 90%;
                     display: flex;
                     margin: auto;
+                    flex-wrap: wrap;
                     align-items: center;
                     justify-content: center;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-
 
                     a {
                         color: #fff;
@@ -81,15 +78,6 @@ ul {
         }
     }
 
-    .img-highlight{
-        width: 90%;
-        margin: auto;
-    }
-    .list-highlight{
-        background-color: $lightBgColor;
-        padding: 20px;
-    }
-
 // Links/buttons index.admin
 .modifing_link {
     text-decoration: none;
@@ -113,10 +101,6 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-@media screen and (min-width: 1400px) and (max-width: 1800px) {
-    height: 700px;
-    }
 
     p{
     color: white;

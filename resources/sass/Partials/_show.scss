@@ -9,7 +9,8 @@
         .img-container{
             max-height: 450px;
             width: 100%;
-            margin-top: 30px;
+            margin-bottom: 50px;
+
 
             .img-show{
                 width: 80%;
@@ -31,7 +32,7 @@
 
     .container-map, .container-info {
         width: calc(100% / 2);
-        margin-top: 50px;
+        margin-top: 20px;
 
         #map-example-container-paris {
             height: 400px;
@@ -44,11 +45,11 @@
     }
 }
 .description, .features-extras {
-    height: 50%;
     margin-left: 20px;
 }
 .description {
     text-align: center;
+    height: 40%;
 }
 .description h4{
     padding-top: 50px;
@@ -59,6 +60,7 @@
     .features-extras {
         display: flex;
         justify-content: space-around;
+        height: 60%;
     } 
 }
 h4 {
@@ -74,7 +76,7 @@ h4 {
 svg {
     display: none;
 }
-.address {
+.title-show {
     position: absolute;
     top: 30%;
     bottom: 0;
@@ -85,7 +87,7 @@ svg {
     opacity: 0;
     font-size: 30px;
 } 
-  .img-container:hover .address {
+  .img-container:hover .title-show {
     visibility: visible;
     opacity: 1;
   }
@@ -98,9 +100,7 @@ svg {
  }
 
 
- .address p {
-    text-shadow: 2px 2px gray
- } 
+
   @media screen and (max-width: 900px) {
   
     h4 {

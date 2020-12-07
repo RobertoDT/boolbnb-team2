@@ -24,12 +24,6 @@ class PropertyController extends Controller
       return view("admin.properties.index_messages", compact("properties"));
     }
 
-    //funzione per il pagamento
-    public function payments()
-    {
-      return view("admin.properties.index_payments");
-    }
-
     /**
      * Display a listing of the resource.
      *

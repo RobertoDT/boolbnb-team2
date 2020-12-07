@@ -97,9 +97,9 @@ body {
     height: 100px;
 }
 
-// .property-details i {
-//     color: $mainColor;
-// }
+.property-details i {
+    color: $mainColor;
+}
 
 h1{
     @include fontGradient;

@@ -55,7 +55,7 @@
                                 <div class="flip-card-front">
                                     <img class="card-img-top" src="{{asset('storage/'.$property->flat_image)}}" alt="House Image">
                                     <div>
-                                        <h5 class="card-title text_center">{{$property->title}}</h5>
+                                        <h5 class="card-title text_center">{{$property->title}}, <br><span>{{$property->metropolis}}</span></h5>
                                     </div>
                                 </div>
                                 {{-- //FRONT --}}
