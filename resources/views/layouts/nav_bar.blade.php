@@ -20,7 +20,8 @@
                     <div class="header_nav form-inline my-2 my-lg-0">                                                         
                         <div class="div_search form-inline my-2 my-lg-0">                     
                             <input type="hidden" id="address-value">
-                            <input type="search" class="address_search_input" id="address" value="{{isset($address) ? $address : ''}}" class="form-control" placeholder="Where are we going?" data-address="{{isset($address) ? $address : ''}}"/>
+                            <input type="hidden" id="foreign_address" value="{{isset($address) ? $address : ''}}">
+                            <input type="search" class="address_search_input" id="address" value="{{isset($address) ? $address : ''}}" class="form-control" placeholder="Dove vuoi andare?" data-address="{{isset($address) ? $address : ''}}"/>
                         </div>                 
                         <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write" id="search" class="search_button" type="submit">Search</button>
                         <!-- {{-- Icona filtro --}} -->
@@ -62,6 +63,10 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti<i class="fas fa-home"></i></a>
+                                    <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento</a>
+                                    <a class="dropdown-item" href="#">Sponsorizza appartamento</a>
+                                    <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi</a>
+                                    <a class="dropdown-item" href="#">Visualizza statistiche</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -95,25 +100,36 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
-                            <li class="nav-item">
-                                    
-                                    <a class="dropdown-item" href="{{route('admin.properties.index')}}">My apartments</a>
+                            @else
+                                <li class="nav-item"> 
+                                    <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti</a>
                                 </li>
-                            <li class="nav-item">
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                <li class="nav-item"> 
+                                    <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento</a>
                                 </li>
+                                <li class="nav-item"> 
+                                    <a class="dropdown-item" href="#">Sponsorizza appartamento</a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi</a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a class="dropdown-item" href="#">Visualizza statistiche</a>
+                                </li>
+                                <li class="nav-item">
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                    </li>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
                         @endguest
                     </ul>
                 </div>
@@ -122,11 +138,11 @@
         </nav>
     </div>
         {{-- Modale filtri --}}
-        <div class="modal fade filter_container" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade filter_container"id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Filters</h4>
+                        <h4 class="modal-title" id="myModalLabel">Seleziona filtri</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
@@ -137,7 +153,7 @@
                                     <div class="col-2 small_filter_container {{$extra->name}}" data-toggle="tooltip" data-placement="top" title="{{$extra->name}}">
                                         <label for="{{$extra->name}}"></label>
                                             <label class="switch">
-                                            <input type="checkbox" value= "{{$extra->id}}" name="extras[]">
+                                            <input type="checkbox" id="{{$extra->name}}" value="{{$extra->id}}" name="extras[]">
                                             <span class="slider round"></span>
                                         </label>                            
                                     </div>
@@ -147,25 +163,25 @@
                                     <!-- {{-- Barra per selezionare la distanza dalla search--}} -->
                                     <div class="col-2 small_filter_container text_size">
                                         <label for="rooms">Rooms</label>
-                                        <input type="number" id="rooms" name="rooms" min="1" max="15">
+                                        <input type="number" placeholder ="1" id="rooms" value="1" name="rooms" min="1" max="15">
                                     </div>
                                     <div class="col-2 small_filter_container text_size">
                                         <label for="beds">Beds</label>
-                                        <input type="number" id="beds" name="beds" min="1" max="20">
+                                        <input type="number" placeholder ="1" id="beds" value="1" name="beds" min="1" max="20">
                                     </div>
                                     <div class="col-2 small_filter_container text_size square_meters">
                                         <label for="mq">Mq</label>
-                                        <input type="number" id="mq" name="mq" data-mq ="" min="30" max="1000">
+                                        <input type="number" placeholder ="30" id="mq" name="mq" data-mq ="" value="30" min="30" max="1000">
                                     </div>
                                     <div class="col-2 small_filter_container text_size">
                                         <label for="bathrooms">Bathrooms</label>
-                                        <input type="number" id="bathrooms" name="bathrooms" min="1" max="5">
+                                        <input type="number" placeholder ="1" id="bathrooms" value="1" name="bathrooms" min="1" max="5">
                                     </div>
                             </div>
                             <div class="row distance_row">
                                 <!-- {{-- barra per selezionare la distanza dalla search--}} -->
                                 <div  class= "col-4 text-center small_filter_container text_size">
-                                    <label for="radius">Distance</label>
+                                    <label for="radius">Distanza</label>
                                     <input type="range" value ="20" id="radius" name="distance"
                                         min="5" max="100">
                                 <!-- {{--/ barra per selezionare la distanza dalla search--}} -->
@@ -175,7 +191,7 @@
                     </div>
         
                     <div class="modal-footer">
-                        <button type="button" class="btn modifing_link">Show result</button>
+                        <button type="button" data-dismiss="modal" class="close" aria-label="Close" id="set_result" class="btn modifing_link">Salva</button>
                     </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ button.filter_button {
   background-color: white;
   border: none;
   color: #3e3d8b;
+  border-color: none;
 }
 button.filter_button:hover{
   background:linear-gradient(140deg, #6f54e9, #488ec7);;
@@ -14,10 +15,13 @@ button.filter_button:after{
   color: #3e3d8b;
   font-weight: 900;
 }    
-  .small_filter_container {
-      padding: 0 10px;        
-  }
-    
+.small_filter_container {
+  padding: 0 10px;        
+}
+input::-webkit-input-placeholder {
+  font-size: 14px;
+  font-weight: normal;
+}  
 // Symbol raw//
 .symbol_filters {
   margin:0;
@@ -139,6 +143,7 @@ button.filter_button:after{
 input[type=range] {
 -webkit-appearance: none;
 margin: 10px 0;
+background-color: transparent;
 /* // width: 100%; */
 }
 input[type=range]:focus {

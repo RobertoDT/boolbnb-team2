@@ -12,10 +12,19 @@ $( document ).ready(function() {
 
   // CONTROLLO SE IL DATA_ADDRESS E' STATO COMPILATO
   // DALLA RICERCA DI ALTRE PAGINE OPPURE NO
-  if ($('#address').val().length > 0) { //ISSET
-    var humanAddress = $('#address').val();
-      $('#address').attr('value', "");
-      $('#address').val("");
+  // if ($('#address').attr('data-address').length > 0) { //ISSET
+  //   var humanAddress = $('#address').attr('data-address');
+  //     $('#address').attr('data-address', "");
+  //     // $('#address').val("");
+  //   if (humanAddress.length > 2) {
+  //     console.log(humanAddress);
+  //     getCoordinatesTomTom(humanAddress);
+  //   }
+  // }
+  if ($('#foreign_address').val().length > 0) { //ISSET
+    var humanAddress = $('#foreign_address').val();
+      $('#foreign_address').attr('value', "");
+      $('#foreign_address').val("");
     if (humanAddress.length > 2) {
       console.log(humanAddress);
       getCoordinatesTomTom(humanAddress);
@@ -25,8 +34,8 @@ $( document ).ready(function() {
   $( document ).on( "click", "#search", function() {
     if ($('#address').val().length > 2) {
       var humanAddress = $('#address').val();
-      $('#address').attr('value', "");
-      $('#address').val("");
+      // $('#address').attr('value', "");
+      // $('#address').val("");
       console.log(humanAddress);
       getCoordinatesTomTom(humanAddress);
     } else {
@@ -41,8 +50,8 @@ $( document ).ready(function() {
       if(event.which == 13) {
         if ($('#address').val().length > 2) {
           var humanAddress = $('#address').val();
-          $('#address').attr('value', "");
-          $('#address').val("");
+          // $('#address').attr('value', "");
+          // $('#address').val("");
           console.log(humanAddress);
           getCoordinatesTomTom(humanAddress);
         } else {
@@ -50,6 +59,32 @@ $( document ).ready(function() {
         }
     }
   });
+
+  $('#set_result').click(function(){
+    
+    var inputsChecked = [];
+
+    if ($('input[id="wi-fi"]').is(":checked")) {
+    inputsChecked.push($('input[id="wi-fi"]').val());
+    } 
+    if ($('input[id="pool"]').is(":checked")) {
+      inputsChecked.push($('input[id="pool"]').val());
+    } 
+    if ($('input[id="sea-view"]').is(":checked")) {
+      inputsChecked.push($('input[id="sea-view"]').val());
+    } 
+    if ($('input[id="parking"]').is(":checked")) {
+      inputsChecked.push($('input[id="parking"]').val());
+    } 
+    if ($('input[id="sauna"]').is(":checked")) {
+      inputsChecked.push($('input[id="sauna"]').val());
+    } 
+    if ($('input[id="reception"]').is(":checked")) {
+      inputsChecked.push($('input[id="reception"]').val());
+    } 
+    extrasString = inputsChecked.toString();
+
+});
 
   // AUTOCOMPLETE
   (function() {
@@ -114,7 +149,7 @@ function getCoordinatesTomTom(address) {
 // SETTO LE VARIABILI DA INVIARE A BACK END
 function setParameters(lat, lon) {
   // variabili fondamentali per la ricerca
-  
+  console.log(extrasString);
   if (lat > 0 && lon > 0) {
     // RADIUS
     if ($('#radius').val() != "") {
