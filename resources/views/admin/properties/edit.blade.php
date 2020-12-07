@@ -6,16 +6,30 @@
 @section("mainContent")
 <div class="container p_bottom_50">
   <h1>Modifica il tuo annuncio</h1>
+
+  <div class="destroy_form">
+    <img class="foto_messaggio" src="{{asset('storage/'.$property->flat_image)}}" alt="">
+    <span>{{$property->title}}</span>
+    <!-- form di eliminazione proprietà -->
+      <form class="" action="{{route("admin.properties.destroy", $property)}}" method="POST">
+        @csrf
+        @method("DELETE")
+
+        <button type="submit" class="btn modifing_link destroy_btn">Cancella appartamento</button>
+      </form>
+      <!-- /form di eliminazione proprietà -->
+  </div>
+
   <!-- form di modifica -->
-  <form action="{{route("admin.properties.update", $property)}}" method="POST" enctype="multipart/form-data">
+  <form class="form_create" action="{{route("admin.properties.update", $property)}}" method="POST" enctype="multipart/form-data">
     <!-- token e meotodo -->
     @csrf
     @method("PUT")
 
     <!-- titolo -->
     <div class="form-group create_form_group">
-      <label for="title">Titolo</label>
-      <input type="text" class="form-control create_form_control @error('title') is-invalid @enderror" id="title" name="title" maxlength="255" placeholder="Inserisci il titolo" value="{{old("title") ? old("title") : $property->title}}">
+      <label for="title">Titolo dell'abitazione</label>
+      <input type="text" class="form-control create_form_control @error('title') is-invalid @enderror" id="title" name="title" maxlength="255" placeholder="Inserisci il titolo della tua abitazione" value="{{old("title") ? old("title") : $property->title}}">
       @error('title')
         <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
       @enderror
@@ -24,8 +38,8 @@
 
     <!-- street -->
     <div class="form-group create_form_group">
-      <label for="street">Via</label>
-      <input type="text" class="form-control create_form_control @error('street') is-invalid @enderror" id="street" name="street" placeholder="Inserisci la via" value="{{old("street") ? old("street") : $property->street}}">
+      <label for="street">Indirizzo</label>
+      <input type="search" class="form-control create_form_control @error('street') is-invalid @enderror" id="form-address" name="street" placeholder="Inserisci il tuo indirizzo" value="{{old("street") ? old("street") : $property->street}}">
       @error('street')
         <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
       @enderror
@@ -35,7 +49,7 @@
     <!-- metropolis -->
     <div class="form-group create_form_group">
       <label for="metropolis">Città</label>
-      <input type="text" class="form-control create_form_control @error('metropolis') is-invalid @enderror" id="metropolis" name="metropolis" placeholder="Inserisci la città" value="{{old("metropolis") ? old("metropolis") : $property->metropolis}}">
+      <input type="text" class="form-control create_form_control @error('metropolis') is-invalid @enderror" id="form-city" name="metropolis" placeholder="Inserisci la Città" value="{{old("metropolis") ? old("metropolis") : $property->metropolis}}">
       @error('metropolis')
         <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
       @enderror
@@ -45,17 +59,27 @@
     <!-- country -->
     <div class="form-group create_form_group">
       <label for="country">Nazione</label>
-      <input type="text" class="form-control create_form_control @error('country') is-invalid @enderror" id="country" name="country" placeholder="Inserisci la nazione" value="{{old("country") ? old("country") : $property->country}}">
+      <input type="text" class="form-control create_form_control @error('country') is-invalid @enderror" id="form-country" name="country" placeholder="Inserisci la Nazione" value="{{old("country") ? old("country") : $property->country}}">
       @error('country')
         <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
       @enderror
     </div>
     <!-- /country -->
 
+    <!-- postal-code -->
+    <div class="form-group create_form_group">
+      <label for="zip_code">Codice Postale</label>
+      <input type="text" class="form-control create_form_control @error('zip_code') is-invalid @enderror" id="form-zip" name="zip_code" placeholder="Inserisci il CAP della Città" maxlength="10" value="{{old("zip_code")}}">
+      @error('zip_code')
+        <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
+      @enderror
+    </div>
+    <!-- /postal-code -->
+
     <!-- descrizione -->
     <div class="form-group create_form_group">
       <label for="description">Descrizione</label>
-      <input type="text" class="form-control create_form_control @error('description') is-invalid @enderror" id="description" name="description" maxlength="400" placeholder="Inserisci la descrizione" value="{{old("description") ? old("description") : $property->description}}">
+      <input type="text" class="form-control create_form_control @error('description') is-invalid @enderror" id="description" name="description" maxlength="400" placeholder="Inserisci i dettagli" value="{{old("description") ? old("description") : $property->description}}">
       @error('description')
         <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
       @enderror
@@ -65,7 +89,7 @@
     <!-- rooms_number -->
     <div class="form-group create_form_group">
       <label for="rooms_number">Numero di stanze</label>
-      <input type="number" class="form-control create_form_control width_30 @error('rooms_number') is-invalid @enderror" id="rooms_number" name="rooms_number" placeholder="Inserisci il numero di stanze" value="{{old("rooms_number") ? old("rooms_number") : $property->rooms_number}}">
+      <input type="number" class="form-control create_form_control width_30 @error('rooms_number') is-invalid @enderror" id="rooms_number" name="rooms_number" placeholder="Numero di stanze" value="{{old("rooms_number") ? old("rooms_number") : $property->rooms_number}}">
       @error('rooms_number')
         <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
       @enderror
@@ -75,7 +99,7 @@
     <!-- beds_number -->
     <div class="form-group create_form_group">
       <label for="beds_number">Numero di letti</label>
-      <input type="number" class="form-control create_form_control width_30 @error('beds_number') is-invalid @enderror" id="beds_number" name="beds_number" placeholder="Inserisci il numero di letti" value="{{old("beds_number") ? old("beds_number") : $property->beds_number}}">
+      <input type="number" class="form-control create_form_control width_30 @error('beds_number') is-invalid @enderror" id="beds_number" name="beds_number" placeholder="Numero di letti" value="{{old("beds_number") ? old("beds_number") : $property->beds_number}}">
       @error('beds_number')
         <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
       @enderror
@@ -85,22 +109,12 @@
     <!-- bathrooms_number -->
     <div class="form-group create_form_group">
       <label for="bathrooms_number">Numero di bagni</label>
-      <input type="number" class="form-control create_form_control width_30 @error('bathrooms_number') is-invalid @enderror" id="bathrooms_number" name="bathrooms_number" placeholder="Inserisci il numero di bagni" value="{{old("bathrooms_number") ? old("bathrooms_number") : $property->bathrooms_number}}">
+      <input type="number" class="form-control create_form_control width_30 @error('bathrooms_number') is-invalid @enderror" id="bathrooms_number" name="bathrooms_number" placeholder="Numero di bagni" value="{{old("bathrooms_number") ? old("bathrooms_number") : $property->bathrooms_number}}">
       @error('bathrooms_number')
         <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
       @enderror
     </div>
     <!-- /bathrooms_number -->
-
-    <!-- immagine -->
-    <div class="form-group create_form_group">
-      <label for="flat_image">Immagine</label>
-      <input type="file" class="form-control create_form_control img_form width_30 @error('flat_image') is-invalid @enderror" id="flat_image" name="flat_image" placeholder="Inserisci la nuova immagine" accept="image/*">
-      @error('flat_image')
-        <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
-      @enderror
-    </div>
-    <!-- /immagine -->
 
     <!-- square_meters -->
     <div class="form-group create_form_group">
@@ -112,15 +126,25 @@
     </div>
     <!-- /square_meters -->
 
+    <!-- immagine -->
+    <div class="form-group create_form_group">
+      <label for="flat_image">Immagine</label>
+      <input type="file" class="form-control create_form_control img_form width_30 @error('flat_image') is-invalid @enderror" id="flat_image" name="flat_image" accept="image/*">
+      @error('flat_image')
+        <div class="alert alert-danger create_alert_danger">{{ $message }}</div>
+      @enderror
+    </div>
+    <!-- /immagine -->
+
     <!-- latitude -->
     <div class="form-group">
-      <input type="hidden" min="-90" max="90" class="form-control" id="latitude" name="latitude" value="{{old("latitude") ? old("latitude") : $property->latitude}}">
+      <input type="hidden" min="-90" max="90" class="form-control" id="form-lat" name="latitude" value="{{old("latitude") ? old("latitude") : $property->latitude}}">
     </div>
     <!-- /latitude -->
 
     <!-- longitude -->
     <div class="form-group">
-      <input type="hidden" min="-180" max="180" class="form-control" id="longitude" name="longitude" value="{{old("longitude") ? old("longitude") : $property->longitude}}">
+      <input type="hidden" min="-180" max="180" class="form-control" id="form-lon" name="longitude" value="{{old("longitude") ? old("longitude") : $property->longitude}}">
     </div>
     <!-- /longitude -->
 
@@ -164,24 +188,17 @@
     </div>
     <!-- /active -->
 
-    <!-- bottone per il submit -->
-    <button type="submit" class="btn modifing_link">Salva</button>
-    <!-- /bottone per il submit -->
-    </form>
+    <div class="create_buttons">
+      <!-- bottone per il submit -->
+      <button type="submit" class="btn modifing_link">Salva</button>
+      <!-- /bottone per il submit -->
 
-    {{-- Link per tornare all'admin.index --}}
-    <a class="btn modifing_link" href="{{route("admin.properties.show", $property)}}">Indietro</a>
-    {{-- /Link per tornare all'admin.index --}}
+      <!-- Link per tornare all'admin.index -->
+      <a class="btn modifing_link" href="{{route("admin.properties.show", $property)}}">Indietro</a>
+      <!-- /Link per tornare all'admin.index -->
+    </div>
 
-    <!-- form di eliminazione proprietà -->
-    <form class="" action="{{route("admin.properties.destroy", $property)}}" method="POST">
-      @csrf
-      @method("DELETE")
-
-      <button type="submit" class="btn modifing_link">Cancella appartamento</button>
-    </form>
-
+  </form>
   <!-- /form di modifica -->
-
 </div>
 @endsection
