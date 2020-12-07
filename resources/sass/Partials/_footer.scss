@@ -1,6 +1,7 @@
 footer {
-    @include mainGradient;
-    color: $white;
+    background-image: linear-gradient(#684ce6, #488ec7);
+    color: #fff;
+
     margin-top: 80px;
 
     .logo-img {
