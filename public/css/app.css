@@ -11809,6 +11809,7 @@ button.filter_button {
   background-color: white;
   border: none;
   color: #3e3d8b;
+  border-color: none;
 }
 
 button.filter_button:hover {
@@ -11824,6 +11825,11 @@ button.filter_button:after {
 
 .small_filter_container {
   padding: 0 10px;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 14px;
+  font-weight: normal;
 }
 
 .symbol_filters {
@@ -11959,6 +11965,7 @@ input:checked + .slider:before {
 input[type=range] {
   -webkit-appearance: none;
   margin: 10px 0;
+  background-color: transparent;
   /* // width: 100%; */
 }
 
