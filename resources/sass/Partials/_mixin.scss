@@ -3,9 +3,18 @@
     height: auto;
   }
 
-
+//h1 (commons)
  @mixin fontGradient{
   background: -webkit-linear-gradient(#b31bb3, #48b5c9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
  } 
+
+//  //footer e bottoni (var)
+ @mixin mainGradient{
+  background-image: linear-gradient(#684ce6, #488ec7);
+}
+
+@mixin mainGradientBtn{
+  background-image: linear-gradient(140deg, #684ce6, #488ec7);
+}

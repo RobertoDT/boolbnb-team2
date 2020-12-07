@@ -1,130 +1,141 @@
 .bg-color{
-  background-color: rgb(222, 231, 252);
+  background-color: $lightBgColor;
   padding: 20px 0 20px 0;
   margin-bottom: 30px;
 }
 
 
-.menu-nav{
-  font-size:30px;
-  cursor:pointer;
-  margin-left: 25px;
-  padding: 25px 0 15px 0;
-  font-weight: 800;
+  .menu-nav{
+    font-size:30px;
+    cursor:pointer;
+    margin-left: 25px;
+    padding: 0 0 15px 0;
+    font-weight: 800;
+    }
+
+      .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      @include mainGradient;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 80px;
+    }
+
+      .sidenav a {
+        padding: 8px 20px 20px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidenav a:hover {
+        color: $hoverText;
+      }
+
+      .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 25px;
+        margin-left: 50px;
+      }
+
+      @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+      }
+
+
+  .apt-title{
+    padding: 0 0 0 25px;
   }
 
-  .sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(140deg, #6f54e9, #488ec7);
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 80px;
-}
+  .card-list{
+    @media screen and (min-width: 700px) and (max-width: 950px){
+      width: 50%;
+      margin: auto;
+    }
 
-.sidenav a {
-  padding: 8px 20px 20px 30px;
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #f9a1fd;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 25px;
-  margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-
-.apt-title{
-  padding: 0 0 0 25px;
-}
-
-.card-list{
-    @media screen and (max-width: 768px) {
-        width: 80%;
+    @media screen and (min-width: 450px) and (max-width: 700px) {
+        width: 70%;
         margin: auto;
     }
 
-    .card-box{
-        background-color: white;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        box-shadow: 5px 5px 5px #a0a7cf;
-        padding: 15px;
-        max-block-size: fit-content;
-        margin: 10px;
+    @media screen and (max-width: 450px) {
+      width: 100%;
+      margin: auto;
+  }
 
-        .card-img-top{
-            height: 200px;
-        }
-        h5{
-          padding-top: 30px;
-          font-size: 25px;
-        }
+      .card-box{
+          background-color: white;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 5px 5px #a0a7cf;
+          padding: 15px;
+          max-block-size: fit-content;
+          margin: 10px;
+
+          .card-img-top{
+              height: 200px;
+          }
+          h5{
+            padding-top: 30px;
+            font-size: 25px;
+            @include fontGradient;
+          }
+      }
+  }
+
+
+
+  .flip-card {
+      background-color: transparent;
+      height: 340px;
     }
-}
-
-
-
-.flip-card {
-    background-color: transparent;
-    height: 340px;
-  }
-  
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
-  
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; 
-    backface-visibility: hidden;
-  }
-  
-  .flip-card-front {
-    color: black;
-  }
-  
-  .flip-card-back {
-    background-image:radial-gradient(circle, #c6d4f3, white);
-    transform: rotateY(180deg);
-
-    .btn-wrapper{
-        display: flex;
-        flex-direction: column;
-        width: fit-content;
-        margin: auto;
-        margin-top: 30%;
+    
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
     }
-  }
+    
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; 
+      backface-visibility: hidden;
+    }
+    
+    .flip-card-front {
+      color: black;
+    }
+    
+    .flip-card-back {
+      background-image:radial-gradient(circle, #c6d4f3, white);
+      transform: rotateY(180deg);
+
+      .btn-wrapper{
+          display: flex;
+          flex-direction: column;
+          width: fit-content;
+          margin: auto;
+          margin-top: 30%;
+      }
+    }
 
 
   
