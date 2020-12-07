@@ -16,14 +16,19 @@ use App\Message;
 
 class PropertyController extends Controller
 {
-  public function readMessages()
-  {
-    $user_id = Auth::id();
-    $properties = Property::where("user_id", $user_id)->get();
+    //funzione per la lettura dei messaggi
+    public function readMessages()
+    {
+      $user_id = Auth::id();
+      $properties = Property::where("user_id", $user_id)->get();
+      return view("admin.properties.index_messages", compact("properties"));
+    }
 
-    return view("admin.properties.index_messages", compact("properties"));
-  }
-
+    //funzione per il pagamento
+    public function payments()
+    {
+      return view("admin.properties.index_payments");
+    }
 
     /**
      * Display a listing of the resource.
@@ -118,8 +123,14 @@ class PropertyController extends Controller
      */
     public function show($id)
     {
-        $property = Property::find($id);
-        return view("admin.properties.show", compact("property"));
+        $user_id = Auth::id();
+        $property = Property::where("user_id", $user_id)->where("id", $id)->first();
+
+        if($property != null){
+          return view("admin.properties.show", compact("property"));
+        } else{
+          abort(404);
+        }
     }
 
     /**
@@ -177,7 +188,7 @@ class PropertyController extends Controller
         $property->bathrooms_number = $data["bathrooms_number"];
         if(isset($data["flat_image"])){
           //cancelliamo path immagine precedente
-          $path = Storage::disk("public")->delete("images", $data["flat_image"]);
+          $path = Storage::disk("public")->delete("images", $property->flat_image);
           //storiamo la nuova immagine
           $path = Storage::disk("public")->put("images", $data["flat_image"]);
           //assegniamo il valore
