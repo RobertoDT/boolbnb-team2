@@ -80,7 +80,6 @@
 
             </div>
             {{-- //MAIN --}}
-
             {{-- INFORMATIONS AND MAP --}}
             <div class="info-mappa">
                 {{-- ADDRESS --}}
