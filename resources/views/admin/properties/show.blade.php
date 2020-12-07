@@ -26,8 +26,8 @@
                         </form>
                     </li>
                     <li id="menu-item"><a href="{{route("admin.properties.index")}}"><i class="fas fa-eye"></i> <span>Visibilita'</span></a></li>
-                    <li id="menu-item"><a href="{{route("admin.properties.index")}}"><i class="fas fa-chart-bar"></i> <span>Statistiche</span></a></li>
-                    <li id="menu-item"><a href="{{route("admin.properties.index")}}"><i class="fas fa-user"></i> <span>Torna Indietro</span></a></li>
+                    <li id="menu-item"><a href=""><i class="fas fa-chart-bar"></i> <span>Statistiche</span></a></li>
+                    <li id="menu-item"><a href="{{route("admin.properties.index")}}"><i class="fas fa-user"></i> <span>I miei appartamenti</span></a></li>
                 </ul>
             </div>
             {{-- //NAVBAR --}}
@@ -38,7 +38,7 @@
                 {{-- DESCRIZIONE --}}
                 <div class="sezione side">
                     <div class="desc">
-                        <h5><i class="fas fa-door-open"></i> La tua descrizione: </h5>
+                        <h5>La tua descrizione: </h5>
                             <p>{{$property->description}}</p>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
             <div class="info-mappa">
                 {{-- ADDRESS --}}
                 <div class="indirizzo">
-                    <h5>Il tuo indirizzo: Via ciao 43, 75584 Roma</h5>
+                    <h5>Il tuo indirizzo: {{$property->street}}, {{$property->metropolis}}</h5>
                 </div>
                 {{-- //ADDRESS --}}
 
