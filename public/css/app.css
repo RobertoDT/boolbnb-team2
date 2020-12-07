@@ -11265,10 +11265,11 @@ ul li .overlay .small-container {
   height: 90%;
   display: flex;
   margin: auto;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 ul li .overlay .small-container a {
@@ -11279,7 +11280,12 @@ ul li .overlay .small-container a {
 }
 
 ul li .overlay .small-container .evidence {
-  color: #f9a1fd;
+  color: #3e3d8b;
+  background-color: #f9a1fd;
+  padding: 5px;
+  border-radius: 50px;
+  font-size: 12px;
+  margin: 15px;
 }
 
 ul .all_properties:hover .overlay {

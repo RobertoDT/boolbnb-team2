@@ -47,10 +47,12 @@ ul {
                     height: 90%;
                     display: flex;
                     margin: auto;
-                    flex-wrap: wrap;
                     align-items: center;
                     justify-content: center;
-                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+
 
                     a {
                         color: #fff;
@@ -60,7 +62,12 @@ ul {
                     }
 
                     .evidence{
-                        color: $hoverText;
+                        color: $mainColor;
+                        background-color: $hoverText;
+                        padding: 5px;
+                        border-radius: 50px;
+                        font-size: 12px;
+                        margin: 15px;
                     }
 
                 }
