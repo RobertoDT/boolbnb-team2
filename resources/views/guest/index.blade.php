@@ -12,19 +12,19 @@
 </div>
 <section class="home_guest">
     <div class="container">
-        <h1 class="premium_name">In Evidenza</h1>
-            <ul class="flat_list">
+        <h1 class="highlight">In Evidenza</h1>
+            <ul class="flat_list list-highlight">
                 <?php $count = 0; ?>
                 @foreach ($sponsored_properties as $sponsored_property)
                     <?php if($count == 12) break; ?>
                         <li class="all_properties">
-                            <div class="img-responsive">
+                            <div class="img-responsive img-highlight">
                                 <img class="transition" src="{{$sponsored_property->flat_image}}" alt="Home Picture">
                             </div>
                             <div class="overlay">
                                 <div class="small-container">
                                     <a href="/properties/{{$sponsored_property->id}}">{{$sponsored_property->title}}</a>
-                                    <p class="evidence">Promosso</p>
+                                    <p class="evidence">Sponsorizzato</p>
                                 </div>
                             </div>
                         </li>
@@ -34,7 +34,7 @@
                 $i = 12 - $count;
                 @endphp
             </ul>
-            <h2 class="premium_name">Scelti per voi</h2>
+            <h2 class="chosen">Scelti per voi</h2>
                 <ul class="flat_list">
                     <?php $count_not_sponsored = 0; ?>
                     @foreach ($not_sponsored_properties as $not_sponsored_property)
