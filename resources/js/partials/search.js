@@ -95,7 +95,7 @@ $( document ).ready(function() {
     });
 
     if (document.querySelector('#address-value') != null) {
-      var $address = document.querySelector('#address-value');
+      var address = document.querySelector('#address-value');
     }
     
       

@@ -37754,7 +37754,7 @@ $(document).ready(function () {
     });
 
     if (document.querySelector('#address-value') != null) {
-      var $address = document.querySelector('#address-value');
+      var address = document.querySelector('#address-value');
     } // placesAutocomplete.on('change', function(e) {
     //   $address.textContent = e.suggestion.value;
     // });
@@ -37931,8 +37931,8 @@ function renderResults(results) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\rober\Desktop\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\rober\Desktop\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Henry\Desktop\boolean\exercise\boolbnb\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Henry\Desktop\boolean\exercise\boolbnb\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
