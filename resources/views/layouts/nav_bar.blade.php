@@ -1,5 +1,5 @@
 <header class="height_header_general">
-    <div class="scroll down fixed_search">
+    <div class="scroll down bar_fixed">
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 {{-- logo --}}
@@ -62,7 +62,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti<i class="fas fa-home"></i></a>
+                                    <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti <i class="fas fa-home"></i></a>
                                     <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento</a>
                                     <a class="dropdown-item" href="#">Sponsorizza appartamento</a>
                                     <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi</a>
@@ -102,7 +102,7 @@
                             @endif
                             @else
                                 <li class="nav-item"> 
-                                    <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti</a>
+                                    <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti <i class="fas fa-home"></i></a>
                                 </li>
                                 <li class="nav-item"> 
                                     <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento</a>
@@ -163,27 +163,28 @@
                                     <!-- {{-- Barra per selezionare la distanza dalla search--}} -->
                                     <div class="col-2 small_filter_container text_size">
                                         <label for="rooms">Rooms</label>
-                                        <input type="number" placeholder ="1" id="rooms" value="1" name="rooms" min="1" max="15">
+                                        <input type="number" class="bg_transparent" placeholder ="1" id="rooms" value="1" name="rooms" min="1" max="15">
                                     </div>
                                     <div class="col-2 small_filter_container text_size">
                                         <label for="beds">Beds</label>
-                                        <input type="number" placeholder ="1" id="beds" value="1" name="beds" min="1" max="20">
+                                        <input type="number" class="bg_transparent" placeholder ="1" id="beds" value="1" name="beds" min="1" max="20">
                                     </div>
                                     <div class="col-2 small_filter_container text_size square_meters">
                                         <label for="mq">Mq</label>
-                                        <input type="number" placeholder ="30" id="mq" name="mq" data-mq ="" value="30" min="30" max="1000">
+                                        <input type="number" class="bg_transparent" placeholder ="30" id="mq" name="mq" data-mq ="" value="30" min="30" max="1000">
                                     </div>
                                     <div class="col-2 small_filter_container text_size">
                                         <label for="bathrooms">Bathrooms</label>
-                                        <input type="number" placeholder ="1" id="bathrooms" value="1" name="bathrooms" min="1" max="5">
+                                        <input type="number" class="bg_transparent" placeholder ="1" id="bathrooms" value="1" name="bathrooms" min="1" max="5">
                                     </div>
                             </div>
                             <div class="row distance_row">
                                 <!-- {{-- barra per selezionare la distanza dalla search--}} -->
                                 <div  class= "col-4 text-center small_filter_container text_size">
-                                    <label for="radius">Distanza</label>
-                                    <input type="range" value ="20" id="radius" name="distance"
-                                        min="5" max="100">
+                                    <label for="radius">Distanza (km)</label>    
+                                    <input type="range" value ="20" id="radius" name="radius"
+                                        min="5" max="100" oninput="this.nextElementSibling.value = this.value">
+                                    <output>24</output>
                                 <!-- {{--/ barra per selezionare la distanza dalla search--}} -->
                                 </div>
                             </div>
@@ -191,7 +192,7 @@
                     </div>
         
                     <div class="modal-footer">
-                        <button type="button" data-dismiss="modal" class="close" aria-label="Close" id="set_result" class="btn modifing_link">Salva</button>
+                        <button type="button" data-dismiss="modal" class="close set_filter" aria-label="Close" id="set_result" class="btn modifing_link">Salva</button>
                     </div>
                     </div>
                 </div>

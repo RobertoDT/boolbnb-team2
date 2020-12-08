@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 //importo controller di base
 use App\Http\Controllers\Controller;
+// BRAINTREE
+use Braintree;
 
 class SponsorController extends Controller
 {
@@ -24,8 +26,15 @@ class SponsorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view("admin.properties.sponsors");
+    {   
+        $gateway = new Braintree\Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+        $token = $gateway->ClientToken()->generate();
+        return view("admin.properties.sponsors", compact('token'));
     }
 
     /**
@@ -36,7 +45,38 @@ class SponsorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $gateway = new Braintree\Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+        ]);
+
+        $amount = $request->amount;
+        $nonce = $request->payment_method_nonce;
+
+        $result = $gateway->transaction()->sale([
+            'amount' => $amount,
+            'paymentMethodNonce' => $nonce,
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+        
+        if ($result->success) {
+            $transaction = $result->transaction;
+            // inserire store sponsors
+            return back()->with('success_message', 'Payment went through, Thak you Mate!');
+            // return view('admin.properties.index')->with('success_message', 'Payment went true, Thak you Mate!');
+            
+        } else {
+            $errorString = "";
+
+            foreach($result->errors->deepAll() as $error) {
+                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            }
+            return back()->withErrors('Payment didn\'t go through');
+        }
     }
 
     /**
