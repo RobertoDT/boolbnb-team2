@@ -1,5 +1,5 @@
 <header class="height_header_general">
-  <div class="down fixed_search">
+  <div class="down bar_fixed">
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
                 {{-- logo immagine --}}
@@ -14,8 +14,9 @@
                <div class="start_search order">                 
                     <form class="form-inline my-2 my-lg-0" action="{{route("search")}}" method="GET">                     
                         @method('GET')                 
-                        <div class="div_search form-inline my-2 my-lg-0">                     
-                            <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Where are we going?" />                 
+                        <div class="div_search form-inline my-2 my-lg-0">
+                            <input type="hidden" id="address-value">                     
+                            <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Dove vuoi andare?" />                 
                         </div>                 
                         <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write"  class="search_button" type="submit">Search</button>
                     </form>
@@ -51,6 +52,10 @@
 
                             <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti <i class="fas fa-home"></i></a>
+                                <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento</a>
+                                <a class="dropdown-item" href="#">Sponsorizza appartamento</a>
+                                <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi</a>
+                                <a class="dropdown-item" href="#">Visualizza statistiche</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -85,10 +90,21 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item">
-                                
-                                <a class="dropdown-item" href="{{route('admin.properties.index')}}">My apartments</a>
-                            </li>
+                        <li class="nav-item">                                
+                             <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti <i class="fas fa-home"></i></a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="dropdown-item" href="#">Sponsorizza appartamento</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="dropdown-item" href="#">Visualizza statistiche</a>
+                        </li>
                         <li class="nav-item">
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -115,3 +131,30 @@
 </div>
 
 </header>
+
+<script>
+    // AUTOCOMPLETE
+(function() {
+  var placesAutocomplete = places({
+    appId: 'plWXAPEAGDXR',
+    apiKey: '45954f563deec0d78ef4a69018cdb84f',
+    container: document.querySelector('#address')
+  });
+
+  if (document.querySelector('#address-value') != null) {
+    var $address = document.querySelector('#address-value');
+  }
+  
+    
+  // placesAutocomplete.on('change', function(e) {
+  //   $address.textContent = e.suggestion.value;
+  // });
+
+
+  // placesAutocomplete.on('clear', function() {
+  //   $address.textContent = 'none';
+  // });
+
+})();
+// END AUTOCOMPLETE
+</script>

@@ -1,13 +1,14 @@
 
 // index guest e admin
-
-.premium_name {
-    padding-bottom: 20px;
+.highlight {
+    padding: 40px 0 0 5px; 
 }
 
-h1 {
-    padding: 30px;
+.chosen {
+    padding: 30px 0 0 5px;
+    @include fontGradient;
 }
+
 
 ul {
     list-style: none;
@@ -43,19 +44,30 @@ ul {
                 display: none;
                 
                 .small-container {
-
                     height: 90%;
                     display: flex;
                     margin: auto;
-                    flex-wrap: wrap;
                     align-items: center;
                     justify-content: center;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+
 
                     a {
                         color: #fff;
                         text-decoration: none;
                         width: 90%;
                         font-weight: bold;
+                    }
+
+                    .evidence{
+                        color: $mainColor;
+                        background-color: $hoverText;
+                        padding: 5px;
+                        border-radius: 50px;
+                        font-size: 12px;
+                        transform: translateY(50%);
                     }
 
                 }
@@ -67,6 +79,16 @@ ul {
         .all_properties:hover img {
             transform: scale(1.1, 1.1);
         }
+    }
+
+    .img-highlight{
+        width: 90%;
+        margin: auto;
+        border-radius: 50%;
+    }
+    .list-highlight{
+        background-color: $lightBgColor;
+        padding: 20px;
     }
 
 // Links/buttons index.admin
@@ -92,6 +114,10 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    
+@media screen and (min-width: 1400px) and (max-width: 1800px) {
+    height: 700px;
+    }
 
     p{
     color: white;

@@ -1,12 +1,14 @@
-
+// bottone per aprire i filtri//
 button.filter_button {
   border-radius:20px;
   background-color: white;
   border: none;
   color: #3e3d8b;
+  border-color: none;
 }
 button.filter_button:hover{
-  background:linear-gradient(140deg, #6f54e9, #488ec7);;
+  background:linear-gradient(140deg, #6f54e9, #488ec7);
+  border:none;
 }
 button.filter_button:after{ 
   content: '\f0b0';
@@ -14,22 +16,52 @@ button.filter_button:after{
   color: #3e3d8b;
   font-weight: 900;
 }    
-  .small_filter_container {
-      padding: 0 10px;        
-  }
-    
+button.filter_button:hover:after, button.filter_button:focus:after {
+  color: white;
+}
+button.filter_button:focus{
+  box-shadow: none;
+}
+// /bottone per aprire i filtri//
+
+//bottone per chiudere la modale
+button.close:focus {
+  outline:none;
+}
+// /bottone per chiudere la modale
+
+// container degli extra service//
+.small_filter_container {
+  padding: 0 10px;        
+}
+#address::-webkit-input-placeholder {
+  font-size: 14px;
+  font-weight: normal;
+}  
+#address::-moz-placeholder { /* Firefox 19+ */
+  font-size: 14px;
+  font-weight: normal;
+}
+#address:-ms-input-placeholder { /* IE 10+ */
+  font-size: 14px;
+  font-weight: normal;
+}
+#address:-moz-placeholder { /* Firefox 18- */
+  font-size: 14px;
+  font-weight: normal;
+}
 // Symbol raw//
 .symbol_filters {
   margin:0;
   text-align:center;
 }
 
-  .wi-fi:before, .pool:before, .sauna:before, .parking:before, .sea-view:before, .reception:before {
-    font-family: "Font Awesome 5 Free";
-    color:  #3e3d8b;
-    font-weight: 900;
-    width:100%;
-    text-align: center;
+.wi-fi:before, .pool:before, .sauna:before, .parking:before, .sea-view:before, .reception:before {
+  font-family: "Font Awesome 5 Free";
+  color:  #3e3d8b;
+  font-weight: 900;
+  width:100%;
+  text-align: center;
 }
 .wi-fi:before {
   content: '\f1eb';
@@ -134,31 +166,27 @@ button.filter_button:after{
   }
   /* /The switch - the box around the slider */
 // /Symbol raw//
+// /container degli extra service//
 
 /* // Barra per distanza da città */
 input[type=range] {
 -webkit-appearance: none;
 margin: 10px 0;
-/* // width: 100%; */
+background-color: transparent;
 }
 input[type=range]:focus {
 outline: none;
 }
 /* // barra */
 input[type=range]::-webkit-slider-runnable-track {
-/* // width: 100%; */
 height: 10px;
 cursor: pointer;
-/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
 background:linear-gradient(140deg, #6f54e9, #488ec7);
 border-radius: 25px;
-/* // border: 0px solid #000101; */
 }
 /* // /barra */
 /* // cursore */
 input[type=range]::-webkit-slider-thumb {
-/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
-/* // border: 0px solid #000000; */
 height: 15px;
 width: 30px;
 border-radius: 7px;
@@ -179,11 +207,8 @@ animate: 0.2s;
 box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
 background:linear-gradient(140deg, #6f54e9, #488ec7);;
 border-radius: 25px;
-/* // border: 0px solid #000101; */
 }
 input[type=range]::-moz-range-thumb {
-/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
-/* // border: 0px solid #000000; */
 height: 15px;
 width: 30px;
 border-radius: 7px;
@@ -204,16 +229,13 @@ input[type=range]::-ms-fill-lower {
 background: #ac51b5;
 border: 0px solid #000101;
 border-radius: 50px;
-/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
 }
 input[type=range]::-ms-fill-upper {
 background: #ac51b5;
 border: 0px solid #000101;
 border-radius: 50px;
-/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
 }
 input[type=range]::-ms-thumb {
-/* // box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d; */
 border: 0px solid #000000;
 height: 20px;
 width: 39px;
@@ -222,14 +244,19 @@ background:  #6f54e9;
 cursor: pointer;
 }
 input[type=range]:focus::-ms-fill-lower {
-background: linear-gradient(140deg, #6f54e9, #488ec7);;
+background: linear-gradient(140deg, #6f54e9, #488ec7);
 }
 input[type=range]:focus::-ms-fill-upper {
-background: linear-gradient(140deg, #6f54e9, #488ec7);;
+background: linear-gradient(140deg, #6f54e9, #488ec7);
 }
+.distance_row {
+  padding-top:10px;
+}
+.distance_row div{
+  margin:auto;
+}
+
 /* // Barra per distanza da città */
-
-
 
 
 /* Input number */
@@ -250,9 +277,14 @@ input[type=number]:focus {
   margin-right:5px;
 }
 /* /Input number */
-.distance_row {
-  padding-top:10px;
-}
-.distance_row div{
-  margin:auto;
+
+button.set_filter {
+  font-size:14px;
+  padding:7px;
+  color: #fff;
+  background: linear-gradient(140deg, #6f54e9, #488ec7);
+  text-shadow:none;
+  opacity: 1;
+  border-radius:15px;
+  font-weight:300;
 }

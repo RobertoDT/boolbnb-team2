@@ -192,3 +192,5 @@ class PropertiesSearchController extends Controller
       }
     }
 }
+
+
