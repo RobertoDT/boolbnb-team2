@@ -10,22 +10,24 @@
 <section class="main-content">
     <div class="wrapper">
 
+        
+
         {{-- APARTMENT IMAGE --}}
         <div class="img-container">
-            <img class="img-show" src="{{$property->flat_image}}" alt="Foto appartamento">
-            <div class="address">
-                <p>ROMA</p>
-            </div>
+            <img class="img-show" src="{{asset('storage/'.$property->flat_image)}}" alt="Foto appartamento">
+            <h1 class="title-show">{{$property->title}}</h1>
         </div>
         {{-- /APARTMENT IMAGE --}}
 
-        <h1>{{$property->title}}</h1>
 
         {{-- INFORMATIONS AND MAP --}}
         <div class="info-map">
 
             {{-- MAP  --}}
             <div class="container-map">
+                <div class="indirizzo">
+                    <h5>Il tuo indirizzo: {{$property->street}}, {{$property->metropolis}}</h5>
+                </div>
                 <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 
                 <div id="map-example-container-paris"></div>
@@ -40,7 +42,7 @@
             {{-- DESCRIPTION --}}
             <div class="container-info">
                 <div class="description">
-                    <h4>DESCRIPTION</h4>
+                    <h4>DESCRIZIONE</h4>
                     <h6><i class="fas fa-door-open gradient"></i> {{$property->description}}</h6>
                 </div>
             {{-- /DESCRIPTION --}}
@@ -48,7 +50,7 @@
 
                 <div class="features-extras">
                     <div class="features">
-                        <h4>FEATURES</h4>
+                        <h4>CARATTERISTICHE</h4>
 
                         {{-- FEATURES --}}
                         <h6><i class="fas fa-home gradient"></i> Locali: {{$property->rooms_number}}</h6>
@@ -63,7 +65,7 @@
                         @if($property->extras->isEmpty())
                         <p>Non ci sono extra</p>
                         @else
-                            <h4>EXTRAS</h4>
+                            <h4>EXTRA</h4>
                                 @foreach ($property->extras as $extra)
                                     <p><i class="far fa-star gradient"></i> {{$extra->name}}</p>
                                 @endforeach

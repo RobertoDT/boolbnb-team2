@@ -1,190 +1,196 @@
 .background-wrapper{
-background-color: #F8FAFC;
-
-    .wrap{
-    width: 80%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-
-        .menu-admin {
-            overflow: hidden;
-            background-image: linear-gradient(to right, #7e65ec, #74b0e0, #7e65ec);
-            width: 100%;
-            height: 50px;
-            margin-top: 20px;
-            border-radius: 45px;
-            margin: auto;
-
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-            }
-        
-            li {
-                width: calc((100% / 5) - 10px);
-                float: left;
-            }
-            
-            li a {
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                span{
-                    display: none;
-                    font-size: 15px;
-                    font-weight: 100;
-                }
-            }
-            
-            li:hover {
-                background: rgba(55, 80, 161, 0.3);
-                i{
-                    color: #f9a1fd;
-                }
-                span{
-                    display: inline;
-                    color: #f9a1fd;
-                }
-            }
-        
-        } //navbar
-
-
-        .main-layout{
-            display: flex;
-            flex-wrap: wrap;
-            width: 95%;
-            margin: auto;
-
-
-            .sezione {
-                float: left;
-                padding: 20px;
-            }
-
-            .side {
-                width: 25%;
-                background-color: #d8e3fa;
-                transition: transform .2s;
-                .desc{
-                    text-align: justify;
-                    line-height: 1.4;
-                }
-                .extras{
-                    margin-top: 40px;
-                    line-height: 1;
-                }
-                @media screen and (max-width: 768px) {
-                    width: 100%;
-                }
-            }
-
-            .side:hover{
-                background-color: #d5dcfc;
-                transform: scale(1.3);
-            }
-
+    background-color: $body-bg;
     
-                .title-wrap{
-                    width: 50%;
-                    background-color: #e7eaf7;
+        .wrap{
+        width: 80%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+    
+            .menu-admin {
+                overflow: hidden;
+                background-image: linear-gradient(to right, #7e65ec, #74b0e0, #7e65ec);
+                width: 100%;
+                height: 50px;
+                margin-top: 20px;
+                border-radius: 45px;
+                margin: auto;
+    
+                ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                }
+            
+                li {
+                    width: calc((100% / 5) - 10px);
+                    float: left;
+                }
+                
+                li a {
+                    display: block;
+                    color: white;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                    span{
+                        display: none;
+                        font-size: 15px;
+                        font-weight: 100;
+                    }
+                }
+                
+                li:hover {
+                    background: rgba(55, 80, 161, 0.3);
+                    margin: 0;
+                    i{
+                        color: $hoverText;
+                    }
+                    span{
+                        display: inline;
+                        color: $hoverText;
+                    }
+                }
+            
+            } //navbar
+    
+    
+            .main-layout{
+                display: flex;
+                flex-wrap: wrap;
+                width: 95%;
+                margin: auto;
+    
+                h5{
+                    @include fontGradient;
+                }
+    
+                .sezione {
+                    float: left;
+                    padding: 20px;
+                }
+    
+                .side {
+                    width: 25%;
+                    background-color: #f3f5fc;
                     transition: transform .2s;
+                    .desc{
+                        text-align: justify;
+                        line-height: 1.4;
+                    }
+                    .extras{
+                        margin-top: 40px;
+                        line-height: 1;
+                    }
                     @media screen and (max-width: 768px) {
                         width: 100%;
                     }
-
-                    h1{
-                        padding: 0 0 10px 0;
-                        text-align: center;
-                        font-size: 30px;
+                }
+    
+                .side:hover{
+                    background-color: #e3e8fd;
+                    transform: scale(1.1);
+                }
+    
+        
+                    .title-wrap{
+                        width: 50%;
+                        background-color: #f0f2fc;
+                        transition: transform .2s;
                         @media screen and (max-width: 768px) {
-                            font-size: 20px;
+                            width: 100%;
                         }
-                    }
-
-                    .img-wrapper{
-                        padding-top: none;
-                        max-height: 450px;
-                        width: 100%;
-                        .img-admin{
-                            width: 80%;
+    
+                        h1{
+                            padding: 0 0 10px 0;
+                            text-align: center;
+                            font-size: 30px;
+                            @media screen and (max-width: 768px) {
+                                font-size: 20px;
+                            }
+                        }
+    
+                        .img-wrapper{
+                            padding-top: none;
                             max-height: 450px;
-                            object-fit: cover;
-                            margin: auto;
-                            display: block;
-                            padding-bottom: 10px;
+                            width: 100%;
+                            .img-admin{
+                                width: 80%;
+                                max-height: 450px;
+                                object-fit: cover;
+                                margin: auto;
+                                display: block;
+                                padding-bottom: 10px;
+                            }
                         }
+    
                     }
-
-                }
-
-                .title-wrap:hover{
-                    background-color: #e7eaf7;
-                    transform: scale(1.3);
-                }
-
-        }
-
-        .main-layout:after {
-        content: "";
-        display: table;
-        clear: both;
-        } //main-layout
-
-
-        .info-mappa {
-            width: 100%;
-            background-color: #e7eaf7;
-            width: 95%;
-            margin: auto;
-
-            .indirizzo{
-                padding: 20px 0 15px 0;
-                background-image: linear-gradient(to right, #d0c8f0, #cadae6, #d0c8f0);
-                text-align: center;
-                display: flex;
-                align-items: center;
-                justify-content: center
+    
+                    .title-wrap:hover{
+                        background-color: #e7eaf7;
+                        transform: scale(1.1);
+                    }
+    
             }
-
-            .container-mappa{
+    
+            .main-layout:after {
+            content: "";
+            display: table;
+            clear: both;
+            } //main-layout
+    
+    
+            .info-mappa {
                 width: 100%;
-                margin-top: 50px;
-        
-                #map-example-container-paris {
-                    height: 400px;
-                    max-width: 800px;
-                    margin: auto;
-                    display: block;
-                    margin-bottom: 50px;
-                    margin-top: 50px;
-                    z-index: 0;
+                background-color: #f0f2fc;
+                width: 95%;
+                margin: auto;
+    
+                .indirizzo{
+                    padding: 20px 0 15px 0;
+                    background-image: linear-gradient(to right, #d0c8f0, #cadae6, #d0c8f0);
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: $mainColor;
                 }
-            }  
-                   
-        }
-
-        @media screen and (max-width: 900px) {
-            h4 {
-            font-size: 14px;
-            }
-            .wrapper {
-                width: 80%;
-            }
+    
+                .container-mappa{
+                    width: 100%;
+                    margin-top: 50px;
             
-        }
-        @media screen and (max-width: 760px) {
-            .description h4{
-                padding-top:0px;
-             }
-        }
-      
-        
-    } //wrap
-
-} //background-wrapper
+                    #map-example-container-paris {
+                        height: 400px;
+                        max-width: 800px;
+                        margin: auto;
+                        display: block;
+                        margin-bottom: 50px;
+                        margin-top: 50px;
+                        z-index: 0;
+                    }
+                }  
+                       
+            }
+    
+            @media screen and (max-width: 900px) {
+                h4 {
+                font-size: 14px;
+                }
+                .wrapper {
+                    width: 80%;
+                }
+                
+            }
+            @media screen and (max-width: 760px) {
+                .description h4{
+                    padding-top:0px;
+                 }
+            }
+          
+            
+        } //wrap
+    
+    } //background-wrapper
+    
