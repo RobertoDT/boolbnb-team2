@@ -1,5 +1,5 @@
 <header class="height_header_general">
-  <div class="down fixed_search">
+  <div class="down bar_fixed">
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
                 {{-- logo immagine --}}
@@ -52,6 +52,10 @@
 
                             <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti <i class="fas fa-home"></i></a>
+                                <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento</a>
+                                <a class="dropdown-item" href="#">Sponsorizza appartamento</a>
+                                <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi</a>
+                                <a class="dropdown-item" href="#">Visualizza statistiche</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -86,10 +90,21 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item">
-                                
-                                <a class="dropdown-item" href="{{route('admin.properties.index')}}">My apartments</a>
-                            </li>
+                        <li class="nav-item">                                
+                             <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti <i class="fas fa-home"></i></a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="dropdown-item" href="#">Sponsorizza appartamento</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi</a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="dropdown-item" href="#">Visualizza statistiche</a>
+                        </li>
                         <li class="nav-item">
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"

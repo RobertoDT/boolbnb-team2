@@ -5,6 +5,12 @@ header {
     position:fixed;
     width: 100%;
     }
+    
+    .bar_fixed {
+    position:fixed;
+    width: 100%;
+    background-color: #fff;
+    }
 
     .scroll {
     position:fixed;
@@ -78,7 +84,12 @@ header {
        display:none; 
     }
 }
-
+.white {
+    color: #fff;
+}
+.mainColor {
+    color: $mainColor;
+}
 .height_header_general {
     height:100px;
 }
