@@ -1,13 +1,42 @@
+.hero {
+    // max-width: 1880px;
+    margin: auto;
+    height: 100vh;
+    background-image: url('/img/house3dd.jpg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+        .bubble{
+            margin-right: 20%;
+            margin-top: 15%;
+        
+            .txt-rotate{
+                color: white;
+                font-family: 'Arvo', serif;
+                font-weight: 100;
+                font-size: 25px;
+                border-style: solid;
+                border-width: 0 0 5px 0;
+                margin-bottom:20px;
+                width:fit-content;
+                border-image: linear-gradient(45deg, #d81ddc, #5991ea, #15cff1) 1;  
 
-// index guest e admin
-.highlight {
-    padding: 40px 0 0 5px; 
-}
+                .txt-rt{
+                    font-weight: 100;
+                    font-size: 25px;
+                }       
+               }
+        }
+    @media screen and (min-width: 1400px) and (max-width: 1880px) {
+        height: 700px;
+        }
 
-.chosen {
-    padding: 30px 0 0 5px;
-    @include fontGradient;
-}
+} //hero
+
 
 
 ul {
@@ -15,124 +44,215 @@ ul {
     display: flex;
     flex-wrap: wrap;
 
-        li {
-            width: calc((100% / 3) - 10px);
-            margin: 5px;
-            position: relative;
+    li {
+        width: calc((100% / 3) - 10px);
+        margin: 5px;
+        position: relative;
+        
+        .img-responsive {
+            height: 300px;
+            width: 100%;
+            overflow: hidden;
             
-            .img-responsive {
+            img {
+                width: 100%;
                 height: 300px;
-                width: 100%;
-                overflow: hidden;
-                
-                img {
-                    width: 100%;
-                    height: 300px;
-                    object-fit: cover;
-                    transition: .5s ease-in-out;
-                }
-            }
-
-            .overlay {
-                background-color: rgba(74,102,128,0.4);
-                width: 100%;
-                height: 100%;
-                text-align: center;
-                position: absolute;
-                top:0;
-                left: 0;
-                display: none;
-                
-                .small-container {
-                    height: 90%;
-                    display: flex;
-                    margin: auto;
-                    align-items: center;
-                    justify-content: center;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-
-
-                    a {
-                        color: #fff;
-                        text-decoration: none;
-                        width: 90%;
-                        font-weight: bold;
-                    }
-
-                    .evidence{
-                        color: $mainColor;
-                        background-color: $hoverText;
-                        padding: 5px;
-                        border-radius: 50px;
-                        font-size: 12px;
-                        transform: translateY(50%);
-                    }
-
-                }
+                object-fit: cover;
+                transition: .5s ease-in-out;
             }
         }
-        .all_properties:hover .overlay {
-            display: block;
-        }
-        .all_properties:hover img {
-            transform: scale(1.1, 1.1);
-        }
+
+        .overlay {
+            background-color: rgba(74,102,128,0.4);
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            position: absolute;
+            top:0;
+            left: 0;
+            display: none;
+            
+            .small-container {
+                height: 80%;
+                display: flex;
+                margin: auto;
+                align-items: center;
+                justify-content: center;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                width: 80%;
+                padding-top: 20%;
+            }
+
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                    width: 90%;
+                    font-weight: bold;
+                }
+
+                .metro{
+                    color: $white;
+                    font-weight: bold;
+                    font-size: 20px;
+                }
+                
+                .evidence{
+                    color: $mainColor;
+                    background-color: $hoverText;
+                    padding: 5px;
+                    border-radius: 50px;
+                    font-size: 12px;
+                    transform: translateY(50%);
+                    font-weight: bold;
+                }
+
+            } //small inner container
+
+    } //li
+
+} //ul
+
+
+    //specifiche
+    .all_properties:hover .overlay {
+        display: block;
     }
 
-    .img-highlight{
+    .all_properties:hover img {
+        transform: scale(1.1, 1.1);
+    }
+
+    .highlight {
+        padding: 40px 0 0 5px; 
+    }
+
+    #li-highlight{
+        background-image: radial-gradient(white, white, rgb(195, 203, 252));
+        padding: 20px;
+        margin: 0;
+        // @media screen and (max-width: 1000px) {
+        //     width: 50%;
+        // }
+        // @media screen and (max-width: 768px) {
+        //     width: 100%;
+        // }
+    }
+
+    #img-highlight{
         width: 90%;
         margin: auto;
         border-radius: 50%;
+        // @media screen and (max-width: 1000px) {
+        //     width: 80%;
+        // }
+        // @media screen and (max-width: 768px) {
+        //     width: 50%;
+        // }
+
+        // img{
+        //     @media screen and (max-width: 1000px) {
+        //         height: fit-content;
+        //         width: 80%;
+        //     }
+        //     @media screen and (max-width: 768px) {
+        //         height: fit-content;
+        //         width: 100%;
+        //     }
+        // }
     }
-    .list-highlight{
-        background-color: $lightBgColor;
-        padding: 20px;
+
+    .over-highlight{
+        margin: auto;
     }
 
-// Links/buttons index.admin
-.modifing_link {
-    text-decoration: none;
-    background-image: linear-gradient(140deg, #6f54e9, #488ec7);
-    color: $white;
-    margin: 3px;
-    border: none;
-}
+    .chosen {
+        padding: 30px 0 0 5px;
+        @include fontGradient;
+    }
 
-.modifing_link:hover {
-    background-color: red;
-    color: $white;
-}
+    // Links/buttons index.admin
+    .modifing_link {
+        text-decoration: none;
+        background-image: linear-gradient(140deg, #6f54e9, #488ec7);
+        color: $white;
+        margin: 3px;
+        border: none;
+    }
 
-.hero {
-    height: 630px;
-    background-image: url('/img/house3dd.jpg');
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .modifing_link:hover {
+        background-color: red;
+        color: $white;
+    }
+
+    @media screen and (max-width: 768px) {
     
-@media screen and (min-width: 1400px) and (max-width: 1800px) {
-    height: 700px;
+        .all_properties {
+        width: 100%;
+        margin: 5px;
+        position: relative;
+        }
     }
 
-    p{
-    color: white;
-    font-size: 20px;
-    line-height: 1.3;
-    margin-left: 100;
-    margin-bottom: 50;
-    }
-}
 
-@media screen and (max-width: 768px) {
-  
-    .all_properties {
-    width: 100%;
-    margin: 5px;
-    position: relative;
+    //COME FUNZIONA
+    h1{
+        margin: 80px 0 10px 5px;
     }
-}
+
+    .getting-started{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .gs-list{
+            justify-content: space-between;;
+        
+            .gs-container{
+                width: calc((100% / 4) - 40px);
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                box-shadow: 5px 5px 5px #a0a7cf;
+                flex-wrap: wrap;
+
+                @media screen and (max-width: 870px) {
+                        width: calc((100% / 2) - 20px);
+                    }
+            
+                .gs-image{
+                    width: 80%;
+                    margin: auto;
+                    padding: 10px;
+                    margin-top: 15px;
+
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+
+                .gs-text{
+                    text-align: center;
+                    padding: 15px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    h4{
+                        font-size: 20px;
+                        @media screen and (max-width: 768px) {
+                            font-size: 18px;;
+                        }
+                    }
+
+                    p{
+                        line-height: 1.4;
+                        @media screen and (max-width: 450px) {
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    } //come funziona
