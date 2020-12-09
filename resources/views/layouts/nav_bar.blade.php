@@ -1,5 +1,5 @@
-<header class="height_header_general">
-    <div class="down bar_fixed">
+<header class="bar_fixed">
+    <div>
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 {{-- logo --}}
@@ -140,8 +140,8 @@
         </nav>
     </div>
         {{-- Modale filtri --}}
-        <div class="modal fade filter_container"id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
+        <div class="modal modal_dialog_responsive fade filter_container"id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog " role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">Seleziona filtri</h4>
@@ -152,7 +152,7 @@
                         <div class="container-fluid">
                             <div class="row symbol_filters">
                                 @foreach ($extras as $extra)
-                                    <div class="col-2 small_filter_container {{$extra->name}}" data-toggle="tooltip" data-placement="top" title="{{$extra->name}}">
+                                    <div class="col-md-2 col-sm-4 col-6 small_filter_container {{$extra->name}}" data-toggle="tooltip" data-placement="top" title="{{$extra->name}}">
                                         <label for="{{$extra->name}}"></label>
                                             <label class="switch">
                                             <input type="checkbox" id="{{$extra->name}}" value="{{$extra->id}}" name="extras[]">
@@ -163,19 +163,19 @@
                             </div>
                             <div class="row justify-content-center rooms_line"> 
                                     <!-- {{-- Barra per selezionare la distanza dalla search--}} -->
-                                    <div class="col-2 small_filter_container text_size">
+                                    <div class="col-sm-2 col-6 small_filter_container text_size text-center">
                                         <label for="rooms">Rooms</label>
                                         <input type="number" class="bg_transparent" placeholder ="1" id="rooms" value="1" name="rooms" min="1" max="15">
                                     </div>
-                                    <div class="col-2 small_filter_container text_size">
+                                    <div class="col-sm-2 col-6 small_filter_container text_size text-center">
                                         <label for="beds">Beds</label>
                                         <input type="number" class="bg_transparent" placeholder ="1" id="beds" value="1" name="beds" min="1" max="20">
                                     </div>
-                                    <div class="col-2 small_filter_container text_size square_meters">
+                                    <div class="col-sm-2 col-6 small_filter_container text_size text-center square_meters">
                                         <label for="mq">Mq</label>
                                         <input type="number" class="bg_transparent" placeholder ="30" id="mq" name="mq" data-mq ="" value="30" min="30" max="1000">
                                     </div>
-                                    <div class="col-2 small_filter_container text_size">
+                                    <div class="col-sm-2 col-6 small_filter_container text-center text_size">
                                         <label for="bathrooms">Bathrooms</label>
                                         <input type="number" class="bg_transparent" placeholder ="1" id="bathrooms" value="1" name="bathrooms" min="1" max="5">
                                     </div>
@@ -186,7 +186,7 @@
                                     <label for="radius">Distanza (km)</label>    
                                     <input type="range" value ="20" id="radius" name="radius"
                                         min="5" max="100" oninput="this.nextElementSibling.value = this.value">
-                                    <output>24</output>
+                                    <output>20</output>
                                 <!-- {{--/ barra per selezionare la distanza dalla search--}} -->
                                 </div>
                             </div>

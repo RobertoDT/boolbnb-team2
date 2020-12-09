@@ -16,7 +16,7 @@
                         @method('GET')                 
                         <div class="div_search form-inline my-2 my-lg-0">  
                             <input type="hidden" id="address-value">                   
-                            <input class="form-control mr-sm-2 input_search" type="search" id="address" name="search" placeholder="Dove vuoi andare?" />               
+                            <input class="form-control mr-sm-2 input_search address-general" type="search" id="address" name="search" placeholder="Dove vuoi andare?" />               
                         </div>                 
                         <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write"  class="search_button" type="submit">Search</button>
                     </form>

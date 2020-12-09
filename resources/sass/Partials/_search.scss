@@ -1,7 +1,7 @@
 .profile-card-4 {
   max-width: 300px;
   background-color: #FFF;
-  border-radius: 5px;
+  border-radius: 20px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
@@ -39,6 +39,10 @@
   color: #777;
   font-size: 12px;
   padding: 10px;
+  height: 105px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width:100%;
 }
 
 .profile-card-4 .profile_overview {
@@ -86,4 +90,7 @@
 .name_search {
   margin:10px;
   text-transform: uppercase;
+}
+.min_height_70 {
+  min-height:70px;
 }

@@ -7,13 +7,6 @@ header {
     z-index:1;
     }
     
-    .bar_fixed {
-    position:fixed;
-    width: 100%;
-    background-color: #fff;
-    z-index:1;
-    }
-
     .scroll {
     position:fixed;
     z-index: 2;
@@ -98,6 +91,16 @@ header {
             @include fontGradient;
         }
     }
+}
+.bar_fixed {
+    position:sticky;
+    width: 100%;
+    top:0;
+    background-color: #fff;
+    z-index:2;
+    -webkit-box-shadow: 0 4px 6px -6px $mainColor;
+    -moz-box-shadow: 0 4px 6px -6px $mainColor;
+    box-shadow: 0 4px 6px -6px $mainColor;
 }
 
 // Colori link header//

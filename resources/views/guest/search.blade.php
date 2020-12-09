@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col sponsored_list">
       <h2 class="premium_name name_search">In evidenza</h1>
-      <div class="card-deck row properties_list sponsored list-highlight">
+      <div class="card-deck row properties_list sponsored list-highlight align-items-stretch">
 
       </div>
     </div>
@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col not_sponsored_list">
       <h2 class="premium_name name_search">Scelti per voi</h1>
-      <div class="card-deck row properties_list not_sponsored">
+      <div class="card-deck row properties_list not_sponsored align-items-stretch">
 
       </div>
     </div>
@@ -28,10 +28,10 @@
 </div>
 
   <script id="property-template" type="text/x-handlebars-template">
-    <div class="col-md-4 col-sm-6 col-xs-12 d-flex align-items-stretch margin_auto"  data-id="@{{id}}">
+    <div class="col-md-4 col-sm-6 col-xs-12 d-flex align-self-stretch margin_auto"  data-id="@{{id}}">
       <a href="/properties/@{{id}}" class="margin_auto">
       <div class="profile-card-4 text-center">
-        <h4 class="text-center padding_title"><strong>@{{title}}</strong></h4>
+        <h4 class="text-center min_height_70 padding_title"><strong>@{{title}}</strong></h4>
         
       
         <img src="@{{flat_image}}" class="img img-responsive card-img-top" alt="Immagine appartamento">
