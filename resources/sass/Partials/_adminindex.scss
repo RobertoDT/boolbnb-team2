@@ -112,6 +112,13 @@
   
   .flip-card-front {
     color: black;
+
+      .front-text{
+      height: 110px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
   }
   
   .flip-card-back {
