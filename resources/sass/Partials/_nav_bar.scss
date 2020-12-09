@@ -16,7 +16,7 @@ button.filter_button:after{
   color: #3e3d8b;
   font-weight: 900;
 }    
-button.filter_button:hover:after, button.filter_button:focus:after {
+button.filter_button:hover:after, button.filter_button:active:after {
   color: white;
 }
 button.filter_button:focus{
@@ -288,3 +288,40 @@ button.set_filter {
   border-radius:15px;
   font-weight:300;
 }
+
+@media screen and (min-width:768px) and (max-width:843px) {
+  #search_navbar {
+    width:60%;
+  }
+}
+@media screen and (max-width:413px) {
+  #search_navbar {
+    width:60%;
+  }
+}
+
+@media screen and (max-width:577px) {
+  .modal.modal_dialog_responsive {
+    min-width:none;
+    width:auto;
+
+      .modal-dialog{
+        max-width: none;
+        width: auto;
+        margin:auto;
+  
+        .modal-content{
+          min-width: none;
+          width: auto;
+          margin: auto;
+        }
+      }
+    }
+  .rooms_line {
+    .square_meters {
+      margin: 0;
+    }
+  }
+
+  }
+

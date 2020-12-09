@@ -12,7 +12,6 @@
   padding: 25px 0 15px 0;
   font-weight: 800;
   }
-<<<<<<< HEAD
 
   .sidenav {
   height: 100%;
@@ -76,89 +75,9 @@
             height: 200px;
         }
         h5{
-          padding-top: 30px;
-          font-size: 25px;
-        }
-    }
-}
-
-
-
-          .card-img-top{
-              height: 200px;
-          }
-          h5{
-            padding-top: 30px;
-            font-size: 20px;
-            @include fontGradient;
-          }
-      }
-=======
-
-  .sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(140deg, #6f54e9, #488ec7);
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 80px;
-}
-
-.sidenav a {
-  padding: 8px 20px 20px 30px;
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #f9a1fd;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 25px;
-  margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-
-.apt-title{
-  padding: 0 0 0 25px;
-}
-
-.card-list{
-    @media screen and (max-width: 768px) {
-        width: 80%;
-        margin: auto;
-    }
-
-    .card-box{
-        background-color: white;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        box-shadow: 5px 5px 5px #a0a7cf;
-        padding: 15px;
-        max-block-size: fit-content;
-        margin: 10px;
-
-        .card-img-top{
-            height: 200px;
-        }
-        h5{
-          padding-top: 30px;
-          font-size: 25px;
+          padding-top: 20px;
+          font-size: 20px;
+          @include fontGradient;
         }
     }
 }
@@ -168,7 +87,6 @@
 .flip-card {
     background-color: transparent;
     height: 340px;
->>>>>>> main
   }
   
   .flip-card-inner {
@@ -194,6 +112,13 @@
   
   .flip-card-front {
     color: black;
+
+      .front-text{
+      height: 110px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
   }
   
   .flip-card-back {

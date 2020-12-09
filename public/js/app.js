@@ -37583,6 +37583,67 @@ $(document).ready(function () {
   // });
   // });
   // /Creare un array contenente gli extra checkati
+
+  var TxtRotate = function TxtRotate(el, toRotate, period) {
+    this.toRotate = toRotate;
+    this.el = el;
+    this.loopNum = 0;
+    this.period = parseInt(period, 10) || 2000;
+    this.txt = '';
+    this.tick();
+    this.isDeleting = false;
+  };
+
+  TxtRotate.prototype.tick = function () {
+    var i = this.loopNum % this.toRotate.length;
+    var fullTxt = this.toRotate[i];
+
+    if (this.isDeleting) {
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+
+    this.el.innerHTML = '<span class="txt-rt">' + this.txt + '</span>';
+    var that = this;
+    var delta = 300 - Math.random() * 100;
+
+    if (this.isDeleting) {
+      delta /= 2;
+    }
+
+    if (!this.isDeleting && this.txt === fullTxt) {
+      delta = this.period;
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.txt === '') {
+      this.isDeleting = false;
+      this.loopNum++;
+      delta = 500;
+    }
+
+    setTimeout(function () {
+      that.tick();
+    }, delta);
+  };
+
+  window.onload = function () {
+    var elements = document.getElementsByClassName('txt-rotate');
+
+    for (var i = 0; i < elements.length; i++) {
+      var toRotate = elements[i].getAttribute('data-rotate');
+      var period = elements[i].getAttribute('data-period');
+
+      if (toRotate) {
+        new TxtRotate(elements[i], JSON.parse(toRotate), period);
+      }
+    } // INJECT CSS
+
+
+    var css = document.createElement("style");
+    css.type = "text/css";
+    css.innerHTML = ".txt-rotate > .txt-rt { border-right: 0.08em solid #666 }";
+    document.body.appendChild(css);
+  };
 });
 
 /***/ }),
@@ -37648,7 +37709,17 @@ if (document.getElementById('latitude') != null && document.getElementById('long
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+$(document).ready(function () {
+  var rangeSlider = $("#rs-range-line");
+  var rangeBullet = $("#rs-bullet");
+  rangeSlider.addEventListener("input", showSliderValue, false);
 
+  function showSliderValue() {
+    rangeBullet.html(rangeSlider).val();
+    var bulletPosition = rangeSlider.val() / rangeSlider.max;
+    rangeBullet.style.left = bulletPosition * 578 + "px";
+  }
+});
 
 /***/ }),
 
@@ -37920,7 +37991,7 @@ function renderResults(results) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable.\n   ╷\n63 │                         background-color: $hoverText;\r\n   │                                           ^^^^^^^^^^\n   ╵\n  resources\\sass\\Partials\\_index.scss 63:43  @import\n  C:\\boolean\\boolbnb-team2\\resources\\sass\\app.scss 18:9                                 root stylesheet\n    at C:\\boolean\\boolbnb-team2\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\boolean\\boolbnb-team2\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\boolean\\boolbnb-team2\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\boolean\\boolbnb-team2\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\boolean\\boolbnb-team2\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:90547:16)\n    at _render_closure1.call$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:79617:12)\n    at _RootZone.runBinary$3$3 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:27035:18)\n    at _FutureListener.handleError$1 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25563:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25860:49)\n    at Object._Future__propagateToListeners (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:4539:77)\n    at _Future._completeError$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25693:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25036:12)\n    at Object._asyncRethrow (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:4288:17)\n    at C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:13174:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:4313:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25057:12)\n    at _awaitOnObject_closure0.call$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25049:25)\n    at _RootZone.runBinary$3$3 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:27035:18)\n    at _FutureListener.handleError$1 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25563:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25860:49)\n    at Object._Future__propagateToListeners (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:4539:77)\n    at _Future._completeError$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25693:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25036:12)\n    at Object._asyncRethrow (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:4288:17)\n    at C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:17915:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:4313:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25057:12)\n    at _awaitOnObject_closure0.call$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25049:25)\n    at _RootZone.runBinary$3$3 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:27035:18)\n    at _FutureListener.handleError$1 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25563:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25860:49)\n    at Object._Future__propagateToListeners (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:4539:77)\n    at _Future._completeError$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25693:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:25036:12)\n    at Object._asyncRethrow (C:\\boolean\\boolbnb-team2\\node_modules\\sass\\sass.dart.js:4288:17)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -37931,8 +38002,8 @@ throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Henry\Desktop\boolean\exercise\boolbnb\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Henry\Desktop\boolean\exercise\boolbnb\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
