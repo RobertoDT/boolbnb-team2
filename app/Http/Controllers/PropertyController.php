@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Property;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\View;
 
 class PropertyController extends Controller
 {
@@ -35,7 +36,7 @@ class PropertyController extends Controller
               }
             }
           }
-        }      
+        }
       return view ("guest.index", compact('sponsored_properties', 'not_sponsored_properties'));
 
     }
@@ -44,6 +45,12 @@ class PropertyController extends Controller
     public function show($id)
     {
       $property = Property::find($id);
+      $new_view = new View;
+
+      $new_view->property_id = $id;
+
+      $new_view->save();
+
       if(Auth::check()){
         $email = Auth::user()->email;
       } else {
