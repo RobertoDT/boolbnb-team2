@@ -1,26 +1,12 @@
 const { isEmpty } = require("lodash");
 
 $( document ).ready(function() {
-  // RESETTA IMPUT
-  // $('#address').attr('value', "");
-  // $('#address').val("");
-
-
-  
+ 
   // variabile globale per extras
   extrasString = "";
 
   // CONTROLLO SE IL DATA_ADDRESS E' STATO COMPILATO
   // DALLA RICERCA DI ALTRE PAGINE OPPURE NO
-  // if ($('#address').attr('data-address').length > 0) { //ISSET
-  //   var humanAddress = $('#address').attr('data-address');
-  //     $('#address').attr('data-address', "");
-  //     // $('#address').val("");
-  //   if (humanAddress.length > 2) {
-  //     console.log(humanAddress);
-  //     getCoordinatesTomTom(humanAddress);
-  //   }
-  // }
   if ($('#foreign_address').val().length > 0) { //ISSET
     var humanAddress = $('#foreign_address').val();
       $('#foreign_address').attr('value', "");
@@ -248,8 +234,10 @@ function renderResults (results){
       // inserisco i nuovi risultati
       $('.sponsored').append(html);
     }
+  // } else {
+  //   $('.sponsored_list').hide();
+  // } 
   }
-
   // NOT SPONSORED
   if (results.not_sponsored.length > 0) {
     // salvo lista NON sponsorizzati
@@ -261,7 +249,11 @@ function renderResults (results){
     for (var i = 0; i < notSponsored.length; i++) {
       var html = template(notSponsored[i]);
       $('.not_sponsored').append(html);
-    }
-  }
+    } 
+  // } else {
+  //   $('.not_sponsored_list').hide();
+  // }
 
 }
+}
+  
