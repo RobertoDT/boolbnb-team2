@@ -1,5 +1,5 @@
 <header class="height_header_general">
-    <div class="scroll down bar_fixed">
+    <div class="down bar_fixed">
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 {{-- logo --}}
@@ -18,7 +18,7 @@
                 {{-- INPUT SEARCH --}}             
                 <div class="start_search order">                 
                     <div class="header_nav form-inline my-2 my-lg-0">                                                         
-                        <div class="div_search form-inline my-2 my-lg-0">                     
+                        <div class="div_search form-inline my-2 my-lg-0" id="search_navbar">                     
                             <input type="hidden" id="address-value">
                             <input type="hidden" id="foreign_address" value="{{isset($address) ? $address : ''}}">
                             <input type="search" class="address_search_input" id="address" value="{{isset($address) ? $address : ''}}" class="form-control" placeholder="Dove vuoi andare?" data-address="{{isset($address) ? $address : ''}}"/>
@@ -48,29 +48,30 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link mixin_font" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link mixin_font" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown width_100 m_0 p_5">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle mixin_font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->firstname }} {{Auth::user()->lastname}}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti <i class="fas fa-home"></i></a>
-                                    <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento</a>
-                                    <a class="dropdown-item" href="#">Sponsorizza appartamento</a>
-                                    <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi</a>
-                                    <a class="dropdown-item" href="#">Visualizza statistiche</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('admin.properties.index')}}"> I miei appartamenti <i class="fas fa-home"></i></a>
+                                    <a class="dropdown-item" href="{{route('admin.properties.create')}}">  Aggiungi appartamento <i class="fas fa-plus-circle"></i></a>
+                                    <a class="dropdown-item" href="#"> Sponsorizza appartamento <i class="fas fa-dollar-sign"></i></a>
+                                    <a class="dropdown-item" href="{{route('admin.messages')}}"> Visualizza messaggi <i class="far fa-envelope"></i></a>
+                                    <a class="dropdown-item" href="#"> Visualizza statistiche <i class="fas fa-chart-bar"></i></a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" 
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Logout') }} 
+                                        <i class="fas fa-sign-out-alt"></i>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -105,16 +106,16 @@
                                     <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti <i class="fas fa-home"></i></a>
                                 </li>
                                 <li class="nav-item"> 
-                                    <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento</a>
+                                    <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento <i class="fas fa-plus-circle"></i></a>
                                 </li>
                                 <li class="nav-item"> 
-                                    <a class="dropdown-item" href="#">Sponsorizza appartamento</a>
+                                    <a class="dropdown-item" href="#">Sponsorizza appartamento <i class="fas fa-dollar-sign"></i></a>
                                 </li>
                                 <li class="nav-item"> 
-                                    <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi</a>
+                                    <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi <i class="far fa-envelope"></i></a>
                                 </li>
                                 <li class="nav-item"> 
-                                    <a class="dropdown-item" href="#">Visualizza statistiche</a>
+                                    <a class="dropdown-item" href="#">Visualizza statistiche <i class="fas fa-chart-bar"></i></a>
                                 </li>
                                 <li class="nav-item">
 
@@ -122,6 +123,7 @@
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
+                                            <i class="fas fa-sign-out-alt"></i>
                                         </a>
                                     </li>
 

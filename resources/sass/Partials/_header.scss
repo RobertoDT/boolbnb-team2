@@ -4,12 +4,14 @@ header {
     .fixed_search {
     position:fixed;
     width: 100%;
+    z-index:1;
     }
     
     .bar_fixed {
     position:fixed;
     width: 100%;
     background-color: #fff;
+    z-index:1;
     }
 
     .scroll {
@@ -70,6 +72,12 @@ header {
     .navbar-collapse {
         flex-grow: 0;
         display:none;
+
+        .dropdown-menu {
+            a {
+                @include fontGradient;
+            }
+        }
     }
 
     .clearfix::after {
@@ -83,16 +91,30 @@ header {
     .hamburger.show {
        display:none; 
     }
+    .hamburger .navbar-nav li {
+        width: 100%;
+
+        a {
+            @include fontGradient;
+        }
+    }
 }
-.white {
-    color: #fff;
+
+// Colori link header//
+
+.navbar-light .navbar-nav .nav-link.mixin_font{
+    @include fontGradient;
 }
-.mainColor {
+.navbar-light .navbar-nav .nav-link:hover {
     color: $mainColor;
+}
+.navbar-light .navbar-nav .nav-link.white {
+    color:white;
 }
 .height_header_general {
     height:100px;
 }
+// /Colori link header//
 
 @media screen and(max-width:992px) {
     header {
@@ -103,7 +125,7 @@ header {
     }
 }
 
-@media screen and(max-width:768px) {
+@media screen and(max-width:767px) {
 
     header {
         

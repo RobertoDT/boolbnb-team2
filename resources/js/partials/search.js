@@ -248,8 +248,10 @@ function renderResults (results){
       // inserisco i nuovi risultati
       $('.sponsored').append(html);
     }
+  // } else {
+  //   $('.sponsored_list').hide();
+  // } 
   }
-
   // NOT SPONSORED
   if (results.not_sponsored.length > 0) {
     // salvo lista NON sponsorizzati
@@ -261,7 +263,11 @@ function renderResults (results){
     for (var i = 0; i < notSponsored.length; i++) {
       var html = template(notSponsored[i]);
       $('.not_sponsored').append(html);
-    }
-  }
+    } 
+  // } else {
+  //   $('.not_sponsored_list').hide();
+  // }
 
 }
+}
+  

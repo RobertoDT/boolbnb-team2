@@ -288,3 +288,14 @@ button.set_filter {
   border-radius:15px;
   font-weight:300;
 }
+
+@media screen and (min-width:768px) and (max-width:843px) {
+  #search_navbar {
+    width:60%;
+  }
+}
+@media screen and (max-width:413px) {
+  #search_navbar {
+    width:60%;
+  }
+}

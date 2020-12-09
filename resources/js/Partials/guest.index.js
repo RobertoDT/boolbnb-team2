@@ -6,12 +6,16 @@ var stickyOffset = 100;
 $(window).scroll(function(){
   var sticky = $('.down');
   var scroll = $(window).scrollTop();
-    
+  // var whiteLine = $('.nav-link .white');
+  // console.log(whiteLine);
+
   if (scroll >= stickyOffset) {
     sticky.removeClass('fixed_search').addClass('scroll');
+    $('.regular').removeClass('white').addClass('mixin_font');
   }
   else {
     sticky.removeClass('scroll').addClass('fixed_search');
+    $('.regular').addClass('white').removeClass('mixin_font');
   }
   // /Header fissato in alto allo scroll
 });
