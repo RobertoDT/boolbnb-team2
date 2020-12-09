@@ -1,4 +1,6 @@
 require('./bootstrap');
+require("././partials/sponsor.js");
+require("././partials/statistics.js");
 require("././partials/admin.show.js");
 require("././partials/admin.index.js");
 require("././partials/search.js");
@@ -10,4 +12,3 @@ require("././partials/admin.show.js");
 require("././partials/navbar.filter.js");
 
 require("././partials/algolia.js");
-

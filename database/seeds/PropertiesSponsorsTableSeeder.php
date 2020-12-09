@@ -62,7 +62,7 @@ class PropertiesSponsorsTableSeeder extends Seeder
           // scelgo random uno sponsor (24,72,144);
           $sponsor = Sponsor::inRandomOrder()->first();
           // calcolo la data del termine dello sponsor
-          $end_new_sponsor = $new_dt_carbon->addHours($sponsor->duration)->format('Y-m-d H:i');
+          $end_new_sponsor = $new_dt_carbon->addHours($sponsor->duration)->format('Y-m-d H:i:s');
           // creo la relazione e inserisco i dati created e end_sponsor
           $sponsor->properties()->attach(
             $property,
