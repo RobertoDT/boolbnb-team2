@@ -10,6 +10,12 @@ a:hover {
 body {
     position:relative;
     font-family: 'Ubuntu', sans-serif;
+    margin: auto;
+    max-width: 1880px;
+}
+
+main{
+    min-height: calc(100vh - 450px);
 }
 
 // .wrapper{

@@ -13,6 +13,11 @@
 
         <div class="wrap">
 
+            @if(session('success_message'))
+              <div class="alert alert-success">
+                {{session('success_message')}}
+              </div>
+            @endif
 
             {{-- NAVBAR --}}
             <div class="menu-admin">
@@ -26,7 +31,7 @@
                         </form>
                     </li>
                     <li id="menu-item"><a href="{{route("admin.properties.index")}}"><i class="fas fa-eye"></i> <span>Visibilita'</span></a></li>
-                    <li id="menu-item"><a href=""><i class="fas fa-chart-bar"></i> <span>Statistiche</span></a></li>
+                    <li id="menu-item"><a href="{{route("admin.statistics")}}"><i class="fas fa-chart-bar"></i> <span>Statistiche</span></a></li>
                     <li id="menu-item"><a href="{{route("admin.properties.index")}}"><i class="fas fa-user"></i> <span>I miei appartamenti</span></a></li>
                 </ul>
             </div>
