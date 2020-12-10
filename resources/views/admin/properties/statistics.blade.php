@@ -7,7 +7,8 @@
 <div class="container">
 
   <input id="bday-month" type="month" name="bday-month" value="">
-  <input type="hidden" name="" value="">
+  <input id="property_id_stat" type="hidden" name="" value="{{$property->id}}">
+  <h2 class="no_results_message"></h2>
   <canvas id="myChart"></canvas>
 
 </div>

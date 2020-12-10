@@ -26,7 +26,7 @@ Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->
   Route::resource("properties", "PropertyController");
   Route::get("messages", "PropertyController@readMessages")->name('messages');
   Route::resource("sponsors", "SponsorController");
-  Route::get("statistics", "ViewController@index")->name('statistics');
+  Route::get("statistics/{id}", "ViewController@index")->name('statistics');
 });
 
 Route::resource("properties", "PropertyController");
