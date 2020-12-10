@@ -1,26 +1,38 @@
 $( document ).ready(function() {
 
-property_id = 44;
-// date_request = "2020-11";
+  if($("#myChart").length > 0){
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1;
+  var mese = mm.toString();
+  var yyyy = today.getFullYear();
+  var anno = yyyy.toString();
+  var dateNow = anno+"-"+mese;
+  $("#bday-month").val(dateNow);
+
+  property_id = $("#property_id_stat").val();
+  date_request = dateNow;
+  var moment = new Date(date_request);
+  month_name = capitalizeFirstLetter(moment.toLocaleString('default', { month: 'long' }));
+  year = moment.getFullYear();
+
+    getStatistics(property_id, date_request);
+  }
+
+  $("#bday-month").change(function(){
+    date_request = $(this).val();
+
+    // var new_date_request = moment(date_request, "YYYY-MM");
+
+    var moment = new Date(date_request);
+    month_name = capitalizeFirstLetter(moment.toLocaleString('default', { month: 'long' }));
+    year = moment.getFullYear();
+    // console.log(m_date);
+
+    getStatistics(property_id, date_request);
+  });
 
 
-$("#bday-month").change(function(){
-
-  // alert($(this).val());
-  date_request = $(this).val();
-  getStatistics(property_id, date_request);
-});
-
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1;
-var mese = mm.toString();
-var yyyy = today.getFullYear();
-var anno = yyyy.toString();
-var dateNow = anno+"-"+mese;
-$("#bday-month").val(dateNow);
-
-getStatistics(property_id, date_request);
 
 });
 
@@ -34,8 +46,13 @@ function getStatistics(property_id, date_request){
       "date_request" : date_request
     },
     "success" : function(data){
-
-      renderStatistics(data.labels, data.data);
+      if(data.no_results_message != null){
+        $(".no_results_message").text(data.no_results_message);
+        $("#myChart").hide();
+      } else{
+        $("#myChart").show();
+        renderStatistics(data.labels, data.data);
+      }
 
     },
     "error" : function(error){
@@ -69,7 +86,7 @@ function renderStatistics(labels, data){
           data: {
               labels: new_array,
               datasets: [{
-              label: "Novembre 2020",
+              label: year + " " + month_name,
               borderColor: '#5E61DD',
               borderWidth: 1,
               pointHoverRadius: 6,
@@ -116,4 +133,8 @@ function renderStatistics(labels, data){
           }
       });
 
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }

@@ -23,56 +23,57 @@
 <section class="home_guest">
     <div class="container">
 
-        {{-- IN EVIDENZA --}}
-        <h1 class="highlight">In Evidenza</h1>
-            <ul class="flat_list list-highlight">
-                <?php $count = 0; ?>
-                @foreach ($sponsored_properties as $sponsored_property)
-                    <?php if($count == 12) break; ?>
-                        <li class="all_properties" id="li-highlight">
-                            <div class="img-responsive" id="img-highlight">
-                                <img class="transition" src="{{$sponsored_property->flat_image}}" alt="Home Picture">
-                            </div>
-                            <div class="overlay over-highlight">
-                                <div class="small-container">
-                                    <a href="/properties/{{$sponsored_property->id}}">{{$sponsored_property->title}}</a>
-                                    <p class="metro">{{$sponsored_property->metropolis}}</p>
-                                    <p class="evidence">Sponsorizzato</p>
-                                </div>
-                            </div>
-                        </li>
-                    <?php $count++; ?>
-                @endforeach  
-                @php
-                $i = 12 - $count;
-                @endphp
-            </ul>
-        {{-- /IN EVIDENZA --}}   
+       {{-- IN EVIDENZA --}}
+       <h1 class="highlight">In Evidenza</h1>
+       <ul class="flat_list list-highlight">
+           <?php $count = 0; ?>
+           @foreach ($sponsored_properties as $sponsored_property)
+               <?php if($count == 12) break; ?>
+                   <li class="all_properties" id="li-highlight">
+                       <div class="img-responsive" id="img-highlight">
+                           <img class="transition" src="{{asset('storage/'.$sponsored_property->flat_image)}}" alt="Home Picture">
+                       </div>
+                       <div class="overlay over-highlight">
+                           <div class="small-container">
+                               <a href="/properties/{{$sponsored_property->id}}">{{$sponsored_property->title}}</a>
+                               <p class="metro">{{$sponsored_property->metropolis}}</p>
+                               <p class="evidence">Sponsorizzato</p>
+                           </div>
+                       </div>
+                   </li>
+               <?php $count++; ?>
+           @endforeach  
+           @php
+           $i = 12 - $count;
+           @endphp
+       </ul>
+   {{-- /IN EVIDENZA --}}   
 
-        {{-- SCELTI PER VOI --}}
-        <h2 class="chosen">Scelti per voi</h2>
-            <ul class="flat_list">
-                <?php $count_not_sponsored = 0; ?>
-                @foreach ($not_sponsored_properties as $not_sponsored_property)
-                    <?php if($count_not_sponsored == $i) break; ?>
-                        <li class="all_properties">
-                            <div class="img-responsive">
-                                <img class="transition" src="{{$not_sponsored_property->flat_image}}" alt="Home Picture">
-                            </div>
-                            <div class="overlay">
-                            <div class="small-container">
-                                <a href="/properties/{{$not_sponsored_property->id}}">{{$not_sponsored_property->title}}</a>
-                                <p class="metro">{{$not_sponsored_property->metropolis}}</p>
-                            </div>
-                            </div>
-                        </li>
-                        <?php $count_not_sponsored++; ?>
-                @endforeach     
-            </ul>
-            {{-- //SCELTI PER VOI --}}
+   {{-- SCELTI PER VOI --}}
+   <h2 class="chosen">Scelti per voi</h2>
+       <ul class="flat_list">
+           <?php $count_not_sponsored = 0; ?>
+           @foreach ($not_sponsored_properties as $not_sponsored_property)
+               <?php if($count_not_sponsored == $i) break; ?>
+                   <li class="all_properties">
+                       <div class="img-responsive">
+                           <img class="transition" src="{{asset('storage/'.$not_sponsored_property->flat_image)}}" alt="Home Picture">
+                       </div>
+                       <div class="overlay">
+                       <div class="small-container">
+                           <a href="/properties/{{$not_sponsored_property->id}}">{{$not_sponsored_property->title}}</a>
+                           <p class="metro">{{$not_sponsored_property->metropolis}}</p>
+                       </div>
+                       </div>
+                   </li>
+                   <?php $count_not_sponsored++; ?>
+           @endforeach     
+       </ul>
+       {{-- //SCELTI PER VOI --}}
+
 
             {{-- COME FUNZIONA --}}
-            <h1>Come funziona?</h1>
+            <h1 class="gs-title">Come funziona?</h1>
             <div class="getting-started">
                 <ul class="gs-list">
 
@@ -118,6 +119,60 @@
                 </ul>
             </div>
             {{-- //COME FUNZIONA --}}
+
+            {{-- CERCA --}}
+            <div class="find">
+                <div class="find-border">
+                <h2>Trova l'alloggio giusto per te!</h2>
+                    <div class="start_search order">                 
+                        <form class="form-inline my-2 my-lg-0 find-btn" action="{{route("search")}}" method="GET">                     
+                            @method('GET')                               
+                            <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write"  class="search_button" type="submit">Cerca</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{-- //CERCA --}}
+
+
+            {{-- HOST --}}
+            <div class="bnb-host">
+                <h1 class="bnb-host-title">Le basi dell'ospitalità su BoolBnb</h1>
+
+                    <div class="flex-quotes">
+                        <div class="col col-image" style="background-image: url('/img/host1.jpeg');">
+                            &nbsp;
+                        </div>
+                        <div class="col col-text">
+                            <h3>Puoi diventare host</h3>
+                                <p>Cosa ci vuole per diventare host di BoolBnb? Innanzitutto, devi avere uno spazio disponibile da condividere con i viaggiatori. Che si tratti di una casa intera, di una stanza in più o di un comodo divano letto, è probabile che ci sia un ospite che sarà felice di soggiornare nel tuo spazio: la chiave è creare un annuncio BoolBnb trasparente e accurato che aiuti i viaggiatori a comprendere esattamente cosa aspettarsi.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="flex-quotes">
+                        <div class="col col-image" style="background-image: url('/img/host2.jpg');">
+                            &nbsp;
+                        </div>
+                        <div class="col col-text col-left">
+                            <h3>Sei tu a decidere il prezzo</h3>
+                                <p>Ospitando su BoolBnb, puoi proporre la tua casa ai viaggiatori, senza spese di registrazione o costi di iscrizione. E sei tu a decidere la tua tariffa giornaliera. Puoi impostare prezzi personalizzati per le diverse stagioni, per i weekend e per notti specifiche per le quali desideri offrire una tariffa diversa. Puoi inoltre includere anticipatamente dei costi extra per servizi aggiuntivi come ospiti in più o pulizie. Se hai bisogno di aiuto per determinare la tua tariffa, BoolBnb ti offre degli strumenti in grado di confrontare prezzi e domanda, e di suggerirti quindi un prezzo adeguato per ciascuna notte.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="flex-quotes">
+                        <div class="col col-image" style="background-image: url('/img/host3.jpeg');">
+                            &nbsp;
+                        </div>
+                        <div class="col col-text">
+                            <h3>Inizia a ricevere prenotazioni</h3>
+                                <p>Una volta che avrai pubblicato il tuo annuncio su BoolBnb, inizierai a ricevere richieste e prenotazioni da parte degli ospiti. BoolBnb effettua l'addebito per tutti gli ospiti prima dell'arrivo per assicurarsi che tu venga pagato sempre tempestivamente per la tua accoglienza. Non dovrai mai gestire direttamente il denaro.</p>
+                        </div>
+                    </div>
+
+            </div>
+            {{-- //HOST --}}
             
     </div> 
     {{-- container --}}

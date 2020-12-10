@@ -9,11 +9,14 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Response;
 //models
 use App\View;
+use App\Property;
 
 class ViewController extends Controller
 {
-    public function index() {
-        return view("admin.properties.statistics");
+    public function index($id) {
+
+        $property = Property::find($id);
+        return view("admin.properties.statistics", compact("property"));
     }
 
     public function getStatistics()
@@ -56,6 +59,30 @@ class ViewController extends Controller
         $labels[] = $day_views["date"];
         $data[] = $day_views["views"];
       }
+
+      $daysInMonth = $begin_month->daysInMonth;
+      if(count($labels) != $daysInMonth){
+        $newLabels = [];
+        $newData = [];
+        $j = 0;
+        for ($i=0; $i < $daysInMonth; $i++) {
+          $carbonLabel = Carbon::parse($labels[$j]);
+          if ($begin_month->eq($carbonLabel)) {
+            $newLabels[] = $begin_month->format('Y-m-d');
+            $newData[] = $data[$j];
+            if ($j < count($labels) - 1) {
+              $j++;
+            }
+          } else {
+            $newLabels[] = $begin_month->format('Y-m-d');
+            $newData[] = 0;
+          }
+          $begin_month->addDays(1);
+        }
+        $labels = $newLabels;
+        $data = $newData;
+      }
+
 
       return Response::json(array("labels" => $labels, "data" => $data));
 

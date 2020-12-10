@@ -5,7 +5,10 @@
 @endsection
 
 @section('mainContent')
-
+<section class="search_section">
+{{-- <div class="no_search_results"> --}}
+  <h2 class="no_results"></h2>
+{{-- </div> --}}
 <div class="container search_container">
   <div class="row">
     <div class="col sponsored_list">
@@ -29,7 +32,7 @@
 
   <script id="property-template" type="text/x-handlebars-template">
     <div class="col-md-4 col-sm-6 col-xs-12 d-flex align-self-stretch margin_auto"  data-id="@{{id}}">
-      <a href="/properties/@{{id}}" class="margin_auto">
+      <a href="/properties/@{{id}}" class="margin_auto color_search_card">
       <div class="profile-card-4 text-center">
         <h4 class="text-center min_height_70 padding_title"><strong>@{{title}}</strong></h4>
         
@@ -88,4 +91,5 @@
         </div>
     </div>
 </div> --}}
+</section>
 @endsection

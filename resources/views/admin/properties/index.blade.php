@@ -29,6 +29,7 @@
             <div id="mySidenav" class="sidenav">
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
               <a href="{{route("admin.properties.create")}}"><i class="fas fa-plus"></i> Aggiungi appartamento</a><hr>
+              <a href="{{route("admin.sponsors.create")}}"><i class="fas fa-dollar-sign"></i> Sponsorizza il tuo appartamento</a><hr>
               <a href="{{route("admin.messages")}}"><i class="far fa-envelope"></i> Visualizza i tuoi messaggi</a><hr>
               <a href="{{ url('/') }}"><i class="fas fa-home"></i> Torna alla Homepage</a><hr>
               <a href="#"><i class="fas fa-phone"></i> Hai bisogno di assistenza? <br> Contattaci allo 0528463898 </a>

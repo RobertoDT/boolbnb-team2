@@ -1,3 +1,15 @@
+.search_section {
+  position:relative;
+  min-height: 80vh;
+}
+.no_results {
+  @include fontGradient;
+  text-align: center;
+  padding: 50px;
+  margin: 50px;
+  border:1px solid linear-gradient(45deg, #d81ddc, #5991ea, #15cff1);
+}
+
 .profile-card-4 {
   max-width: 300px;
   background-color: #FFF;
@@ -52,19 +64,18 @@
   align-items: center;
 }
 
-// .profile-card-4 .profile_overview p {
-//   font-size: 10px;
-//   font-weight: 600;
-//   color: #777;
-// }
 
 .profile-card-4 .profile_overview h4 {
   // color: #273751;
   font-weight: bold;
 }
 
-.profile-card-4 .profile_overview h4 i {
+a .profile-card-4 .profile_overview h4 i {
   color:linear-gradient(#684ce6, #488ec7);
+}
+a .profile-card-4 .profile_overview h4,
+a .profile-card-4 h4 {
+  @include fontGradient;
 }
 
 .profile-card-4 .profile-content::before {
