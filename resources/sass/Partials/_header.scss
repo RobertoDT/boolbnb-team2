@@ -71,6 +71,12 @@ header {
                 @include fontGradient;
             }
         }
+        .li_width {
+            flex-wrap:nowrap;
+                li {
+                width:100%;
+            }
+        }
     }
 
     .clearfix::after {

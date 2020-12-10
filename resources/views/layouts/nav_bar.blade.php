@@ -9,12 +9,7 @@
                     </a>
                 </div>
                 {{-- input di ricerca --}}                 
-                {{-- <div class="start_search order form-inline my-2 my-lg-0">                     
-                    <input type="search" id="address" value="{{isset($address) ? $address : ''}}" class="form-control" placeholder="Where are we going?" />                 
-                </div>
-                <div class="start_search form-inline my-2 my-lg-0">
-                    <button id="search" class="btn btn-dark my-2 my-sm-0 modifing_link">Search</button>
-                </div> --}}
+                
                 {{-- INPUT SEARCH --}}             
                 <div class="start_search order">                 
                     <div class="header_nav form-inline my-2 my-lg-0">                                                         
@@ -23,7 +18,7 @@
                             <input type="hidden" id="foreign_address" value="{{isset($address) ? $address : ''}}">
                             <input type="search" class="address_search_input" id="address" value="{{isset($address) ? $address : ''}}" class="form-control" placeholder="Dove vuoi andare?" data-address="{{isset($address) ? $address : ''}}"/>
                         </div>                 
-                        <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write" id="search" class="search_button" type="submit">Search</button>
+                        <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write" id="search" class="search_button" type="submit">Cerca</button>
                         <!-- {{-- Icona filtro --}} -->
                         <button type="button" class="btn filter_button" data-toggle="modal" data-target="#myModal">
                         </button>
@@ -44,7 +39,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto float-right text-right">
+                    <ul class="navbar-nav ml-auto float-right text-right li_width">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -64,9 +59,8 @@
                                 <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('admin.properties.index')}}"> I miei appartamenti <i class="fas fa-home"></i></a>
                                     <a class="dropdown-item" href="{{route('admin.properties.create')}}">  Aggiungi appartamento <i class="fas fa-plus-circle"></i></a>
-                                    <a class="dropdown-item" href="#"> Sponsorizza appartamento <i class="fas fa-dollar-sign"></i></a>
+                                    <a class="dropdown-item" href="{{route('admin.sponsors.create')}}"> Sponsorizza appartamento <i class="fas fa-dollar-sign"></i></a>
                                     <a class="dropdown-item" href="{{route('admin.messages')}}"> Visualizza messaggi <i class="far fa-envelope"></i></a>
-                                    <a class="dropdown-item" href="#"> Visualizza statistiche <i class="fas fa-chart-bar"></i></a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" 
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -109,13 +103,10 @@
                                     <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento <i class="fas fa-plus-circle"></i></a>
                                 </li>
                                 <li class="nav-item"> 
-                                    <a class="dropdown-item" href="#">Sponsorizza appartamento <i class="fas fa-dollar-sign"></i></a>
+                                    <a class="dropdown-item" href="{{route('admin.sponsors.create')}}">Sponsorizza appartamento <i class="fas fa-dollar-sign"></i></a>
                                 </li>
                                 <li class="nav-item"> 
                                     <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi <i class="far fa-envelope"></i></a>
-                                </li>
-                                <li class="nav-item"> 
-                                    <a class="dropdown-item" href="#">Visualizza statistiche <i class="fas fa-chart-bar"></i></a>
                                 </li>
                                 <li class="nav-item">
 
@@ -139,6 +130,7 @@
             </div>
         </nav>
     </div>
+</header>
         {{-- Modale filtri --}}
         <div class="modal modal_dialog_responsive fade filter_container"id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog " role="document">
@@ -196,8 +188,8 @@
                     <div class="modal-footer">
                         <button type="button" data-dismiss="modal" class="close set_filter" aria-label="Close" id="set_result" class="btn modifing_link">Salva</button>
                     </div>
-                    </div>
                 </div>
             </div>
+        </div>
         {{-- /Modale filtri --}}
-</header>
+
