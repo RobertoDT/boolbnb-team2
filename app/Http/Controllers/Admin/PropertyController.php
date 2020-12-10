@@ -221,6 +221,6 @@ class PropertyController extends Controller
     {
         $property = Property::find($id);
         $property->delete();
-        return redirect()->route("admin.properties.index", $property);
+        return redirect()->route("admin.properties.index", $property)->with('success_deleted_property', 'L\'appartamento è stato cancellato correttamente.');
     }
 }

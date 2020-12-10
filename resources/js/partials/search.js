@@ -205,6 +205,7 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq){
       "success": function(data) {
       // controllo dati in entrata
       if (!isEmpty(data)) {
+        $('.no_results').text('');
         console.log(data);
         $('.properties_list').html("");
         // renderizzo la nuova lista
@@ -213,7 +214,9 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq){
 
       },
       "error": function(error) {
-          alert(error);
+          $('.no_results').text('La ricerca non ha prodotto risultati');
+          $('.sponsored_list').hide();
+          $('.not_sponsored_list').hide();
       }
   });
 }
@@ -223,6 +226,7 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq){
 function renderResults (results){
   // SPONSORED
   if (results.sponsored.length > 0) {
+    $('.sponsored_list').show();
     // salvo lista sponsorizzati
     var sponsored = results.sponsored;
     //preparo il template per SPONSORIZZATI
@@ -233,13 +237,15 @@ function renderResults (results){
       var html = template(sponsored[i]);
       // inserisco i nuovi risultati
       $('.sponsored').append(html);
+      console.log(sponsored);
     }
-  // } else {
-  //   $('.sponsored_list').hide();
-  // } 
-  }
+  } else {
+    $('.sponsored_list').hide();
+  } 
+  
   // NOT SPONSORED
   if (results.not_sponsored.length > 0) {
+    $('.not_sponsored_list').show();
     // salvo lista NON sponsorizzati
     var notSponsored = results.not_sponsored;
     //preparo il template per NON sponsorizzati
@@ -250,10 +256,10 @@ function renderResults (results){
       var html = template(notSponsored[i]);
       $('.not_sponsored').append(html);
     } 
-  // } else {
-  //   $('.not_sponsored_list').hide();
-  // }
+  } else if (results.not_sponsored.length === 0){
+    $('.not_sponsored_list').hide();
+  }
 
 }
-}
+
   

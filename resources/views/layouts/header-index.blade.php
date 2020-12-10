@@ -18,7 +18,7 @@
                             <input type="hidden" id="address-value">                   
                             <input class="form-control mr-sm-2 input_search address-general" type="search" id="address" name="search" placeholder="Dove vuoi andare?" />               
                         </div>                 
-                        <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write"  class="search_button" type="submit">Search</button>
+                        <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write"  class="search_button" type="submit">Cerca</button>
                     </form>
                 </div>
 
@@ -34,7 +34,7 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto float-right text-right">
+                <ul class="navbar-nav ml-auto float-right text-right li_width">
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
@@ -54,9 +54,8 @@
                             <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('admin.properties.index')}}">I miei appartamenti <i class="fas fa-home"></i></a>
                                 <a class="dropdown-item" href="{{route('admin.properties.create')}}"> Aggiungi appartamento <i class="fas fa-plus-circle"></i></a>
-                                <a class="dropdown-item" href="#">Sponsorizza appartamento <i class="fas fa-dollar-sign"></i> </a>
+                                <a class="dropdown-item" href="{{route('admin.sponsors.create')}}">Sponsorizza appartamento <i class="fas fa-dollar-sign"></i> </a>
                                 <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi <i class="far fa-envelope"></i> </a>
-                                <a class="dropdown-item" href="#"> Visualizza statistiche <i class="fas fa-chart-bar"></i></a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -101,13 +100,10 @@
                                 <a class="dropdown-item" href="{{route('admin.properties.create')}}">Aggiungi appartamento <i class="fas fa-plus-circle"></i></a>
                             </li>
                             <li class="nav-item"> 
-                                <a class="dropdown-item" href="#">Sponsorizza appartamento <i class="fas fa-dollar-sign"></i></a>
+                                <a class="dropdown-item" href="{{route('admin.sponsors.create')}}">Sponsorizza appartamento <i class="fas fa-dollar-sign"></i></a>
                             </li>
                             <li class="nav-item"> 
                                 <a class="dropdown-item" href="{{route('admin.messages')}}">Visualizza messaggi <i class="far fa-envelope"></i></a>
-                            </li>
-                            <li class="nav-item"> 
-                                <a class="dropdown-item" href="#">Visualizza statistiche <i class="fas fa-chart-bar"></i></a>
                             </li>
                             <li class="nav-item">
 

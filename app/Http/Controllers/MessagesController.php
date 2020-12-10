@@ -53,7 +53,8 @@ class MessagesController extends Controller
       //salvataggio
       $newMessage->save();
 
-      return redirect()->route("properties.show", $id);
+    return back()->with('success_sent_message', 'Il messaggio è stato inviato correttamente al proprietario dell\'appartamento');
+
     }
 
     /**

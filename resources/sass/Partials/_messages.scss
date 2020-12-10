@@ -73,7 +73,7 @@ span{
 
 //smartphone
 @media screen and (max-width: 576px){
-  .fade.at_center{
+  .fade{
     width: 100%;
     .modal-dialog{
       max-width: 400px;
@@ -87,7 +87,7 @@ span{
       }
     }
   }
-  .modal.at_center{
+  .modal{
     min-width: 750px;
     width: 100%;
     margin: auto;
