@@ -1,5 +1,6 @@
 require('./bootstrap');
 
+require("././partials/sponsor.js");
 require("././partials/autocomplete_header.js");
 
 
