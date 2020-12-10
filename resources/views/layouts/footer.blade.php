@@ -18,7 +18,7 @@
             <h5 class="text-uppercase font-weight-bold">CHI SIAMO</h5>
             <p>Con milioni di alloggi e decine di migliaia di attività uniche, tutto proposto da host del luogo, BoolBnb mette in contatto persone provenienti da tutto il mondo.</p>
         </div>
-        <div class="col-md-4 col-sm-4 col-xs-12 p_left_35">
+        <div class="col-md-4 col-sm-4 col-xs-12 p_left_35 margin_t_b">
           <div>
             <!-- Facebook -->
             <a class="fb-ic white" href="https://www.facebook.com/boolean.careers">

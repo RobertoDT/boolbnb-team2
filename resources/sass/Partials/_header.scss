@@ -4,14 +4,9 @@ header {
     .fixed_search {
     position:fixed;
     width: 100%;
+    z-index:1;
     }
     
-    .bar_fixed {
-    position:fixed;
-    width: 100%;
-    background-color: #fff;
-    }
-
     .scroll {
     position:fixed;
     z-index: 2;
@@ -70,6 +65,12 @@ header {
     .navbar-collapse {
         flex-grow: 0;
         display:none;
+
+        .dropdown-menu {
+            a {
+                @include fontGradient;
+            }
+        }
     }
 
     .clearfix::after {
@@ -83,16 +84,40 @@ header {
     .hamburger.show {
        display:none; 
     }
+    .hamburger .navbar-nav li {
+        width: 100%;
+
+        a {
+            @include fontGradient;
+        }
+    }
 }
-.white {
-    color: #fff;
+.bar_fixed {
+    position:sticky;
+    width: 100%;
+    top:0;
+    background-color: #fff;
+    z-index:2;
+    -webkit-box-shadow: 0 4px 6px -6px $mainColor;
+    -moz-box-shadow: 0 4px 6px -6px $mainColor;
+    box-shadow: 0 4px 6px -6px $mainColor;
 }
-.mainColor {
+
+// Colori link header//
+
+.navbar-light .navbar-nav .nav-link.mixin_font{
+    @include fontGradient;
+}
+.navbar-light .navbar-nav .nav-link:hover {
     color: $mainColor;
+}
+.navbar-light .navbar-nav .nav-link.white {
+    color:white;
 }
 .height_header_general {
     height:100px;
 }
+// /Colori link header//
 
 @media screen and(max-width:992px) {
     header {
@@ -103,7 +128,7 @@ header {
     }
 }
 
-@media screen and(max-width:768px) {
+@media screen and(max-width:767px) {
 
     header {
         

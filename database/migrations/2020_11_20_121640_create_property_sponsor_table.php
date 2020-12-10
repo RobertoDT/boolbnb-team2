@@ -14,8 +14,8 @@ class CreatePropertySponsorTable extends Migration
     public function up()
     {
         Schema::create('property_sponsor', function (Blueprint $table) {
-          $table->foreignId('property_id')->constrained();
-          $table->foreignId('sponsor_id')->constrained();
+          $table->foreignId('property_id')->constrained()->on('properties')->onDelete('cascade');
+          $table->foreignId('sponsor_id')->constrained()->on('sponsors')->onDelete('cascade');
           $table->dateTime("end_sponsor");
           $table->timestamps();
         });

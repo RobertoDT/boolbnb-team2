@@ -13,7 +13,6 @@
 </head>
 <body>
 
-
     <main>
 
       @yield('mainContent')

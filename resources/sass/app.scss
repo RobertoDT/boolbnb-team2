@@ -1,7 +1,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 //Fontawesome
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
 
@@ -20,8 +20,9 @@
 @import 'Partials/_adminshow.scss';
 @import 'Partials/_adminindex.scss';
 @import 'Partials/_search.scss';
-@import 'Partials/_nav_bar.scss';
 @import 'Partials/_messages.scss';
+@import 'Partials/_nav_bar.scss';
 @import 'Partials/_create.scss';
+@import 'Partials/_sponsors.scss';
 
 @import 'Partials/_form.scss';
