@@ -8,35 +8,32 @@ use App\Property;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\View;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
     //metodo index
     public function index()
     {
+      $now = Carbon::now();
+      $ids_sponsored = DB::table('property_sponsor')
+          ->where('end_sponsor', '>=', $now)
+          ->select('property_id')
+          ->get()
+          ->toArray();
+      $array_ids = [];
 
-      $properties = Property::where('active', 1)->get();
+      foreach ($ids_sponsored as $id_sponsored) {
 
-      $sponsored_properties = [];
-      $not_sponsored_properties = [];
+        $array_ids[] = $id_sponsored->property_id;
 
-      foreach ($properties as $property) {
+      }
+      $sponsored_properties = Property::whereIn('id', $array_ids)->where('active', 1)->skip(0)->take(4)
+      ->get();
+      $not_sponsored_properties = Property::whereNotIn('id', $array_ids)->where('active', 1)->skip(0)->take(9)
+      ->get();
 
-        if (isset($property->sponsors)) {
-        // eseguo un ciclo per ogni sponsor che ha la proprietà
-          foreach ($property->sponsors as $sponsor) {
-            $now = Carbon::now();
-            // prendo i valori esistenti di inizio e di fine di ogni sponsor
-            $created_at = Carbon::parse($sponsor->pivot->created_at);
-            $end_sponsor = Carbon::parse($sponsor->pivot->end_sponsor);
-              if($now->between($created_at,$end_sponsor)){
-                $sponsored_properties[] = $property;
-              } else if (!in_array($property, $not_sponsored_properties) && !in_array($property, $sponsored_properties)){
-                $not_sponsored_properties[] = $property;
-              }
-            }
-          }
-        }
+
       return view ("guest.index", compact('sponsored_properties', 'not_sponsored_properties'));
 
     }
