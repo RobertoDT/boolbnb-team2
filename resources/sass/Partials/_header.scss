@@ -99,6 +99,7 @@ header {
     }
 }
 .bar_fixed {
+    position: -webkit-sticky; //Safari
     position:sticky;
     width: 100%;
     top:0;

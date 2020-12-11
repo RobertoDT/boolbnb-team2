@@ -169,7 +169,13 @@ class PropertiesSearchController extends Controller
 
 
             // ottengo la lista degli appartamentifiltrati NON sponsorizzati
-            $properties_not_sponsored = $properties_filtered->whereNotIn('id', $ids_sponsored_only_ids);
+            $properties_not_sponsored_obj = $properties_filtered->whereNotIn('id', $ids_sponsored_only_ids);
+
+            // Dump array with object-arrays
+            $properties_not_sponsored = [];
+            foreach($properties_not_sponsored_obj as $object){
+              $properties_not_sponsored[] = $object;
+            }
 
             // dd($ids_sponsored_only_ids, $properties_filtered, $properties_sponsored, $properties_not_sponsored);
 
