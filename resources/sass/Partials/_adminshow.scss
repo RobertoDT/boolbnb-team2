@@ -25,6 +25,10 @@
                 li {
                     width: calc((100% / 5) - 10px);
                     float: left;
+                    margin: 3px;
+                    i{
+                        font-size: 18px;
+                    }
                 }
                 
                 li a {
@@ -82,6 +86,16 @@
                         margin-top: 40px;
                         line-height: 1;
                     }
+
+                    .visibility{
+                        margin-top: 20%;
+                        .vis{
+                            font-family: "Ubuntu", sans-serif;
+                            font-size: 0.9rem;
+                            font-weight: 500;
+                        }
+                    }
+
                     @media screen and (max-width: 768px) {
                         width: 100%;
                     }
@@ -145,6 +159,7 @@
                 background-color: #f0f2fc;
                 width: 95%;
                 margin: auto;
+                margin-bottom: 50px;
     
                 .indirizzo{
                     padding: 20px 0 15px 0;
@@ -188,7 +203,20 @@
                  }
             }
           
-            
+            .bnb-host{
+                @media screen and (max-width: 768px) {
+                    display: block;
+                }
+            }
+            .img-hidden{
+                display: none;
+            }
+
+            .col-left{
+                text-align: right;
+            }
+
+
         } //wrap
     
     } //background-wrapper
