@@ -1,15 +1,16 @@
-.search_section {
-  position:relative;
-  min-height: 80vh;
+.no_search_results {
+  border: 5px solid black;
+  width: 60%;
+  margin: 50px auto;
+  border-image: linear-gradient(45deg, #d81ddc, #5991ea, #15cff1) 1;
+  display:none;
+  
+  .no_results {
+    @include fontGradient;
+    text-align: center;
+    padding: 50px;
+  }
 }
-.no_results {
-  @include fontGradient;
-  text-align: center;
-  padding: 50px;
-  margin: 50px;
-  border:1px solid linear-gradient(45deg, #d81ddc, #5991ea, #15cff1);
-}
-
 .profile-card-4 {
   max-width: 300px;
   background-color: #FFF;

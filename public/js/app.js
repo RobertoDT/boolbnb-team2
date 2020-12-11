@@ -37274,17 +37274,17 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ././partials/admin.show.js */ "./resources/js/partials/admin.show.js");
+__webpack_require__(/*! ././partials/algolia_map.js */ "./resources/js/partials/algolia_map.js");
+
+__webpack_require__(/*! ././partials/autocomplete_header.js */ "./resources/js/partials/autocomplete_header.js");
+
+__webpack_require__(/*! ././partials/statistics.js */ "./resources/js/partials/statistics.js");
 
 __webpack_require__(/*! ././partials/admin.index.js */ "./resources/js/partials/admin.index.js");
 
 __webpack_require__(/*! ././partials/search.js */ "./resources/js/partials/search.js");
 
 __webpack_require__(/*! ././partials/guest.index.js */ "./resources/js/partials/guest.index.js");
-
-__webpack_require__(/*! ././partials/guest.show.js */ "./resources/js/partials/guest.show.js");
-
-__webpack_require__(/*! ././partials/admin.show.js */ "./resources/js/partials/admin.show.js");
 
 __webpack_require__(/*! ././partials/navbar.filter.js */ "./resources/js/partials/navbar.filter.js");
 
@@ -37363,10 +37363,41 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/js/partials/admin.show.js":
-/*!*********************************************!*\
-  !*** ./resources/js/partials/admin.show.js ***!
-  \*********************************************/
+/***/ "./resources/js/partials/algolia.js":
+/*!******************************************!*\
+  !*** ./resources/js/partials/algolia.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function () {
+  var placesAutocomplete = places({
+    appId: 'plD2BZ3YCS9X',
+    apiKey: 'd15f227b04df27ca7267846ac790a5da',
+    container: document.querySelector('#form-address'),
+    templates: {
+      value: function value(suggestion) {
+        return suggestion.name;
+      }
+    }
+  }).configure({
+    type: 'address'
+  });
+  placesAutocomplete.on('change', function resultSelected(e) {
+    document.querySelector('#form-city').value = e.suggestion.city || '';
+    document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+    document.querySelector('#form-country').value = e.suggestion.country || '';
+    document.querySelector('#form-lat').value = e.suggestion.latlng.lat || '';
+    document.querySelector('#form-lon').value = e.suggestion.latlng.lng || '';
+  });
+})();
+
+/***/ }),
+
+/***/ "./resources/js/partials/algolia_map.js":
+/*!**********************************************!*\
+  !*** ./resources/js/partials/algolia_map.js ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -37417,34 +37448,22 @@ if (document.getElementById('latitude') != null && document.getElementById('long
 
 /***/ }),
 
-/***/ "./resources/js/partials/algolia.js":
-/*!******************************************!*\
-  !*** ./resources/js/partials/algolia.js ***!
-  \******************************************/
+/***/ "./resources/js/partials/autocomplete_header.js":
+/*!******************************************************!*\
+  !*** ./resources/js/partials/autocomplete_header.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function () {
-  var placesAutocomplete = places({
-    appId: 'plD2BZ3YCS9X',
-    apiKey: 'd15f227b04df27ca7267846ac790a5da',
-    container: document.querySelector('#form-address'),
-    templates: {
-      value: function value(suggestion) {
-        return suggestion.name;
-      }
-    }
-  }).configure({
-    type: 'address'
-  });
-  placesAutocomplete.on('change', function resultSelected(e) {
-    document.querySelector('#form-city').value = e.suggestion.city || '';
-    document.querySelector('#form-zip').value = e.suggestion.postcode || '';
-    document.querySelector('#form-country').value = e.suggestion.country || '';
-    document.querySelector('#form-lat').value = e.suggestion.latlng.lat || '';
-    document.querySelector('#form-lon').value = e.suggestion.latlng.lng || '';
-  });
-})();
+$(document).ready(function () {
+  (function () {
+    var placesAutocomplete = places({
+      appId: 'plWXAPEAGDXR',
+      apiKey: '45954f563deec0d78ef4a69018cdb84f',
+      container: document.querySelector('.address-general')
+    });
+  })();
+});
 
 /***/ }),
 
@@ -37464,8 +37483,10 @@ $(document).ready(function () {
 
     if (scroll >= stickyOffset) {
       sticky.removeClass('fixed_search').addClass('scroll');
+      $('.regular').removeClass('white').addClass('mixin_font');
     } else {
       sticky.removeClass('scroll').addClass('fixed_search');
+      $('.regular').addClass('white').removeClass('mixin_font');
     } // /Header fissato in alto allo scroll
 
   }); // Mostrare e togliere filtri
@@ -37473,115 +37494,6 @@ $(document).ready(function () {
   $(".funnel").click(function () {
     $(".filter_container").toggleClass("d-none");
   }); // /Mostrare e togliere filtri
-  //Verificare se i checkbox sono checked o no
-  // /Verificare se i checkbox sono checked o no
-  // Creare un array contenente gli extra checkati se la checkbox è checked
-  // $('#set_result').click(function(){
-  // var inputsChecked = [];
-  // $('#wi-fi').change(function() {
-  //   var wiFi = $('#wi-fi').val();
-  //   var index = inputsChecked.indexOf(wiFi);
-  //   if (index > -1) {
-  //     inputsChecked.splice(index, 1);
-  //   } else {
-  //     inputsChecked.push(wiFi);
-  //   }
-  // console.log(inputsChecked);
-  // });
-  // $('#pool').change(function() {
-  //   var pool = $('#pool').val();
-  //   var index = inputsChecked.indexOf(pool);
-  //   if (index > -1) {
-  //     inputsChecked.splice(index, 1);
-  //   } else {
-  //     inputsChecked.push(pool);
-  //   }
-  // console.log(inputsChecked);
-  // });
-  // $('#parking').change(function() {
-  //   var parking = $('#parking').val();
-  //   var index = inputsChecked.indexOf(parking);
-  //   if (index > -1) {
-  //     inputsChecked.splice(index, 1);
-  //   } else {
-  //     inputsChecked.push(parking);
-  //   }
-  // console.log(inputsChecked);
-  // });
-  // $('#reception').change(function() {
-  //   var reception = $('#reception').val();
-  //   var index = inputsChecked.indexOf(reception);
-  //   if (index > -1) {
-  //     inputsChecked.splice(index, 1);
-  //   } else {
-  //     inputsChecked.push(reception);
-  //   }
-  // console.log(inputsChecked);
-  // });
-  // $('#sea-view').change(function() {
-  //   var seaView = $('#sea-view').val();
-  //   var index = inputsChecked.indexOf(seaView);
-  //   if (index > -1) {
-  //     inputsChecked.splice(index, 1);
-  //   } else {
-  //     inputsChecked.push(seaView);
-  //   }
-  // console.log(inputsChecked);
-  // });
-  // $('#sauna').change(function() {
-  //   var sauna = $('#sauna').val();
-  //   var index = inputsChecked.indexOf(sauna);
-  //   if (index > -1) {
-  //     inputsChecked.splice(index, 1);
-  //   } else {
-  //     inputsChecked.push(sauna);
-  //   }
-  // console.log(inputsChecked);
-  // });
-  // console.log(inputsChecked);
-  // var extrasString = inputsChecked.toString();
-  // console.log(extrasString);
-  //   $('#set_result').click(function(){
-  //     var inputsChecked = [];
-  //     if ($('input[id="wi-fi"]').is(":checked")) {
-  //     inputsChecked.push($('input[id="wi-fi"]').val());
-  //   } 
-  //   if ($('input[id="pool"]').is(":checked")) {
-  //     inputsChecked.push($('input[id="pool"]').val());
-  //   } 
-  //   if ($('input[id="sea-view"]').is(":checked")) {
-  //     inputsChecked.push($('input[id="sea-view"]').val());
-  //   } 
-  //   if ($('input[id="parking"]').is(":checked")) {
-  //     inputsChecked.push($('input[id="parking"]').val());
-  //   } 
-  //   if ($('input[id="sauna"]').is(":checked")) {
-  //     inputsChecked.push($('input[id="sauna"]').val());
-  //   } 
-  //   if ($('input[id="reception"]').is(":checked")) {
-  //     inputsChecked.push($('input[id="reception"]').val());
-  //   } 
-  //   console.log(inputsChecked);
-  //   var extrasString = inputsChecked.toString();
-  //   console.log(extrasString);
-  //   // Prendere il valore inserito negli input della stanza
-  // // console.log(roomsNumber, bedsNumber);
-  //   var rooms = $('#rooms').val();
-  //   console.log(rooms);
-  //   var beds = $('#beds').val();
-  //   console.log(beds);
-  //   var mq = $('#mq').val();
-  //   console.log(mq);
-  //   var bathrooms = $('#bathrooms').val();
-  //   console.log(bathrooms);
-  // // Prendere il valore inserito negli input della stanza
-  // // Prendere il valore inserito nell'input di distanza
-  // var radius = $('#radius').val();
-  // console.log(radius);
-  // // Prendere il valore inserito nell'input di distanza
-  // getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq);
-  // });
-  // });
   // /Creare un array contenente gli extra checkati
 
   var TxtRotate = function TxtRotate(el, toRotate, period) {
@@ -37648,60 +37560,6 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/js/partials/guest.show.js":
-/*!*********************************************!*\
-  !*** ./resources/js/partials/guest.show.js ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-if (document.getElementById('latitude') != null && document.getElementById('longitude') != null) {
-  var latitude = document.getElementById('latitude').value;
-  var longitude = document.getElementById('longitude').value;
-
-  (function () {
-    var latlng = {
-      lat: latitude,
-      lng: longitude
-    };
-    var placesAutocomplete = places({
-      appId: 'plD2BZ3YCS9X',
-      apiKey: 'd15f227b04df27ca7267846ac790a5da',
-      container: document.querySelector('#input-map-paris')
-    }).configure({
-      aroundLatLng: latlng.lat + ',' + latlng.lng,
-      // input latlong
-      aroundRadius: 0,
-      // no radius
-      type: 'address'
-    });
-    var map = L.map('map-example-container-paris', {
-      scrollWheelZoom: true,
-      zoomControl: true
-    });
-    var osmLayer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      minZoom: 6,
-      maxZoom: 18,
-      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-    });
-    var markers = [];
-    var marker = L.marker(latlng, {
-      opacity: 1
-    });
-    marker.addTo(map);
-    markers.push(marker);
-    map.setView(new L.LatLng(latlng.lat, latlng.lng), 12);
-    map.addLayer(osmLayer);
-
-    function handleOnSuggestions(e) {
-      markers.forEach(removeMarker);
-      markers = [];
-    }
-  })();
-}
-
-/***/ }),
-
 /***/ "./resources/js/partials/navbar.filter.js":
 /*!************************************************!*\
   !*** ./resources/js/partials/navbar.filter.js ***!
@@ -37734,21 +37592,9 @@ var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.j
     isEmpty = _require.isEmpty;
 
 $(document).ready(function () {
-  // RESETTA IMPUT
-  // $('#address').attr('value', "");
-  // $('#address').val("");
   // variabile globale per extras
   extrasString = ""; // CONTROLLO SE IL DATA_ADDRESS E' STATO COMPILATO
   // DALLA RICERCA DI ALTRE PAGINE OPPURE NO
-  // if ($('#address').attr('data-address').length > 0) { //ISSET
-  //   var humanAddress = $('#address').attr('data-address');
-  //     $('#address').attr('data-address', "");
-  //     // $('#address').val("");
-  //   if (humanAddress.length > 2) {
-  //     console.log(humanAddress);
-  //     getCoordinatesTomTom(humanAddress);
-  //   }
-  // }
 
   if ($('#foreign_address').val().length > 0) {
     //ISSET
@@ -37938,6 +37784,7 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq) {
     "success": function success(data) {
       // controllo dati in entrata
       if (!isEmpty(data)) {
+        $('.no_results').text('');
         console.log(data);
         $('.properties_list').html(""); // renderizzo la nuova lista
 
@@ -37945,7 +37792,9 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq) {
       }
     },
     "error": function error(_error) {
-      alert(_error);
+      $('.no_results').text('La ricerca non ha prodotto risultati');
+      $('.sponsored_list').hide();
+      $('.not_sponsored_list').hide();
     }
   });
 } // funzione per renderizzare i risultati
@@ -37954,7 +37803,8 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq) {
 function renderResults(results) {
   // SPONSORED
   if (results.sponsored.length > 0) {
-    // salvo lista sponsorizzati
+    $('.sponsored_list').show(); // salvo lista sponsorizzati
+
     var sponsored = results.sponsored; //preparo il template per SPONSORIZZATI
 
     var source = $("#property-template").html();
@@ -37964,12 +37814,16 @@ function renderResults(results) {
       var html = template(sponsored[i]); // inserisco i nuovi risultati
 
       $('.sponsored').append(html);
+      console.log(sponsored);
     }
+  } else {
+    $('.sponsored_list').hide();
   } // NOT SPONSORED
 
 
   if (results.not_sponsored.length > 0) {
-    // salvo lista NON sponsorizzati
+    $('.not_sponsored_list').show(); // salvo lista NON sponsorizzati
+
     var notSponsored = results.not_sponsored; //preparo il template per NON sponsorizzati
 
     var source = $("#property-template").html();
@@ -37979,7 +37833,121 @@ function renderResults(results) {
       var html = template(notSponsored[i]);
       $('.not_sponsored').append(html);
     }
+  } else if (results.not_sponsored.length === 0) {
+    $('.not_sponsored_list').hide();
   }
+}
+
+/***/ }),
+
+/***/ "./resources/js/partials/statistics.js":
+/*!*********************************************!*\
+  !*** ./resources/js/partials/statistics.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  property_id = 44; // date_request = "2020-11";
+
+  $("#bday-month").change(function () {
+    // alert($(this).val());
+    date_request = $(this).val();
+    getStatistics(property_id, date_request);
+  });
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var mese = mm.toString();
+  var yyyy = today.getFullYear();
+  var anno = yyyy.toString();
+  var dateNow = anno + "-" + mese;
+  $("#bday-month").val(dateNow);
+  getStatistics(property_id, date_request);
+}); //funzione per inviare range di tempo per mostrare statistiche
+
+function getStatistics(property_id, date_request) {
+  $.ajax({
+    "url": "http://localhost:8000/api/getStatistics",
+    "method": "GET",
+    "data": {
+      "property_id": property_id,
+      "date_request": date_request
+    },
+    "success": function success(data) {
+      renderStatistics(data.labels, data.data);
+    },
+    "error": function error(_error) {
+      alert(_error);
+    }
+  });
+}
+
+function renderStatistics(labels, data) {
+  var new_array = [];
+
+  for (var i = 0; i < labels.length; i++) {
+    var new_date = new Date(labels[i]);
+    new_array.push(new_date);
+  }
+
+  var ctx = document.getElementById("myChart").getContext("2d");
+  var gradientFill = ctx.createLinearGradient(500, 0, 100, 0);
+  gradientFill.addColorStop(0, "rgba(0, 0, 255, 0.6)");
+  gradientFill.addColorStop(1, "rgba(244, 144, 128, 0.6)");
+  Chart.defaults.global.defaultFontFamily = 'Lato';
+  Chart.defaults.global.defaultFontSize = 18;
+  Chart.defaults.global.defaultFontColor = "black";
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: new_array,
+      datasets: [{
+        label: "Novembre 2020",
+        borderColor: '#5E61DD',
+        borderWidth: 1,
+        pointHoverRadius: 6,
+        data: data,
+        backgroundColor: gradientFill
+      }]
+    },
+    options: {
+      legend: {
+        position: "bottom"
+      },
+      title: {
+        display: true,
+        text: "VISUALIZZAZIONI APPARTAMENTO",
+        fontColor: gradientFill,
+        fontSize: 22,
+        padding: 40
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }],
+        xAxes: [{
+          type: 'time',
+          time: {
+            unit: 'day',
+            displayFormats: {
+              'millisecond': 'MMM DD',
+              'second': 'MMM DD',
+              'minute': 'MMM DD',
+              'hour': 'MMM DD',
+              'day': 'DD',
+              'week': 'MMM DD',
+              'month': 'MMM DD',
+              'quarter': 'MMM DD',
+              'year': 'MMM DD'
+            }
+          }
+        }]
+      }
+    }
+  });
 }
 
 /***/ }),
@@ -38005,6 +37973,7 @@ function renderResults(results) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\jakon\Desktop\ATOM\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\jakon\Desktop\ATOM\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
 =======
@@ -38018,6 +37987,10 @@ module.exports = __webpack_require__(/*! C:\Users\Henry\Desktop\boolean\exercise
 =======
 __webpack_require__(/*! C:\boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> main
+=======
+__webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
 >>>>>>> main
 
 

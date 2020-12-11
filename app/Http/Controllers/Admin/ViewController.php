@@ -49,7 +49,7 @@ class ViewController extends Controller
 
       //controllo ($visitorTraffic == null) se non ci sono dati. stampare "non ci sono dati del periodo selezionato" e gli faccio la back
       if($visitorTraffic == null){
-        return Response::json(["no_results_message" =>"Non ci sono dati del periodo selezionato"]);
+        return Response::json(["no_results_message" =>"Non ci sono dati nel periodo selezionato"]);
       }
 
       $labels = [];

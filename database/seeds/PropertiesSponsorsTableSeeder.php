@@ -24,16 +24,22 @@ class PropertiesSponsorsTableSeeder extends Seeder
     foreach ($properties as $property) {
 
       // numero di sponsor che avrà la proprietà
-      $sponsor_qty = rand(0,10);
+
+      // $sponsor_qty = rand(0,10);
+      $sponsor_qty = 1;
+
       // contatore
       $i = 0;
 
       // genero un ciclo while per ogni qty di sponsor
       // finche non inserisco a db un dato che non si interseca
       // con nessuno dei created e end_sponsor della proprieta in questione
-      while ($i <= $sponsor_qty) {
+      while ($i < $sponsor_qty) {
         // genero una data faker per lo sponsor
-        $new_sponsor_dt = $faker->dateTimeBetween("-1 year", "now");
+
+        // $new_sponsor_dt = $faker->dateTimeBetween("-1 year", "now");
+        $new_sponsor_dt = $faker->dateTimeBetween("-15 days", "now");
+
         // $new_sponsor_dt = '2020-10-15 20:55';
 
         // salvo la nuova data in formato carbon

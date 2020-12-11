@@ -56,7 +56,7 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        // dd(empty($data));
+        // dd($data);
         //validation
         $request->validate([
           "title" => "required|max:255",

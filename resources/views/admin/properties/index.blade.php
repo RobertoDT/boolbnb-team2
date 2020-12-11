@@ -5,6 +5,11 @@
 
 @section('mainContent')
 <div class="container">
+    @if(session('success_deleted_property'))
+        <div class="alert alert-success">
+        {{session('success_deleted_property')}}
+        </div>
+    @endif
 
     <div class="container">
         <div class="row">

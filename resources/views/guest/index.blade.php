@@ -26,47 +26,38 @@
        {{-- IN EVIDENZA --}}
        <h1 class="highlight">In Evidenza</h1>
        <ul class="flat_list list-highlight">
-           <?php $count = 0; ?>
            @foreach ($sponsored_properties as $sponsored_property)
-               <?php if($count == 12) break; ?>
-                   <li class="all_properties" id="li-highlight">
-                       <div class="img-responsive" id="img-highlight">
-                           <img class="transition" src="{{asset('storage/'.$sponsored_property->flat_image)}}" alt="Home Picture">
-                       </div>
-                       <div class="overlay over-highlight">
-                           <div class="small-container">
-                               <a href="/properties/{{$sponsored_property->id}}">{{$sponsored_property->title}}</a>
-                               <p class="metro">{{$sponsored_property->metropolis}}</p>
-                               <p class="evidence">Sponsorizzato</p>
-                           </div>
-                       </div>
-                   </li>
-               <?php $count++; ?>
+                <li class="all_properties" id="li-highlight">
+                    <div class="img-responsive" id="img-highlight">
+                        <img class="transition" src="{{asset('storage/'.$sponsored_property->flat_image)}}" alt="Home Picture">
+                    </div>
+                    <div class="overlay over-highlight">
+                        <div class="small-container">
+                            <a href="/properties/{{$sponsored_property->id}}">{{$sponsored_property->title}}</a>
+                            <p class="metro">{{$sponsored_property->metropolis}}</p>
+                            <p class="evidence">Sponsorizzato</p>
+                        </div>
+                    </div>
+                </li>
            @endforeach  
-           @php
-           $i = 12 - $count;
-           @endphp
        </ul>
    {{-- /IN EVIDENZA --}}   
 
    {{-- SCELTI PER VOI --}}
    <h2 class="chosen">Scelti per voi</h2>
        <ul class="flat_list">
-           <?php $count_not_sponsored = 0; ?>
            @foreach ($not_sponsored_properties as $not_sponsored_property)
-               <?php if($count_not_sponsored == $i) break; ?>
-                   <li class="all_properties">
-                       <div class="img-responsive">
-                           <img class="transition" src="{{asset('storage/'.$not_sponsored_property->flat_image)}}" alt="Home Picture">
-                       </div>
-                       <div class="overlay">
-                       <div class="small-container">
-                           <a href="/properties/{{$not_sponsored_property->id}}">{{$not_sponsored_property->title}}</a>
-                           <p class="metro">{{$not_sponsored_property->metropolis}}</p>
-                       </div>
-                       </div>
-                   </li>
-                   <?php $count_not_sponsored++; ?>
+                <li class="all_properties">
+                    <div class="img-responsive">
+                        <img class="transition" src="{{asset('storage/'.$not_sponsored_property->flat_image)}}" alt="Home Picture">
+                    </div>
+                    <div class="overlay">
+                    <div class="small-container">
+                        <a href="/properties/{{$not_sponsored_property->id}}">{{$not_sponsored_property->title}}</a>
+                        <p class="metro">{{$not_sponsored_property->metropolis}}</p>
+                    </div>
+                    </div>
+                </li>
            @endforeach     
        </ul>
        {{-- //SCELTI PER VOI --}}
@@ -124,11 +115,8 @@
             <div class="find">
                 <div class="find-border">
                 <h2>Trova l'alloggio giusto per te!</h2>
-                    <div class="start_search order">                 
-                        <form class="form-inline my-2 my-lg-0 find-btn" action="{{route("search")}}" method="GET">                     
-                            @method('GET')                               
-                            <button class="btn btn-dark my-2 my-sm-0 modifing_link search_write"  class="search_button" type="submit">Cerca</button>
-                        </form>
+                    <div class="find-btn-container">                 
+                            <button id="find-btn" class="btn btn-dark my-2 my-sm-0 modifing_link search_write search_button">Cerca</button>
                     </div>
                 </div>
             </div>

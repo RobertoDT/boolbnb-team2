@@ -51,6 +51,7 @@ function getStatistics(property_id, date_request){
         $("#myChart").hide();
       } else{
         $("#myChart").show();
+        $(".no_results_message").text("");
         renderStatistics(data.labels, data.data);
       }
 
@@ -100,7 +101,7 @@ function renderStatistics(labels, data){
           },
               title:{
                       display:true,
-                      text:"VISUALIZZAZIONI APPARTAMENTO",
+                      text:"",
                       fontColor: gradientFill,
                       fontSize: 22,
                       padding:40
@@ -108,7 +109,7 @@ function renderStatistics(labels, data){
               scales: {
                   yAxes: [{
                       ticks:{
-                          beginAtZero: true
+                          beginAtZero: true,
                       },
                   }],
                   xAxes: [{
