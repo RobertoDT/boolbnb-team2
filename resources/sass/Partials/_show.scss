@@ -20,7 +20,7 @@
             width: 100%;
             margin-top: 20px;
             position: relative;
-           
+
             .img-show{
                 width: 80%;
                 max-height: 450px;
@@ -72,6 +72,7 @@
 
         .container-map, .container-info {
             width: calc(100% / 2);
+
 
             #map-example-container-paris {
                 height: 400px;
@@ -135,6 +136,7 @@
         -webkit-filter: brightness(60%);
         transform: scale(1.005)
     }
+
     .img-show { 
         transition: all .3s ease-in-out;
     }

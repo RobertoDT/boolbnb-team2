@@ -115,13 +115,13 @@
 
     <!-- latitude -->
     <div class="form-group">
-      <input type="hidden" min="-90" max="90" class="form-control" id="form-lat" name="latitude" value="" placeholder="latitude">
+      <input type="hidden" min="-90" max="90" class="form-control" id="form-lat" name="latitude" value="{{old("latitude")}}" placeholder="latitude">
     </div>
     <!-- /latitude -->
 
     <!-- longitude -->
     <div class="form-group">
-      <input type="hidden" min="-180" max="180" class="form-control" id="form-lon" name="longitude" value="" placeholder="longitudine">
+      <input type="hidden" min="-180" max="180" class="form-control" id="form-lon" name="longitude" value="{{old("longitude")}}" placeholder="longitudine">
     </div>
     <!-- /longitude -->
 
