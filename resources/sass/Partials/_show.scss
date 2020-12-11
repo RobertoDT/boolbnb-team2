@@ -1,5 +1,6 @@
 .main-content {
     background-image: linear-gradient(#F8FAFC, #dad5da, #bbcdcf, #F8FAFC);
+    
 
     .wrapper {
         width: 70%;
@@ -131,11 +132,11 @@
         display: none;
     }
     .img-show:hover {
-        -webkit-filter: brightness(110%);
+        -webkit-filter: brightness(60%);
         transform: scale(1.005)
     }
     .img-show { 
-        transition: all .2s ease-in-out;
+        transition: all .3s ease-in-out;
     }
     //SPECIFICHE
 
@@ -162,12 +163,18 @@
     }
     .img-container:hover #roma {
         opacity: 1;
-        transition: 1s;
+        transition: all .3s ease-in-out;
     }
     //CITTA'
 
     
     // MEDIAQUERY
+    #guest-wrapper{
+        @media screen and (max-width: 768px) {
+            width: 90%;
+        }
+    }
+    
     @media screen and (max-width: 930px) {
         .info-map {
             flex-wrap: wrap;
