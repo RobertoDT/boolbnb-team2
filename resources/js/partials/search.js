@@ -205,7 +205,7 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq){
       "success": function(data) {
       // controllo dati in entrata
       if (!isEmpty(data)) {
-        $('.no_results').text('');
+        $('.no_search_results').hide();
         console.log(data);
         $('.properties_list').html("");
         // renderizzo la nuova lista
@@ -214,7 +214,7 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq){
 
       },
       "error": function(error) {
-          $('.no_results').text('La ricerca non ha prodotto risultati');
+          $('.no_search_results').show('La ricerca non ha prodotto risultati');
           $('.sponsored_list').hide();
           $('.not_sponsored_list').hide();
       }
@@ -224,11 +224,13 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq){
 
 // funzione per renderizzare i risultati
 function renderResults (results){
+  console.log(results);
   // SPONSORED
   if (results.sponsored.length > 0) {
     $('.sponsored_list').show();
     // salvo lista sponsorizzati
     var sponsored = results.sponsored;
+    console.log('sp:', sponsored);
     //preparo il template per SPONSORIZZATI
     var source = $("#property-template").html();
     var template = Handlebars.compile(source);
@@ -237,7 +239,6 @@ function renderResults (results){
       var html = template(sponsored[i]);
       // inserisco i nuovi risultati
       $('.sponsored').append(html);
-      console.log(sponsored);
     }
   } else {
     $('.sponsored_list').hide();
@@ -248,6 +249,7 @@ function renderResults (results){
     $('.not_sponsored_list').show();
     // salvo lista NON sponsorizzati
     var notSponsored = results.not_sponsored;
+    console.log('not:', notSponsored);
     //preparo il template per NON sponsorizzati
     var source = $("#property-template").html();
     var template = Handlebars.compile(source);
