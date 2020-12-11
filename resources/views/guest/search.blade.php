@@ -5,15 +5,15 @@
 @endsection
 
 @section('mainContent')
-<section class="search_section">
-{{-- <div class="no_search_results"> --}}
-  <h2 class="no_results"></h2>
-{{-- </div> --}}
+
+<div class="no_search_results">
+  <h2 class="no_results">La ricerca non ha prodotto risultati</h2>
+</div>
 <div class="container search_container">
   <div class="row">
     <div class="col sponsored_list">
       <h2 class="premium_name name_search">In evidenza</h1>
-      <div class="card-deck row properties_list sponsored list-highlight align-items-stretch">
+      <div class="card-deck row properties_list sponsored align-items-stretch" id="li_highlight_search">
 
       </div>
     </div>
@@ -37,7 +37,7 @@
         <h4 class="text-center min_height_70 padding_title"><strong>@{{title}}</strong></h4>
         
       
-        <img src="@{{flat_image}}" class="img img-responsive card-img-top" alt="Immagine appartamento">
+        <img src="/storage/@{{flat_image}}" class="img img-responsive card-img-top" alt="Immagine appartamento">
           <div class="profile-content">
               <div class="profile-name">
                 {{-- <h4 class="text-center"><strong>@{{title}}</strong></h4> --}}
@@ -91,5 +91,5 @@
         </div>
     </div>
 </div> --}}
-</section>
+
 @endsection

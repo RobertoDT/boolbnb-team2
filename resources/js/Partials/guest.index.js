@@ -105,7 +105,9 @@ $('.carousel .carousel-item').each(function(){
       }
 });
 
-
+$('#find-btn').hover(function(){
+  $(".address-general").toggleClass('high');
+});
 
 });
 

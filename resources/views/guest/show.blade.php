@@ -8,7 +8,7 @@
 
 @section('mainContent')
 <section class="main-content">
-    <div class="wrapper">
+    <div class="wrapper" id="guest-wrapper">
 
         @if(session('success_sent_message'))
             <div class="alert alert-success">
@@ -39,6 +39,10 @@
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal_message">Form di contatto</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
                         <div class="modal-body">
                             <!-- FORM -->
                             <div class="modal-body form-container">
@@ -52,7 +56,7 @@
                                     <label for="text">Messaggio</label>
                                         <textarea class="form-control" id="text" name="text" placeholder="Scrivi messaggio..." style="height:200px" required>{{old("text") ?? old("text")}}</textarea>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">Invia</button>
+                                        <button type="submit" class="btn modifing_link">Invia</button>
                                     </div>
                                 </form>
                             </div>
