@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section('title')
-    Admin Property Details
-@endsection
+@section('title', 'BoolBnB')
 
-@include('layouts.header-general')
+@section('header')
+    @include('layouts.header-general')
+@endsection
 
 @section('mainContent')
 <section class="detail">

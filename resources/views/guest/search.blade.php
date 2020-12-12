@@ -1,7 +1,9 @@
 @extends('layouts.search_main')
 
-@section('title')
-    BoolBnB
+@section('title', 'BoolBnB')
+
+@section('header')
+    @include('layouts.header-general')
 @endsection
 
 @section('mainContent')

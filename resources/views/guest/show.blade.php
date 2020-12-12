@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section('title')
-    Property Details
-@endsection
+@section('title', 'Property Details')
 
-@include('layouts.header-general')
+@section('header')
+    @include('layouts.header-general')
+@endsection
 
 @section('mainContent')
 <section class="main-content">

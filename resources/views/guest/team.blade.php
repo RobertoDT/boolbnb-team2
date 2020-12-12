@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section('title')
-    Property Details
-@endsection
+@section('title', 'BoolBnB')
 
-@include('layouts.header-general')
+@section('header')
+    @include('layouts.header-general')
+@endsection
 
 @section ('mainContent')
    
@@ -19,7 +19,7 @@
                   </div>
                   <div class="team-content">
                     <h3 class="name">Jacopo Nigro</h3>
-                    <h5>API REST Specialist</h5>
+                    <h5 class="job">API REST Specialist</h5>
                   </div>
                   <ul class="social">
                     <li><a href="https://www.linkedin.com/in/jacopo-nigro-54a02b200/" class="fab fa-linkedin-in" aria-hidden="true"></a></li>

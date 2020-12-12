@@ -1,6 +1,10 @@
 @extends("layouts.main")
 
-@include('layouts.header-general')
+@section('title', 'BoolBnB')
+
+@section('header')
+    @include('layouts.header-general')
+@endsection
 
 @section("mainContent")
 

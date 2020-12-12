@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section('title')
-    BoolBnB
-@endsection
+@section('title', 'BoolBnB')
 
-@include('layouts.header-index')
+@section('header')
+    @include('layouts.header-index')
+@endsection
 
 @section('mainContent')
 

@@ -1,7 +1,11 @@
 <!-- form di modifica di una proprietà -->
 @extends("layouts.main")
 
-@include('layouts.header-general')
+@section('title', 'BoolBnB')
+
+@section('header')
+    @include('layouts.header-general')
+@endsection
 
 @section("mainContent")
 <div class="container p_bottom_50">
