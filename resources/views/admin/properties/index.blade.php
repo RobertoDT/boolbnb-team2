@@ -37,7 +37,7 @@
               <a href="{{route("admin.sponsors.create")}}"><i class="fas fa-dollar-sign"></i> Sponsorizza il tuo appartamento</a><hr>
               <a href="{{route("admin.messages")}}"><i class="far fa-envelope"></i> Visualizza i tuoi messaggi</a><hr>
               <a href="{{ url('/') }}"><i class="fas fa-home"></i> Torna alla Homepage</a><hr>
-              <a href="#"><i class="fas fa-phone"></i> Hai bisogno di assistenza? <br> Contattaci allo 0528463898 </a>
+              <a href="{{route("contacts")}}"><i class="fas fa-chalkboard-teacher"></i> Hai bisogno di assistenza? <br> Contatta il nostro team di sviluppatori </a>
             </div>
             {{-- //MENU A SINISTRA --}}
         

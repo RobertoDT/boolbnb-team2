@@ -37274,7 +37274,7 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ././partials/algolia_map.js */ "./resources/js/partials/algolia_map.js");
+__webpack_require__(/*! ././partials/sponsor.js */ "./resources/js/partials/sponsor.js");
 
 __webpack_require__(/*! ././partials/autocomplete_header.js */ "./resources/js/partials/autocomplete_header.js");
 
@@ -37285,6 +37285,8 @@ __webpack_require__(/*! ././partials/admin.index.js */ "./resources/js/partials/
 __webpack_require__(/*! ././partials/search.js */ "./resources/js/partials/search.js");
 
 __webpack_require__(/*! ././partials/guest.index.js */ "./resources/js/partials/guest.index.js");
+
+__webpack_require__(/*! ././partials/algolia_map.js */ "./resources/js/partials/algolia_map.js");
 
 __webpack_require__(/*! ././partials/navbar.filter.js */ "./resources/js/partials/navbar.filter.js");
 
@@ -37556,6 +37558,33 @@ $(document).ready(function () {
     css.innerHTML = ".txt-rotate > .txt-rt { border-right: 0.08em solid #666 }";
     document.body.appendChild(css);
   };
+
+  $('#recipeCarousel').carousel({
+    interval: 10000
+  });
+  $('.carousel .carousel-item').each(function () {
+    var minPerSlide = 3;
+    var next = $(this).next();
+
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+
+    next.children(':first-child').clone().appendTo($(this));
+
+    for (var i = 0; i < minPerSlide; i++) {
+      next = next.next();
+
+      if (!next.length) {
+        next = $(this).siblings(':first');
+      }
+
+      next.children(':first-child').clone().appendTo($(this));
+    }
+  });
+  $('#find-btn').hover(function () {
+    $(".address-general").toggleClass('high');
+  });
 });
 
 /***/ }),
@@ -37567,17 +37596,16 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {
-  var rangeSlider = $("#rs-range-line");
-  var rangeBullet = $("#rs-bullet");
-  rangeSlider.addEventListener("input", showSliderValue, false);
-
-  function showSliderValue() {
-    rangeBullet.html(rangeSlider).val();
-    var bulletPosition = rangeSlider.val() / rangeSlider.max;
-    rangeBullet.style.left = bulletPosition * 578 + "px";
-  }
-});
+// $(document).ready(function() {
+//     var rangeSlider = $("#rs-range-line");
+//     var rangeBullet = $("#rs-bullet");
+//     rangeSlider.addEventListener("input", showSliderValue, false);
+//     function showSliderValue() {
+//         rangeBullet.html(rangeSlider).val();
+//         var bulletPosition = (rangeSlider.val() /rangeSlider.max);
+//         rangeBullet.style.left = (bulletPosition * 578) + "px";
+//       }
+// })
 
 /***/ }),
 
@@ -37784,7 +37812,7 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq) {
     "success": function success(data) {
       // controllo dati in entrata
       if (!isEmpty(data)) {
-        $('.no_results').text('');
+        $('.no_search_results').hide();
         console.log(data);
         $('.properties_list').html(""); // renderizzo la nuova lista
 
@@ -37792,7 +37820,7 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq) {
       }
     },
     "error": function error(_error) {
-      $('.no_results').text('La ricerca non ha prodotto risultati');
+      $('.no_search_results').show('La ricerca non ha prodotto risultati');
       $('.sponsored_list').hide();
       $('.not_sponsored_list').hide();
     }
@@ -37801,11 +37829,13 @@ function getProperties(lat, lon, radius, extras, rooms, beds, bathrooms, mq) {
 
 
 function renderResults(results) {
-  // SPONSORED
+  console.log(results); // SPONSORED
+
   if (results.sponsored.length > 0) {
     $('.sponsored_list').show(); // salvo lista sponsorizzati
 
-    var sponsored = results.sponsored; //preparo il template per SPONSORIZZATI
+    var sponsored = results.sponsored;
+    console.log('sp:', sponsored); //preparo il template per SPONSORIZZATI
 
     var source = $("#property-template").html();
     var template = Handlebars.compile(source); //ciclo e appendo in dom
@@ -37814,7 +37844,6 @@ function renderResults(results) {
       var html = template(sponsored[i]); // inserisco i nuovi risultati
 
       $('.sponsored').append(html);
-      console.log(sponsored);
     }
   } else {
     $('.sponsored_list').hide();
@@ -37824,7 +37853,8 @@ function renderResults(results) {
   if (results.not_sponsored.length > 0) {
     $('.not_sponsored_list').show(); // salvo lista NON sponsorizzati
 
-    var notSponsored = results.not_sponsored; //preparo il template per NON sponsorizzati
+    var notSponsored = results.not_sponsored;
+    console.log('not:', notSponsored); //preparo il template per NON sponsorizzati
 
     var source = $("#property-template").html();
     var template = Handlebars.compile(source); //ciclo per le properietà
@@ -37840,6 +37870,24 @@ function renderResults(results) {
 
 /***/ }),
 
+/***/ "./resources/js/partials/sponsor.js":
+/*!******************************************!*\
+  !*** ./resources/js/partials/sponsor.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $(".input_sponsor").click(function () {
+    var data_sponsor = $(this).attr("data-sponsor");
+    $(".sponsor_id").val(data_sponsor);
+    var data_duration = $(this).attr("data-duration");
+    $(".sponsor_duration").val(data_duration);
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/partials/statistics.js":
 /*!*********************************************!*\
   !*** ./resources/js/partials/statistics.js ***!
@@ -37848,22 +37896,36 @@ function renderResults(results) {
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  property_id = 44; // date_request = "2020-11";
+  if ($("#myChart").length > 0) {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var mese = mm.toString();
+    var yyyy = today.getFullYear();
+    var anno = yyyy.toString();
+    var dateNow = anno + "-" + mese;
+    $("#bday-month").val(dateNow);
+    property_id = $("#property_id_stat").val();
+    date_request = dateNow;
+    var moment = new Date(date_request);
+    month_name = capitalizeFirstLetter(moment.toLocaleString('default', {
+      month: 'long'
+    }));
+    year = moment.getFullYear();
+    getStatistics(property_id, date_request);
+  }
 
   $("#bday-month").change(function () {
-    // alert($(this).val());
-    date_request = $(this).val();
+    date_request = $(this).val(); // var new_date_request = moment(date_request, "YYYY-MM");
+
+    var moment = new Date(date_request);
+    month_name = capitalizeFirstLetter(moment.toLocaleString('default', {
+      month: 'long'
+    }));
+    year = moment.getFullYear(); // console.log(m_date);
+
     getStatistics(property_id, date_request);
   });
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth() + 1;
-  var mese = mm.toString();
-  var yyyy = today.getFullYear();
-  var anno = yyyy.toString();
-  var dateNow = anno + "-" + mese;
-  $("#bday-month").val(dateNow);
-  getStatistics(property_id, date_request);
 }); //funzione per inviare range di tempo per mostrare statistiche
 
 function getStatistics(property_id, date_request) {
@@ -37875,7 +37937,14 @@ function getStatistics(property_id, date_request) {
       "date_request": date_request
     },
     "success": function success(data) {
-      renderStatistics(data.labels, data.data);
+      if (data.no_results_message != null) {
+        $(".no_results_message").text(data.no_results_message);
+        $("#myChart").hide();
+      } else {
+        $("#myChart").show();
+        $(".no_results_message").text("");
+        renderStatistics(data.labels, data.data);
+      }
     },
     "error": function error(_error) {
       alert(_error);
@@ -37903,7 +37972,7 @@ function renderStatistics(labels, data) {
     data: {
       labels: new_array,
       datasets: [{
-        label: "Novembre 2020",
+        label: year + " " + month_name,
         borderColor: '#5E61DD',
         borderWidth: 1,
         pointHoverRadius: 6,
@@ -37917,7 +37986,7 @@ function renderStatistics(labels, data) {
       },
       title: {
         display: true,
-        text: "VISUALIZZAZIONI APPARTAMENTO",
+        text: "",
         fontColor: gradientFill,
         fontSize: 22,
         padding: 40
@@ -37950,6 +38019,10 @@ function renderStatistics(labels, data) {
   });
 }
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 /***/ }),
 
 /***/ "./resources/sass/app.scss":
@@ -37970,28 +38043,8 @@ function renderStatistics(labels, data) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\jakon\Desktop\ATOM\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\jakon\Desktop\ATOM\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! C:\Users\rober\Desktop\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\rober\Desktop\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> main
-=======
-__webpack_require__(/*! C:\Users\Henry\Desktop\boolean\exercise\boolbnb\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Henry\Desktop\boolean\exercise\boolbnb\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> main
-=======
-__webpack_require__(/*! C:\boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> main
-=======
-__webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Elisa\Desktop\Esercizi Boolean\boolbnb-team2\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> main
 
 
 /***/ })

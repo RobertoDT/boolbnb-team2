@@ -106,3 +106,15 @@ a .profile-card-4 h4 {
 .min_height_70 {
   min-height:70px;
 }
+.sponsored {
+  .profile-card-4{
+    background-color: $lightBgColor;
+    
+    .profile-content {
+      background-color: $lightBgColor;
+    }
+    .profile-content::before {
+      background-color: $lightBgColor;
+    }
+  }
+}

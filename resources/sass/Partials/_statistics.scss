@@ -1,8 +1,8 @@
 .container{
 
-  h1{
+  .stats-title{
     margin-top: 70px;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
 
     .statistic_image{
       width: 70px;
@@ -14,7 +14,7 @@
 
   .messaggio_no_ris{
     text-align: center;
-    margin-top: 70px;
+    margin-top: 30px;
   }
 
   .month_calendar{
@@ -25,7 +25,7 @@
     border: 2px solid #5E61DD;
     border-radius: 10px;
     padding: 20px;
-    margin-top: 70px;
+    // margin-top: 30px;
   }
 }
 

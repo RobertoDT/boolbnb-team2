@@ -12,8 +12,8 @@
 <div class="container search_container">
   <div class="row">
     <div class="col sponsored_list">
-      <h2 class="premium_name name_search">In evidenza</h1>
-      <div class="card-deck row properties_list sponsored align-items-stretch" id="li_highlight_search">
+      <h2 class="premium_name name_search premium">Premium</h1>
+      <div class="card-deck row properties_list sponsored align-items-stretch">
 
       </div>
     </div>

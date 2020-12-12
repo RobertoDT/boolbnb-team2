@@ -386,21 +386,10 @@
     
     .faq-row:nth-child(even) .faq-content {
         background-color: white;
-        /* Fallback Color */
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#fc6d4c), to(#ff5000));
-        /* Saf4+, Chrome */
-        background-image: -webkit-linear-gradient(top, #fc6d4c, #ff5000);
-        /* Chrome 10+, Saf5.1+, iOS 5+ */
-        background-image: -moz-linear-gradient(top, #fc6d4c, #ff5000);
-        /* FF3.6 */
-        background-image: -ms-linear-gradient(top, #fc6d4c, #ff5000);
-        /* IE10 */
-        background-image: -o-linear-gradient(top, #fc6d4c, #ff5000);
-        /* Opera 11.10+ */
-        background-image: linear-gradient(top, #fc6d4c, #ff5000);
         margin-left: 40px;
         text-align: left;
     }
+
     
     .faq-row:nth-child(even) .faq-content:after {
         left: -39px;
@@ -429,18 +418,6 @@
     
     .faq-row:nth-child(odd) .faq-content {
         background-color: white;
-        /* Fallback Color */
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#1379bb), to(#5a99ee));
-        /* Saf4+, Chrome */
-        background-image: -webkit-linear-gradient(top, #1379bb, #5a99ee);
-        /* Chrome 10+, Saf5.1+, iOS 5+ */
-        background-image: -moz-linear-gradient(top, #1379bb, #5a99ee);
-        /* FF3.6 */
-        background-image: -ms-linear-gradient(top, #1379bb, #5a99ee);
-        /* IE10 */
-        background-image: -o-linear-gradient(top, #1379bb, #5a99ee);
-        /* Opera 11.10+ */
-        background-image: linear-gradient(top, #1379bb, #5a99ee);
         margin-right: 40px;
         margin-left: 0;
         text-align: right;

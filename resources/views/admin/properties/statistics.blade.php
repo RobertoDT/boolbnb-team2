@@ -6,7 +6,7 @@
 
 <div class="container">
 
-  <h1>Visualizzazioni della proprietà: "{{$property->title}}"<span><img class="statistic_image" src="{{asset("storage/".$property->flat_image)}}" alt=""></span></h1>
+  <h1 class="stats-title">Visualizzazioni della proprietà: "{{$property->title}}"<span><img class="statistic_image" src="{{asset("storage/".$property->flat_image)}}" alt=""></span></h1>
 
   <h3>Seleziona un mese dell'anno:</h3>
   <div class="month_calendar">

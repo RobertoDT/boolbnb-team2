@@ -17,8 +17,8 @@ class ViewsTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         for($i = 0; $i < 500; $i++){
-          // $property = Property::find(44);
-          $property = Property::inRandomOrder()->first();
+          $property = Property::find(5);
+          // $property = Property::inRandomOrder()->first();
 
           //creo nuovo oggetto
           $newView = new View;

@@ -40,3 +40,6 @@ Route::get('/search', 'PropertiesSearchController@index')->name('search');
 
 //rotta per messaggi
 Route::post("/messages/{id}", "MessagesController@store")->name("messages.store");
+
+// rotta per team
+Route::get('/contacts', 'ContactsController@index')->name('contacts');
